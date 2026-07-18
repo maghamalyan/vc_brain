@@ -179,7 +179,11 @@ class TokenState:
     search_calls: deque[float] = field(default_factory=deque)
     search_remaining: int | None = None
     core_remaining: int | None = None
-    reset_at: float = 0.0
+    # Reset timestamps MUST be tracked per resource: search resets every minute,
+    # core hourly. A shared field let a core response (reset ~1h away) block the
+    # search scheduler for 51 minutes (observed 2026-07-19 03:21).
+    search_reset_at: float = 0.0
+    core_reset_at: float = 0.0
 
 
 class GitHubRateLimitPool:
@@ -205,7 +209,7 @@ class GitHubRateLimitPool:
                     remotely_available = (
                         state.search_remaining is None
                         or state.search_remaining >= 2
-                        or now >= state.reset_at
+                        or now >= state.search_reset_at
                     )
                     if locally_available and remotely_available:
                         state.search_calls.append(now)
@@ -213,16 +217,18 @@ class GitHubRateLimitPool:
                         return state
                     if state.search_calls:
                         waits.append(max(0.0, 60 - (now - state.search_calls[0])))
+                    if state.search_reset_at > now:
+                        waits.append(min(state.search_reset_at - now, 90.0))
                 else:
                     if (
                         state.core_remaining is None
                         or state.core_remaining >= 2
-                        or now >= state.reset_at
+                        or now >= state.core_reset_at
                     ):
                         self.next_index = (index + 1) % len(self.states)
                         return state
-                if state.reset_at > now:
-                    waits.append(state.reset_at - now)
+                    if state.core_reset_at > now:
+                        waits.append(state.core_reset_at - now)
             delay = max(0.25, min(waits, default=60.0))
             LOGGER.info(
                 "GitHub rate limit waiting resource=%s seconds=%.1f",
@@ -242,7 +248,10 @@ class GitHubRateLimitPool:
             else:
                 state.core_remaining = int(remaining)
         if reset and reset.isdigit():
-            state.reset_at = float(reset) + 1.0
+            if resource == "search":
+                state.search_reset_at = float(reset) + 1.0
+            else:
+                state.core_reset_at = float(reset) + 1.0
 
 
 class GitHubClient:
