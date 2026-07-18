@@ -8,9 +8,14 @@
   `actor_login IN (...)` (~300 per query), never per-actor queries.
 
 ## Outputs (all parquet under data/events/)
-1. `monthly_agg/`: per (actor_login, month, event_type) counts — for positives AND
-   negatives. Window: 48 months before each actor's t_cutoff (positives) / pseudo-t
-   (negatives).
+1. `monthly_agg/`: per (actor_login, month, event_type, is_weekend) counts — for
+   positives AND negatives. Window: 48 months before each actor's t_cutoff
+   (positives) / pseudo-t (negatives). is_weekend = toDayOfWeek(created_at) IN (6,7).
+1b. `owned_repo_agg/`: per (owner_login, month, event_type) counts of events OTHER
+   actors generate on the cohort actor's repos (traction received: WatchEvent=stars,
+   ForkEvent, IssuesEvent opened by others). SQL:
+   `arrayElement(splitByChar('/', repo_name), 1) IN (<batch>) AND actor_login !=
+   arrayElement(splitByChar('/', repo_name), 1)`. Same 48-mo windows.
 2. `repo_creations/`: event-level rows for CreateEvent+ref_type='repository' by cohort
    actors (created_at, repo_name) — burst + naming features, evidence for trust layer.
 3. `baselines/monthly_totals.parquet`: global per-month per-event_type totals (one
@@ -19,7 +24,10 @@
 5. `data_card.md`: counts, coverage, sampling ratios, known gaps.
 
 ## Negative sampling (case-control, deterministic)
-- Pool: actors with ≥20 events in the cohort's calendar window; exclude: any login in
+- Pool: build CHEAPLY via hash-sampling (a full GROUP BY actor_login will exceed
+  playground memory/time limits): `WHERE cityHash64(actor_login) % 400 = <seed>` →
+  ~0.25% of actors, still tens of thousands; run 2-3 seeds if pool too small.
+  Then: actors with ≥20 events in the cohort's calendar window; exclude: any login in
   the labels file (ANY confidence), logins matching `(?i)(bot|\[bot\]|-ci|automation)`,
   type!=User unavailable here — pattern filter only (note in data card).
 - Match per positive: K=5 negatives from same activity band (total events in

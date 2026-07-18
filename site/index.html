@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Opportunity radar — VC Brain</title>
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="topbar">
+      <a class="brand" href="index.html" aria-label="VC Brain opportunity radar">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>VC Brain</span>
+      </a>
+      <nav class="topnav" aria-label="Primary navigation">
+        <a class="active" href="index.html">Opportunity radar</a>
+        <span class="nav-muted">Evidence room</span>
+      </nav>
+      
+        <span class="fixture-flag"><span></span>Synthetic demo data</span>
+      
+    </header>
+    <main id="main">
+      
+  <section class="hero shell">
+    <div class="hero-copy">
+      <p class="eyebrow"><span>Live funnel</span> · Sourcing → screening</p>
+      <h1>Signals worth<br>your attention.</h1>
+      <p class="hero-subtitle">A ranked view of early founder momentum, filtered through your investment thesis and grounded in inspectable evidence.</p>
+    </div>
+    <aside class="thesis-card" aria-labelledby="thesis-heading">
+      <div class="card-kicker">Active mandate</div>
+      <h2 id="thesis-heading">Technical conviction, early</h2>
+      <p>Fixture thesis: prioritize technical infrastructure and fintech founders at pre-seed or seed across Europe and the US.</p>
+      <div class="thesis-facts">
+        <div><span>Stage</span><strong>Pre-seed · Seed</strong></div>
+        <div><span>Check</span><strong>$500k—$2.5m</strong></div>
+      </div>
+      <button class="text-button" type="button" id="show-thesis">View full mandate <span>↗</span></button>
+    </aside>
+  </section>
+
+  <section class="metric-strip shell" aria-label="Funnel summary">
+    <div><strong>12</strong><span>Active signals</span></div>
+    <div><strong>7</strong><span>Thesis aligned</span></div>
+    <div><strong>2</strong><span>Inbound</span></div>
+    <div><strong>3</strong><span>Decision ready</span></div>
+  </section>
+
+  <section class="radar shell" aria-labelledby="radar-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Unified screening funnel</p>
+        <h2 id="radar-title">Opportunity radar</h2>
+      </div>
+      <p><span id="visible-count">12</span> candidates · ranked by current founder signal</p>
+    </div>
+
+    <div class="control-bar" aria-label="Candidate filters">
+      <label class="search-field">
+        <span class="sr-only">Search candidates</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"></circle><path d="m13 13 4 4"></path></svg>
+        <input id="candidate-search" type="search" placeholder="Search founder, company, or sector">
+      </label>
+      <label class="select-field">
+        <span>Source</span>
+        <select id="source-filter">
+          <option value="all">All signals</option>
+          <option value="outbound_detector">Outbound</option>
+          <option value="inbound_application">Inbound</option>
+        </select>
+      </label>
+      <label class="switch-field">
+        <input id="thesis-filter" type="checkbox">
+        <span class="switch" aria-hidden="true"></span>
+        <span>Thesis fit only</span>
+      </label>
+    </div>
+
+    <div class="table-frame">
+      <table class="candidate-table" id="ranked-candidates">
+        <thead>
+          <tr>
+            <th scope="col">Rank / Opportunity</th>
+            <th scope="col">Founder signal</th>
+            <th scope="col">3m momentum</th>
+            <th scope="col">Origin</th>
+            <th scope="col">First detected</th>
+            <th scope="col"><span class="sr-only">Open</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr data-candidate-row
+                data-search="Ada Lovelace (fixture) VectorForge Developer tools"
+                data-source="outbound_detector"
+                data-thesis-match="true">
+              <td>
+                <a class="opportunity" href="candidate/ada-lovelace-fixture.html">
+                  <span class="rank">01</span>
+                  <span class="avatar">AL</span>
+                  <span class="opportunity-copy">
+                    <strong>VectorForge</strong>
+                    <small>Ada Lovelace (fixture) · Developer tools</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>91</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: 91%"></i></div>
+              </td>
+              <td><span class="momentum up"><i>↗</i>+14.0 pts</span></td>
+              <td><span class="source-badge outbound_detector"><i></i>Outbound</span></td>
+              <td><span class="detection-date">Mar 2025</span></td>
+              <td><a class="row-arrow" href="candidate/ada-lovelace-fixture.html" aria-label="Open VectorForge">→</a></td>
+            </tr>
+          
+            <tr data-candidate-row
+                data-search="Grace Hopper (fixture) Quiet Current AI infrastructure"
+                data-source="outbound_detector"
+                data-thesis-match="true">
+              <td>
+                <a class="opportunity" href="candidate/grace-hopper-fixture.html">
+                  <span class="rank">02</span>
+                  <span class="avatar">GH</span>
+                  <span class="opportunity-copy">
+                    <strong>Quiet Current</strong>
+                    <small>Grace Hopper (fixture) · AI infrastructure</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>86</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: 86%"></i></div>
+              </td>
+              <td><span class="momentum up"><i>↗</i>+9.0 pts</span></td>
+              <td><span class="source-badge outbound_detector"><i></i>Outbound</span></td>
+              <td><span class="detection-date">Jun 2025</span></td>
+              <td><a class="row-arrow" href="candidate/grace-hopper-fixture.html" aria-label="Open Quiet Current">→</a></td>
+            </tr>
+          
+            <tr data-candidate-row
+                data-search="Katherine Johnson (fixture) Orbital Ledger Fintech"
+                data-source="inbound_application"
+                data-thesis-match="true">
+              <td>
+                <a class="opportunity" href="candidate/katherine-johnson-fixture.html">
+                  <span class="rank">03</span>
+                  <span class="avatar">KJ</span>
+                  <span class="opportunity-copy">
+                    <strong>Orbital Ledger</strong>
+                    <small>Katherine Johnson (fixture) · Fintech</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>82</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: 82%"></i></div>
+              </td>
+              <td><span class="momentum up"><i>↗</i>+6.0 pts</span></td>
+              <td><span class="source-badge inbound_application"><i></i>Inbound</span></td>
+              <td><span class="detection-date">May 2026</span></td>
+              <td><a class="row-arrow" href="candidate/katherine-johnson-fixture.html" aria-label="Open Orbital Ledger">→</a></td>
+            </tr>
+          
+            <tr data-candidate-row
+                data-search="Edsger Dijkstra (fixture) Proofrail Cybersecurity"
+                data-source="outbound_detector"
+                data-thesis-match="true">
+              <td>
+                <a class="opportunity" href="candidate/edsger-dijkstra-fixture.html">
+                  <span class="rank">04</span>
+                  <span class="avatar">ED</span>
+                  <span class="opportunity-copy">
+                    <strong>Proofrail</strong>
+                    <small>Edsger Dijkstra (fixture) · Cybersecurity</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>78</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: 78%"></i></div>
+              </td>
+              <td><span class="momentum up"><i>↗</i>+11.0 pts</span></td>
+              <td><span class="source-badge outbound_detector"><i></i>Outbound</span></td>
+              <td><span class="detection-date">Sep 2025</span></td>
+              <td><a class="row-arrow" href="candidate/edsger-dijkstra-fixture.html" aria-label="Open Proofrail">→</a></td>
+            </tr>
+          
+            <tr data-candidate-row
+                data-search="Margaret Hamilton (fixture) Aster Control Climate"
+                data-source="outbound_detector"
+                data-thesis-match="false">
+              <td>
+                <a class="opportunity" href="candidate/margaret-hamilton-fixture.html">
+                  <span class="rank">05</span>
+                  <span class="avatar">MH</span>
+                  <span class="opportunity-copy">
+                    <strong>Aster Control</strong>
+                    <small>Margaret Hamilton (fixture) · Climate</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>73</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: 73%"></i></div>
+              </td>
+              <td><span class="momentum up"><i>↗</i>+4.0 pts</span></td>
+              <td><span class="source-badge outbound_detector"><i></i>Outbound</span></td>
+              <td><span class="detection-date">Nov 2025</span></td>
+              <td><a class="row-arrow" href="candidate/margaret-hamilton-fixture.html" aria-label="Open Aster Control">→</a></td>
+            </tr>
+          
+            <tr data-candidate-row
+                data-search="Hedy Lamarr (fixture) Signal Loom Connectivity"
+                data-source="inbound_application"
+                data-thesis-match="false">
+              <td>
+                <a class="opportunity" href="candidate/hedy-lamarr-fixture.html">
+                  <span class="rank">06</span>
+                  <span class="avatar">HL</span>
+                  <span class="opportunity-copy">
+                    <strong>Signal Loom</strong>
+                    <small>Hedy Lamarr (fixture) · Connectivity</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>69</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: 69%"></i></div>
+              </td>
+              <td><span class="momentum up"><i>↗</i>+2.0 pts</span></td>
+              <td><span class="source-badge inbound_application"><i></i>Inbound</span></td>
+              <td><span class="detection-date">Jun 2026</span></td>
+              <td><a class="row-arrow" href="candidate/hedy-lamarr-fixture.html" aria-label="Open Signal Loom">→</a></td>
+            </tr>
+          
+            <tr data-candidate-row
+                data-search="Donald Knuth (fixture) Typeset Labs Developer tools"
+                data-source="outbound_detector"
+                data-thesis-match="true">
+              <td>
+                <a class="opportunity" href="candidate/donald-knuth-fixture.html">
+                  <span class="rank">07</span>
+                  <span class="avatar">DK</span>
+                  <span class="opportunity-copy">
+                    <strong>Typeset Labs</strong>
+                    <small>Donald Knuth (fixture) · Developer tools</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>64</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: 64%"></i></div>
+              </td>
+              <td><span class="momentum down"><i>↘</i>-1.0 pts</span></td>
+              <td><span class="source-badge outbound_detector"><i></i>Outbound</span></td>
+              <td><span class="detection-date">Aug 2025</span></td>
+              <td><a class="row-arrow" href="candidate/donald-knuth-fixture.html" aria-label="Open Typeset Labs">→</a></td>
+            </tr>
+          
+            <tr data-candidate-row
+                data-search="Radia Perlman (fixture) Mesh Harbor Cloud infrastructure"
+                data-source="outbound_detector"
+                data-thesis-match="true">
+              <td>
+                <a class="opportunity" href="candidate/radia-perlman-fixture.html">
+                  <span class="rank">08</span>
+                  <span class="avatar">RP</span>
+                  <span class="opportunity-copy">
+                    <strong>Mesh Harbor</strong>
+                    <small>Radia Perlman (fixture) · Cloud infrastructure</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>59</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: 59%"></i></div>
+              </td>
+              <td><span class="momentum up"><i>↗</i>+5.0 pts</span></td>
+              <td><span class="source-badge outbound_detector"><i></i>Outbound</span></td>
+              <td><span class="detection-date">Jan 2026</span></td>
+              <td><a class="row-arrow" href="candidate/radia-perlman-fixture.html" aria-label="Open Mesh Harbor">→</a></td>
+            </tr>
+          
+            <tr data-candidate-row
+                data-search="Barbara Liskov (fixture) Durable State Databases"
+                data-source="outbound_detector"
+                data-thesis-match="false">
+              <td>
+                <a class="opportunity" href="candidate/barbara-liskov-fixture.html">
+                  <span class="rank">09</span>
+                  <span class="avatar">BL</span>
+                  <span class="opportunity-copy">
+                    <strong>Durable State</strong>
+                    <small>Barbara Liskov (fixture) · Databases</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>54</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: 54%"></i></div>
+              </td>
+              <td><span class="momentum down"><i>↘</i>-4.0 pts</span></td>
+              <td><span class="source-badge outbound_detector"><i></i>Outbound</span></td>
+              <td><span class="detection-date">May 2025</span></td>
+              <td><a class="row-arrow" href="candidate/barbara-liskov-fixture.html" aria-label="Open Durable State">→</a></td>
+            </tr>
+          
+            <tr data-candidate-row
+                data-search="Alan Turing (fixture) Cipher Field AI infrastructure"
+                data-source="outbound_detector"
+                data-thesis-match="true">
+              <td>
+                <a class="opportunity" href="candidate/alan-turing-fixture.html">
+                  <span class="rank">10</span>
+                  <span class="avatar">AT</span>
+                  <span class="opportunity-copy">
+                    <strong>Cipher Field</strong>
+                    <small>Alan Turing (fixture) · AI infrastructure</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>47</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: 47%"></i></div>
+              </td>
+              <td><span class="momentum up"><i>↗</i>+1.0 pts</span></td>
+              <td><span class="source-badge outbound_detector"><i></i>Outbound</span></td>
+              <td><span class="detection-date">Mar 2026</span></td>
+              <td><a class="row-arrow" href="candidate/alan-turing-fixture.html" aria-label="Open Cipher Field">→</a></td>
+            </tr>
+          
+            <tr data-candidate-row
+                data-search="Mary Jackson (fixture) Flow Atlas Industrial software"
+                data-source="outbound_detector"
+                data-thesis-match="false">
+              <td>
+                <a class="opportunity" href="candidate/mary-jackson-fixture.html">
+                  <span class="rank">11</span>
+                  <span class="avatar">MJ</span>
+                  <span class="opportunity-copy">
+                    <strong>Flow Atlas</strong>
+                    <small>Mary Jackson (fixture) · Industrial software</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>39</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: 39%"></i></div>
+              </td>
+              <td><span class="momentum down"><i>↘</i>-6.0 pts</span></td>
+              <td><span class="source-badge outbound_detector"><i></i>Outbound</span></td>
+              <td><span class="detection-date">Dec 2025</span></td>
+              <td><a class="row-arrow" href="candidate/mary-jackson-fixture.html" aria-label="Open Flow Atlas">→</a></td>
+            </tr>
+          
+            <tr data-candidate-row
+                data-search="Claude Shannon (fixture) Bit Garden Semiconductors"
+                data-source="outbound_detector"
+                data-thesis-match="false">
+              <td>
+                <a class="opportunity" href="candidate/claude-shannon-fixture.html">
+                  <span class="rank">12</span>
+                  <span class="avatar">CS</span>
+                  <span class="opportunity-copy">
+                    <strong>Bit Garden</strong>
+                    <small>Claude Shannon (fixture) · Semiconductors</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>31</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: 31%"></i></div>
+              </td>
+              <td><span class="momentum down"><i>↘</i>-3.0 pts</span></td>
+              <td><span class="source-badge outbound_detector"><i></i>Outbound</span></td>
+              <td><span class="detection-date">Not detected</span></td>
+              <td><a class="row-arrow" href="candidate/claude-shannon-fixture.html" aria-label="Open Bit Garden">→</a></td>
+            </tr>
+          
+        </tbody>
+      </table>
+      <div class="empty-state" id="empty-state" hidden>
+        <span>∅</span><strong>No signals in this view</strong><p>Try widening your source or thesis filters.</p>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="thesis-dialog" id="thesis-dialog">
+    <button class="dialog-close" id="close-thesis" aria-label="Close">×</button>
+    <p class="eyebrow">Investment mandate</p>
+    <h2>What makes the cut</h2>
+    <div class="dialog-grid">
+      <div><span>Sectors</span><p>AI infrastructure, Cloud infrastructure, Cybersecurity, Developer tools, Fintech</p></div>
+      <div><span>Stages</span><p>Pre-seed, Seed</p></div>
+      <div><span>Geographies</span><p>Austria, France, Germany, Ireland, Netherlands, Sweden, UK, US</p></div>
+      <div><span>Check size</span><p>$500k—$2.5m</p></div>
+      <div class="dialog-wide"><span>Risk posture</span><p>Evidence-led, comfortable with pre-launch technical teams when public build velocity is improving.</p></div>
+    </div>
+    <p class="dialog-note">This view is generated from <code>config/thesis.json</code>. Change the configuration and rebuild to update the mandate.</p>
+  </dialog>
+  <script id="thesis-data" type="application/json">{"check_size_usd": [500000, 2500000], "geographies": ["Austria", "France", "Germany", "Ireland", "Netherlands", "Sweden", "UK", "US"], "notes": "Fixture thesis: prioritize technical infrastructure and fintech founders at pre-seed or seed across Europe and the US.", "risk_appetite": "Evidence-led, comfortable with pre-launch technical teams when public build velocity is improving.", "sectors": ["AI infrastructure", "Cloud infrastructure", "Cybersecurity", "Developer tools", "Fintech"], "stages": ["Pre-seed", "Seed"]}</script>
+
+    </main>
+    <footer class="footer">
+      <span>VC Brain · Evidence before conviction</span>
+      <span>Generated locally · No external requests</span>
+    </footer>
+    <script src="assets/dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet" href="{{ asset_prefix }}assets/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="topbar">
+      <a class="brand" href="{{ asset_prefix }}index.html" aria-label="VC Brain opportunity radar">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>VC Brain</span>
+      </a>
+      <nav class="topnav" aria-label="Primary navigation">
+        <a class="active" href="{{ asset_prefix }}index.html">Opportunity radar</a>
+        <span class="nav-muted">Evidence room</span>
+      </nav>
+      {% if synthetic %}
+        <span class="fixture-flag"><span></span>Synthetic demo data</span>
+      {% endif %}
+    </header>
+    <main id="main">
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">
+      <span>VC Brain · Evidence before conviction</span>
+      <span>Generated locally · No external requests</span>
+    </footer>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

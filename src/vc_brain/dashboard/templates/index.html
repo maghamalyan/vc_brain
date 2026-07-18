@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="hero shell">
+    <div class="hero-copy">
+      <p class="eyebrow"><span>Live funnel</span> · Sourcing → screening</p>
+      <h1>Signals worth<br>your attention.</h1>
+      <p class="hero-subtitle">A ranked view of early founder momentum, filtered through your investment thesis and grounded in inspectable evidence.</p>
+    </div>
+    <aside class="thesis-card" aria-labelledby="thesis-heading">
+      <div class="card-kicker">Active mandate</div>
+      <h2 id="thesis-heading">Technical conviction, early</h2>
+      <p>{{ thesis.notes }}</p>
+      <div class="thesis-facts">
+        <div><span>Stage</span><strong>{{ thesis.stages | join(" · ") }}</strong></div>
+        <div><span>Check</span><strong>{{ thesis.check_size_usd[0] | money }}—{{ thesis.check_size_usd[1] | money }}</strong></div>
+      </div>
+      <button class="text-button" type="button" id="show-thesis">View full mandate <span>↗</span></button>
+    </aside>
+  </section>
+
+  <section class="metric-strip shell" aria-label="Funnel summary">
+    <div><strong>{{ summary.candidates }}</strong><span>Active signals</span></div>
+    <div><strong>{{ summary.thesis_matches }}</strong><span>Thesis aligned</span></div>
+    <div><strong>{{ summary.inbound }}</strong><span>Inbound</span></div>
+    <div><strong>{{ summary.memo_ready }}</strong><span>Decision ready</span></div>
+  </section>
+
+  <section class="radar shell" aria-labelledby="radar-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">Unified screening funnel</p>
+        <h2 id="radar-title">Opportunity radar</h2>
+      </div>
+      <p><span id="visible-count">{{ summary.candidates }}</span> candidates · ranked by current founder signal</p>
+    </div>
+
+    <div class="control-bar" aria-label="Candidate filters">
+      <label class="search-field">
+        <span class="sr-only">Search candidates</span>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"></circle><path d="m13 13 4 4"></path></svg>
+        <input id="candidate-search" type="search" placeholder="Search founder, company, or sector">
+      </label>
+      <label class="select-field">
+        <span>Source</span>
+        <select id="source-filter">
+          <option value="all">All signals</option>
+          <option value="outbound_detector">Outbound</option>
+          <option value="inbound_application">Inbound</option>
+        </select>
+      </label>
+      <label class="switch-field">
+        <input id="thesis-filter" type="checkbox">
+        <span class="switch" aria-hidden="true"></span>
+        <span>Thesis fit only</span>
+      </label>
+    </div>
+
+    <div class="table-frame">
+      <table class="candidate-table" id="ranked-candidates">
+        <thead>
+          <tr>
+            <th scope="col">Rank / Opportunity</th>
+            <th scope="col">Founder signal</th>
+            <th scope="col">3m momentum</th>
+            <th scope="col">Origin</th>
+            <th scope="col">First detected</th>
+            <th scope="col"><span class="sr-only">Open</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for candidate in candidates %}
+            <tr data-candidate-row
+                data-search="{{ candidate.founder_name }} {{ candidate.company }} {{ candidate.sector }}"
+                data-source="{{ candidate.source }}"
+                data-thesis-match="{{ 'true' if candidate.thesis_match else 'false' }}">
+              <td>
+                <a class="opportunity" href="candidate/{{ candidate.gh_login }}.html">
+                  <span class="rank">{{ "%02d" | format(candidate.rank) }}</span>
+                  <span class="avatar">{{ candidate.initials }}</span>
+                  <span class="opportunity-copy">
+                    <strong>{{ candidate.company }}</strong>
+                    <small>{{ candidate.founder_name }} · {{ candidate.sector }}</small>
+                  </span>
+                </a>
+              </td>
+              <td>
+                <div class="score-cell"><strong>{{ candidate.score_display }}</strong><span>/100</span></div>
+                <div class="score-track"><i style="width: {{ candidate.score_display }}%"></i></div>
+              </td>
+              <td><span class="momentum {{ candidate.momentum_direction }}"><i>{{ "↗" if candidate.momentum_direction == "up" else "↘" if candidate.momentum_direction == "down" else "→" }}</i>{{ candidate.momentum_display }} pts</span></td>
+              <td><span class="source-badge {{ candidate.source }}"><i></i>{{ candidate.source_label }}</span></td>
+              <td><span class="detection-date">{{ candidate.first_detection_month | date }}</span></td>
+              <td><a class="row-arrow" href="candidate/{{ candidate.gh_login }}.html" aria-label="Open {{ candidate.company }}">→</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div class="empty-state" id="empty-state" hidden>
+        <span>∅</span><strong>No signals in this view</strong><p>Try widening your source or thesis filters.</p>
+      </div>
+    </div>
+  </section>
+
+  <dialog class="thesis-dialog" id="thesis-dialog">
+    <button class="dialog-close" id="close-thesis" aria-label="Close">×</button>
+    <p class="eyebrow">Investment mandate</p>
+    <h2>What makes the cut</h2>
+    <div class="dialog-grid">
+      <div><span>Sectors</span><p>{{ thesis.sectors | join(", ") }}</p></div>
+      <div><span>Stages</span><p>{{ thesis.stages | join(", ") }}</p></div>
+      <div><span>Geographies</span><p>{{ thesis.geographies | join(", ") }}</p></div>
+      <div><span>Check size</span><p>{{ thesis.check_size_usd[0] | money }}—{{ thesis.check_size_usd[1] | money }}</p></div>
+      <div class="dialog-wide"><span>Risk posture</span><p>{{ thesis.risk_appetite }}</p></div>
+    </div>
+    <p class="dialog-note">This view is generated from <code>config/thesis.json</code>. Change the configuration and rebuild to update the mandate.</p>
+  </dialog>
+  <script id="thesis-data" type="application/json">{{ thesis | tojson }}</script>
+{% endblock %}
+{% block scripts %}<script src="assets/dashboard.js"></script>{% endblock %}
