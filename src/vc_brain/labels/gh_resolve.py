@@ -312,11 +312,16 @@ class GitHubClient:
     def search_users(self, full_name: str) -> list[dict[str, Any]]:
         candidates: list[dict[str, Any]] = []
         seen: set[str] = set()
+        # Latency budget: the second qualifier is only worth a round-trip when the
+        # first search comes back empty (throughput is bound by serial HTTP, not
+        # rate limits — measured 2026-07-19).
         for qualifier in ("in:name", "in:fullname"):
+            if candidates:
+                break
             payload = self.get_json(
                 "/search/users",
                 resource="search",
-                params={"q": f'"{full_name}" {qualifier}', "per_page": 8},
+                params={"q": f'"{full_name}" {qualifier}', "per_page": 5},
             )
             items = payload.get("items", [])
             if not isinstance(items, list):
@@ -328,7 +333,7 @@ class GitHubClient:
                 if login and login.lower() not in seen:
                     seen.add(login.lower())
                     candidates.append(item)
-                if len(candidates) >= 8:
+                if len(candidates) >= 5:
                     return candidates
         return candidates
 
@@ -423,8 +428,17 @@ def resolve_founder(
     state_path: Path,
 ) -> dict[str, Any]:
     candidates = github.search_users(founder["founder_name"])
-    profiles = [github.user(candidate["login"]) for candidate in candidates]
-    best, score, signals = select_best_candidate(profiles, founder, len(candidates))
+    # Fetch profiles incrementally and stop once a decisive match appears —
+    # profile GETs dominate wall-clock (serial HTTP), not rate limits.
+    profiles = []
+    best, score, signals = None, 0.0, {}
+    for candidate in candidates:
+        profiles.append(github.user(candidate["login"]))
+        best, score, signals = select_best_candidate(
+            profiles, founder, len(candidates)
+        )
+        if score >= 0.7:
+            break
     method = "search"
 
     should_use_serpapi = (

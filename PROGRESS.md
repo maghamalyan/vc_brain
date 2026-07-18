@@ -67,3 +67,29 @@ launched.
 
 ## 2026-07-19 02:54 — Claude verification: P3 ingest ACCEPTED (code-level)
 53 tests + ruff green independently. Leakage module audited: flags time>=cutoff, min-cutoff for dup actors. Baselines real (112M events May 2026). Cohort extraction gated pending label spot-check.
+
+## 2026-07-19 03:27:36 +04 — P4 hazard model and honest evaluation
+
+Implemented the complete leakage-safe P4 pipeline under `src/vc_brain/features/`,
+`models/`, and `eval/`: 37-month matched person panels with exact hazard labels and
+strict source cutoffs; globally normalized activity/traction levels, dynamics,
+repository, behavior-shift, tenure, and consistency features with JSON/Markdown data
+cards; deterministic standardized logistic and single-threaded LightGBM candidates;
+2022/2023/2024 temporal tuning/validation/test isolation; validation-only model
+selection; and honest held-out evaluation with calibration sensitivity, person-level
+utility, lead time, shuffled-label gating, cumulative ablations, gain importances,
+standalone figures, and frozen P8 trajectory/candidate outputs. Added the stage/all CLI
+and a generated synthetic parquet corpus covering low-confidence exclusion,
+zero-activity founders, and five matched controls per positive.
+
+Verification: `uv run pytest -q` → 63 passed; `uv run ruff check src tests` → clean;
+targeted `ruff format --check` and `git diff --check` → clean. Literal fixture CLI run
+`python -m vc_brain.models.run --stage all` wrote both reports, 4 HTML figures, 888
+test trajectory rows, and 4 candidates. The shuffled-label null passed at PR-AUC
+0.0227 versus a 0.0180 test base rate; the logistic baseline remained selected on the
+synthetic fixture. Joblib emitted 27 upstream NumPy 2.5 deprecation warnings in tests;
+no project warning or failure was suppressed.
+
+## 2026-07-19 03:29 — Claude verification: P4 code ACCEPTED (fixture-level)
+63 tests green. Line review passed: panel months B-48..B-12, hazard label exactly [B-15,B-12], split tuning<=2022/valid=2023/test>=2024, refit pre-2024 only, null-run collapses on fixtures. Real-data run gated on P3 extraction.
+Also: Claude diagnosed resolution bottleneck (serial HTTP, not rate limits; both tokens idle at 30/30) and patched gh_resolve (skip 2nd search qualifier when 1st hits; incremental profile fetch with early exit at score>=0.7). Pace 4/min -> ~17/min measured.
