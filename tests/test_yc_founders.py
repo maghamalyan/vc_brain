@@ -4,7 +4,11 @@ import polars as pl
 import pytest
 
 from vc_brain.labels.yc_companies import normalize_companies
-from vc_brain.labels.yc_founders import extract_founders, parse_founders
+from vc_brain.labels.yc_founders import (
+    FounderPageError,
+    extract_founders,
+    parse_founders,
+)
 
 FIXTURE = Path(__file__).parent / "fixtures" / "yc_company.html"
 
@@ -18,6 +22,13 @@ def test_parse_founders_from_data_page_fixture() -> None:
     ]
     assert founders[0]["twitter_url"] == "https://twitter.com/dessaigne"
     assert founders[1]["linkedin_url"] is None
+
+
+def test_parse_founders_rejects_missing_identity_name() -> None:
+    malformed = '<div data-page="{&quot;founders&quot;:[{&quot;user_id&quot;:1}]}"></div>'
+
+    with pytest.raises(FounderPageError, match="non-empty full_name"):
+        parse_founders(malformed)
 
 
 def test_founder_stage_resumes_without_duplicates_or_refetch(tmp_path: Path) -> None:
