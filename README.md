@@ -11,7 +11,7 @@ The resulting [“we found them first” backtest](site/backtest.html) is our di
 | Brief layer | What is implemented in this repository |
 | --- | --- |
 | **Memory** | A resumable [YC label pipeline](src/vc_brain/labels/) builds founder/company identities and high-precision GitHub linkages. A bounded, cached [ClickHouse extractor](src/vc_brain/ingest/) creates person-month activity, received-traction, repository-creation, and matched-control data from GH Archive. SQL and post-load assertions enforce `event time < cutoff`; company-linked repositories are excluded. [Deck intake](src/vc_brain/memo/intake.py) converts each PDF page into attributable inbound evidence. The GitHub identity and event history stay keyed to the person; an application remains a separate opportunity. |
-| **Intelligence** | A [discrete-time hazard pipeline](src/vc_brain/models/) builds leakage-bounded panels, compares logistic regression with LightGBM on temporal validation, and produces an [honest held-out evaluation](data/eval/report.md). The opportunity screen keeps Founder, Market, and Idea-vs-Market as three independent axes with trends; it never averages them. [OpenRouter memo generation](src/vc_brain/memo/generate.py) produces only the five required sections, explicit gaps, contradictions, and a Trust record per claim. Pydantic rejects schema drift, missing claim links, and empty evidence lists; a second mechanical check rejects any citation that was not in the supplied evidence set. That check proves citation provenance, not the semantic truth of the claim. |
+| **Intelligence** | A [discrete-time hazard pipeline](src/vc_brain/models/) builds leakage-bounded panels, compares logistic regression with LightGBM on temporal validation, and produces a [null-gated held-out evaluation](data/eval/report.md). The opportunity screen keeps Founder, Market, and Idea-vs-Market as three independent axes with trends; it never averages them. [OpenRouter memo generation](src/vc_brain/memo/generate.py) produces only the five required sections, explicit gaps, contradictions, and a Trust record per claim. Pydantic rejects schema drift, missing claim links, and empty evidence lists; a second mechanical check rejects any citation that was not in the supplied evidence set. That check proves citation provenance, not the semantic truth of the claim. |
 | **Experience** | The [static investor dashboard](site/index.html) presents a thesis-filtered candidate queue, momentum, three-axis screening, evidence timelines, required memo sections, per-claim Trust status, contradictions, and known gaps. The [backtest page](site/backtest.html) separates rising signals from left-boundary-censored detections. Both pages build offline from deterministic fixtures or validated real pipeline outputs. |
 
 Inbound and outbound use different evidence entry points, then converge into the same screening funnel:
@@ -24,7 +24,7 @@ Inbound: company name + deck ───┘
 
 The outbound detector supplies a persistent founder signal and event evidence. The inbound path supplies deck claims, marked `single_source` until corroborated. From that point onward, both paths use the same thesis, claim contract, gap handling, screening axes, and investor queue. The current inbound implementation is a PDF pipeline and fixture-backed dashboard path, not a hosted upload service.
 
-## Honest results
+## Held-out results
 
 These are the final full-cohort outputs from [report.md](data/eval/report.md) and [report.json](data/eval/report.json). Development panels contain ~315k person-months (tuning through 2022, validation on 2023); the held-out pool contains 2,765 people, including 690 labeled founders with 2024+ batches; its ~25% case-control prevalence is not a deployment base rate.
 
@@ -132,7 +132,7 @@ make test-service
 make lint
 ```
 
-The available Make targets are `build`, `shell`, `test`, and `lint`; there is no implicit `pipeline` target. `make shell` starts the mounted project image and reads `.env`, but live GitHub resolution expects an authenticated `gh` CLI on the host. Run the full live stages from the host environment created by `uv sync`.
+The available Make targets are `build`, `shell`, `test`, `test-service`, `test-all`, `lint`, `frontend-check`, `railway-build`, `railway-smoke`, and `deploy-audit`; there is no implicit `pipeline` target. `make shell` starts the mounted project image and reads `.env`, but live GitHub resolution expects an authenticated `gh` CLI on the host. Run the full live stages from the host environment created by `uv sync`.
 
 ### Build the offline fixture demo
 
@@ -141,6 +141,29 @@ uv run python -m vc_brain.dashboard.run --fixtures
 ```
 
 Open `site/index.html`; the backtest is `site/backtest.html`.
+
+### Run the live intelligence app (SQLite → FastAPI → Svelte)
+
+The interactive dashboard (founder radar with time scrub, records, memos,
+provenance graph, thesis controls) reads a single immutable SQLite index. Build it
+from fixtures (no credentials) or point `VCB_INDEX` at an integrated real-data
+index such as `app_data/index/vcb.sqlite`. After building the index, run the API
+and frontend commands in separate terminals:
+
+```bash
+# Terminal 1: build the read model (fixture-backed; see service/README.md)
+cd service
+uv run vcb-index build --data-dir ../data/fixtures --thesis ../config/thesis.json \
+  --out ../data/index/vcb.sqlite --verify
+
+# Terminal 2: serve the read-only API (OpenAPI under /api/v1, Swagger at /docs)
+cd service
+VCB_INDEX=../data/index/vcb.sqlite uv run uvicorn vcb_service.app:app --port 8000
+
+# Terminal 3: start the frontend (proxies /api to :8000)
+cd frontend
+npm install && npm run dev
+```
 
 ### Run the live stages in order
 

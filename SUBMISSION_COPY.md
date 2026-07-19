@@ -13,7 +13,7 @@ variant; otherwise use the **full** variant.
 
 **Tagline (LOCKED, Misha 2026-07-19):** **Find founders before the market does.**
 Use it everywhere — form, product header, video title card, README, deck.
-("Early signal. Honest evaluation. Auditable decision." is the closing line, not the tagline.)
+(Videos and deck open and close on the tagline itself — no separate slogan.)
 
 ---
 
@@ -76,11 +76,11 @@ Use it everywhere — form, product header, video title card, README, deck.
 
 ## 11. Implementation & technology
 
-**Full:**
-> Public event streams (GH Archive via the public ClickHouse playground, the YC founder directory, Hacker News) are cached and normalized into person-level evidence with Polars pipelines. Every feature row enforces a hard temporal rule — no event at or after that person's cutoff — checked in SQL, in data assembly, and in tests. A discrete-time hazard model (logistic regression vs LightGBM, selected on temporal validation) is evaluated on an out-of-time split, gated by a shuffled-label null: if randomness beats the configured limit, the run raises an error and publishes nothing. Evaluated output freezes into an immutable SQLite read model served by FastAPI to a Svelte dashboard. Memos are generated through OpenRouter under Pydantic contracts that reject uncited claims, plus a mechanical check that every citation exists in the supplied evidence set. An optional agent deep-dive stays fully traceable. The whole stack builds in Docker and passes 67 tests.
+**Full (research-first):**
+> The build is research-first. Ground truth: a 10,854-founder YC dataset resolved to 2,052 high-precision GitHub identities (kept only above a precision threshold; two independent 25-sample human audits found zero wrong-person links). Ingestion: GH Archive via the public ClickHouse playground into ~315k leakage-bounded person-months with matched controls — no event at or after a person's cutoff, enforced in SQL, at load, and in tests; company-linked repositories excluded; labels are a discrete-time hazard target on an estimated gestation window (batch start − 9 months). Modeling: logistic regression vs LightGBM selected on temporal validation, evaluated out of time with a shuffled-label null as a hard release gate — and when an early global null actually fired (shuffled labels scored 0.098; calendar composition was exploitable), the primary metric was rebuilt to within-month PR-AUC rather than shipping the invalid number. Held out: 0.2418 vs 0.0951 base and 0.1327 null; a tenure ablation attributes 74.5% of the gain. A temporal-GNN study earns production relevance only as a tie-breaker on the 7-tree model's 92% tied scores (+0.025 within-month, CI excluding zero). The product layer is deliberately thin — immutable SQLite read model → FastAPI → Svelte — with Pydantic-validated memos in which every claim must cite supplied evidence. Docker build, 154 tests (107 core + 47 service).
 
 **Strip-down:**
-> GH Archive/YC/HN evidence → cached Polars/ClickHouse pipelines → leakage-bounded person-month features → logistic/LightGBM temporal evaluation with a shuffled-label release gate → immutable SQLite read model → FastAPI → Svelte dashboard → Pydantic-validated, per-claim-cited memos with optional agent deep dive.
+> 10,854 YC founders → 2,052 hand-audited GitHub identities (0 wrong) → ~315k leakage-bounded person-months from GH Archive/ClickHouse → discrete-time hazard (logistic vs LightGBM, out-of-time) → shuffled-label null as release gate (rebuilt the metric when it fired) → tenure ablation + GNN tie-break study → thin serving layer (SQLite → FastAPI → Svelte) with citation-enforced memos.
 
 ---
 
@@ -89,7 +89,7 @@ Use it everywhere — form, product header, video title card, README, deck.
 **Full:**
 > On a held-out cohort of 2,765 people (690 labeled founders, YC batches 2024+), the selected LightGBM model reaches a within-month PR-AUC of **0.2418** — 2.5x the 0.0951 base rate and clearly above the 0.1327 shuffled-label null. Precision@50 is **0.50 (25/50)**, twice the sampled pool prevalence. The backtest detected **72.3%** of held-out founders; among detections that first crossed the threshold inside the observation window, **124 founders were flagged a median of 15 months before their YC batch**.
 >
-> Honesty caveats, stated up front: this is a retrospective case-control backtest, not prospective deployment precision; the ~25% pool prevalence is not a deployment base rate; and an ablation shows account tenure carries 74.5% of model gain — the detector is substantially "maturity + consistency + received attention," and we say so rather than dressing it up.
+> Caveats: this is a retrospective case-control backtest, not prospective deployment precision; the ~25% pool prevalence is not a deployment base rate; and an ablation shows account tenure carries 74.5% of model gain — the detector is substantially "maturity + consistency + received attention," with the ablation quantifying that in the checked-in report.
 
 **Strip-down:**
 > Held-out within-month PR-AUC 0.2418 vs 0.0951 base and 0.1327 shuffled-label null; precision@50 = 25/50 (2x pool prevalence); 124 rising-signal founders flagged a median 15 months before their YC batch. Retrospective case-control backtest — not prospective deployment precision.
@@ -99,10 +99,10 @@ Use it everywhere — form, product header, video title card, README, deck.
 ## 14. Additional information
 
 **Graph-model addendum (verified in `docs/exploration/gnn_rerank.md`):**
-> The honest model is deliberately tiny — 7 trees, only 305 distinct scores across 2,765 held-out people, so 92% of people sit in tied score groups and 77 share the exact score at the rank-50 cut. A temporal graph model used **only to break those ties** improves within-month ranking by +0.025 (bootstrap CI excludes zero) and precision@50 from 0.640 to 0.720 on the graph-scoreable pool; every blend that lets it override distinct scores loses. In short: **the GBDT decides who's in the room; the GNN decides the seating order.** Caveats: single retrain, and the tie-break currently covers the graph-scoreable subset (731 people).
+> The production model is deliberately tiny — 7 trees, only 305 distinct scores across 2,765 held-out people, so 92% of people sit in tied score groups and 77 share the exact score at the rank-50 cut. A temporal graph model used **only to break those ties** improves within-month ranking by +0.025 (bootstrap CI excludes zero) and precision@50 from 0.640 to 0.720 on the graph-scoreable pool; every blend that lets it override distinct scores loses. In short: **the GBDT decides who's in the room; the GNN decides the seating order.** Caveats: single retrain, and the tie-break currently covers the graph-scoreable subset (731 people).
 
 **Full:**
-> Trust is the product, not a feature. Two independent human audits of founder-to-GitHub linkage found zero wrong-person matches across 50 samples (at least 48/50 strict). The shuffled-label null is a release gate, not a footnote: when an early version of it fired — the model was exploiting calendar composition, not people — we replaced the primary metric with a weaker but defensible within-month one and kept the old number in the report for transparency. The memo layer surfaces missing evidence and contradictions instead of hiding them. Known limitations: GitHub-only behavioral coverage, YC-biased labels, and case-control calibration assumptions — all documented in the evaluation report checked into the repository.
+> Trust is the product, not a feature. Two independent human audits of founder-to-GitHub linkage found zero wrong-person matches across 50 samples (at least 48/50 strict). The shuffled-label null is a release gate, not a footnote: when an early version of it fired — the model was exploiting calendar composition, not people — we replaced the primary metric with a weaker but defensible within-month one and kept the old number in the report. The memo layer renders missing evidence and contradictions as first-class fields. Known limitations: GitHub-only behavioral coverage, YC-biased labels, and case-control calibration assumptions — all documented in the evaluation report checked into the repository.
 
 ---
 
@@ -131,7 +131,7 @@ for this field. Recommend **C** (time machine): human, visual, and it matches th
 
 ## Jokes (deck, videos, Q&A — all grounded in true facts)
 
-- "Our strongest feature turned out to be account tenure. Yes — we built a machine learning system and it discovered that old GitHub accounts are old. We report that honestly, which we're told is the novel part."
+- "Our strongest feature turned out to be account tenure. Yes — we built a machine learning system and it discovered that old GitHub accounts are old. It's all in the report, ablation included."
 - "Our first null check was passed with flying colors… by the null. Shuffled labels scored above baseline, which means our model was briefly outperformed by random noise with a calendar. We fixed the metric instead of the narrative."
 - "We found 124 founders a median of 15 months before Y Combinator did. Unfortunately, we found them in 2026, retrospectively. Time machine: still in the backlog."
 - "Half of our top 50 picks became YC founders. In this pool, guessing gets you a quarter. We'll take 2x over vibes."
@@ -158,12 +158,12 @@ footage timestamps:
 | 0:00–0:02 | Title card | (beat) "VC Brain." |
 | 0:02–0:07 | Radar hero: "See the founder before the round." | "Venture sourcing usually starts after the market already knows — a company, a round, a warm intro. VC Brain looks earlier." |
 | 0:07–0:18 | Time scrubber rewinds to 2023, rows dim; scrubs forward, candidates flash and re-rank | "This is the founder radar. Scrub back in time, and every score uses only what was public that month — nothing from the future leaks in. Roll forward, and candidates light up the month their behavior crosses the detection line." |
-| 0:18–0:23 | Foresight proof cards (48 / 23 / 23 months early) | "Verified on held-out founders: flagged months — sometimes years — before Y Combinator found them. Retrospectively, and we say so." |
+| 0:18–0:23 | Foresight proof cards (48 / 23 / 23 months early) | "Verified on held-out founders: flagged months — sometimes years — before Y Combinator found them. All of it a backtest, not live picks." |
 | 0:23–0:32 | Search palette → Robert Chandler record → "why this score?" waterfall | "Open a record and the score explains itself — every component named, checkable, and linked to evidence." |
-| 0:32–0:40 | Memo with live citation popover + "Not observed" honesty layer | "The memo cites every claim, shows its confidence — and lists what was never observed instead of papering over it." |
+| 0:32–0:40 | Memo with live citation popover + "Not observed" panel | "The memo cites every claim, shows its confidence — and lists what was never observed, field by field." |
 | 0:40–0:47 | Provenance graph: hovered claim lights its paths | "Section, claim, raw public event — the whole decision traceable in one view." |
 | 0:47–0:52 | Thesis page: fund mandate and ranking weights | "All of it filtered through your fund's thesis." |
-| 0:52–0:54 | Closing card | "Early signal. Honest evaluation. Auditable decision." |
+| 0:52–0:54 | Closing card | "VC Brain. Find founders before the market does." |
 
 ### Demo video — original outline (kept for re-shoots)
 
@@ -171,28 +171,33 @@ footage timestamps:
 | --- | --- | --- |
 | 0–5s | Title card → radar | "Venture sourcing usually starts after the market already knows — a company, a round, a warm intro. VC Brain looks earlier." |
 | 5–16s | Scrub time backwards; candidate crosses line | "This is the founder radar. Scrub back in time, and every score uses only what was public on that date — nothing from the future leaks in. Watch this candidate cross the detection line." |
-| 16–27s | Proof card, detection + YC batch markers | "That crossing came fifteen months before this founder's YC batch. We verified lead times like this on a held-out cohort — retrospectively, and we say so." |
+| 16–27s | Proof card, detection + YC batch markers | "That crossing came fifteen months before this founder's YC batch. We verified lead times like this on a held-out cohort — a backtest, not a live pick." |
 | 27–40s | Candidate record, score waterfall, click a signal | "Open the record and the score explains itself. Each signal links straight to the raw public event behind it." |
 | 40–51s | Memo citations, provenance view | "The memo screens Founder, Market, and Idea-versus-Market independently, cites every claim, and shows contradictions and missing evidence instead of hiding them." |
 | 51–58s | Thesis controls → closing card | "From early public signal to an auditable, investor-ready decision. That's VC Brain." |
 
-### Tech video
+### Tech video — AS-RECORDED voiceover cue sheet (research-first cut)
+
+A recording matching this cue sheet exists (56.7s, 1920×1080, silent audio track).
+Six research cards — the question, ground truth, the panel, the null that fired,
+the findings, the graph frontier — then the tagline. The web stack gets one line.
 
 | Time | On screen | Say |
 | --- | --- | --- |
-| 0–6s | One-line architecture diagram | "VC Brain turns public event streams into person-level, time-bounded evidence." |
-| 6–17s | Pipeline + cutoff rule | "YC labels, GH Archive, and Hacker News are cached and normalized. Every feature row enforces one hard rule: no event at or after its cutoff — checked in SQL, in assembly, and in tests." |
-| 17–30s | Evaluation chart | "Logistic regression and LightGBM train on an out-of-time split. A shuffled-label null is a release gate: if randomness beats the limit, nothing ships. Held out: within-month PR-AUC 0.24 against a 0.10 base and a 0.13 null." |
-| 30–41s | SQLite → FastAPI → Svelte flow | "Evaluated output freezes into an immutable SQLite read model, served by FastAPI to a Svelte dashboard." |
-| 41–52s | Memo contract + agent trace | "Pydantic contracts reject any memo claim without a citation from the supplied evidence. Gaps, contradictions, and agent steps stay traceable." |
-| 52–58s | Test/build screen → closing diagram | "Sixty-seven tests, one Docker build. Early signal, honest evaluation, auditable decision." |
+| 0:00–0:06 | "Can a public footprint predict a founder — before any track record exists?" | "The hard case in venture sourcing is the cold start — a person with no company, no round, no recognition. We turned it into a measurable question: how much does public behavior predict later founder recognition?" |
+| 0:06–0:15 | Ground truth: 2,052 identities / 0 wrong in 50 audited | "Ground truth first: ten thousand YC founders, resolved to two thousand fifty-two GitHub identities above a precision threshold — then audited by hand. Fifty samples, zero wrong people." |
+| 0:15–0:25 | The panel: SQL cutoff rule + control design | "From GH Archive: three hundred fifteen thousand person-months with matched controls. One rule everywhere — no event at or after a person's cutoff — enforced in the SQL, at load, and in tests." |
+| 0:25–0:37 | The null that fired: 0.098 story + result bars | "Then evaluation tried to kill it. Even shuffled labels beat our first metric — the calendar composition was exploitable — so we rebuilt it: founders rank only against controls from the same month. Held out: 0.24, against a 0.13 null and a 0.10 base. If the null ever wins again, nothing ships." |
+| 0:37–0:46 | Findings: 74.5% tenure / 124 founders / 15 months | "What did it learn? Mostly tenure — seventy-four percent of the gain, quantified by ablation. Even so, one hundred twenty-four held-out founders crossed the detection line a median of fifteen months before their batch." |
+| 0:46–0:54 | Graph frontier: 305 / +0.025, GBDT-GNN one-liner | "And the frontier: the seven-tree model ties ninety-two percent of people. A temporal graph model loses as a scorer but wins as a tie-breaker. The GBDT decides who's in the room; the GNN decides the seating order." |
+| 0:54–0:57 | Closing card | "VC Brain. Find founders before the market does." |
 
 ### Team video (template, <60s)
 
 Each member, ~12s: "I'm ___, I ___ [role]. I built ___ [one concrete artifact — e.g.
 'the leakage-gated feature pipeline' / 'the Svelte radar and time scrub']."
 Close together, ~8s: "We built VC Brain because the best founders are visible before
-the market prices them — if you're honest about what the data can prove."
+the market prices them — and we wanted to measure how much of that public data can actually prove."
 
 ---
 
@@ -235,9 +240,9 @@ screenshots on dark background, no bullet walls — the spoken track carries the
 | 2 | **By the time you can see them, so can everyone.** | Timeline: idea → *public activity* → company → round → everyone's radar | "Every conventional signal arrives after the price does." |
 | 3 | **Founding behavior is public before founding is.** | One real (anonymized) trajectory rising toward a YC-batch marker | "GitHub behavior, months before the batch. That's the raw material." |
 | 4 | **The time machine test.** | Radar with time scrubber; detection-line crossing | *Live demo moment or GIF:* "Every score uses only that month's data. 124 held-out founders crossed this line a median of 15 months before YC found them." |
-| 5 | **0.24 vs 0.10 — and it beat honest randomness.** | Single bar chart: model 0.2418 / null 0.1327 / base 0.0951 | "Out-of-time split, shuffled-label null as a release gate. When an earlier null *fired*, we kept the weaker honest metric. (Also: our best feature is account age. We report that too.)" |
+| 5 | **0.24 vs 0.10 — after beating shuffled labels.** | Single bar chart: model 0.2418 / null 0.1327 / base 0.0951 | "Out-of-time split, shuffled-label null as a release gate. When an earlier null *fired*, we kept the weaker defensible metric. (Also: our best feature is account age. That's in the report too.)" |
 | 6 | **Every claim shows its evidence.** | Memo with per-claim trust badges, one contradiction visible | "Pydantic rejects uncited claims. Gaps and contradictions are displayed, not smoothed." |
-| 7 | **Early signal. Honest evaluation. Auditable decision.** | Architecture one-liner + live URL + repo QR | "Deployed, tested, reproducible. Go scrub the radar yourself." |
+| 7 | **Find founders before the market does.** | Architecture one-liner + live URL + repo QR | "Deployed, tested, reproducible. Go scrub the radar yourself." |
 
 ### Lightning version (3 slides, ~60s)
 
@@ -258,14 +263,19 @@ screenshots on dark background, no bullet walls — the spoken track carries the
 
 ## Produced artifacts (2026-07-19)
 
-- **Demo video draft:** 54.3s, 1920×1080 MP4 with intro/outro title cards and a silent
-  audio track for voiceover. Recorded from the live app (real 100-founder index) with
-  a scripted Playwright take; cue sheet above matches its timestamps.
+- **Demo video draft v2:** `media/vc-brain-demo-draft.mp4` — 57.0s, 1920×1080, smoother
+  glides and scrub pacing per Misha's review. Recorded from the live app (real
+  100-founder index) with a scripted Playwright take; cue sheet above matches it.
+- **Tech video draft (research-first cut):** `media/vc-brain-tech-draft.mp4` — 56.7s,
+  1920×1080. Six research cards: the cold-start question, the audited identity ground
+  truth, the leakage-bounded panel, the null that fired, the ablation + lead-time
+  findings, and the GNN tie-break frontier. Web stack gets one line. Cue sheet above.
 - **Slide deck:** [docs/submission_deck.html](docs/submission_deck.html) —
-  self-contained (screenshots embedded), 9 slides, arrow keys/click to navigate,
+  self-contained (screenshots embedded), 10 slides, arrow keys/click to navigate,
   `F` for fullscreen. Speaker lines are printed at the bottom of each slide.
-  Slide 8 carries the graph-model one-liner: "The GBDT decides who's in the room.
-  The GNN decides the seating order." (305 distinct scores / 92% tied / +0.025).
+  Slide 6 is the research-credibility peak ("The first sanity check failed. It
+  rebuilt our metric." — 0.098 → 0.2418); slide 9 carries the graph-model one-liner:
+  "The GBDT decides who's in the room. The GNN decides the seating order."
 - **Product tweak made for the video:** the radar time scrubber is now sticky
   (`frontend/src/styles.css`) so the time machine and the candidate rows share the
   frame — review and keep or revert.
