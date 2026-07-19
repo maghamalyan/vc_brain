@@ -1,0 +1,4322 @@
+[
+  {
+    "evidence_id": "fx-0fb826097fc47a",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2024-08-01T08:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Repository LICENSE changed from Apache-2.0 to AGPL-3.0.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-927625605ee622",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-03-02T09:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "README still describes the core runtime as Apache licensed.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-70ee376c337a7e",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-10-03T10:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-5feb058bc24a99",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2026-05-04T11:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Closed customer-reported workflow issue #103.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-639c18dd347bd2",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2024-12-05T12:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Sustained 22 commits across a seven-day build sprint.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-19f3c7dadabd29",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-07-06T13:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-60055dac51c175",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2026-02-07T14:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Created the VectorForge GitHub organization.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-2f5cc8e76586ef",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2024-09-08T15:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Repository crossed 261 public stars.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-e491c527ef57a3",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-04-09T16:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Created the public VectorForge core repository.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-eeb19fbd1382bb",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-11-10T17:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Published v0.10 with reproducible release notes.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-6ba19862d385c2",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2026-06-11T08:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-7b6a47415765df",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-01-12T09:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Closed customer-reported workflow issue #111.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-acc2bd13b1fbd9",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-08-13T10:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Sustained 30 commits across a seven-day build sprint.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-3cece7d3199747",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2026-03-14T11:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-16114a715663db",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2024-10-15T12:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Created the VectorForge GitHub organization.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-e7546211de4a97",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-05-16T13:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Repository crossed 445 public stars.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-d4c6d89a34d2a9",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-12-17T14:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Created the public VectorForge core repository.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-81695679efa393",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2026-07-18T15:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Published v0.18 with reproducible release notes.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-e7a8dbfacd855d",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-02-19T16:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-29b812792fba28",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-09-20T17:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Closed customer-reported workflow issue #119.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-519b042b41244d",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2026-04-21T08:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Sustained 38 commits across a seven-day build sprint.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-3e394d5e964863",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2024-11-22T09:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-cc507973d2fa20",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-06-23T10:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Created the VectorForge GitHub organization.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-0c5c705799fcbc",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2026-01-24T11:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Repository crossed 629 public stars.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-4c74a1777b51a9",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2024-08-25T12:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Created the public VectorForge core repository.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-acab2b85e10006",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-03-01T13:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Published v0.26 with reproducible release notes.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-b95d91452c2886",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-10-02T14:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-35a2c7d226aeb7",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2026-05-03T15:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Closed customer-reported workflow issue #127.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-be47b09e98bf0f",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2024-12-04T16:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Sustained 46 commits across a seven-day build sprint.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-e87edc6dd7a569",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-07-05T17:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-50dc6bb8d51a8c",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2026-02-06T08:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Created the VectorForge GitHub organization.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-5372d4859f6165",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2024-09-07T09:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Repository crossed 813 public stars.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-d9ba54ea380f7b",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-04-08T10:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Created the public VectorForge core repository.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-2cba3511678929",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-11-09T11:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Published v0.34 with reproducible release notes.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-c12e999101ccbb",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2026-06-10T12:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-57664a1d77b4b8",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-01-11T13:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Closed customer-reported workflow issue #135.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-2655d3846fe83a",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-08-12T14:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Sustained 54 commits across a seven-day build sprint.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-86fcc50313372e",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2026-03-13T15:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-b4275f0be8d1e9",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2024-10-14T16:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Created the VectorForge GitHub organization.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-4edf50e7b52458",
+    "gh_login": "ada-lovelace-fixture",
+    "ts": "2025-05-15T17:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "ada-lovelace-fixture/vectorforge",
+    "detail": "Repository crossed 997 public stars.",
+    "url": "https://github.com/ada-lovelace-fixture/vectorforge"
+  },
+  {
+    "evidence_id": "fx-8dc5d3f389f9c1",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2024-09-01T08:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Created the public Quiet Current core repository.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-315c645cf3f8fd",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-04-02T09:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Published v0.2 with reproducible release notes.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-4cf0c430a935e4",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-11-03T10:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-fc1b97bda2e7d7",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2026-06-04T11:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Closed customer-reported workflow issue #103.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-8d0840f21db316",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-01-05T12:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Sustained 22 commits across a seven-day build sprint.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-5cad740f99f96e",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-08-06T13:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-a00b0fa944c2a1",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2026-03-07T14:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Created the Quiet Current GitHub organization.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-418e254325974b",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2024-10-08T15:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Repository crossed 261 public stars.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-376ff7a512e89c",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-05-09T16:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Created the public Quiet Current core repository.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-3cc52cd0597652",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-12-10T17:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Published v0.10 with reproducible release notes.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-ab5478fbef287b",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2026-07-11T08:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-d14434e4ad41e2",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-02-12T09:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Closed customer-reported workflow issue #111.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-042a0da35a3296",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-09-13T10:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Sustained 30 commits across a seven-day build sprint.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-d7a6b68e5deb6c",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2026-04-14T11:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-492b05e041573a",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2024-11-15T12:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Created the Quiet Current GitHub organization.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-842bb186f7dfa1",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-06-16T13:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Repository crossed 445 public stars.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-5be3a1e6cbeae5",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2026-01-17T14:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Created the public Quiet Current core repository.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-7e31e6ffe260aa",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2024-08-18T15:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Published v0.18 with reproducible release notes.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-0d0621c1afed9c",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-03-19T16:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-d0a64c834d34d5",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-10-20T17:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Closed customer-reported workflow issue #119.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-9b1e34f45d6242",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2026-05-21T08:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Sustained 38 commits across a seven-day build sprint.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-6592d8566e7cd3",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2024-12-22T09:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-24546e60921d08",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-07-23T10:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Created the Quiet Current GitHub organization.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-d63a667389d1d4",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2026-02-24T11:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Repository crossed 629 public stars.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-9d21caa11e246d",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2024-09-25T12:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Created the public Quiet Current core repository.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-c346054e8d9f8d",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-04-01T13:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Published v0.26 with reproducible release notes.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-e5365757c5a213",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-11-02T14:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-ceea51e651707a",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2026-06-03T15:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Closed customer-reported workflow issue #127.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-0523430ded7cab",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-01-04T16:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Sustained 46 commits across a seven-day build sprint.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-4de225a5ea0f51",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-08-05T17:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-7aae08c87949d8",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2026-03-06T08:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Created the Quiet Current GitHub organization.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-6cddf07d794c6a",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2024-10-07T09:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Repository crossed 813 public stars.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-ae4fc0005f193a",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-05-08T10:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Created the public Quiet Current core repository.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-8a303efe1b7ab9",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-12-09T11:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Published v0.34 with reproducible release notes.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-be911021fc6e42",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2026-07-10T12:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-6bdc5af4fffda1",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-02-11T13:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Closed customer-reported workflow issue #135.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-a5bbf42351817e",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-09-12T14:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Sustained 54 commits across a seven-day build sprint.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-703b76a8f41ffb",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2026-04-13T15:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-cec192eb62e608",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2024-11-14T16:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Created the Quiet Current GitHub organization.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-41831c007d4359",
+    "gh_login": "grace-hopper-fixture",
+    "ts": "2025-06-15T17:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "grace-hopper-fixture/quiet-current",
+    "detail": "Repository crossed 997 public stars.",
+    "url": "https://github.com/grace-hopper-fixture/quiet-current"
+  },
+  {
+    "evidence_id": "fx-3ee1a7c8502893",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2024-10-01T08:00:00+00:00",
+    "event_type": "deck_claim",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Orbital Ledger describes a workflow product for regulated operations teams.",
+    "url": "file:///fixtures/orbital-ledger-deck.pdf#page=1"
+  },
+  {
+    "evidence_id": "fx-d87311d7e462f3",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-05-02T09:00:00+00:00",
+    "event_type": "deck_claim",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "The deck claims three paid design partners; contracts were not supplied.",
+    "url": "file:///fixtures/orbital-ledger-deck.pdf#page=2"
+  },
+  {
+    "evidence_id": "fx-0a57e401c20c67",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-12-03T10:00:00+00:00",
+    "event_type": "deck_claim",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "The team is raising a seed round for eighteen months of runway.",
+    "url": "file:///fixtures/orbital-ledger-deck.pdf#page=3"
+  },
+  {
+    "evidence_id": "fx-77cc903aacee68",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2026-07-04T11:00:00+00:00",
+    "event_type": "deck_claim",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "The deck estimates a large addressable market without source notes.",
+    "url": "file:///fixtures/orbital-ledger-deck.pdf#page=4"
+  },
+  {
+    "evidence_id": "fx-2be3a89e7f903e",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-02-05T12:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Sustained 22 commits across a seven-day build sprint.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-1274202663aac1",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-09-06T13:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-a304a7cf637879",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2026-04-07T14:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Created the Orbital Ledger GitHub organization.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-4085469e75ef24",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2024-11-08T15:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Repository crossed 261 public stars.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-6acdb7aecaa414",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-06-09T16:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Created the public Orbital Ledger core repository.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-ea18b19da742ff",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2026-01-10T17:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Published v0.10 with reproducible release notes.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-215d4b195819b9",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2024-08-11T08:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-0e3455eeb37cb0",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-03-12T09:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Closed customer-reported workflow issue #111.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-3ad7f009d81554",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-10-13T10:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Sustained 30 commits across a seven-day build sprint.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-8c514972ce276e",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2026-05-14T11:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-98a2c4e57e283d",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2024-12-15T12:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Created the Orbital Ledger GitHub organization.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-afb1fbe68a7449",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-07-16T13:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Repository crossed 445 public stars.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-adcdf7a03a49c2",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2026-02-17T14:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Created the public Orbital Ledger core repository.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-c0aaed3140c2ab",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2024-09-18T15:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Published v0.18 with reproducible release notes.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-c6b877dff8cf50",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-04-19T16:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-7371c32cfbc4ef",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-11-20T17:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Closed customer-reported workflow issue #119.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-209aaec98167db",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2026-06-21T08:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Sustained 38 commits across a seven-day build sprint.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-3dd61348e526ab",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-01-22T09:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-5f557f417d1a5c",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-08-23T10:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Created the Orbital Ledger GitHub organization.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-df509d063e18f2",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2026-03-24T11:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Repository crossed 629 public stars.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-9d77d69c6fa82b",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2024-10-25T12:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Created the public Orbital Ledger core repository.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-52f4a0fe84b731",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-05-01T13:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Published v0.26 with reproducible release notes.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-fd259f6c9d37cf",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-12-02T14:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-76b790a77c2649",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2026-07-03T15:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Closed customer-reported workflow issue #127.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-09bf0bf64ec880",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-02-04T16:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Sustained 46 commits across a seven-day build sprint.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-2ee802570b5cf8",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-09-05T17:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-003f43492cfc85",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2026-04-06T08:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Created the Orbital Ledger GitHub organization.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-81ce828a5f83e9",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2024-11-07T09:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Repository crossed 813 public stars.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-2ef128090e7476",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-06-08T10:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Created the public Orbital Ledger core repository.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-917f1191bba7b9",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2026-01-09T11:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Published v0.34 with reproducible release notes.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-2d9664e9d2426e",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2024-08-10T12:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-e9e1ce3b778b8b",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-03-11T13:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Closed customer-reported workflow issue #135.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-638c253da62414",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-10-12T14:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Sustained 54 commits across a seven-day build sprint.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-d266644350646f",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2026-05-13T15:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-68c0d767327895",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2024-12-14T16:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Created the Orbital Ledger GitHub organization.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-23eedbf228a0d1",
+    "gh_login": "katherine-johnson-fixture",
+    "ts": "2025-07-15T17:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "katherine-johnson-fixture/orbital-ledger",
+    "detail": "Repository crossed 997 public stars.",
+    "url": "https://github.com/katherine-johnson-fixture/orbital-ledger"
+  },
+  {
+    "evidence_id": "fx-75c1ccbe9bcd42",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2024-11-01T08:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Created the public Proofrail core repository.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-5c57903c0ac8fd",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-06-02T09:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Published v0.2 with reproducible release notes.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-2e0c6d994dd6d1",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2026-01-03T10:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-6194895dd66c34",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2024-08-04T11:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Closed customer-reported workflow issue #103.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-ce5e28091dec29",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-03-05T12:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Sustained 22 commits across a seven-day build sprint.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-c815847872ac3b",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-10-06T13:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-3928f5f5d4d6ec",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2026-05-07T14:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Created the Proofrail GitHub organization.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-10c1923aa8c2f6",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2024-12-08T15:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Repository crossed 261 public stars.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-358f69378b89a6",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-07-09T16:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Created the public Proofrail core repository.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-70e1c27e3e8e17",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2026-02-10T17:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Published v0.10 with reproducible release notes.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-a272a27619edb6",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2024-09-11T08:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-f58610a5d7a34f",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-04-12T09:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Closed customer-reported workflow issue #111.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-3a86192c3849bc",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-11-13T10:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Sustained 30 commits across a seven-day build sprint.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-18275c0801cb1a",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2026-06-14T11:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-3025fa7580d505",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-01-15T12:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Created the Proofrail GitHub organization.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-b4eac294fb98e9",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-08-16T13:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Repository crossed 445 public stars.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-0b4ceaf2734527",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2026-03-17T14:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Created the public Proofrail core repository.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-29ac219764a659",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2024-10-18T15:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Published v0.18 with reproducible release notes.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-e8860460fc066c",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-05-19T16:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-7fe48f90bd4232",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-12-20T17:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Closed customer-reported workflow issue #119.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-418be87510eb03",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2026-07-21T08:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Sustained 38 commits across a seven-day build sprint.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-06a9c97fd77148",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-02-22T09:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-8362673ef545cb",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-09-23T10:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Created the Proofrail GitHub organization.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-b33d6f939898ce",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2026-04-24T11:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Repository crossed 629 public stars.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-8c78405632389a",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2024-11-25T12:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Created the public Proofrail core repository.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-612cf5fbfa65bf",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-06-01T13:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Published v0.26 with reproducible release notes.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-99a021730f0375",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2026-01-02T14:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-fdf1e3e6310e64",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2024-08-03T15:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Closed customer-reported workflow issue #127.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-d06bb6b0df8f69",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-03-04T16:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Sustained 46 commits across a seven-day build sprint.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-91e13b32929162",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-10-05T17:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-ac67365289f242",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2026-05-06T08:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Created the Proofrail GitHub organization.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-8aa93a8125168a",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2024-12-07T09:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Repository crossed 813 public stars.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-68d4573a3f9bc7",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-07-08T10:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Created the public Proofrail core repository.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-08b065b5a6e621",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2026-02-09T11:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Published v0.34 with reproducible release notes.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-6f67d0f89dd211",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2024-09-10T12:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-f1360b75ae6d1b",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-04-11T13:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Closed customer-reported workflow issue #135.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-0843d03be874f0",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-11-12T14:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Sustained 54 commits across a seven-day build sprint.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-3719e5a3e23f4e",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2026-06-13T15:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-d8f69dac60acd4",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-01-14T16:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Created the Proofrail GitHub organization.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-58d2fcaa5b4738",
+    "gh_login": "edsger-dijkstra-fixture",
+    "ts": "2025-08-15T17:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "edsger-dijkstra-fixture/proofrail",
+    "detail": "Repository crossed 997 public stars.",
+    "url": "https://github.com/edsger-dijkstra-fixture/proofrail"
+  },
+  {
+    "evidence_id": "fx-0c44f765815a3d",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2024-12-01T08:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Created the public Aster Control core repository.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-d3cd6581f67b18",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-07-02T09:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Published v0.2 with reproducible release notes.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-8366f706e3d448",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2026-02-03T10:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-3bbc5c4657ae3d",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2024-09-04T11:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Closed customer-reported workflow issue #103.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-abb22bdce49b5c",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-04-05T12:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Sustained 22 commits across a seven-day build sprint.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-b2079471ab38bc",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-11-06T13:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-467dbbc72e21ba",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2026-06-07T14:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Created the Aster Control GitHub organization.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-a2e7ab76440b9b",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-01-08T15:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Repository crossed 261 public stars.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-6acd89e791e423",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-08-09T16:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Created the public Aster Control core repository.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-bfe829bfecde27",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2026-03-10T17:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Published v0.10 with reproducible release notes.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-a3a50eb6bfd86e",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2024-10-11T08:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-38d2132176fe5e",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-05-12T09:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Closed customer-reported workflow issue #111.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-62cd8ad72e1359",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-12-13T10:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Sustained 30 commits across a seven-day build sprint.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-ba1f1d440aa8ee",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2026-07-14T11:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-a590043fd06396",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-02-15T12:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Created the Aster Control GitHub organization.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-2e5261759d1013",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-09-16T13:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Repository crossed 445 public stars.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-35a9984a1b739c",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2026-04-17T14:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Created the public Aster Control core repository.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-0c5b1a37994c53",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2024-11-18T15:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Published v0.18 with reproducible release notes.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-46a222a3b987b4",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-06-19T16:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-5fc898034aa074",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2026-01-20T17:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Closed customer-reported workflow issue #119.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-19d3af9354c08e",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2024-08-21T08:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Sustained 38 commits across a seven-day build sprint.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-29c5b76f1018f3",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-03-22T09:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-1d6b1c2709d808",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-10-23T10:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Created the Aster Control GitHub organization.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-5a5966ef0b4865",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2026-05-24T11:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Repository crossed 629 public stars.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-f21ba5fa388b8a",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2024-12-25T12:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Created the public Aster Control core repository.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-fa8c7e8d6b87ae",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-07-01T13:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Published v0.26 with reproducible release notes.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-12a58d7f83e927",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2026-02-02T14:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-b3677bf3ffd5c1",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2024-09-03T15:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Closed customer-reported workflow issue #127.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-41300ec3b7cc46",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-04-04T16:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Sustained 46 commits across a seven-day build sprint.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-3cebcaf92a05bb",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-11-05T17:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-68c8b826a81793",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2026-06-06T08:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Created the Aster Control GitHub organization.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-d4c5fab789422d",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-01-07T09:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Repository crossed 813 public stars.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-9bb384ef7336b1",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-08-08T10:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Created the public Aster Control core repository.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-d33a61d672e4ae",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2026-03-09T11:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Published v0.34 with reproducible release notes.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-ff095a0d7ce4f6",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2024-10-10T12:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-d01de20ed92488",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-05-11T13:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Closed customer-reported workflow issue #135.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-2d8a5026fd7463",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-12-12T14:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Sustained 54 commits across a seven-day build sprint.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-01d56c7c4f10e0",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2026-07-13T15:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-d87a5e08f568de",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-02-14T16:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Created the Aster Control GitHub organization.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-fae40d63b88232",
+    "gh_login": "margaret-hamilton-fixture",
+    "ts": "2025-09-15T17:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "margaret-hamilton-fixture/aster-control",
+    "detail": "Repository crossed 997 public stars.",
+    "url": "https://github.com/margaret-hamilton-fixture/aster-control"
+  },
+  {
+    "evidence_id": "fx-512b6f05f34e8c",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-01-01T08:00:00+00:00",
+    "event_type": "deck_claim",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Signal Loom describes a workflow product for regulated operations teams.",
+    "url": "file:///fixtures/signal-loom-deck.pdf#page=1"
+  },
+  {
+    "evidence_id": "fx-3d357fd86c77f6",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-08-02T09:00:00+00:00",
+    "event_type": "deck_claim",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "The deck claims three paid design partners; contracts were not supplied.",
+    "url": "file:///fixtures/signal-loom-deck.pdf#page=2"
+  },
+  {
+    "evidence_id": "fx-c9bc7bcf1a7186",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2026-03-03T10:00:00+00:00",
+    "event_type": "deck_claim",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "The team is raising a seed round for eighteen months of runway.",
+    "url": "file:///fixtures/signal-loom-deck.pdf#page=3"
+  },
+  {
+    "evidence_id": "fx-101993861809ef",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2024-10-04T11:00:00+00:00",
+    "event_type": "deck_claim",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "The deck estimates a large addressable market without source notes.",
+    "url": "file:///fixtures/signal-loom-deck.pdf#page=4"
+  },
+  {
+    "evidence_id": "fx-ed36f90801c05e",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-05-05T12:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Sustained 22 commits across a seven-day build sprint.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-5db8db876d47f1",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-12-06T13:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-91091993e888d8",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2026-07-07T14:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Created the Signal Loom GitHub organization.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-440bff7bf1801e",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-02-08T15:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Repository crossed 261 public stars.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-c2879d535b83d5",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-09-09T16:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Created the public Signal Loom core repository.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-a78547de956b6d",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2026-04-10T17:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Published v0.10 with reproducible release notes.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-87ef2a21ba7642",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2024-11-11T08:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-52b5d115dbe6cf",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-06-12T09:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Closed customer-reported workflow issue #111.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-79af98264d00ff",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2026-01-13T10:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Sustained 30 commits across a seven-day build sprint.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-dd34bea620756f",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2024-08-14T11:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-c7fef05892b738",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-03-15T12:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Created the Signal Loom GitHub organization.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-57dff0b7f2f3e1",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-10-16T13:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Repository crossed 445 public stars.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-05d747ecf15f8c",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2026-05-17T14:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Created the public Signal Loom core repository.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-0eb1325131cd5d",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2024-12-18T15:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Published v0.18 with reproducible release notes.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-8f488472510c9e",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-07-19T16:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-e60811d8478922",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2026-02-20T17:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Closed customer-reported workflow issue #119.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-a7e70746952132",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2024-09-21T08:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Sustained 38 commits across a seven-day build sprint.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-fcd0fabcf15645",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-04-22T09:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-d12d17f1e0140f",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-11-23T10:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Created the Signal Loom GitHub organization.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-b5b9c3e054137d",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2026-06-24T11:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Repository crossed 629 public stars.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-595ff91f372579",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-01-25T12:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Created the public Signal Loom core repository.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-ec5a4bf96b8330",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-08-01T13:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Published v0.26 with reproducible release notes.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-677f22e37ae65c",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2026-03-02T14:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-c7b965ebbbbf2c",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2024-10-03T15:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Closed customer-reported workflow issue #127.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-771a2d335d2d37",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-05-04T16:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Sustained 46 commits across a seven-day build sprint.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-ef7574f38d1640",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-12-05T17:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-87117b503867eb",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2026-07-06T08:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Created the Signal Loom GitHub organization.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-e3809564f39567",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-02-07T09:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Repository crossed 813 public stars.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-5c24935ace70c0",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-09-08T10:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Created the public Signal Loom core repository.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-1953673dc0f1b9",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2026-04-09T11:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Published v0.34 with reproducible release notes.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-27a055a8288125",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2024-11-10T12:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-2ee688ca20f58f",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-06-11T13:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Closed customer-reported workflow issue #135.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-50be8c8da26c60",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2026-01-12T14:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Sustained 54 commits across a seven-day build sprint.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-db2e9a07b05cbb",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2024-08-13T15:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-698ed7f45dc9a8",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-03-14T16:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Created the Signal Loom GitHub organization.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-154617988b4509",
+    "gh_login": "hedy-lamarr-fixture",
+    "ts": "2025-10-15T17:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "hedy-lamarr-fixture/signal-loom",
+    "detail": "Repository crossed 997 public stars.",
+    "url": "https://github.com/hedy-lamarr-fixture/signal-loom"
+  },
+  {
+    "evidence_id": "fx-0f77f8cfcffcdc",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-02-01T08:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Created the public Typeset Labs core repository.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-3e74ed0f94fc02",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-09-02T09:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Published v0.2 with reproducible release notes.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-f7e08be6646631",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2026-04-03T10:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-1f875d8b4ac32e",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2024-11-04T11:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Closed customer-reported workflow issue #103.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-eea70d18cdab21",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-06-05T12:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Sustained 22 commits across a seven-day build sprint.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-54cd8e7ec56b7f",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2026-01-06T13:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-4f3b2a27366465",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2024-08-07T14:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Created the Typeset Labs GitHub organization.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-17c23f0e987f12",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-03-08T15:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Repository crossed 261 public stars.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-5a5c63bc8fba77",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-10-09T16:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Created the public Typeset Labs core repository.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-d2d1838d2f8419",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2026-05-10T17:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Published v0.10 with reproducible release notes.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-62b62db44f1c67",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2024-12-11T08:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-1089e28d244caa",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-07-12T09:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Closed customer-reported workflow issue #111.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-b35b3cfa0d09f7",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2026-02-13T10:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Sustained 30 commits across a seven-day build sprint.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-c97958463b7264",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2024-09-14T11:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-93887402f82ec7",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-04-15T12:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Created the Typeset Labs GitHub organization.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-ddfb51e2ad7c67",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-11-16T13:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Repository crossed 445 public stars.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-afb99aeda32109",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2026-06-17T14:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Created the public Typeset Labs core repository.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-788c621b462b91",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-01-18T15:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Published v0.18 with reproducible release notes.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-372ecbd16361e7",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-08-19T16:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-b969fdf93e4b31",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2026-03-20T17:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Closed customer-reported workflow issue #119.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-ff4214fecf5c1d",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2024-10-21T08:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Sustained 38 commits across a seven-day build sprint.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-70445e7520a388",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-05-22T09:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-7476d446901605",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-12-23T10:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Created the Typeset Labs GitHub organization.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-bd5dd2de930484",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2026-07-24T11:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Repository crossed 629 public stars.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-344ac0e3f885ab",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-02-25T12:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Created the public Typeset Labs core repository.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-178da0e4f5a934",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-09-01T13:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Published v0.26 with reproducible release notes.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-6d722811e5ddaa",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2026-04-02T14:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-97f7d6b66d2385",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2024-11-03T15:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Closed customer-reported workflow issue #127.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-b9fb1d94d1d6f6",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-06-04T16:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Sustained 46 commits across a seven-day build sprint.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-0c63aca7fdec62",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2026-01-05T17:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-bdbb449ab29965",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2024-08-06T08:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Created the Typeset Labs GitHub organization.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-100f9520f57ed2",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-03-07T09:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Repository crossed 813 public stars.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-6d36c8ec60ba1d",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-10-08T10:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Created the public Typeset Labs core repository.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-2380025eb9981a",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2026-05-09T11:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Published v0.34 with reproducible release notes.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-625cd6553c8ce3",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2024-12-10T12:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-52dc36596a35a4",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-07-11T13:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Closed customer-reported workflow issue #135.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-6f7b4b13c9ec14",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2026-02-12T14:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Sustained 54 commits across a seven-day build sprint.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-f0ea757bcf693c",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2024-09-13T15:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-3ada330ad7c1bf",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-04-14T16:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Created the Typeset Labs GitHub organization.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-7072d0e5b8a782",
+    "gh_login": "donald-knuth-fixture",
+    "ts": "2025-11-15T17:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "donald-knuth-fixture/typeset-labs",
+    "detail": "Repository crossed 997 public stars.",
+    "url": "https://github.com/donald-knuth-fixture/typeset-labs"
+  },
+  {
+    "evidence_id": "fx-c4a974d224325a",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-03-01T08:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Created the public Mesh Harbor core repository.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-ebb8f139e13fb9",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-10-02T09:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Published v0.2 with reproducible release notes.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-9904c7e7b678c4",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2026-05-03T10:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-314d2c3d3ff9cc",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2024-12-04T11:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Closed customer-reported workflow issue #103.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-f9fdb4fc0afef9",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-07-05T12:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Sustained 22 commits across a seven-day build sprint.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-e3df9ae7e3b1a5",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2026-02-06T13:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-665fd50f295568",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2024-09-07T14:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Created the Mesh Harbor GitHub organization.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-a9030b84e97fa1",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-04-08T15:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Repository crossed 261 public stars.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-a2b9f2fff6a9d7",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-11-09T16:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Created the public Mesh Harbor core repository.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-6d206f6aad66cb",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2026-06-10T17:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Published v0.10 with reproducible release notes.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-95274446990b5a",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-01-11T08:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-e3a3ffaf4741e1",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-08-12T09:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Closed customer-reported workflow issue #111.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-b2550c82d3c085",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2026-03-13T10:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Sustained 30 commits across a seven-day build sprint.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-826bd120dd848a",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2024-10-14T11:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-08f32c4c2a9691",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-05-15T12:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Created the Mesh Harbor GitHub organization.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-af241777b842dc",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-12-16T13:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Repository crossed 445 public stars.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-bcbc0fd7ef5040",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2026-07-17T14:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Created the public Mesh Harbor core repository.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-da872dffd52ee6",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-02-18T15:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Published v0.18 with reproducible release notes.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-14ca592d35789d",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-09-19T16:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-bf693b6116fff0",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2026-04-20T17:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Closed customer-reported workflow issue #119.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-3608ed86d6c0f2",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2024-11-21T08:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Sustained 38 commits across a seven-day build sprint.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-a779cdba5a931e",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-06-22T09:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-aa6203db76564a",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2026-01-23T10:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Created the Mesh Harbor GitHub organization.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-ab90ed4dd8951a",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2024-08-24T11:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Repository crossed 629 public stars.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-0cf727526c463f",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-03-25T12:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Created the public Mesh Harbor core repository.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-db7ce83bcc071b",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-10-01T13:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Published v0.26 with reproducible release notes.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-b498271859fbf3",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2026-05-02T14:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-0e76fd396cdbaf",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2024-12-03T15:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Closed customer-reported workflow issue #127.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-0b59338a3b97a0",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-07-04T16:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Sustained 46 commits across a seven-day build sprint.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-0f78b36a102d32",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2026-02-05T17:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-5ae96e30fa69f9",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2024-09-06T08:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Created the Mesh Harbor GitHub organization.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-ee9cd6db0a1679",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-04-07T09:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Repository crossed 813 public stars.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-9e3afd8f5bf96b",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-11-08T10:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Created the public Mesh Harbor core repository.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-ad9185d13fd896",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2026-06-09T11:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Published v0.34 with reproducible release notes.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-1349560e9d3aca",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-01-10T12:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-9e58b33f284791",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-08-11T13:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Closed customer-reported workflow issue #135.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-be74db0ed3e5c6",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2026-03-12T14:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Sustained 54 commits across a seven-day build sprint.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-b986d5ca5cc05f",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2024-10-13T15:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-ccc5ab33ef6ec6",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-05-14T16:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Created the Mesh Harbor GitHub organization.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-a37eac5cc660d9",
+    "gh_login": "radia-perlman-fixture",
+    "ts": "2025-12-15T17:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "radia-perlman-fixture/mesh-harbor",
+    "detail": "Repository crossed 997 public stars.",
+    "url": "https://github.com/radia-perlman-fixture/mesh-harbor"
+  },
+  {
+    "evidence_id": "fx-6798562f1a9bba",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-04-01T08:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Created the public Durable State core repository.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-50dd3b4366c8d5",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-11-02T09:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Published v0.2 with reproducible release notes.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-9b675a87ccefb2",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2026-06-03T10:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-8d3d72e986095e",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-01-04T11:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Closed customer-reported workflow issue #103.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-994b491d746e5e",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-08-05T12:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Sustained 22 commits across a seven-day build sprint.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-31d29a96aae141",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2026-03-06T13:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-e87e5201d6b831",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2024-10-07T14:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Created the Durable State GitHub organization.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-6d531fc95df172",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-05-08T15:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Repository crossed 261 public stars.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-7b5a406bbf423e",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-12-09T16:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Created the public Durable State core repository.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-ae69f9fb82ad17",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2026-07-10T17:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Published v0.10 with reproducible release notes.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-34945082cdc4cc",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-02-11T08:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-11c9fbbd3f8294",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-09-12T09:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Closed customer-reported workflow issue #111.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-96b1b6c4a8bd45",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2026-04-13T10:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Sustained 30 commits across a seven-day build sprint.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-fceb51d4342ddc",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2024-11-14T11:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-126f0d4723b0ff",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-06-15T12:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Created the Durable State GitHub organization.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-cbaa4ac9134c2c",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2026-01-16T13:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Repository crossed 445 public stars.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-30159f346861f8",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2024-08-17T14:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Created the public Durable State core repository.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-74d69458064218",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-03-18T15:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Published v0.18 with reproducible release notes.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-fe2692fda5018a",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-10-19T16:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-ff39f7444dfec5",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2026-05-20T17:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Closed customer-reported workflow issue #119.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-bd74a22f0c25ca",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2024-12-21T08:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Sustained 38 commits across a seven-day build sprint.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-fd231a6c10855b",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-07-22T09:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-be689ef92c441e",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2026-02-23T10:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Created the Durable State GitHub organization.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-a9b7a92a204fc6",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2024-09-24T11:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Repository crossed 629 public stars.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-6cd651519323ed",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-04-25T12:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Created the public Durable State core repository.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-52d7ff5ec489fb",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-11-01T13:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Published v0.26 with reproducible release notes.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-8dd3afc07f2115",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2026-06-02T14:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-bcebfd325b32b5",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-01-03T15:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Closed customer-reported workflow issue #127.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-05161e901b3afb",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-08-04T16:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Sustained 46 commits across a seven-day build sprint.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-1b90309b460a32",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2026-03-05T17:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-369afaecf484f1",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2024-10-06T08:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Created the Durable State GitHub organization.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-d5f9f64f651665",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-05-07T09:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Repository crossed 813 public stars.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-0ed1e93b839bc2",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-12-08T10:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Created the public Durable State core repository.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-ba62d48a9007fe",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2026-07-09T11:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Published v0.34 with reproducible release notes.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-55be5840bac687",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-02-10T12:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-16e11479ad8366",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-09-11T13:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Closed customer-reported workflow issue #135.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-b6573a484b7fee",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2026-04-12T14:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Sustained 54 commits across a seven-day build sprint.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-c7053b4ed570da",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2024-11-13T15:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-70cc086846ece7",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2025-06-14T16:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Created the Durable State GitHub organization.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-438ad646f72c5f",
+    "gh_login": "barbara-liskov-fixture",
+    "ts": "2026-01-15T17:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "barbara-liskov-fixture/durable-state",
+    "detail": "Repository crossed 997 public stars.",
+    "url": "https://github.com/barbara-liskov-fixture/durable-state"
+  },
+  {
+    "evidence_id": "fx-89525242b42612",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-05-01T08:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Created the public Cipher Field core repository.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-4c34a10eb88201",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-12-02T09:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Published v0.2 with reproducible release notes.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-532131bd993e0d",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2026-07-03T10:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-d165617e999001",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-02-04T11:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Closed customer-reported workflow issue #103.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-bf4ff80ec9d59a",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-09-05T12:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Sustained 22 commits across a seven-day build sprint.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-601a6156b4337e",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2026-04-06T13:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-5d0326251699bc",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2024-11-07T14:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Created the Cipher Field GitHub organization.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-30718d7c4e40fc",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-06-08T15:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Repository crossed 261 public stars.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-3864dad91dee7d",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2026-01-09T16:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Created the public Cipher Field core repository.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-c3f70080084357",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2024-08-10T17:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Published v0.10 with reproducible release notes.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-a9141c3f50ec22",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-03-11T08:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-de2ecc8690a946",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-10-12T09:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Closed customer-reported workflow issue #111.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-46a6646b7079a2",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2026-05-13T10:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Sustained 30 commits across a seven-day build sprint.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-fe1d417f5d9af9",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2024-12-14T11:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-6367d8752910e6",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-07-15T12:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Created the Cipher Field GitHub organization.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-638de2e6f54abc",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2026-02-16T13:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Repository crossed 445 public stars.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-c01865cacf7e23",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2024-09-17T14:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Created the public Cipher Field core repository.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-16af294da1013e",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-04-18T15:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Published v0.18 with reproducible release notes.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-f50c84c589a917",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-11-19T16:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-5e1451325e95d0",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2026-06-20T17:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Closed customer-reported workflow issue #119.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-a86f4dea267e2a",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-01-21T08:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Sustained 38 commits across a seven-day build sprint.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-8fdf8e7c85e5ff",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-08-22T09:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-64a5c76239d61d",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2026-03-23T10:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Created the Cipher Field GitHub organization.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-922adebc9d8491",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2024-10-24T11:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Repository crossed 629 public stars.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-2971290f5dfe84",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-05-25T12:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Created the public Cipher Field core repository.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-2f1a91f780eaba",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-12-01T13:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Published v0.26 with reproducible release notes.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-75ee095072bdee",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2026-07-02T14:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-60709760499f16",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-02-03T15:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Closed customer-reported workflow issue #127.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-622f04656c36ad",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-09-04T16:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Sustained 46 commits across a seven-day build sprint.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-4f6570d3feabf1",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2026-04-05T17:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-77f1d4293a8055",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2024-11-06T08:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Created the Cipher Field GitHub organization.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-306647c4fa39fd",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-06-07T09:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Repository crossed 813 public stars.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-d3983737c3e91d",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2026-01-08T10:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Created the public Cipher Field core repository.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-432da8f04f06ac",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2024-08-09T11:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Published v0.34 with reproducible release notes.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-7cb9651885e24f",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-03-10T12:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-9690814efe2010",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-10-11T13:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Closed customer-reported workflow issue #135.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-5af70fce46623b",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2026-05-12T14:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Sustained 54 commits across a seven-day build sprint.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-4d3dd959954e83",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2024-12-13T15:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-eab10e6c0cdff7",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2025-07-14T16:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Created the Cipher Field GitHub organization.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-4757e26e0f6fef",
+    "gh_login": "alan-turing-fixture",
+    "ts": "2026-02-15T17:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "alan-turing-fixture/cipher-field",
+    "detail": "Repository crossed 997 public stars.",
+    "url": "https://github.com/alan-turing-fixture/cipher-field"
+  },
+  {
+    "evidence_id": "fx-9b0036884c7f5e",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-06-01T08:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Created the public Flow Atlas core repository.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-9ec5d4bdec485b",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2026-01-02T09:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Published v0.2 with reproducible release notes.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-7dc0ebac7d24fa",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2024-08-03T10:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-60b994d3b0d0cf",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-03-04T11:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Closed customer-reported workflow issue #103.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-82ece3420af5db",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-10-05T12:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Sustained 22 commits across a seven-day build sprint.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-0ac31162548743",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2026-05-06T13:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-3d1ef190e8d362",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2024-12-07T14:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Created the Flow Atlas GitHub organization.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-d05b86f7e7b185",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-07-08T15:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Repository crossed 261 public stars.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-5d682e778d9db9",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2026-02-09T16:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Created the public Flow Atlas core repository.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-ebcaac1224a9b8",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2024-09-10T17:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Published v0.10 with reproducible release notes.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-33b366fb3d9627",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-04-11T08:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-eb7533a4a161c1",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-11-12T09:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Closed customer-reported workflow issue #111.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-399b4fcb98f571",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2026-06-13T10:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Sustained 30 commits across a seven-day build sprint.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-50b4430494ebb0",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-01-14T11:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-0ef5235d4694b0",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-08-15T12:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Created the Flow Atlas GitHub organization.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-4a2a2de0e62804",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2026-03-16T13:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Repository crossed 445 public stars.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-b01427c1d7c742",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2024-10-17T14:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Created the public Flow Atlas core repository.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-a8db849533e143",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-05-18T15:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Published v0.18 with reproducible release notes.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-36ab25f40993e2",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-12-19T16:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-a1d4aed95a609a",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2026-07-20T17:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Closed customer-reported workflow issue #119.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-3232145e49ea8d",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-02-21T08:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Sustained 38 commits across a seven-day build sprint.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-a76185a267325c",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-09-22T09:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-4f1503eabb65d0",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2026-04-23T10:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Created the Flow Atlas GitHub organization.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-34a8d588e68300",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2024-11-24T11:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Repository crossed 629 public stars.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-5c72f18d7f3b67",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-06-25T12:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Created the public Flow Atlas core repository.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-afbc218f0beed7",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2026-01-01T13:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Published v0.26 with reproducible release notes.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-cb51a10aeca029",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2024-08-02T14:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-577744400974cf",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-03-03T15:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Closed customer-reported workflow issue #127.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-84ff6fd823fa0a",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-10-04T16:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Sustained 46 commits across a seven-day build sprint.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-989de6abbbce62",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2026-05-05T17:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-1b158ad5e64f8d",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2024-12-06T08:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Created the Flow Atlas GitHub organization.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-ee0d1b3c149971",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-07-07T09:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Repository crossed 813 public stars.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-fd74b0b1507dac",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2026-02-08T10:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Created the public Flow Atlas core repository.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-28abc7df3322e1",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2024-09-09T11:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Published v0.34 with reproducible release notes.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-904e64cf37ba8c",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-04-10T12:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-1078f65e8881a3",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-11-11T13:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Closed customer-reported workflow issue #135.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-77d47f8056138a",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2026-06-12T14:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Sustained 54 commits across a seven-day build sprint.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-58990059f8c4f8",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-01-13T15:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-3660de6d83b322",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2025-08-14T16:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Created the Flow Atlas GitHub organization.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-fed1eba5907e39",
+    "gh_login": "mary-jackson-fixture",
+    "ts": "2026-03-15T17:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "mary-jackson-fixture/flow-atlas",
+    "detail": "Repository crossed 997 public stars.",
+    "url": "https://github.com/mary-jackson-fixture/flow-atlas"
+  },
+  {
+    "evidence_id": "fx-708f7fe4ffa22d",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-07-01T08:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Created the public Bit Garden core repository.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-eea81c44f745d4",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2026-02-02T09:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Published v0.2 with reproducible release notes.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-f6315c55702a97",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2024-09-03T10:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-34cbf6a17e2e13",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-04-04T11:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Closed customer-reported workflow issue #103.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-541c9c6f4c5271",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-11-05T12:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Sustained 22 commits across a seven-day build sprint.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-82303d750d7a01",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2026-06-06T13:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-4945e475e06b88",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-01-07T14:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Created the Bit Garden GitHub organization.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-77b90499c61d44",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-08-08T15:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Repository crossed 261 public stars.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-62e831038b5ed4",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2026-03-09T16:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Created the public Bit Garden core repository.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-790de67462a590",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2024-10-10T17:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Published v0.10 with reproducible release notes.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-08294aee699bd4",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-05-11T08:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-ca144d37f864a0",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-12-12T09:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Closed customer-reported workflow issue #111.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-e182f652cd0fae",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2026-07-13T10:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Sustained 30 commits across a seven-day build sprint.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-3785366a35b820",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-02-14T11:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-43ee30e5e1ac7b",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-09-15T12:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Created the Bit Garden GitHub organization.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-3eebedb9d8331c",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2026-04-16T13:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Repository crossed 445 public stars.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-6c877b705f20ce",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2024-11-17T14:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Created the public Bit Garden core repository.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-97eaeef0002459",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-06-18T15:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Published v0.18 with reproducible release notes.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-7c118ffc8ec0b7",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2026-01-19T16:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-7f50b0ee807b22",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2024-08-20T17:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Closed customer-reported workflow issue #119.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-28c9c914a7ae41",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-03-21T08:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Sustained 38 commits across a seven-day build sprint.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-28bc1d66901ef6",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-10-22T09:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-bcf49e3a438efa",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2026-05-23T10:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Created the Bit Garden GitHub organization.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-6ee1034889bd09",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2024-12-24T11:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Repository crossed 629 public stars.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-fe93c3ffba4649",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-07-25T12:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Created the public Bit Garden core repository.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-86ccb3aa0ba261",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2026-02-01T13:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Published v0.26 with reproducible release notes.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-424fe012544507",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2024-09-02T14:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-2343fffa9ae145",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-04-03T15:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Closed customer-reported workflow issue #127.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-0d63848ff712ef",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-11-04T16:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Sustained 46 commits across a seven-day build sprint.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-0aabf340b76f8d",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2026-06-05T17:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-278c3d207b6136",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-01-06T08:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Created the Bit Garden GitHub organization.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-b810f650e747dc",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-08-07T09:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Repository crossed 813 public stars.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-b6c50396be83bf",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2026-03-08T10:00:00+00:00",
+    "event_type": "repo_created",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Created the public Bit Garden core repository.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-40f4f1c666ffb8",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2024-10-09T11:00:00+00:00",
+    "event_type": "release_published",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Published v0.34 with reproducible release notes.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-522883a052fd77",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-05-10T12:00:00+00:00",
+    "event_type": "contributor_joined",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "A new external contributor merged a production patch.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-d9c02aa5186f8d",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-12-11T13:00:00+00:00",
+    "event_type": "issue_closed",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Closed customer-reported workflow issue #135.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-5f9340ccd6e1ff",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2026-07-12T14:00:00+00:00",
+    "event_type": "commit_burst",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Sustained 54 commits across a seven-day build sprint.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-82d7a2a12131f5",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-02-13T15:00:00+00:00",
+    "event_type": "readme_updated",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Added architecture, deployment, and evaluation documentation.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-4c356706c98a70",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2025-09-14T16:00:00+00:00",
+    "event_type": "org_created",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Created the Bit Garden GitHub organization.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  },
+  {
+    "evidence_id": "fx-47912754bb4eef",
+    "gh_login": "claude-shannon-fixture",
+    "ts": "2026-04-15T17:00:00+00:00",
+    "event_type": "star_milestone",
+    "repo_name": "claude-shannon-fixture/bit-garden",
+    "detail": "Repository crossed 997 public stars.",
+    "url": "https://github.com/claude-shannon-fixture/bit-garden"
+  }
+]

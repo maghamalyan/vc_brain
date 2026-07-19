@@ -1,0 +1,29 @@
+{
+  "sectors": [
+    "AI infrastructure",
+    "Cloud infrastructure",
+    "Cybersecurity",
+    "Developer tools",
+    "Fintech"
+  ],
+  "stages": [
+    "Pre-seed",
+    "Seed"
+  ],
+  "geographies": [
+    "Austria",
+    "France",
+    "Germany",
+    "Ireland",
+    "Netherlands",
+    "Sweden",
+    "UK",
+    "US"
+  ],
+  "check_size_usd": [
+    500000,
+    2500000
+  ],
+  "risk_appetite": "Evidence-led, comfortable with pre-launch technical teams when public build velocity is improving.",
+  "notes": "Fixture thesis: prioritize technical infrastructure and fintech founders at pre-seed or seed across Europe and the US."
+}

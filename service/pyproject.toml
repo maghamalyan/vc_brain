@@ -1,0 +1,35 @@
+[project]
+name = "vcb-service"
+version = "0.1.0"
+description = "Read-only VC Brain intelligence API and SQLite FTS indexer"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "fastapi>=0.116.0",
+    "httpx>=0.28.1",
+    "polars>=1.32.0",
+    "pydantic>=2.11.0",
+    "pydantic-ai-slim[openai]>=1.0.0",
+    "pydantic-monty>=0.0.3",
+    "python-dotenv>=1.1.0",
+    "sse-starlette>=3.0.0",
+    "uvicorn>=0.35.0",
+]
+
+[project.scripts]
+vcb-index = "vcb_service.cli:main"
+vcb-integrate = "vcb_service.integrate_cli:main"
+vcb-openapi = "vcb_service.export_openapi:main"
+
+[build-system]
+requires = ["uv_build>=0.11.21,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

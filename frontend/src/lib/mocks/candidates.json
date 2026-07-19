@@ -1,0 +1,1698 @@
+[
+  {
+    "gh_login": "ada-lovelace-fixture",
+    "founder_name": "Ada Lovelace (fixture)",
+    "company": "VectorForge",
+    "source": "outbound_detector",
+    "current_score": 0.91,
+    "score_percentile": 99.0,
+    "momentum_3mo": 0.14,
+    "first_detection_month": "2025-03-01",
+    "status": "memo_ready",
+    "recognition": {
+      "month": "2026-07",
+      "kind": "seed_round",
+      "label": "Synthetic seed round announced"
+    },
+    "score_components": [
+      {
+        "key": "commit_burst_cadence",
+        "label": "Commit-burst cadence",
+        "contribution": 0.304
+      },
+      {
+        "key": "external_contributor_influx",
+        "label": "External-contributor influx",
+        "contribution": 0.23
+      },
+      {
+        "key": "readme_product_language_shift",
+        "label": "README product-language shift",
+        "contribution": 0.211
+      },
+      {
+        "key": "organization_formation",
+        "label": "Organization formation",
+        "contribution": 0.165
+      }
+    ],
+    "lead_time_months": 16,
+    "trajectory": [
+      {
+        "month": "2024-08-01",
+        "score": 0.3245
+      },
+      {
+        "month": "2024-09-01",
+        "score": 0.3579
+      },
+      {
+        "month": "2024-10-01",
+        "score": 0.3874
+      },
+      {
+        "month": "2024-11-01",
+        "score": 0.4109
+      },
+      {
+        "month": "2024-12-01",
+        "score": 0.4295
+      },
+      {
+        "month": "2025-01-01",
+        "score": 0.4465
+      },
+      {
+        "month": "2025-02-01",
+        "score": 0.4662
+      },
+      {
+        "month": "2025-03-01",
+        "score": 0.4914
+      },
+      {
+        "month": "2025-04-01",
+        "score": 0.5222
+      },
+      {
+        "month": "2025-05-01",
+        "score": 0.556
+      },
+      {
+        "month": "2025-06-01",
+        "score": 0.5886
+      },
+      {
+        "month": "2025-07-01",
+        "score": 0.6165
+      },
+      {
+        "month": "2025-08-01",
+        "score": 0.6385
+      },
+      {
+        "month": "2025-09-01",
+        "score": 0.6562
+      },
+      {
+        "month": "2025-10-01",
+        "score": 0.6736
+      },
+      {
+        "month": "2025-11-01",
+        "score": 0.6946
+      },
+      {
+        "month": "2025-12-01",
+        "score": 0.7214
+      },
+      {
+        "month": "2026-01-01",
+        "score": 0.7534
+      },
+      {
+        "month": "2026-02-01",
+        "score": 0.7873
+      },
+      {
+        "month": "2026-03-01",
+        "score": 0.8189
+      },
+      {
+        "month": "2026-04-01",
+        "score": 0.8452
+      },
+      {
+        "month": "2026-05-01",
+        "score": 0.8657
+      },
+      {
+        "month": "2026-06-01",
+        "score": 0.883
+      },
+      {
+        "month": "2026-07-01",
+        "score": 0.901
+      }
+    ]
+  },
+  {
+    "gh_login": "grace-hopper-fixture",
+    "founder_name": "Grace Hopper (fixture)",
+    "company": "Quiet Current",
+    "source": "outbound_detector",
+    "current_score": 0.86,
+    "score_percentile": 96.0,
+    "momentum_3mo": 0.09,
+    "first_detection_month": "2025-06-01",
+    "status": "memo_ready",
+    "recognition": {
+      "month": "2026-04",
+      "kind": "press",
+      "label": "Synthetic launch profile published"
+    },
+    "score_components": [
+      {
+        "key": "commit_burst_cadence",
+        "label": "Commit-burst cadence",
+        "contribution": 0.227
+      },
+      {
+        "key": "external_contributor_influx",
+        "label": "External-contributor influx",
+        "contribution": 0.18
+      },
+      {
+        "key": "readme_product_language_shift",
+        "label": "README product-language shift",
+        "contribution": 0.165
+      },
+      {
+        "key": "organization_formation",
+        "label": "Organization formation",
+        "contribution": 0.129
+      },
+      {
+        "key": "star_velocity",
+        "label": "Star velocity",
+        "contribution": 0.159
+      }
+    ],
+    "lead_time_months": 10,
+    "trajectory": [
+      {
+        "month": "2024-08-01",
+        "score": 0.4915
+      },
+      {
+        "month": "2024-09-01",
+        "score": 0.5119
+      },
+      {
+        "month": "2024-10-01",
+        "score": 0.5263
+      },
+      {
+        "month": "2024-11-01",
+        "score": 0.5358
+      },
+      {
+        "month": "2024-12-01",
+        "score": 0.5438
+      },
+      {
+        "month": "2025-01-01",
+        "score": 0.5544
+      },
+      {
+        "month": "2025-02-01",
+        "score": 0.5705
+      },
+      {
+        "month": "2025-03-01",
+        "score": 0.5922
+      },
+      {
+        "month": "2025-04-01",
+        "score": 0.6169
+      },
+      {
+        "month": "2025-05-01",
+        "score": 0.6404
+      },
+      {
+        "month": "2025-06-01",
+        "score": 0.6592
+      },
+      {
+        "month": "2025-07-01",
+        "score": 0.6721
+      },
+      {
+        "month": "2025-08-01",
+        "score": 0.6808
+      },
+      {
+        "month": "2025-09-01",
+        "score": 0.6891
+      },
+      {
+        "month": "2025-10-01",
+        "score": 0.701
+      },
+      {
+        "month": "2025-11-01",
+        "score": 0.7187
+      },
+      {
+        "month": "2025-12-01",
+        "score": 0.7416
+      },
+      {
+        "month": "2026-01-01",
+        "score": 0.7664
+      },
+      {
+        "month": "2026-02-01",
+        "score": 0.7889
+      },
+      {
+        "month": "2026-03-01",
+        "score": 0.8061
+      },
+      {
+        "month": "2026-04-01",
+        "score": 0.8176
+      },
+      {
+        "month": "2026-05-01",
+        "score": 0.8257
+      },
+      {
+        "month": "2026-06-01",
+        "score": 0.8346
+      },
+      {
+        "month": "2026-07-01",
+        "score": 0.848
+      }
+    ]
+  },
+  {
+    "gh_login": "katherine-johnson-fixture",
+    "founder_name": "Katherine Johnson (fixture)",
+    "company": "Orbital Ledger",
+    "source": "inbound_application",
+    "current_score": 0.82,
+    "score_percentile": 92.0,
+    "momentum_3mo": 0.06,
+    "first_detection_month": "2026-05-01",
+    "status": "memo_ready",
+    "recognition": {
+      "month": "2025-11",
+      "kind": "seed_round",
+      "label": "Synthetic seed round announced"
+    },
+    "score_components": [
+      {
+        "key": "deck_product_specificity",
+        "label": "Deck product specificity",
+        "contribution": 0.151
+      },
+      {
+        "key": "commit_burst_cadence",
+        "label": "Commit-burst cadence",
+        "contribution": 0.185
+      },
+      {
+        "key": "readme_product_language_shift",
+        "label": "README product-language shift",
+        "contribution": 0.14
+      },
+      {
+        "key": "external_contributor_influx",
+        "label": "External-contributor influx",
+        "contribution": 0.123
+      },
+      {
+        "key": "star_velocity",
+        "label": "Star velocity",
+        "contribution": 0.126
+      },
+      {
+        "key": "release_cadence",
+        "label": "Release cadence",
+        "contribution": 0.095
+      }
+    ],
+    "lead_time_months": -6,
+    "trajectory": [
+      {
+        "month": "2024-08-01",
+        "score": 0.581
+      },
+      {
+        "month": "2024-09-01",
+        "score": 0.59
+      },
+      {
+        "month": "2024-10-01",
+        "score": 0.594
+      },
+      {
+        "month": "2024-11-01",
+        "score": 0.5965
+      },
+      {
+        "month": "2024-12-01",
+        "score": 0.6016
+      },
+      {
+        "month": "2025-01-01",
+        "score": 0.6123
+      },
+      {
+        "month": "2025-02-01",
+        "score": 0.6285
+      },
+      {
+        "month": "2025-03-01",
+        "score": 0.6478
+      },
+      {
+        "month": "2025-04-01",
+        "score": 0.6659
+      },
+      {
+        "month": "2025-05-01",
+        "score": 0.6792
+      },
+      {
+        "month": "2025-06-01",
+        "score": 0.6867
+      },
+      {
+        "month": "2025-07-01",
+        "score": 0.6899
+      },
+      {
+        "month": "2025-08-01",
+        "score": 0.6927
+      },
+      {
+        "month": "2025-09-01",
+        "score": 0.6991
+      },
+      {
+        "month": "2025-10-01",
+        "score": 0.7114
+      },
+      {
+        "month": "2025-11-01",
+        "score": 0.7289
+      },
+      {
+        "month": "2025-12-01",
+        "score": 0.7482
+      },
+      {
+        "month": "2026-01-01",
+        "score": 0.7653
+      },
+      {
+        "month": "2026-02-01",
+        "score": 0.777
+      },
+      {
+        "month": "2026-03-01",
+        "score": 0.783
+      },
+      {
+        "month": "2026-04-01",
+        "score": 0.7857
+      },
+      {
+        "month": "2026-05-01",
+        "score": 0.7892
+      },
+      {
+        "month": "2026-06-01",
+        "score": 0.7971
+      },
+      {
+        "month": "2026-07-01",
+        "score": 0.811
+      }
+    ]
+  },
+  {
+    "gh_login": "edsger-dijkstra-fixture",
+    "founder_name": "Edsger Dijkstra (fixture)",
+    "company": "Proofrail",
+    "source": "outbound_detector",
+    "current_score": 0.78,
+    "score_percentile": 87.0,
+    "momentum_3mo": 0.11,
+    "first_detection_month": "2025-09-01",
+    "status": "screened",
+    "recognition": {
+      "month": "2026-06",
+      "kind": "yc_batch",
+      "label": "Synthetic accelerator batch listed"
+    },
+    "score_components": [
+      {
+        "key": "commit_burst_cadence",
+        "label": "Commit-burst cadence",
+        "contribution": 0.256
+      },
+      {
+        "key": "external_contributor_influx",
+        "label": "External-contributor influx",
+        "contribution": 0.199
+      },
+      {
+        "key": "readme_product_language_shift",
+        "label": "README product-language shift",
+        "contribution": 0.183
+      },
+      {
+        "key": "organization_formation",
+        "label": "Organization formation",
+        "contribution": 0.142
+      }
+    ],
+    "lead_time_months": 9,
+    "trajectory": [
+      {
+        "month": "2024-08-01",
+        "score": 0.33
+      },
+      {
+        "month": "2024-09-01",
+        "score": 0.3431
+      },
+      {
+        "month": "2024-10-01",
+        "score": 0.3547
+      },
+      {
+        "month": "2024-11-01",
+        "score": 0.3689
+      },
+      {
+        "month": "2024-12-01",
+        "score": 0.3886
+      },
+      {
+        "month": "2025-01-01",
+        "score": 0.414
+      },
+      {
+        "month": "2025-02-01",
+        "score": 0.4423
+      },
+      {
+        "month": "2025-03-01",
+        "score": 0.4695
+      },
+      {
+        "month": "2025-04-01",
+        "score": 0.492
+      },
+      {
+        "month": "2025-05-01",
+        "score": 0.5085
+      },
+      {
+        "month": "2025-06-01",
+        "score": 0.5208
+      },
+      {
+        "month": "2025-07-01",
+        "score": 0.5327
+      },
+      {
+        "month": "2025-08-01",
+        "score": 0.5482
+      },
+      {
+        "month": "2025-09-01",
+        "score": 0.5696
+      },
+      {
+        "month": "2025-10-01",
+        "score": 0.5962
+      },
+      {
+        "month": "2025-11-01",
+        "score": 0.6246
+      },
+      {
+        "month": "2025-12-01",
+        "score": 0.6508
+      },
+      {
+        "month": "2026-01-01",
+        "score": 0.6716
+      },
+      {
+        "month": "2026-02-01",
+        "score": 0.6867
+      },
+      {
+        "month": "2026-03-01",
+        "score": 0.6984
+      },
+      {
+        "month": "2026-04-01",
+        "score": 0.711
+      },
+      {
+        "month": "2026-05-01",
+        "score": 0.728
+      },
+      {
+        "month": "2026-06-01",
+        "score": 0.751
+      },
+      {
+        "month": "2026-07-01",
+        "score": 0.7784
+      }
+    ]
+  },
+  {
+    "gh_login": "margaret-hamilton-fixture",
+    "founder_name": "Margaret Hamilton (fixture)",
+    "company": "Aster Control",
+    "source": "outbound_detector",
+    "current_score": 0.73,
+    "score_percentile": 80.0,
+    "momentum_3mo": 0.04,
+    "first_detection_month": "2025-11-01",
+    "status": "screened",
+    "recognition": {
+      "month": "2026-07",
+      "kind": "seed_round",
+      "label": "Synthetic seed round announced"
+    },
+    "score_components": [
+      {
+        "key": "commit_burst_cadence",
+        "label": "Commit-burst cadence",
+        "contribution": 0.186
+      },
+      {
+        "key": "external_contributor_influx",
+        "label": "External-contributor influx",
+        "contribution": 0.154
+      },
+      {
+        "key": "readme_product_language_shift",
+        "label": "README product-language shift",
+        "contribution": 0.142
+      },
+      {
+        "key": "organization_formation",
+        "label": "Organization formation",
+        "contribution": 0.111
+      },
+      {
+        "key": "star_velocity",
+        "label": "Star velocity",
+        "contribution": 0.137
+      }
+    ],
+    "lead_time_months": 8,
+    "trajectory": [
+      {
+        "month": "2024-08-01",
+        "score": 0.5658
+      },
+      {
+        "month": "2024-09-01",
+        "score": 0.5647
+      },
+      {
+        "month": "2024-10-01",
+        "score": 0.5662
+      },
+      {
+        "month": "2024-11-01",
+        "score": 0.5732
+      },
+      {
+        "month": "2024-12-01",
+        "score": 0.5858
+      },
+      {
+        "month": "2025-01-01",
+        "score": 0.6014
+      },
+      {
+        "month": "2025-02-01",
+        "score": 0.6159
+      },
+      {
+        "month": "2025-03-01",
+        "score": 0.6256
+      },
+      {
+        "month": "2025-04-01",
+        "score": 0.6294
+      },
+      {
+        "month": "2025-05-01",
+        "score": 0.629
+      },
+      {
+        "month": "2025-06-01",
+        "score": 0.6281
+      },
+      {
+        "month": "2025-07-01",
+        "score": 0.631
+      },
+      {
+        "month": "2025-08-01",
+        "score": 0.6396
+      },
+      {
+        "month": "2025-09-01",
+        "score": 0.6534
+      },
+      {
+        "month": "2025-10-01",
+        "score": 0.6691
+      },
+      {
+        "month": "2025-11-01",
+        "score": 0.6826
+      },
+      {
+        "month": "2025-12-01",
+        "score": 0.6907
+      },
+      {
+        "month": "2026-01-01",
+        "score": 0.693
+      },
+      {
+        "month": "2026-02-01",
+        "score": 0.6921
+      },
+      {
+        "month": "2026-03-01",
+        "score": 0.6919
+      },
+      {
+        "month": "2026-04-01",
+        "score": 0.6962
+      },
+      {
+        "month": "2026-05-01",
+        "score": 0.7064
+      },
+      {
+        "month": "2026-06-01",
+        "score": 0.7212
+      },
+      {
+        "month": "2026-07-01",
+        "score": 0.7367
+      }
+    ]
+  },
+  {
+    "gh_login": "hedy-lamarr-fixture",
+    "founder_name": "Hedy Lamarr (fixture)",
+    "company": "Signal Loom",
+    "source": "inbound_application",
+    "current_score": 0.69,
+    "score_percentile": 73.0,
+    "momentum_3mo": 0.02,
+    "first_detection_month": "2026-06-01",
+    "status": "candidate",
+    "recognition": null,
+    "score_components": [
+      {
+        "key": "deck_product_specificity",
+        "label": "Deck product specificity",
+        "contribution": 0.128
+      },
+      {
+        "key": "commit_burst_cadence",
+        "label": "Commit-burst cadence",
+        "contribution": 0.151
+      },
+      {
+        "key": "readme_product_language_shift",
+        "label": "README product-language shift",
+        "contribution": 0.119
+      },
+      {
+        "key": "external_contributor_influx",
+        "label": "External-contributor influx",
+        "contribution": 0.104
+      },
+      {
+        "key": "star_velocity",
+        "label": "Star velocity",
+        "contribution": 0.107
+      },
+      {
+        "key": "release_cadence",
+        "label": "Release cadence",
+        "contribution": 0.081
+      }
+    ],
+    "lead_time_months": null,
+    "trajectory": [
+      {
+        "month": "2024-08-01",
+        "score": 0.6011
+      },
+      {
+        "month": "2024-09-01",
+        "score": 0.5989
+      },
+      {
+        "month": "2024-10-01",
+        "score": 0.6023
+      },
+      {
+        "month": "2024-11-01",
+        "score": 0.6113
+      },
+      {
+        "month": "2024-12-01",
+        "score": 0.6233
+      },
+      {
+        "month": "2025-01-01",
+        "score": 0.6341
+      },
+      {
+        "month": "2025-02-01",
+        "score": 0.6402
+      },
+      {
+        "month": "2025-03-01",
+        "score": 0.6403
+      },
+      {
+        "month": "2025-04-01",
+        "score": 0.6362
+      },
+      {
+        "month": "2025-05-01",
+        "score": 0.6318
+      },
+      {
+        "month": "2025-06-01",
+        "score": 0.631
+      },
+      {
+        "month": "2025-07-01",
+        "score": 0.636
+      },
+      {
+        "month": "2025-08-01",
+        "score": 0.6462
+      },
+      {
+        "month": "2025-09-01",
+        "score": 0.6582
+      },
+      {
+        "month": "2025-10-01",
+        "score": 0.668
+      },
+      {
+        "month": "2025-11-01",
+        "score": 0.6725
+      },
+      {
+        "month": "2025-12-01",
+        "score": 0.6712
+      },
+      {
+        "month": "2026-01-01",
+        "score": 0.6666
+      },
+      {
+        "month": "2026-02-01",
+        "score": 0.6628
+      },
+      {
+        "month": "2026-03-01",
+        "score": 0.6635
+      },
+      {
+        "month": "2026-04-01",
+        "score": 0.6701
+      },
+      {
+        "month": "2026-05-01",
+        "score": 0.6812
+      },
+      {
+        "month": "2026-06-01",
+        "score": 0.693
+      },
+      {
+        "month": "2026-07-01",
+        "score": 0.7016
+      }
+    ]
+  },
+  {
+    "gh_login": "donald-knuth-fixture",
+    "founder_name": "Donald Knuth (fixture)",
+    "company": "Typeset Labs",
+    "source": "outbound_detector",
+    "current_score": 0.64,
+    "score_percentile": 65.0,
+    "momentum_3mo": -0.01,
+    "first_detection_month": "2025-08-01",
+    "status": "screened",
+    "recognition": {
+      "month": "2026-03",
+      "kind": "press",
+      "label": "Synthetic trade-press launch covered"
+    },
+    "score_components": [
+      {
+        "key": "commit_burst_cadence",
+        "label": "Commit-burst cadence",
+        "contribution": 0.194
+      },
+      {
+        "key": "external_contributor_influx",
+        "label": "External-contributor influx",
+        "contribution": 0.169
+      },
+      {
+        "key": "readme_product_language_shift",
+        "label": "README product-language shift",
+        "contribution": 0.155
+      },
+      {
+        "key": "organization_formation",
+        "label": "Organization formation",
+        "contribution": 0.122
+      }
+    ],
+    "lead_time_months": 7,
+    "trajectory": [
+      {
+        "month": "2024-08-01",
+        "score": 0.6707
+      },
+      {
+        "month": "2024-09-01",
+        "score": 0.6686
+      },
+      {
+        "month": "2024-10-01",
+        "score": 0.6722
+      },
+      {
+        "month": "2024-11-01",
+        "score": 0.6787
+      },
+      {
+        "month": "2024-12-01",
+        "score": 0.6841
+      },
+      {
+        "month": "2025-01-01",
+        "score": 0.6847
+      },
+      {
+        "month": "2025-02-01",
+        "score": 0.6794
+      },
+      {
+        "month": "2025-03-01",
+        "score": 0.6699
+      },
+      {
+        "month": "2025-04-01",
+        "score": 0.66
+      },
+      {
+        "month": "2025-05-01",
+        "score": 0.6537
+      },
+      {
+        "month": "2025-06-01",
+        "score": 0.6532
+      },
+      {
+        "month": "2025-07-01",
+        "score": 0.658
+      },
+      {
+        "month": "2025-08-01",
+        "score": 0.6646
+      },
+      {
+        "month": "2025-09-01",
+        "score": 0.6689
+      },
+      {
+        "month": "2025-10-01",
+        "score": 0.668
+      },
+      {
+        "month": "2025-11-01",
+        "score": 0.6612
+      },
+      {
+        "month": "2025-12-01",
+        "score": 0.6511
+      },
+      {
+        "month": "2026-01-01",
+        "score": 0.6419
+      },
+      {
+        "month": "2026-02-01",
+        "score": 0.6371
+      },
+      {
+        "month": "2026-03-01",
+        "score": 0.6383
+      },
+      {
+        "month": "2026-04-01",
+        "score": 0.6439
+      },
+      {
+        "month": "2026-05-01",
+        "score": 0.6503
+      },
+      {
+        "month": "2026-06-01",
+        "score": 0.6534
+      },
+      {
+        "month": "2026-07-01",
+        "score": 0.6508
+      }
+    ]
+  },
+  {
+    "gh_login": "radia-perlman-fixture",
+    "founder_name": "Radia Perlman (fixture)",
+    "company": "Mesh Harbor",
+    "source": "outbound_detector",
+    "current_score": 0.59,
+    "score_percentile": 57.0,
+    "momentum_3mo": 0.05,
+    "first_detection_month": "2026-01-01",
+    "status": "candidate",
+    "recognition": {
+      "month": "2026-07",
+      "kind": "yc_batch",
+      "label": "Synthetic accelerator batch listed"
+    },
+    "score_components": [
+      {
+        "key": "commit_burst_cadence",
+        "label": "Commit-burst cadence",
+        "contribution": 0.152
+      },
+      {
+        "key": "external_contributor_influx",
+        "label": "External-contributor influx",
+        "contribution": 0.125
+      },
+      {
+        "key": "readme_product_language_shift",
+        "label": "README product-language shift",
+        "contribution": 0.115
+      },
+      {
+        "key": "organization_formation",
+        "label": "Organization formation",
+        "contribution": 0.09
+      },
+      {
+        "key": "star_velocity",
+        "label": "Star velocity",
+        "contribution": 0.108
+      }
+    ],
+    "lead_time_months": 6,
+    "trajectory": [
+      {
+        "month": "2024-08-01",
+        "score": 0.3695
+      },
+      {
+        "month": "2024-09-01",
+        "score": 0.384
+      },
+      {
+        "month": "2024-10-01",
+        "score": 0.4014
+      },
+      {
+        "month": "2024-11-01",
+        "score": 0.4177
+      },
+      {
+        "month": "2024-12-01",
+        "score": 0.4292
+      },
+      {
+        "month": "2025-01-01",
+        "score": 0.4348
+      },
+      {
+        "month": "2025-02-01",
+        "score": 0.4362
+      },
+      {
+        "month": "2025-03-01",
+        "score": 0.4372
+      },
+      {
+        "month": "2025-04-01",
+        "score": 0.4419
+      },
+      {
+        "month": "2025-05-01",
+        "score": 0.4523
+      },
+      {
+        "month": "2025-06-01",
+        "score": 0.468
+      },
+      {
+        "month": "2025-07-01",
+        "score": 0.4855
+      },
+      {
+        "month": "2025-08-01",
+        "score": 0.5008
+      },
+      {
+        "month": "2025-09-01",
+        "score": 0.5107
+      },
+      {
+        "month": "2025-10-01",
+        "score": 0.5148
+      },
+      {
+        "month": "2025-11-01",
+        "score": 0.5157
+      },
+      {
+        "month": "2025-12-01",
+        "score": 0.5173
+      },
+      {
+        "month": "2026-01-01",
+        "score": 0.5235
+      },
+      {
+        "month": "2026-02-01",
+        "score": 0.5355
+      },
+      {
+        "month": "2026-03-01",
+        "score": 0.5521
+      },
+      {
+        "month": "2026-04-01",
+        "score": 0.5694
+      },
+      {
+        "month": "2026-05-01",
+        "score": 0.5834
+      },
+      {
+        "month": "2026-06-01",
+        "score": 0.5917
+      },
+      {
+        "month": "2026-07-01",
+        "score": 0.5946
+      }
+    ]
+  },
+  {
+    "gh_login": "barbara-liskov-fixture",
+    "founder_name": "Barbara Liskov (fixture)",
+    "company": "Durable State",
+    "source": "outbound_detector",
+    "current_score": 0.54,
+    "score_percentile": 48.0,
+    "momentum_3mo": -0.04,
+    "first_detection_month": "2025-05-01",
+    "status": "candidate",
+    "recognition": {
+      "month": "2026-06",
+      "kind": "seed_round",
+      "label": "Synthetic seed round announced"
+    },
+    "score_components": [
+      {
+        "key": "commit_burst_cadence",
+        "label": "Commit-burst cadence",
+        "contribution": 0.111
+      },
+      {
+        "key": "external_contributor_influx",
+        "label": "External-contributor influx",
+        "contribution": 0.099
+      },
+      {
+        "key": "readme_product_language_shift",
+        "label": "README product-language shift",
+        "contribution": 0.091
+      },
+      {
+        "key": "organization_formation",
+        "label": "Organization formation",
+        "contribution": 0.072
+      },
+      {
+        "key": "star_velocity",
+        "label": "Star velocity",
+        "contribution": 0.087
+      },
+      {
+        "key": "release_cadence",
+        "label": "Release cadence",
+        "contribution": 0.08
+      }
+    ],
+    "lead_time_months": 13,
+    "trajectory": [
+      {
+        "month": "2024-08-01",
+        "score": 0.7013
+      },
+      {
+        "month": "2024-09-01",
+        "score": 0.7023
+      },
+      {
+        "month": "2024-10-01",
+        "score": 0.7023
+      },
+      {
+        "month": "2024-11-01",
+        "score": 0.6974
+      },
+      {
+        "month": "2024-12-01",
+        "score": 0.6867
+      },
+      {
+        "month": "2025-01-01",
+        "score": 0.6717
+      },
+      {
+        "month": "2025-02-01",
+        "score": 0.6563
+      },
+      {
+        "month": "2025-03-01",
+        "score": 0.6446
+      },
+      {
+        "month": "2025-04-01",
+        "score": 0.6387
+      },
+      {
+        "month": "2025-05-01",
+        "score": 0.638
+      },
+      {
+        "month": "2025-06-01",
+        "score": 0.6391
+      },
+      {
+        "month": "2025-07-01",
+        "score": 0.638
+      },
+      {
+        "month": "2025-08-01",
+        "score": 0.6316
+      },
+      {
+        "month": "2025-09-01",
+        "score": 0.6194
+      },
+      {
+        "month": "2025-10-01",
+        "score": 0.6039
+      },
+      {
+        "month": "2025-11-01",
+        "score": 0.5892
+      },
+      {
+        "month": "2025-12-01",
+        "score": 0.5789
+      },
+      {
+        "month": "2026-01-01",
+        "score": 0.5746
+      },
+      {
+        "month": "2026-02-01",
+        "score": 0.5748
+      },
+      {
+        "month": "2026-03-01",
+        "score": 0.5758
+      },
+      {
+        "month": "2026-04-01",
+        "score": 0.5734
+      },
+      {
+        "month": "2026-05-01",
+        "score": 0.5653
+      },
+      {
+        "month": "2026-06-01",
+        "score": 0.5518
+      },
+      {
+        "month": "2026-07-01",
+        "score": 0.5361
+      }
+    ]
+  },
+  {
+    "gh_login": "alan-turing-fixture",
+    "founder_name": "Alan Turing (fixture)",
+    "company": "Cipher Field",
+    "source": "outbound_detector",
+    "current_score": 0.47,
+    "score_percentile": 38.0,
+    "momentum_3mo": 0.01,
+    "first_detection_month": "2026-03-01",
+    "status": "candidate",
+    "recognition": null,
+    "score_components": [
+      {
+        "key": "commit_burst_cadence",
+        "label": "Commit-burst cadence",
+        "contribution": 0.144
+      },
+      {
+        "key": "external_contributor_influx",
+        "label": "External-contributor influx",
+        "contribution": 0.123
+      },
+      {
+        "key": "readme_product_language_shift",
+        "label": "README product-language shift",
+        "contribution": 0.113
+      },
+      {
+        "key": "organization_formation",
+        "label": "Organization formation",
+        "contribution": 0.09
+      }
+    ],
+    "lead_time_months": null,
+    "trajectory": [
+      {
+        "month": "2024-08-01",
+        "score": 0.4305
+      },
+      {
+        "month": "2024-09-01",
+        "score": 0.4395
+      },
+      {
+        "month": "2024-10-01",
+        "score": 0.4438
+      },
+      {
+        "month": "2024-11-01",
+        "score": 0.4421
+      },
+      {
+        "month": "2024-12-01",
+        "score": 0.4362
+      },
+      {
+        "month": "2025-01-01",
+        "score": 0.43
+      },
+      {
+        "month": "2025-02-01",
+        "score": 0.4273
+      },
+      {
+        "month": "2025-03-01",
+        "score": 0.4305
+      },
+      {
+        "month": "2025-04-01",
+        "score": 0.4389
+      },
+      {
+        "month": "2025-05-01",
+        "score": 0.4491
+      },
+      {
+        "month": "2025-06-01",
+        "score": 0.4571
+      },
+      {
+        "month": "2025-07-01",
+        "score": 0.4598
+      },
+      {
+        "month": "2025-08-01",
+        "score": 0.4567
+      },
+      {
+        "month": "2025-09-01",
+        "score": 0.4502
+      },
+      {
+        "month": "2025-10-01",
+        "score": 0.4446
+      },
+      {
+        "month": "2025-11-01",
+        "score": 0.4435
+      },
+      {
+        "month": "2025-12-01",
+        "score": 0.4483
+      },
+      {
+        "month": "2026-01-01",
+        "score": 0.4575
+      },
+      {
+        "month": "2026-02-01",
+        "score": 0.4676
+      },
+      {
+        "month": "2026-03-01",
+        "score": 0.4743
+      },
+      {
+        "month": "2026-04-01",
+        "score": 0.4753
+      },
+      {
+        "month": "2026-05-01",
+        "score": 0.4709
+      },
+      {
+        "month": "2026-06-01",
+        "score": 0.4643
+      },
+      {
+        "month": "2026-07-01",
+        "score": 0.4596
+      }
+    ]
+  },
+  {
+    "gh_login": "mary-jackson-fixture",
+    "founder_name": "Mary Jackson (fixture)",
+    "company": "Flow Atlas",
+    "source": "outbound_detector",
+    "current_score": 0.39,
+    "score_percentile": 25.0,
+    "momentum_3mo": -0.06,
+    "first_detection_month": "2025-12-01",
+    "status": "candidate",
+    "recognition": {
+      "month": "2026-07",
+      "kind": "press",
+      "label": "Synthetic industry profile published"
+    },
+    "score_components": [
+      {
+        "key": "commit_burst_cadence",
+        "label": "Commit-burst cadence",
+        "contribution": 0.092
+      },
+      {
+        "key": "external_contributor_influx",
+        "label": "External-contributor influx",
+        "contribution": 0.085
+      },
+      {
+        "key": "readme_product_language_shift",
+        "label": "README product-language shift",
+        "contribution": 0.078
+      },
+      {
+        "key": "organization_formation",
+        "label": "Organization formation",
+        "contribution": 0.061
+      },
+      {
+        "key": "star_velocity",
+        "label": "Star velocity",
+        "contribution": 0.074
+      }
+    ],
+    "lead_time_months": 7,
+    "trajectory": [
+      {
+        "month": "2024-08-01",
+        "score": 0.6504
+      },
+      {
+        "month": "2024-09-01",
+        "score": 0.642
+      },
+      {
+        "month": "2024-10-01",
+        "score": 0.6276
+      },
+      {
+        "month": "2024-11-01",
+        "score": 0.609
+      },
+      {
+        "month": "2024-12-01",
+        "score": 0.59
+      },
+      {
+        "month": "2025-01-01",
+        "score": 0.5746
+      },
+      {
+        "month": "2025-02-01",
+        "score": 0.5651
+      },
+      {
+        "month": "2025-03-01",
+        "score": 0.5607
+      },
+      {
+        "month": "2025-04-01",
+        "score": 0.5582
+      },
+      {
+        "month": "2025-05-01",
+        "score": 0.5535
+      },
+      {
+        "month": "2025-06-01",
+        "score": 0.5434
+      },
+      {
+        "month": "2025-07-01",
+        "score": 0.5276
+      },
+      {
+        "month": "2025-08-01",
+        "score": 0.5084
+      },
+      {
+        "month": "2025-09-01",
+        "score": 0.4901
+      },
+      {
+        "month": "2025-10-01",
+        "score": 0.4762
+      },
+      {
+        "month": "2025-11-01",
+        "score": 0.4683
+      },
+      {
+        "month": "2025-12-01",
+        "score": 0.4648
+      },
+      {
+        "month": "2026-01-01",
+        "score": 0.4621
+      },
+      {
+        "month": "2026-02-01",
+        "score": 0.4561
+      },
+      {
+        "month": "2026-03-01",
+        "score": 0.4444
+      },
+      {
+        "month": "2026-04-01",
+        "score": 0.4273
+      },
+      {
+        "month": "2026-05-01",
+        "score": 0.4079
+      },
+      {
+        "month": "2026-06-01",
+        "score": 0.3905
+      },
+      {
+        "month": "2026-07-01",
+        "score": 0.3782
+      }
+    ]
+  },
+  {
+    "gh_login": "claude-shannon-fixture",
+    "founder_name": "Claude Shannon (fixture)",
+    "company": "Bit Garden",
+    "source": "outbound_detector",
+    "current_score": 0.31,
+    "score_percentile": 14.0,
+    "momentum_3mo": -0.03,
+    "first_detection_month": "2025-10-01",
+    "status": "candidate",
+    "recognition": {
+      "month": "2026-04",
+      "kind": "yc_batch",
+      "label": "Synthetic accelerator batch listed"
+    },
+    "score_components": [
+      {
+        "key": "commit_burst_cadence",
+        "label": "Commit-burst cadence",
+        "contribution": 0.064
+      },
+      {
+        "key": "external_contributor_influx",
+        "label": "External-contributor influx",
+        "contribution": 0.057
+      },
+      {
+        "key": "readme_product_language_shift",
+        "label": "README product-language shift",
+        "contribution": 0.052
+      },
+      {
+        "key": "organization_formation",
+        "label": "Organization formation",
+        "contribution": 0.041
+      },
+      {
+        "key": "star_velocity",
+        "label": "Star velocity",
+        "contribution": 0.05
+      },
+      {
+        "key": "release_cadence",
+        "label": "Release cadence",
+        "contribution": 0.046
+      }
+    ],
+    "lead_time_months": 6,
+    "trajectory": [
+      {
+        "month": "2024-08-01",
+        "score": 0.4474
+      },
+      {
+        "month": "2024-09-01",
+        "score": 0.4385
+      },
+      {
+        "month": "2024-10-01",
+        "score": 0.4253
+      },
+      {
+        "month": "2024-11-01",
+        "score": 0.4118
+      },
+      {
+        "month": "2024-12-01",
+        "score": 0.4019
+      },
+      {
+        "month": "2025-01-01",
+        "score": 0.3978
+      },
+      {
+        "month": "2025-02-01",
+        "score": 0.3989
+      },
+      {
+        "month": "2025-03-01",
+        "score": 0.4019
+      },
+      {
+        "month": "2025-04-01",
+        "score": 0.4026
+      },
+      {
+        "month": "2025-05-01",
+        "score": 0.398
+      },
+      {
+        "month": "2025-06-01",
+        "score": 0.3876
+      },
+      {
+        "month": "2025-07-01",
+        "score": 0.3739
+      },
+      {
+        "month": "2025-08-01",
+        "score": 0.361
+      },
+      {
+        "month": "2025-09-01",
+        "score": 0.3525
+      },
+      {
+        "month": "2025-10-01",
+        "score": 0.3501
+      },
+      {
+        "month": "2025-11-01",
+        "score": 0.3521
+      },
+      {
+        "month": "2025-12-01",
+        "score": 0.3549
+      },
+      {
+        "month": "2026-01-01",
+        "score": 0.3543
+      },
+      {
+        "month": "2026-02-01",
+        "score": 0.348
+      },
+      {
+        "month": "2026-03-01",
+        "score": 0.3364
+      },
+      {
+        "month": "2026-04-01",
+        "score": 0.3225
+      },
+      {
+        "month": "2026-05-01",
+        "score": 0.3105
+      },
+      {
+        "month": "2026-06-01",
+        "score": 0.3037
+      },
+      {
+        "month": "2026-07-01",
+        "score": 0.3027
+      }
+    ]
+  }
+]

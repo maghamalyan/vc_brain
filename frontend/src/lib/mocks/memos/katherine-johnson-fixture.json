@@ -1,0 +1,128 @@
+{
+  "company": "Orbital Ledger",
+  "founder_logins": [
+    "katherine-johnson-fixture"
+  ],
+  "generated_at": "2026-07-19T06:38:00+04:00",
+  "sections": {
+    "company_snapshot": {
+      "text": "Inbound seed-stage workflow software for regulated operations teams.",
+      "claim_ids": [
+        "kj-product",
+        "kj-partners"
+      ]
+    },
+    "investment_hypotheses": [
+      {
+        "text": "Design-partner demand could support a focused compliance workflow wedge if contracts corroborate the deck.",
+        "claim_ids": [
+          "kj-partners"
+        ]
+      }
+    ],
+    "swot": {
+      "strengths": [
+        {
+          "text": "The deck presents a sharply bounded buyer and workflow.",
+          "claim_ids": [
+            "kj-product"
+          ]
+        }
+      ],
+      "weaknesses": [
+        {
+          "text": "Commercial evidence is currently founder-supplied only.",
+          "claim_ids": [
+            "kj-partners"
+          ]
+        }
+      ],
+      "opportunities": [
+        {
+          "text": "Regulated operations remain burdened by manual reconciliation.",
+          "claim_ids": [
+            "kj-product"
+          ]
+        }
+      ],
+      "risks": [
+        {
+          "text": "Market sizing lacks source notes.",
+          "claim_ids": [
+            "kj-market"
+          ]
+        }
+      ]
+    },
+    "problem_product": {
+      "text": "Orbital Ledger proposes a shared reconciliation layer for regulated operations.",
+      "claim_ids": [
+        "kj-product"
+      ]
+    },
+    "traction_kpis": {
+      "text": "The deck claims three paid design partners; contracts are not supplied.",
+      "claim_ids": [
+        "kj-partners"
+      ]
+    }
+  },
+  "claims": {
+    "kj-product": {
+      "text": "The deck describes workflow software for regulated operations teams.",
+      "evidence_refs": [
+        "fx-3ee1a7c8502893"
+      ],
+      "confidence": 0.73,
+      "verification_status": "single_source",
+      "contradictions": []
+    },
+    "kj-partners": {
+      "text": "The deck claims three paid design partners.",
+      "evidence_refs": [
+        "fx-d87311d7e462f3"
+      ],
+      "confidence": 0.56,
+      "verification_status": "single_source",
+      "contradictions": []
+    },
+    "kj-market": {
+      "text": "The deck presents an addressable-market estimate without source notes.",
+      "evidence_refs": [
+        "fx-77cc903aacee68"
+      ],
+      "confidence": 0.42,
+      "verification_status": "unverified",
+      "contradictions": []
+    }
+  },
+  "gaps": [
+    "Design-partner contracts: not supplied.",
+    "Market estimate sources: not disclosed.",
+    "Founder ownership: not disclosed."
+  ],
+  "three_axis": {
+    "founder": {
+      "score": 7.7,
+      "trend": "improving",
+      "claim_ids": [
+        "kj-partners"
+      ]
+    },
+    "market": {
+      "score": 5.8,
+      "trend": "stable",
+      "claim_ids": [
+        "kj-market"
+      ]
+    },
+    "idea_vs_market": {
+      "score": 6.5,
+      "trend": "stable",
+      "claim_ids": [
+        "kj-product",
+        "kj-partners"
+      ]
+    }
+  }
+}
