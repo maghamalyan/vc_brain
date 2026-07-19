@@ -126,3 +126,20 @@ Seed 42, 25 rows spanning W22..P26 batches incl. training cohort: 25/25 correct 
 
 ## 2026-07-19 06:11 — First REAL end-to-end result (partial cohort)
 Eval null gate FIRED on run2 (global shuffled-label PR-AUC 0.098 vs 0.054 limit) — Claude diagnosed calendar-composition artifact; switched primary metric + null gate to within-month macro PR-AUC. Corrected results (704 test founders, partial labels): within-month PR-AUC 0.174 vs null 0.153 (base 0.094) — real but thin person-level lift; ROC 0.734; precision@50 0.32 (1.3x). Detection rate 71% but most detections censored at panel start (propensity, not rising intent) — presentation fix delegated to Codex. Score exports passed the gate; real site built; 3 real OpenRouter memos generated (evidence-grounded, gaps flagged). Final full-cohort run pending resolution completion.
+
+## 2026-07-19 06:15 +04 — Backtest lead-time cohort correction
+
+Replaced the misleading aggregate lead-time headline with two explicit cohorts. Of 503
+detected founders, 307 (61%) were already over the same-month 99th control percentile
+at the first panel month and are now labeled as boundary-censored with true lead of at
+least 48 months. The 196 founders whose signal emerged later now supply the dynamic
+headline: median 15 months before YC, IQR 14–16 months. Displayed examples determine
+their first panel month from each founder's earliest trajectory row, and censored cards
+show `≥48` rather than an exact 48-month lead.
+
+Added the case-control panel prevalence (~25%) versus population-base-rate caveat and
+the pointer to calibrated probabilities in the eval report. Fixture-backed regression
+coverage exercises both cohorts and the rendered wording. Verification: `uv run pytest
+-q` → 67 passed (27 upstream joblib/NumPy deprecation warnings); `uv run ruff check src
+tests` → clean; touched-file `ruff format --check` and `git diff --check` → clean. The
+real offline dashboard was rebuilt with `--real` after verification.

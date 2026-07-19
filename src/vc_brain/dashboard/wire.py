@@ -16,6 +16,7 @@ from vc_brain.memo.schema import Memo
 
 TEST_COHORT_START = date(2024, 1, 1)
 BACKTEST_EXAMPLE_LIMIT = 10
+BACKTEST_WINDOW_MONTHS = 48
 
 CANDIDATE_COLUMNS = {
     "gh_login",
@@ -55,6 +56,7 @@ class BacktestFounder:
     batch_start: date
     detection_month: date
     lead_months: int
+    high_propensity_from_start: bool
     current_score: float
     trajectory: list[dict[str, Any]]
 
@@ -66,8 +68,11 @@ class BacktestSummary:
     detected: int
     total_test_founders: int
     detection_rate: float
-    median_lead_months: float | None
-    lead_months_iqr: tuple[float, float] | None
+    window_start_detected: int
+    window_start_share: float
+    rising_signal_detected: int
+    rising_median_lead_months: float | None
+    rising_lead_months_iqr: tuple[float, float] | None
     threshold: str
     founders: list[BacktestFounder]
 
@@ -375,6 +380,17 @@ def _real_backtest(
         detection = _as_date(
             candidate["first_detection_month"], "first_detection_month"
         )
+        trajectory = sorted(by_login[login], key=lambda row: _iso(row["month"]))
+        first_panel_month = (
+            min(_as_date(row["month"], "trajectory month") for row in trajectory)
+            if trajectory
+            else _add_months(batch_start, -BACKTEST_WINDOW_MONTHS)
+        )
+        if detection < first_panel_month:
+            raise DashboardWiringError(
+                "Invalid scores/candidates.parquet: first detection for "
+                f"{login!r} precedes the founder's first panel month"
+            )
         founders.append(
             BacktestFounder(
                 gh_login=login,
@@ -384,22 +400,33 @@ def _real_backtest(
                 batch_start=batch_start,
                 detection_month=detection,
                 lead_months=_month_distance(batch_start, detection),
+                high_propensity_from_start=detection == first_panel_month,
                 current_score=float(candidate["current_score"]),
-                trajectory=sorted(by_login[login], key=lambda row: _iso(row["month"])),
+                trajectory=trajectory,
             )
         )
 
-    iqr = lead.get("lead_months_iqr")
+    lead_months = _validated_lead_months(lead, detected)
+    window_start_detected = sum(
+        value == BACKTEST_WINDOW_MONTHS for value in lead_months
+    )
+    rising_leads = [value for value in lead_months if value < BACKTEST_WINDOW_MONTHS]
+    rising_quartiles = (
+        tuple(_percentile(rising_leads, quantile) for quantile in (0.25, 0.5, 0.75))
+        if rising_leads
+        else None
+    )
     return BacktestSummary(
         detected=detected,
         total_test_founders=total,
         detection_rate=detection_rate,
-        median_lead_months=(
-            float(lead["lead_months_median"])
-            if lead.get("lead_months_median") is not None
-            else None
+        window_start_detected=window_start_detected,
+        window_start_share=(window_start_detected / detected if detected else 0.0),
+        rising_signal_detected=len(rising_leads),
+        rising_median_lead_months=(rising_quartiles[1] if rising_quartiles else None),
+        rising_lead_months_iqr=(
+            (rising_quartiles[0], rising_quartiles[2]) if rising_quartiles else None
         ),
-        lead_months_iqr=(float(iqr[0]), float(iqr[1])) if iqr else None,
         threshold=threshold,
         founders=founders,
     )
@@ -413,7 +440,7 @@ def _load_report(path: Path) -> dict[str, Any]:
             "detected",
             "total_test_founders",
             "detection_rate",
-            "lead_months_median",
+            "lead_months",
             "threshold",
         ):
             lead[field]
@@ -456,6 +483,50 @@ def _as_date(value: Any, field: str) -> date:
 
 def _month_distance(later: date, earlier: date) -> int:
     return (later.year - earlier.year) * 12 + later.month - earlier.month
+
+
+def _add_months(value: date, months: int) -> date:
+    index = value.year * 12 + value.month - 1 + months
+    return date(index // 12, index % 12 + 1, 1)
+
+
+def _validated_lead_months(lead: dict[str, Any], detected: int) -> list[int]:
+    values = lead["lead_months"]
+    if not isinstance(values, list):
+        raise DashboardWiringError(
+            "Invalid eval/report.json: lead_time.lead_months must be a list"
+        )
+    try:
+        lead_months = [int(value) for value in values]
+    except (TypeError, ValueError) as exc:
+        raise DashboardWiringError(
+            "Invalid eval/report.json: lead_time.lead_months must contain integers"
+        ) from exc
+    if any(
+        float(raw) != parsed for raw, parsed in zip(values, lead_months, strict=True)
+    ):
+        raise DashboardWiringError(
+            "Invalid eval/report.json: lead_time.lead_months must contain integers"
+        )
+    if len(lead_months) != detected:
+        raise DashboardWiringError(
+            "Invalid eval/report.json: lead_time.lead_months count does not equal "
+            "lead_time.detected"
+        )
+    if any(value < 0 or value > BACKTEST_WINDOW_MONTHS for value in lead_months):
+        raise DashboardWiringError(
+            "Invalid eval/report.json: lead times must fall within the 48-month window"
+        )
+    return lead_months
+
+
+def _percentile(values: list[int], quantile: float) -> float:
+    ordered = sorted(values)
+    index = (len(ordered) - 1) * quantile
+    lower = int(index)
+    upper = min(lower + 1, len(ordered) - 1)
+    weight = index - lower
+    return ordered[lower] * (1.0 - weight) + ordered[upper] * weight
 
 
 def _iso(value: Any) -> str:

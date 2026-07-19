@@ -96,9 +96,8 @@ def _write_real_contract(root: Path, *, founder_count: int = 7) -> None:
             lead = 48
         else:
             lead = dynamic_leads[(index - 3) % len(dynamic_leads)]
-            detection = date(2025 - lead // 12, 1 - lead % 12 or 12, 1)
-            if lead % 12:
-                detection = date(2024 - lead // 12, 13 - lead % 12, 1)
+            detection_index = batch_start.year * 12 + batch_start.month - 1 - lead
+            detection = date(detection_index // 12, detection_index % 12 + 1, 1)
         lead_months.append(lead)
         candidates.append(
             {
@@ -187,7 +186,9 @@ def test_real_wiring_builds_honest_backtest_and_real_evidence(tmp_path: Path) ->
     assert inputs.backtest.rising_signal_detected == 4
     assert inputs.backtest.rising_median_lead_months == 15.0
     assert inputs.backtest.rising_lead_months_iqr == (13.5, 16.5)
-    assert [founder.high_propensity_from_start for founder in inputs.backtest.founders] == [
+    assert [
+        founder.high_propensity_from_start for founder in inputs.backtest.founders
+    ] == [
         True,
         True,
         True,
@@ -221,7 +222,10 @@ def test_real_wiring_builds_honest_backtest_and_real_evidence(tmp_path: Path) ->
     assert "15 months" in backtest_html
     assert "IQR 13.5–16.5 months" in backtest_html
     assert "Median lead time" not in backtest_html
-    assert "Panel prevalence is case-control (~25%), not population base rate" in backtest_html
+    assert (
+        "Panel prevalence is case-control (~25%), not population base rate"
+        in backtest_html
+    )
     assert "calibrated probabilities live in the eval report" in backtest_html
     assert "Real Founder 0" in backtest_html
     assert backtest_html.count("data-backtest-founder") == 7

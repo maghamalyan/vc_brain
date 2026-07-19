@@ -170,34 +170,58 @@ def _fixture_backtest(
         if candidate["source"] == "outbound_detector"
         and candidate.get("first_detection_month")
     ]
-    founders: list[BacktestFounder] = []
-    for candidate in detected[:8]:
+    all_founders: list[BacktestFounder] = []
+    for candidate in detected:
+        login = str(candidate["gh_login"])
         detection = date.fromisoformat(str(candidate["first_detection_month"])[:10])
-        batch_start = _add_months(detection, 12)
-        founders.append(
+        trajectory = by_login.get(login, [])
+        first_panel_month = min(
+            date.fromisoformat(str(row["month"])[:10]) for row in trajectory
+        )
+        batch_start = _add_months(first_panel_month, 48)
+        all_founders.append(
             BacktestFounder(
-                gh_login=str(candidate["gh_login"]),
+                gh_login=login,
                 founder_name=str(candidate["founder_name"]),
                 company=str(candidate["company"]),
                 batch="fixture cohort",
                 batch_start=batch_start,
                 detection_month=detection,
-                lead_months=12,
+                lead_months=_month_distance(batch_start, detection),
+                high_propensity_from_start=detection == first_panel_month,
                 current_score=float(candidate["current_score"]),
-                trajectory=by_login.get(str(candidate["gh_login"]), []),
+                trajectory=trajectory,
             )
         )
     total = sum(candidate["source"] == "outbound_detector" for candidate in candidates)
+    window_start_detected = sum(
+        founder.high_propensity_from_start for founder in all_founders
+    )
+    rising_leads = [
+        founder.lead_months
+        for founder in all_founders
+        if not founder.high_propensity_from_start
+    ]
+    rising_quartiles = (
+        tuple(_percentile(rising_leads, quantile) for quantile in (0.25, 0.5, 0.75))
+        if rising_leads
+        else None
+    )
     return BacktestSummary(
         detected=len(detected),
         total_test_founders=total,
         detection_rate=len(detected) / total if total else 0.0,
-        median_lead_months=12.0 if detected else None,
-        lead_months_iqr=(12.0, 12.0) if detected else None,
+        window_start_detected=window_start_detected,
+        window_start_share=(window_start_detected / len(detected) if detected else 0.0),
+        rising_signal_detected=len(rising_leads),
+        rising_median_lead_months=(rising_quartiles[1] if rising_quartiles else None),
+        rising_lead_months_iqr=(
+            (rising_quartiles[0], rising_quartiles[2]) if rising_quartiles else None
+        ),
         threshold=(
             "99th percentile of synthetic control scores in the same calendar month"
         ),
-        founders=founders,
+        founders=all_founders[:8],
     )
 
 
@@ -289,6 +313,7 @@ def _backtest_view(backtest: BacktestSummary) -> dict[str, Any]:
                 "batch_start": founder.batch_start,
                 "detection_month": founder.detection_month,
                 "lead_months": founder.lead_months,
+                "high_propensity_from_start": founder.high_propensity_from_start,
                 "current_score": round(founder.current_score * 100),
                 "chart": _backtest_trajectory_chart(founder),
             }
@@ -297,12 +322,19 @@ def _backtest_view(backtest: BacktestSummary) -> dict[str, Any]:
         "detected": backtest.detected,
         "total_test_founders": backtest.total_test_founders,
         "detection_rate": round(backtest.detection_rate * 100),
-        "median_lead_months": (
-            _number(backtest.median_lead_months)
-            if backtest.median_lead_months is not None
+        "window_start_detected": backtest.window_start_detected,
+        "window_start_share": round(backtest.window_start_share * 100),
+        "rising_signal_detected": backtest.rising_signal_detected,
+        "rising_median_lead_months": (
+            _number(backtest.rising_median_lead_months)
+            if backtest.rising_median_lead_months is not None
             else None
         ),
-        "lead_months_iqr": backtest.lead_months_iqr,
+        "rising_lead_months_iqr": (
+            tuple(_number(value) for value in backtest.rising_lead_months_iqr)
+            if backtest.rising_lead_months_iqr
+            else None
+        ),
         "threshold": backtest.threshold,
         "founders": founders,
     }
@@ -464,6 +496,19 @@ def _remove_generated(path: Path, pattern: str) -> None:
 def _add_months(value: date, months: int) -> date:
     index = value.year * 12 + value.month - 1 + months
     return date(index // 12, index % 12 + 1, 1)
+
+
+def _month_distance(later: date, earlier: date) -> int:
+    return (later.year - earlier.year) * 12 + later.month - earlier.month
+
+
+def _percentile(values: list[int], quantile: float) -> float:
+    ordered = sorted(values)
+    index = (len(ordered) - 1) * quantile
+    lower = int(index)
+    upper = min(lower + 1, len(ordered) - 1)
+    weight = index - lower
+    return ordered[lower] * (1.0 - weight) + ordered[upper] * weight
 
 
 def _number(value: float) -> int | float:
