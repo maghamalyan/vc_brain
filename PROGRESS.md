@@ -298,3 +298,29 @@ leakage warning in data/graph/README.md. Writeup with examples
 new_strong_tie_onset integration notes: docs/exploration/secondhop_graph.md.
 Verification: `uv run pytest -q` -> 97 passed; `uv run ruff check` clean on new
 files. No commit created.
+
+## 2026-07-19 — Demo-scale temporal attention GNN (TGAT-flavored, Pillar-2 pilot)
+
+New self-contained experiment in `scripts/gnn/` (dataset.py, model.py, run.py);
+no src/ or site/ file touched; `uv add torch` (2.13.0) was the only new
+dependency. Built a temporal bipartite actor–repo ego-graph from local parquet
+only (items.parquet + repo_creations: 406,035 edges, 1,920 Cohort-D people),
+sampled the exact main-panel months/labels (hazard_label, B-48..B-12) under the
+train.py temporal_split rules with a hard edge<t leakage assert. Model: 61,213-
+param ego-graph attention (event-type embedding + TGAT functional time encoding,
+1 self-attention block + actor-query attention pooling); trained in ~13 s on MPS,
+config chosen on validation PR-AUC only.
+
+Honest test result (batch >= 2024; 25,892 rows, 972 pos, GBDT trajectories cover
+all rows): GNN pooled PR-AUC 0.202 vs GBDT 0.379 (ROC 0.763 vs 0.879); within-
+month mean PR-AUC 0.294 vs 0.433 (32 months); matched-group P(rank=1) 0.362 vs
+0.447 on 141 groups (chance 0.258). The GNN loses everywhere, as predicted at
+this scale — it stays an appendix per the research program. The demo artifact
+landed: `data/gnn/attention/<login>.json` for 5 test founders +
+`data/gnn/attention_demo.html` — aluzzardi's attention migrates from
+docker/swarmkit to dagger/dagger + own dagger repos (own-repo attention share
+0.00 -> 0.65) as founding approaches. Writeup with limitations (ego-graph only,
+capped edge stream, attention != explanation) in
+`docs/exploration/temporal_gnn.md`; metrics in `data/gnn/metrics.json`.
+Verification: `uv run pytest -q` -> 97 passed; `uv run ruff check scripts/gnn` ->
+clean. No commit created.
