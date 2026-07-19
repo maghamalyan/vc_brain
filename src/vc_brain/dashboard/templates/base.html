@@ -15,7 +15,8 @@
         <span>VC Brain</span>
       </a>
       <nav class="topnav" aria-label="Primary navigation">
-        <a class="active" href="{{ asset_prefix }}index.html">Opportunity radar</a>
+        <a{% if current_page == "radar" %} class="active"{% endif %} href="{{ asset_prefix }}index.html">Opportunity radar</a>
+        <a{% if current_page == "backtest" %} class="active"{% endif %} href="{{ asset_prefix }}backtest.html">Backtest</a>
         <span class="nav-muted">Evidence room</span>
       </nav>
       {% if synthetic %}

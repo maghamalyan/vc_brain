@@ -68,8 +68,13 @@
           <article class="memo" id="investment-memo" aria-labelledby="memo-title">
             <div class="memo-heading">
               <div><p class="eyebrow">Decision brief · {{ memo.generated_at | datetime }}</p><h2 id="memo-title">Investment memo</h2></div>
-              <div class="trust-legend" aria-label="Trust status legend">
-                <span><i class="verified"></i>Verified</span><span><i class="single-source"></i>Single source</span><span><i class="unverified"></i>Unverified</span>
+              <div class="memo-actions">
+{% if memo_link %}
+                <a class="memo-source-link" href="{{ memo_link }}">Open source memo JSON ↗</a>
+{% endif %}
+                <div class="trust-legend" aria-label="Trust status legend">
+                  <span><i class="verified"></i>Verified</span><span><i class="single-source"></i>Single source</span><span><i class="unverified"></i>Unverified</span>
+                </div>
               </div>
             </div>
 
@@ -139,7 +144,7 @@
 
         <section class="panel profile-panel">
           <p class="eyebrow">Opportunity profile</p><h2>At a glance</h2>
-          <dl><div><dt>Sector</dt><dd>{{ candidate.sector }}</dd></div><div><dt>Stage</dt><dd>{{ candidate.stage }}</dd></div><div><dt>Geography</dt><dd>{{ candidate.geography }}</dd></div><div><dt>Score percentile</dt><dd>{{ candidate.score_percentile | round | int }}th</dd></div></dl>
+          <dl><div><dt>Sector</dt><dd>{{ candidate.sector }}</dd></div><div><dt>Stage</dt><dd>{{ candidate.stage }}</dd></div><div><dt>Geography</dt><dd>{{ candidate.geography }}</dd></div><div><dt>Score percentile</dt><dd>{{ candidate.score_percentile_display | round | int }}th</dd></div></dl>
         </section>
 
         <section class="panel evidence-panel" id="evidence-timeline" aria-labelledby="evidence-title">

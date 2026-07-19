@@ -99,3 +99,24 @@ Also: Claude diagnosed resolution bottleneck (serial HTTP, not rate limits; both
 
 ## 2026-07-19 04:35 — Resolution crash fixed
 Process died at 2050/10854 on ValueError from urlparse of a founder blog field containing the literal string [object Object]. Patched normalize_domain with try/except + regression test; restarted from checkpoint. Watchdog re-armed.
+
+## 2026-07-19 05:38 +04 — Real dashboard wiring and held-out backtest
+
+Added validated real-data dashboard assembly from P4 score exports, held-out eval
+metrics, YC founder labels, and repository-creation evidence. Real candidates are
+restricted to outbound test-cohort founders (batch start in 2024 or later), display
+identity comes from labels, and evidence links point to the corresponding GitHub
+repository or YC company page. Existing top-three memo JSON files are copied and linked
+without invoking an LLM.
+
+Added the offline `backtest.html` experience with aggregate median lead time and honest
+full-cohort detection rate, strongest-detection example trajectories, eval-emitted
+detection markers, actual YC batch markers, and explicit retrospective/out-of-time
+labeling. `--fixtures` still builds the complete synthetic site; `--real` validates all
+inputs first and currently exits with the expected missing model-output list.
+
+Verification: `uv run pytest -q` → 67 passed (27 upstream joblib/NumPy deprecation
+warnings); `uv run ruff check src tests` → clean; changed dashboard/test files pass
+`ruff format --check`; `git diff --check` → clean. Repository-wide format checking still
+reports 20 pre-existing drifts outside this task, including prohibited paths, which were
+left untouched.
