@@ -126,6 +126,7 @@ def test_fixture_cli_features_train_eval_produces_complete_report(
         "levels_only",
         "levels_plus_dynamics",
         "levels_plus_dynamics_plus_traction",
+        "all_minus_tenure",
     }
     assert report["feature_importance_review_required"] is True
     assert len(report["top_feature_importances"]) <= 20
