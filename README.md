@@ -2,7 +2,7 @@
 
 VC Brain is a sourcing-first MVP for finding potential founders before conventional venture signals exist. It covers the brief's sourcing-to-decision path, but concentrates the build where the brief says the cold-start problem matters most: the public activity of a person who has no fundable company, financing history, or recognized founder track record yet.
 
-The thesis is: **watch PUBLIC BEHAVIOR BEFORE ANY TRACK RECORD EXISTS**. The Memory layer starts with person-level GitHub event streams from GH Archive through the public ClickHouse playground. A 10,854-row Y Combinator founder dataset supplies retrospective labels; the current partial run resolves 996 GitHub handles at the precision threshold. A discrete-time hazard model then asks, month by month, whether the observed behavior precedes an estimated six-month founding-gestation window.
+The thesis is: **watch PUBLIC BEHAVIOR BEFORE ANY TRACK RECORD EXISTS**. The Memory layer starts with person-level GitHub event streams from GH Archive through the public ClickHouse playground. A 10,854-row Y Combinator founder dataset supplies retrospective labels; the full overnight run resolved 2,052 GitHub handles at the precision threshold, spanning batches from 2012 through 2027. A discrete-time hazard model then asks, month by month, whether the observed behavior precedes an estimated six-month founding-gestation window.
 
 The resulting [“we found them first” backtest](site/backtest.html) is our direct attempt at the brief's Area of Research 3: test how much public footprints predict later founder recognition. It uses an out-of-time split—development cohorts through 2023, test batches from 2024 onward—and reports when a held-out founder first crosses the same-month 99th percentile of control scores. This is a retrospective experiment, not evidence of prospective deployment performance.
 
@@ -26,23 +26,22 @@ The outbound detector supplies a persistent founder signal and event evidence. T
 
 ## Honest results
 
-These are the current partial-cohort outputs from [report.md](data/eval/report.md) and [report.json](data/eval/report.json). The held-out pool contains 2,834 people, including 704 labeled founders; its 24.8% case-control prevalence is not a deployment base rate.
+These are the final full-cohort outputs from [report.md](data/eval/report.md) and [report.json](data/eval/report.json). Development panels contain ~315k person-months (tuning through 2022, validation on 2023); the held-out pool contains 2,765 people, including 690 labeled founders with 2024+ batches; its ~25% case-control prevalence is not a deployment base rate.
 
-**Run status: partial cohort. Metrics update automatically on the final full-cohort run** in the generated evaluation and backtest artifacts; this README records the current run.
-
-| Measurement | Current result | Interpretation |
+| Measurement | Final result | Interpretation |
 | --- | ---: | --- |
-| Selected LightGBM within-month PR-AUC | **0.1739** | Above the shuffled-label null of 0.1534 and within-month base of 0.0942, but the margin over the null is thin. |
-| Logistic within-month PR-AUC | **0.1885** | The simpler baseline beat selected LightGBM on this held-out metric. LightGBM had been selected without test access because it beat logistic by 36.5% on 2023 validation. |
-| LightGBM global PR-AUC / ROC-AUC | **0.1061 / 0.7343** | Global person-month PR-AUC is secondary because it mixes calendar composition; logistic was 0.1035 / 0.7662. |
-| Precision@50 | **0.320 (16/50)** | About 1.29x the sampled person-level prevalence of 0.248; this is ranking utility within the case-control pool, not calibrated deployment precision. |
-| Detection rate | **71.4% (503/704)** | A detection means crossing the same-month 99th control-score percentile. Undetected founders remain in the denominator; the dashboard shows the strongest detections, not a random sample. |
-| Boundary-censored detections | **61% (307/503)** | These founders were already above threshold in the first observed month. Their true lead is at least 48 months, so the experiment cannot identify when their signal began. This is persistent propensity, not evidence of a new rise. |
-| Rising-signal detections | **196 founders; median 15 months** | For signals that first crossed the threshold inside the window, median lead to the YC batch was 15 months, with IQR 14–16 months. |
+| Selected LightGBM within-month PR-AUC | **0.2418** | 2.5x the within-month base of 0.0951, and well above the shuffled-label null of 0.1327 (limit 0.1901). The earlier partial-cohort margin was thin; the full training set separated it. |
+| Logistic within-month PR-AUC | **0.1819** | LightGBM's validation-time selection (no test access) is confirmed on test with the full cohort. |
+| LightGBM global PR-AUC / ROC-AUC | **0.1581 / 0.782** | Global person-month PR-AUC is secondary because it mixes calendar composition. |
+| Precision@50 | **0.50 (25/50)** | 2.0x the sampled person-level prevalence of 0.25; ranking utility within the case-control pool, not calibrated deployment precision. |
+| Detection rate | **72.3% (499/690)** | A detection means crossing the same-month 99th control-score percentile. Undetected founders remain in the denominator. |
+| Boundary-censored detections | **75% (375/499)** | Already above threshold in the first observed month: persistent propensity with true lead of at least 48 months, not a new rise. |
+| Rising-signal detections | **124 founders; median 15 months** | For signals first crossing the threshold inside the window, median lead to the YC batch was 15 months, IQR 14–17. |
+| Tenure ablation | **global PR-AUC 0.1581 → 0.0628 without `tenure_months`** | Account tenure carries 74.5% of model gain. The detector is substantially "maturity + consistency + received attention"; activity dynamics contribute, but tenure is the workhorse and we say so. |
 
 ### Why the null is within-month
 
-The mandatory null run shuffles development labels within each calendar month with seed 18, retrains the model, and leaves held-out test labels unchanged as the oracle. Its within-month PR-AUC is 0.1534 against a configured maximum of 0.1885 and a within-month base of 0.0942, so the gate passes. The null remains above base; the README therefore describes the observed lift as thin.
+The mandatory null run shuffles development labels within each calendar month with seed 18, retrains the model, and leaves held-out test labels unchanged as the oracle. On the final cohort its within-month PR-AUC is 0.1327 against a configured maximum of 0.1901 and a within-month base of 0.0951, so the gate passes with real margin. The null still sits above base — panel structure retains residual person-level correlates (notably tenure) that shuffling cannot fully remove — which is why the tenure ablation is reported alongside.
 
 An earlier global null gate fired: even shuffled labels produced global PR-AUC 0.098 because the panel's founder/control composition changes across calendar months. A model could exploit that calendar composition without learning person-level separation. We replaced the gate and primary metric with macro within-month PR-AUC, which ranks founders against controls in the same month, and retained global PR-AUC in the report for transparency. Catching and removing this artifact is part of the product's trust story: the system reports a weaker defensible result instead of preserving a stronger invalid one.
 

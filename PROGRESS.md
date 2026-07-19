@@ -143,3 +143,6 @@ coverage exercises both cohorts and the rendered wording. Verification: `uv run 
 -q` → 67 passed (27 upstream joblib/NumPy deprecation warnings); `uv run ruff check src
 tests` → clean; touched-file `ruff format --check` and `git diff --check` → clean. The
 real offline dashboard was rebuilt with `--real` after verification.
+
+## 2026-07-19 08:15 — FINAL FULL-COHORT RUN VERIFIED (Claude)
+All 10,854 founders resolved; 2,052 confident links. Final held-out results (690 test founders, 2,765 people): within-month PR-AUC 0.2418 vs null 0.1327 (base 0.0951) — gate passed with margin; LightGBM selection vindicated on test (logistic 0.1819); precision@50 0.50 (2x prevalence); detection 72%; 75% boundary-censored (propensity) vs 124 rising-signal founders at median 15mo lead (IQR 14-17). Tenure ablation: global 0.158->0.063 without tenure (74.5% of gain) — reported honestly. Two more leakage-guard catches during finale (case-insensitive founder exclusion; 408 batch bisection) — both fixed with tests. README updated to final numbers; real site + backtest rebuilt; memos generated for final top-3 (Wordware, Amby Health, Blaxel). 67 tests green.
