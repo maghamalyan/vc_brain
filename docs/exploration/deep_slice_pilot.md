@@ -67,10 +67,11 @@ INT/NOISE class — utility-precision is higher still.
 
 **But binary AUC vs YC-only labels barely moves** (0.558 vs peak baseline
 0.575), and the reason is the finding: among *genuine top-region YC founders*,
-only **45/149 (30%)** read as `own_product_building` pre-batch; 23 are in
-coursework, 33 in employment-shaped work, 25 in OSS contribution, 16 in
-research. Public product-gestation is observable for only ~a third of founders
-even in the high-activity region — the research program's "observability
+only **37/149 (24.8%)** read as `own_product_building` pre-batch (corrected
+2026-07-19 by the wave-2 full-cohort pod — this doc originally said 45/149/30%,
+a tally error); 23 are in coursework, 33 in employment-shaped work, 25 in OSS
+contribution, 16 in research. Public product-gestation is observable for only
+~a quarter of founders even in the high-activity region — the research program's "observability
 boundary," now measured. Meanwhile 37/186 controls DO read as product-builders,
 and the portrait says exactly who those are: unlabeled founders and meet-worthy
 near-founders. The instrument's ceiling against YC-only labels is set by label

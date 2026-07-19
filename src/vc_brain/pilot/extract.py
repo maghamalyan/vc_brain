@@ -12,7 +12,6 @@ import io
 import logging
 import time
 from collections.abc import Sequence
-from pathlib import Path
 from typing import Any
 
 import httpx
@@ -27,6 +26,10 @@ PLAYGROUND_URL = "https://play.clickhouse.com/"
 PILOT_DIR = DATA_ROOT / "pilot"
 PILOT_COHORT_PATH = PILOT_DIR / "pilot_cohort.parquet"
 TEXT_EVENTS_PATH = PILOT_DIR / "text_events.parquet"
+FULL_COHORT_PATH = PILOT_DIR / "full_cohort.parquet"
+FULL_TEXT_EVENTS_PATH = PILOT_DIR / "full_text_events.parquet"
+PANEL_PATH = DATA_ROOT / "features_panel_main.parquet"
+TRAJECTORIES_PATH = DATA_ROOT / "scores" / "trajectories.parquet"
 CACHE_DIR = DATA_ROOT / "cache" / "pilot"
 # Each batch query full-scans actor_login regardless of batch size, so fewer
 # batches = less quota; 408-bisect recovers if a batch's result is too slow.
@@ -151,28 +154,93 @@ def fetch_batch(
     return frame
 
 
+def _fetch_cohort_events(
+    client: httpx.Client, cohort: pl.DataFrame, label: str
+) -> list[pl.DataFrame]:
+    """Fetch a cohort's events serially in gh_login-sorted BATCH_SIZE batches."""
+    actors = cohort.sort("gh_login").select("gh_login", "t_cutoff").to_dicts()
+    frames: list[pl.DataFrame] = []
+    for start in range(0, len(actors), BATCH_SIZE):
+        batch = actors[start : start + BATCH_SIZE]
+        frames.append(fetch_batch(client, batch))
+        LOGGER.info(
+            "%s progress %d/%d actors, %d rows so far",
+            label,
+            min(start + BATCH_SIZE, len(actors)),
+            len(actors),
+            sum(f.height for f in frames),
+        )
+        time.sleep(0.5)
+    return frames
+
+
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
-    cohort = pl.read_parquet(PILOT_COHORT_PATH).sort("gh_login")
-    actors = cohort.select("gh_login", "t_cutoff").to_dicts()
-    frames = []
+    cohort = pl.read_parquet(PILOT_COHORT_PATH)
     with httpx.Client(timeout=httpx.Timeout(180.0)) as client:
-        for start in range(0, len(actors), BATCH_SIZE):
-            batch = actors[start : start + BATCH_SIZE]
-            frame = fetch_batch(client, batch)
-            frames.append(frame)
-            LOGGER.info(
-                "progress %d/%d actors, %d rows so far",
-                min(start + BATCH_SIZE, len(actors)),
-                len(actors),
-                sum(f.height for f in frames),
-            )
-            time.sleep(0.5)
+        frames = _fetch_cohort_events(client, cohort, "pilot")
     events = pl.concat([f for f in frames if f.height], how="diagonal_relaxed")
     atomic_write_parquet(events, TEXT_EVENTS_PATH)
     print(f"wrote {events.height:,} rows for {events['actor_login'].n_unique()} actors")
     print(events.group_by("event_type").len().sort("len", descending=True))
 
 
+def build_full_cohort() -> pl.DataFrame:
+    """All scored actors: panel identity/cutoff columns + trajectory peak.
+
+    Pilot stratum/quartile are carried over where the pilot overlaps so the
+    original strata remain reconstructible from the full cohort.
+    """
+    actors = (
+        pl.read_parquet(PANEL_PATH)
+        .select("gh_login", "person_type", "t_cutoff", "match_group_id")
+        .unique()
+    )
+    peaks = (
+        pl.read_parquet(TRAJECTORIES_PATH)
+        .group_by("gh_login")
+        .agg(pl.col("score").max().alias("peak"))
+    )
+    pilot = pl.read_parquet(PILOT_COHORT_PATH).select(
+        "gh_login", "stratum", "quartile"
+    )
+    cohort = (
+        actors.join(peaks, on="gh_login", how="inner")
+        .join(pilot, on="gh_login", how="left")
+        .sort("gh_login")
+    )
+    atomic_write_parquet(cohort, FULL_COHORT_PATH)
+    return cohort
+
+
+def main_full() -> None:
+    """Extract text events for the full scored cohort.
+
+    The pilot cohort is fetched with its original batching first (pure cache
+    hits); only actors outside the pilot cost fresh playground quota.
+    """
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+    cohort = build_full_cohort()
+    pilot = pl.read_parquet(PILOT_COHORT_PATH)
+    remaining = cohort.filter(
+        ~pl.col("gh_login").is_in(pilot["gh_login"].implode())
+    )
+    LOGGER.info(
+        "full cohort %d actors: %d pilot (cached), %d new",
+        cohort.height,
+        pilot.height,
+        remaining.height,
+    )
+    with httpx.Client(timeout=httpx.Timeout(180.0)) as client:
+        frames = _fetch_cohort_events(client, pilot, "pilot")
+        frames += _fetch_cohort_events(client, remaining, "new")
+    events = pl.concat([f for f in frames if f.height], how="diagonal_relaxed")
+    atomic_write_parquet(events, FULL_TEXT_EVENTS_PATH)
+    print(f"wrote {events.height:,} rows for {events['actor_login'].n_unique()} actors")
+    print(events.group_by("event_type").len().sort("len", descending=True))
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+
+    main_full() if "--full" in sys.argv else main()

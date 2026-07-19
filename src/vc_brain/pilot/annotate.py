@@ -24,13 +24,20 @@ import httpx
 import polars as pl
 from dotenv import load_dotenv
 
-from vc_brain.pilot.extract import PILOT_COHORT_PATH, PILOT_DIR, TEXT_EVENTS_PATH
+from vc_brain.pilot.extract import (
+    FULL_COHORT_PATH,
+    FULL_TEXT_EVENTS_PATH,
+    PILOT_COHORT_PATH,
+    PILOT_DIR,
+    TEXT_EVENTS_PATH,
+)
 
 LOGGER = logging.getLogger(__name__)
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 MODEL = os.getenv("OPENROUTER_MODEL", "anthropic/claude-sonnet-4.5")
 CACHE_DIR = Path("data/cache/pilot_annotations")
 ANNOTATIONS_PATH = PILOT_DIR / "annotations.parquet"
+FULL_ANNOTATIONS_PATH = PILOT_DIR / "full_annotations.parquet"
 MAX_WORKERS = 8
 
 SYSTEM_PROMPT = """You are analyzing a GitHub user's public activity digest to
@@ -109,9 +116,13 @@ def build_digest(events: pl.DataFrame) -> str:
 
 
 def annotate_one(
-    client: httpx.Client, api_key: str, login: str, digest: str
+    client: httpx.Client,
+    api_key: str,
+    login: str,
+    digest: str,
+    cache_dir: Path = CACHE_DIR,
 ) -> dict | None:
-    cache_path = CACHE_DIR / (
+    cache_path = cache_dir / (
         hashlib.sha256((MODEL + login + digest).encode()).hexdigest() + ".json"
     )
     if cache_path.exists():
@@ -153,22 +164,21 @@ def annotate_one(
     return None
 
 
-def main() -> None:
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+def _annotate_cohort(
+    cohort: pl.DataFrame, events: pl.DataFrame, out_path: Path
+) -> pl.DataFrame:
     load_dotenv("/Users/mishaaghamalyan/Development/personal/competitions/vc_brain/.env")
     api_key = os.getenv("OPENROUTER_KEY")
     if not api_key:
         raise RuntimeError("OPENROUTER_KEY missing")
-
-    cohort = pl.read_parquet(PILOT_COHORT_PATH).filter(
-        pl.col("stratum") == "top_region"
-    )
-    events = pl.read_parquet(TEXT_EVENTS_PATH)
     digests = {
-        login: build_digest(group)
+        login: digest
         for (login,), group in events.filter(
             pl.col("actor_login").is_in(cohort["gh_login"].implode())
         ).group_by("actor_login")
+        # Empty digests (events that all fall below the digest filters, e.g.
+        # branch-only creates or sub-30-char comments) have nothing to judge.
+        if (digest := build_digest(group))
     }
     LOGGER.info("annotating %d actors with text (of %d)", len(digests), cohort.height)
 
@@ -177,7 +187,7 @@ def main() -> None:
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
             futures = {
                 pool.submit(annotate_one, client, api_key, login, digest): login
-                for login, digest in digests.items()
+                for login, digest in sorted(digests.items())
             }
             for i, (future, login) in enumerate(futures.items(), 1):
                 record = future.result()
@@ -187,10 +197,30 @@ def main() -> None:
                     LOGGER.info("progress %d/%d", i, len(futures))
 
     frame = pl.DataFrame(records)
-    frame.write_parquet(ANNOTATIONS_PATH)
-    print(f"annotated {frame.height} actors -> {ANNOTATIONS_PATH}")
+    frame.write_parquet(out_path)
+    print(f"annotated {frame.height} actors -> {out_path}")
     print(frame.group_by("builder_type").len().sort("len", descending=True))
+    return frame
+
+
+def main() -> None:
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+    cohort = pl.read_parquet(PILOT_COHORT_PATH).filter(
+        pl.col("stratum") == "top_region"
+    )
+    _annotate_cohort(cohort, pl.read_parquet(TEXT_EVENTS_PATH), ANNOTATIONS_PATH)
+
+
+def main_full() -> None:
+    """Annotate every full-cohort actor that has at least one text event."""
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+    cohort = pl.read_parquet(FULL_COHORT_PATH)
+    _annotate_cohort(
+        cohort, pl.read_parquet(FULL_TEXT_EVENTS_PATH), FULL_ANNOTATIONS_PATH
+    )
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+
+    main_full() if "--full" in sys.argv else main()
