@@ -277,3 +277,24 @@ founders it was built to catch; it is not a years-ahead oracle. YC-only outcomes
 make every precision number a floor. Wrote `data/eval/frozen_clock_2023.{json,md}`.
 Verification: `uv run pytest -q` -> 91 passed; `uv run ruff check src tests` ->
 clean. No commit created.
+
+## 2026-07-19 — Pillar 2: second-hop actor graph + co-activity edges
+
+New `scripts/graph/secondhop.py` (+ `tests/test_secondhop_graph.py`); no src/ or
+site/ file touched. From the 1,920 Cohort-D people: 64,769 distinct touched
+repos (27,160 cohort-owned); small-rooms filter dropped 11,978 non-owned repos
+with >500 distinct non-bot actors; 52,569 extracted in full + 222 big owned
+repos via a top-50-per-repo-month capped query. Repo-IN-batched (index-pruned)
+ClickHouse queries only — 42 live queries total (13 count + 29 extract), zero
+quota sleeps, ~2 min. Outputs in data/graph/: secondhop_monthly/ (6.07M rows,
+1.20M distinct actors), coactivity_edges.parquet (678,405 edges, 1,875 cohort
+members covered, neighbor side capped at top-50 per repo-month),
+neighbors.parquet (467,548 pairs; 1,162 with a confident-YC-founder neighbor,
+423 backtest-legal as-of-t recognized-founder edges — 2.3x per-capita
+over-representation on positives vs controls). POST-HOC founder flags carry a
+leakage warning in data/graph/README.md. Writeup with examples
+(josephschorr↔jzelinskie/Authzed 5 yrs pre-batch; kanyesthaker↔shalins/Hyper
+21 parity months; ggsonic control counter-example) + GNN-lane and
+new_strong_tie_onset integration notes: docs/exploration/secondhop_graph.md.
+Verification: `uv run pytest -q` -> 97 passed; `uv run ruff check` clean on new
+files. No commit created.
