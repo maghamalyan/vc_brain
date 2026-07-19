@@ -1,0 +1,2293 @@
+[
+ {
+  "founder_name": "Abhi Aiyer",
+  "company": "Mastra",
+  "slug": "mastra",
+  "batch": "Winter 2025",
+  "gh_login": "abhiaiyer91",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'abhiaiyer91' exists, karma=1, no confirming about",
+   "launch/show story 'Show HN: Mastra \u2013 Open-source JS agent framework, by the developers of Gatsby' by 'calcsam' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Mastra 1.0, open-source JavaScript agent framework from the Gatsby devs' by 'calcsam' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "abhiaiyer91",
+  "hn_url": "https://news.ycombinator.com/user?id=abhiaiyer91"
+ },
+ {
+  "founder_name": "Ismaeel Bashir",
+  "company": "Expanse",
+  "slug": "expanse",
+  "batch": "Spring 2026",
+  "gh_login": "ismaeelbashir03",
+  "linked": true,
+  "method": " + launch/show HN author match",
+  "evidence": [
+   "story 'Launch HN: Expanse (YC P26) \u2013 Unlock Wasted GPU Capacity' by ismaeel_bashir: author matches founder name variant (ismaeel_bashir)",
+   "https://news.ycombinator.com/item?id=48356312"
+  ],
+  "quality": "medium",
+  "hn_username": "ismaeel_bashir",
+  "hn_url": "https://news.ycombinator.com/user?id=ismaeel_bashir"
+ },
+ {
+  "founder_name": "Fabio Schmidberger",
+  "company": "voize",
+  "slug": "voize",
+  "batch": "Winter 2022",
+  "gh_login": "FabioSchmidberger",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Eudelio Garza",
+  "company": "Rio",
+  "slug": "rio",
+  "batch": "Summer 2022",
+  "gh_login": "leyogarza",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'leyogarza' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "leyogarza",
+  "hn_url": "https://news.ycombinator.com/user?id=leyogarza"
+ },
+ {
+  "founder_name": "Noah Epstein",
+  "company": "SensorSurf",
+  "slug": "sensorsurf",
+  "batch": "Winter 2023",
+  "gh_login": "noahjepstein",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'noahjepstein' exists, karma=1, no confirming about",
+   "launch/show story 'Show HN: Collect and search robotics data with SensorSurf' by 'alecbell' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "noahjepstein",
+  "hn_url": "https://news.ycombinator.com/user?id=noahjepstein"
+ },
+ {
+  "founder_name": "Brandon Severin",
+  "company": "Conductor Quantum",
+  "slug": "conductor-quantum",
+  "batch": "Summer 2024",
+  "gh_login": "brandonseverin",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'brandonseverin' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "brandonseverin",
+  "hn_url": "https://news.ycombinator.com/user?id=brandonseverin"
+ },
+ {
+  "founder_name": "Kyle Wade",
+  "company": "Mosaic",
+  "slug": "mosaic-2",
+  "batch": "Winter 2025",
+  "gh_login": "kyle1373",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'kyle1373' exists, karma=1, no confirming about",
+   "launch/show story 'Launch HN: Mosaic (YC W25) \u2013 Agentic Video Editing' by 'adishj' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Mosaic \u2013 Use multiple iPhones as one big screen' by 'igul222' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Mosaic \u2013 A declarative, front-end JavaScript library for building UIs' by 'authman2' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Photosaic \u2013 Build mosaic images with a small library and a few photos' by 'whatl3y' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "kyle1373",
+  "hn_url": "https://news.ycombinator.com/user?id=kyle1373"
+ },
+ {
+  "founder_name": "Adam Mhatre",
+  "company": "Photonium",
+  "slug": "photonium",
+  "batch": "Spring 2025",
+  "gh_login": "Almhatre",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Lambert Chu",
+  "company": "Point API",
+  "slug": "point-api",
+  "batch": "Winter 2018",
+  "gh_login": "lambertchu",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Sanchit Monga",
+  "company": "RunAnywhere",
+  "slug": "runanywhere",
+  "batch": "Winter 2026",
+  "gh_login": "sanchitmonga22",
+  "linked": true,
+  "method": "username==gh_login, unconfirmed + launch/show HN author match",
+  "evidence": [
+   "HN user 'sanchitmonga22' exists, karma=101, no confirming about",
+   "story 'Launch HN: RunAnywhere (YC W26) \u2013 Faster AI Inference on Apple Silicon' by sanchitmonga22: author == gh_login",
+   "https://news.ycombinator.com/item?id=47326101"
+  ],
+  "quality": "strong",
+  "hn_username": "sanchitmonga22",
+  "hn_url": "https://news.ycombinator.com/user?id=sanchitmonga22"
+ },
+ {
+  "founder_name": "Joseph Tso",
+  "company": "Haladir",
+  "slug": "haladir",
+  "batch": "Winter 2026",
+  "gh_login": "jt914",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'jt914' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "jt914",
+  "hn_url": "https://news.ycombinator.com/user?id=jt914"
+ },
+ {
+  "founder_name": "Rauf Akdemir",
+  "company": "Airweave",
+  "slug": "airweave",
+  "batch": "Spring 2025",
+  "gh_login": "orhanrauf",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Airweave \u2013 Let agents search any app' by 'lennertjansen' \u2014 author does not match this founder",
+   "launch/show story 'Launch HN: Airweave (YC X25) \u2013 Let agents search any app' by 'lennertjansen' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Airweave \u2013 Turn App Data into Agent Knowledge' by 'lennertjansen' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Marc Klingen",
+  "company": "Langfuse",
+  "slug": "langfuse",
+  "batch": "Winter 2023",
+  "gh_login": "marcklingen",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company name 'Langfuse'",
+   "karma=78"
+  ],
+  "quality": "strong",
+  "hn_username": "marcklingen",
+  "hn_url": "https://news.ycombinator.com/user?id=marcklingen"
+ },
+ {
+  "founder_name": "Joshua Perk",
+  "company": "Vector",
+  "slug": "vector",
+  "batch": "Winter 2023",
+  "gh_login": "JoshuaPerk",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: 3D Vector Graphics' by 'fogleman' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: GPU text rendering with vector textures' by 'wjd' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Speeding up PostgreSQL through vectorized execution' by 'canguler' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Ary Indarapu",
+  "company": "Avea Robotics",
+  "slug": "avea-robotics",
+  "batch": "Spring 2026",
+  "gh_login": "aryanindarapu",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Lennard Schmidt",
+  "company": "Langdock",
+  "slug": "langdock",
+  "batch": "Summer 2023",
+  "gh_login": "lennard-schmidt",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Chris Dean",
+  "company": "Treasury Prime",
+  "slug": "treasury-prime",
+  "batch": "Winter 2018",
+  "gh_login": "ctdean",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'ctdean' exists, karma=415, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "ctdean",
+  "hn_url": "https://news.ycombinator.com/user?id=ctdean"
+ },
+ {
+  "founder_name": "Tennison Chan",
+  "company": "Truewind",
+  "slug": "truewind",
+  "batch": "Winter 2023",
+  "gh_login": "tennisonchan",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'tennisonchan' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "tennisonchan",
+  "hn_url": "https://news.ycombinator.com/user?id=tennisonchan"
+ },
+ {
+  "founder_name": "Steve Daniels",
+  "company": "Able Health",
+  "slug": "able-health",
+  "batch": "Winter 2016",
+  "gh_login": "steveddaniels",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'steveddaniels' exists, karma=2, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "steveddaniels",
+  "hn_url": "https://news.ycombinator.com/user?id=steveddaniels"
+ },
+ {
+  "founder_name": "Gary Lin",
+  "company": "Airwork",
+  "slug": "airwork",
+  "batch": "Winter 2022",
+  "gh_login": "garyjlin",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company name 'Airwork'",
+   "karma=128"
+  ],
+  "quality": "strong",
+  "hn_username": "garyjlin",
+  "hn_url": "https://news.ycombinator.com/user?id=garyjlin"
+ },
+ {
+  "founder_name": "Alex Wilcox",
+  "company": "Inkbox",
+  "slug": "inkbox",
+  "batch": "Summer 2026",
+  "gh_login": "alex-w-99",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Adrian Ziegler",
+  "company": "CloudCruise",
+  "slug": "cloudcruise",
+  "batch": "Winter 2024",
+  "gh_login": "MkuuWaUjinga",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: CloudCruise (YC W24) \u2013 Graph-Based Workflow Builder for Web Agents' by 'adrmtu' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Jamie Marshall",
+  "company": "Snackpass",
+  "slug": "snackpass",
+  "batch": "Winter 2018",
+  "gh_login": "jamiemarshall1",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "David Narvaez",
+  "company": "Preki",
+  "slug": "preki",
+  "batch": "Winter 2021",
+  "gh_login": "dnarvaez27",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Tomi Amao",
+  "company": "Simplifyd Systems",
+  "slug": "simplifyd-systems",
+  "batch": "Winter 2022",
+  "gh_login": "tomiamao",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'tomiamao' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "tomiamao",
+  "hn_url": "https://news.ycombinator.com/user?id=tomiamao"
+ },
+ {
+  "founder_name": "Raunak Chowdhuri",
+  "company": "Reducto",
+  "slug": "reducto",
+  "batch": "Winter 2024",
+  "gh_login": "raunakdoesdev",
+  "linked": true,
+  "method": "company launch story found, different author + launch/show HN author match",
+  "evidence": [
+   "launch/show story 'Launch HN: Reducto Studio (YC W24) \u2013 Build accurate document pipelines, fast' by 'adit_a' \u2014 author does not match this founder",
+   "story 'Show HN: Reducto \u2013 A vision based document ingestion API for LLMs' by raunakchowdhuri: author matches founder name variant (raunakchowdhuri)",
+   "https://news.ycombinator.com/item?id=39523565"
+  ],
+  "quality": "medium",
+  "hn_username": "raunakchowdhuri",
+  "hn_url": "https://news.ycombinator.com/user?id=raunakchowdhuri"
+ },
+ {
+  "founder_name": "Taner Topal",
+  "company": "Flower",
+  "slug": "flower",
+  "batch": "Winter 2023",
+  "gh_login": "tanertopal",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Launch HN: Flower (YC W23) \u2013 Train AI models on distributed or sensitive data' by 'niclane7' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Garden of Flowers \u2013 an archive of pictorial typography before ASCII art' by 'california-og' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Rushil Srivastava",
+  "company": "Simplify",
+  "slug": "simplify",
+  "batch": "Winter 2021",
+  "gh_login": "rushilsrivastava",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Adish Jain",
+  "company": "Mosaic",
+  "slug": "mosaic-2",
+  "batch": "Winter 2025",
+  "gh_login": "adish-jain",
+  "linked": true,
+  "method": " + launch/show HN author match",
+  "evidence": [
+   "story 'Launch HN: Mosaic (YC W25) \u2013 Agentic Video Editing' by adishj: author matches founder name variant (adishj)",
+   "https://news.ycombinator.com/item?id=45980760",
+   "about mentions company domain mosaic.so",
+   "about mentions company name 'Mosaic'"
+  ],
+  "quality": "strong",
+  "hn_username": "adishj",
+  "hn_url": "https://news.ycombinator.com/user?id=adishj"
+ },
+ {
+  "founder_name": "Avinash Joshi",
+  "company": "Cactus",
+  "slug": "oncactus",
+  "batch": "Spring 2025",
+  "gh_login": "avinashjoshi",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Cactus \u2013 Ollama for Smartphones' by 'HenryNdubuaku' \u2014 author does not match this founder",
+   "launch/show story 'Launch HN: Cactus (YC S25) \u2013 AI inference on smartphones' by 'HenryNdubuaku' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Jeff Munzar",
+  "company": "Nomic Bio",
+  "slug": "nomic-bio",
+  "batch": "Winter 2020",
+  "gh_login": "jmunzar",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Daniel Grittner",
+  "company": "Hey Telo",
+  "slug": "hey-telo",
+  "batch": "Winter 2025",
+  "gh_login": "danielgrittner",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'danielgrittner' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "danielgrittner",
+  "hn_url": "https://news.ycombinator.com/user?id=danielgrittner"
+ },
+ {
+  "founder_name": "Mokhtar Bacha",
+  "company": "Formal",
+  "slug": "formal",
+  "batch": "Summer 2020",
+  "gh_login": "ahmb84",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'ahmb84' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "ahmb84",
+  "hn_url": "https://news.ycombinator.com/user?id=ahmb84"
+ },
+ {
+  "founder_name": "Neil McLean",
+  "company": "Navattic",
+  "slug": "navattic",
+  "batch": "Winter 2021",
+  "gh_login": "neil-mclean",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Launch HN: Navattic (YC W21) \u2013 Shareable demos for selling your SaaS product' by 'nrmclean' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Navattic \u2013 A Visual Content Management Platform for Pre-Sales Demos' by 'Navattic' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Navattic \u2013 A demo management tool for pre-sales teams' by 'nrmclean' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Beau Hartshorne",
+  "company": "Instant Labs",
+  "slug": "instant-labs",
+  "batch": "Winter 2022",
+  "gh_login": "hartshorne",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Zach Zhong",
+  "company": "Bubble Lab",
+  "slug": "bubble-lab",
+  "batch": "Winter 2026",
+  "gh_login": "zhubzy",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Bubble Lab \u2013 Code-based agentic workflow platform (open-source)' by 'hkselinali' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Brent LaRue",
+  "company": "Circle Medical",
+  "slug": "circle-medical",
+  "batch": "Summer 2015",
+  "gh_login": "brentlarue",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company name 'Circle Medical'",
+   "karma=61"
+  ],
+  "quality": "strong",
+  "hn_username": "brentlarue",
+  "hn_url": "https://news.ycombinator.com/user?id=brentlarue"
+ },
+ {
+  "founder_name": "Nimesh Chakravarthi",
+  "company": "Struct",
+  "slug": "struct-ai",
+  "batch": "Fall 2024",
+  "gh_login": "nimeshmc",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'nimeshmc' exists, karma=2, no confirming about",
+   "launch/show story 'Show HN: A coloring book of data structures and algorithms' by 'frwntfwtr' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Visualize Data Structures in VS Code' by 'Gehinnn' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "nimeshmc",
+  "hn_url": "https://news.ycombinator.com/user?id=nimeshmc"
+ },
+ {
+  "founder_name": "Ismael Belghiti",
+  "company": "HireSweet",
+  "slug": "hiresweet",
+  "batch": "Winter 2020",
+  "gh_login": "ismaelbelghiti",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Annanay Kapila",
+  "company": "QFEX",
+  "slug": "qfex",
+  "batch": "Spring 2025",
+  "gh_login": "a-kapila",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "David Tran",
+  "company": "Flow Club",
+  "slug": "flow-club",
+  "batch": "Summer 2021",
+  "gh_login": "dtran320",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Launch HN: Flow Club (YC S21) \u2013 Virtual co-working space for focused work' by 'rickyyean' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Todd McNeal",
+  "company": "Reflect",
+  "slug": "reflect",
+  "batch": "Summer 2020",
+  "gh_login": "tmcneal",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company domain reflect.run",
+   "about mentions company name 'Reflect'",
+   "karma=671"
+  ],
+  "quality": "strong",
+  "hn_username": "tmcneal",
+  "hn_url": "https://news.ycombinator.com/user?id=tmcneal"
+ },
+ {
+  "founder_name": "Eren Erkalkan",
+  "company": "refine",
+  "slug": "refine",
+  "batch": "Summer 2023",
+  "gh_login": "piyerro",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'piyerro' exists, karma=1, no confirming about",
+   "launch/show story 'Show HN: Refine \u2013 A Local Alternative to Grammarly' by 'runjuu' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Scribble Diffusion \u2013 Turn your sketch into a refined image using AI' by 'zsikelianos' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Browser Extension to Refine the HN Experience' by 'plibither8' \u2014 author does not match this founder",
+   "launch/show story 'Launch HN: Refine (YC S23) \u2013 Open-source platform for enterprise web apps' by 'civan' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: I built a refinery simulator game to explain job to my kids' by 'fuelingcurious' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Refine v3.97 \u2013 Open-source React framework for building CRUD apps' by 'salihozdemir' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: UpTrain \u2013 Open-source ML observability and refinement tool' by 'sourabh0394agr' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: A search engine that lets you refine your queries' by 'Ketan-fullstack' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "piyerro",
+  "hn_url": "https://news.ycombinator.com/user?id=piyerro"
+ },
+ {
+  "founder_name": "Bob Wei",
+  "company": "Embedder",
+  "slug": "embedder",
+  "batch": "Summer 2025",
+  "gh_login": "Bob-Wei1",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Launch HN: Embedder (YC S25) \u2013 Claude code for embedded software' by 'bobwei1' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Ion, a Rust/Tokio powered JavaScript runtime for embedders' by 'apatheticonion' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Rohan Mahendraker",
+  "company": "Supafax",
+  "slug": "supafax",
+  "batch": "Winter 2026",
+  "gh_login": "rohanmahen",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'rohanmahen' exists, karma=58, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "rohanmahen",
+  "hn_url": "https://news.ycombinator.com/user?id=rohanmahen"
+ },
+ {
+  "founder_name": "Sal Calvo",
+  "company": "Muffin Data",
+  "slug": "muffin-data",
+  "batch": "Winter 2023",
+  "gh_login": "salcalvo",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'salcalvo' exists, karma=3, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "salcalvo",
+  "hn_url": "https://news.ycombinator.com/user?id=salcalvo"
+ },
+ {
+  "founder_name": "Arsh Shah Dilbagi",
+  "company": "Zage",
+  "slug": "zage",
+  "batch": "Summer 2021",
+  "gh_login": "ArshDilbagi",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'ArshDilbagi' exists, karma=36, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "ArshDilbagi",
+  "hn_url": "https://news.ycombinator.com/user?id=ArshDilbagi"
+ },
+ {
+  "founder_name": "Shivesh Gupta",
+  "company": "Frekil",
+  "slug": "frekil",
+  "batch": "Spring 2025",
+  "gh_login": "shiveshcodes",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'shiveshcodes' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "shiveshcodes",
+  "hn_url": "https://news.ycombinator.com/user?id=shiveshcodes"
+ },
+ {
+  "founder_name": "Rahul Sheth",
+  "company": "Texel.ai",
+  "slug": "texel-ai",
+  "batch": "Winter 2023",
+  "gh_login": "rbsheth",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Rohan Karthik",
+  "company": "Inversion Semiconductor",
+  "slug": "inversion-semiconductor",
+  "batch": "Winter 2025",
+  "gh_login": "rohan-inversionsemi",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Jed Somers",
+  "company": "Carbic",
+  "slug": "carbic",
+  "batch": "Winter 2016",
+  "gh_login": "jedsomers",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company name 'Carbic'",
+   "karma=13"
+  ],
+  "quality": "strong",
+  "hn_username": "jedsomers",
+  "hn_url": "https://news.ycombinator.com/user?id=jedsomers"
+ },
+ {
+  "founder_name": "Ross Rich",
+  "company": "Accord",
+  "slug": "accord",
+  "batch": "Winter 2020",
+  "gh_login": "rossrichaccord",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Garrett Graves",
+  "company": "crmCopilot",
+  "slug": "crmcopilot",
+  "batch": "Winter 2024",
+  "gh_login": "GRVYDEV",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'GRVYDEV' exists, karma=328, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "GRVYDEV",
+  "hn_url": "https://news.ycombinator.com/user?id=GRVYDEV"
+ },
+ {
+  "founder_name": "Daniel Nordh",
+  "company": "Peg (formerly Paymobil)",
+  "slug": "peg",
+  "batch": "Winter 2020",
+  "gh_login": "danielnordh",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'danielnordh' exists, karma=17, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "danielnordh",
+  "hn_url": "https://news.ycombinator.com/user?id=danielnordh"
+ },
+ {
+  "founder_name": "John Sully",
+  "company": "KeyDB",
+  "slug": "keydb",
+  "batch": "Summer 2020",
+  "gh_login": "JohnSully",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'JohnSully' exists, karma=21, no confirming about",
+   "launch/show story 'Show HN: KeyDB \u2013 A Multithreaded Fork of Redis' by 'jdsully' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Modssl an SSL Module for Redis and KeyDB' by 'jdsully' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "JohnSully",
+  "hn_url": "https://news.ycombinator.com/user?id=JohnSully"
+ },
+ {
+  "founder_name": "Alex Danilowicz",
+  "company": "Magic Patterns",
+  "slug": "magic-patterns",
+  "batch": "Winter 2023",
+  "gh_login": "alexdanilowicz",
+  "linked": true,
+  "method": "username==gh_login, unconfirmed + launch/show HN author match",
+  "evidence": [
+   "HN user 'alexdanilowicz' exists, karma=285, no confirming about",
+   "story 'Launch HN: Magic Patterns (YC W23) \u2013 AI Design and Prototyping for Product Teams' by alexdanilowicz: author == gh_login",
+   "https://news.ycombinator.com/item?id=43752176"
+  ],
+  "quality": "strong",
+  "hn_username": "alexdanilowicz",
+  "hn_url": "https://news.ycombinator.com/user?id=alexdanilowicz"
+ },
+ {
+  "founder_name": "Ali Nawab",
+  "company": "Agentnoon",
+  "slug": "agentnoon",
+  "batch": "Winter 2022",
+  "gh_login": "alinawab",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'alinawab' exists, karma=4, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "alinawab",
+  "hn_url": "https://news.ycombinator.com/user?id=alinawab"
+ },
+ {
+  "founder_name": "John Jeong",
+  "company": "Char",
+  "slug": "char",
+  "batch": "Summer 2025",
+  "gh_login": "ComputelessComputer",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: ChartGPU \u2013 WebGPU-powered charting library (1M points at 60fps)' by 'huntergemmer' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Michael Moyo",
+  "company": "Ocular AI",
+  "slug": "ocular-ai",
+  "batch": "Winter 2024",
+  "gh_login": "MichaelMoyoMushabati",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Ruben Fiszel",
+  "company": "Windmill",
+  "slug": "windmill",
+  "batch": "Summer 2022",
+  "gh_login": "rubenfiszel",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company domain windmill.dev",
+   "about mentions company name 'Windmill'",
+   "karma=1723"
+  ],
+  "quality": "strong",
+  "hn_username": "rubenfiszel",
+  "hn_url": "https://news.ycombinator.com/user?id=rubenfiszel"
+ },
+ {
+  "founder_name": "Amartya Jha",
+  "company": "CodeAnt AI",
+  "slug": "codeant-ai",
+  "batch": "Winter 2024",
+  "gh_login": "Amartyajha",
+  "linked": true,
+  "method": " + launch/show HN author match",
+  "evidence": [
+   "story 'Show HN: CodeAnt AI \u2013 AI Code Reviewer, that understand code and dependencies' by Amartya_jha: author matches founder name variant (Amartya_jha)",
+   "https://news.ycombinator.com/item?id=43763633"
+  ],
+  "quality": "medium",
+  "hn_username": "Amartya_jha",
+  "hn_url": "https://news.ycombinator.com/user?id=Amartya_jha"
+ },
+ {
+  "founder_name": "Christian Timmerer",
+  "company": "Bitmovin",
+  "slug": "bitmovin",
+  "batch": "Summer 2015",
+  "gh_login": "timse7",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Alex Baranov",
+  "company": "Sayana",
+  "slug": "sayana",
+  "batch": "Winter 2020",
+  "gh_login": "sashabaranov",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Tomas Bisi",
+  "company": "HOKALI",
+  "slug": "hokali",
+  "batch": "Winter 2022",
+  "gh_login": "tomasbisi",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Tom\u00e1s Campos",
+  "company": "RUUF",
+  "slug": "ruuf",
+  "batch": "Winter 2023",
+  "gh_login": "ruuf-tomas",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Abheek Basu",
+  "company": "Laudspeaker",
+  "slug": "laudspeaker",
+  "batch": "Winter 2021",
+  "gh_login": "abheek9",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Laudspeaker \u2013 Open-source mobile push, SMS and email automation' by 'abe94' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Laudspeaker \u2013 open-source customer journey automation' by 'abe94' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Michael Sukkarieh",
+  "company": "Sourcebot",
+  "slug": "sourcebot",
+  "batch": "Fall 2025",
+  "gh_login": "msukkari",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'msukkari' exists, karma=1, no confirming about",
+   "launch/show story 'Show HN: Sourcebot, an open-source Sourcegraph alternative' by 'bshzzle' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Sourcebot \u2013\u00a0Self-hosted Perplexity for your codebase' by 'bshzzle' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "msukkari",
+  "hn_url": "https://news.ycombinator.com/user?id=msukkari"
+ },
+ {
+  "founder_name": "Stefan Krawczyk",
+  "company": "DAGWorks Inc.",
+  "slug": "dagworks-inc",
+  "batch": "Winter 2023",
+  "gh_login": "skrawcz",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Shubham Malhotra",
+  "company": "RunAnywhere",
+  "slug": "runanywhere",
+  "batch": "Winter 2026",
+  "gh_login": "shubhammalhotra28",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Launch HN: RunAnywhere (YC W26) \u2013 Faster AI Inference on Apple Silicon' by 'sanchitmonga22' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Albert Chuang",
+  "company": "OneShop",
+  "slug": "oneshop",
+  "batch": "Summer 2021",
+  "gh_login": "yonajune",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Oneshop \u2013 a brand new BaaS taking over your headaches from backend' by 'ryantitle' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Ramiro Berrelleza",
+  "company": "Okteto",
+  "slug": "okteto",
+  "batch": "Winter 2019",
+  "gh_login": "rberrelleza",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Chang She",
+  "company": "LanceDB",
+  "slug": "lancedb",
+  "batch": "Winter 2022",
+  "gh_login": "changhiskhan",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'changhiskhan' exists, karma=-4, no confirming about",
+   "launch/show story 'Show HN: LanceDB is an embedded vector database with a native JavaScript API' by 'chop' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: LanceDB VS Code Extension' by 'emrecodes' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "changhiskhan",
+  "hn_url": "https://news.ycombinator.com/user?id=changhiskhan"
+ },
+ {
+  "founder_name": "Sepand Dyanatkar",
+  "company": "OnDeck AI",
+  "slug": "ondeck-ai",
+  "batch": "Summer 2025",
+  "gh_login": "DSep",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Bastien Beurier",
+  "company": "Nango",
+  "slug": "nango",
+  "batch": "Winter 2023",
+  "gh_login": "bastienbeurier",
+  "linked": true,
+  "method": "username==gh_login, unconfirmed + launch/show HN author match",
+  "evidence": [
+   "HN user 'bastienbeurier' exists, karma=289, no confirming about",
+   "launch/show story 'Launch HN: Nango (YC W23) \u2013 Source-available unified API' by 'rguldener' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Nango \u2013 Open unified API for product integrations' by 'rguldener' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Nango, a Django extension providing SPA-like features' by 'nicois' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Nango Auth \u2013 Free OAuth for 250 APIs' by 'rguldener' \u2014 author does not match this founder",
+   "story 'Show HN: Nango \u2013 Embed 600+ integrations from 400+ APIs in your SaaS' by bastienbeurier: author == gh_login",
+   "https://news.ycombinator.com/item?id=43321650"
+  ],
+  "quality": "strong",
+  "hn_username": "bastienbeurier",
+  "hn_url": "https://news.ycombinator.com/user?id=bastienbeurier"
+ },
+ {
+  "founder_name": "Brandon Waselnuk",
+  "company": "Squire.ai",
+  "slug": "squire-ai",
+  "batch": "Summer 2021",
+  "gh_login": "baell",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Rob Szumski",
+  "company": "EdgeBit",
+  "slug": "edgebit",
+  "batch": "Winter 2023",
+  "gh_login": "robszumski",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company domain edgebit.io",
+   "about mentions company name 'EdgeBit'",
+   "karma=1572"
+  ],
+  "quality": "strong",
+  "hn_username": "robszumski",
+  "hn_url": "https://news.ycombinator.com/user?id=robszumski"
+ },
+ {
+  "founder_name": "Shravan Reddy",
+  "company": "Pixelapse",
+  "slug": "pixelapse",
+  "batch": "Winter 2012",
+  "gh_login": "shrredd",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Russell Nibbelink",
+  "company": "Overview",
+  "slug": "overview",
+  "batch": "Winter 2019",
+  "gh_login": "russellnibbelink",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Ted Benson",
+  "company": "Cloudstitch",
+  "slug": "cloudstitch",
+  "batch": "Summer 2015",
+  "gh_login": "eob",
+  "linked": true,
+  "method": "username==gh_login, unconfirmed + launch/show HN author match",
+  "evidence": [
+   "HN user 'eob' exists, karma=2647, no confirming about",
+   "story 'Show HN: Cloudstitch \u2013 Build and share spreadsheet-powered web content' by eob: author == gh_login",
+   "https://news.ycombinator.com/item?id=9727186"
+  ],
+  "quality": "strong",
+  "hn_username": "eob",
+  "hn_url": "https://news.ycombinator.com/user?id=eob"
+ },
+ {
+  "founder_name": "Zach Kamran",
+  "company": "Simple AI",
+  "slug": "simple-ai",
+  "batch": "Summer 2024",
+  "gh_login": "zachyc",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: SweepIQ \u2013 A simple AI tool to help you learn more, faster' by 'felixthecat23' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Sifaka \u2013 Simple AI text improvement through research-backed critique' by 'evanvolgas' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: I built a simple AI-powered ATS for small teams' by 'rajathhegde' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Max von Wolff",
+  "company": "Ozone",
+  "slug": "ozone",
+  "batch": "Winter 2022",
+  "gh_login": "maxvwolff",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Nikhil Shah",
+  "company": "Slidely AI",
+  "slug": "slidely-ai",
+  "batch": "Summer 2022",
+  "gh_login": "itsShnik",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Chirag Mahapatra",
+  "company": "Blaze",
+  "slug": "blaze",
+  "batch": "Winter 2022",
+  "gh_login": "chirag9127",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Launch HN: Text Blaze (YC W21) Programmable snippets to automate tedious typing' by 'scottfr' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Malthe J\u00f8rgensen",
+  "company": "Eduflow",
+  "slug": "eduflow",
+  "batch": "Summer 2017",
+  "gh_login": "malthejorgensen",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'malthejorgensen' exists, karma=64, no confirming about",
+   "launch/show story 'Launch HN: Eduflow (YC S17) \u2013 Async Social Learning' by 'utdiscant' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "malthejorgensen",
+  "hn_url": "https://news.ycombinator.com/user?id=malthejorgensen"
+ },
+ {
+  "founder_name": "Samuel Leonard",
+  "company": "Windwalk",
+  "slug": "windwalk",
+  "batch": "Winter 2019",
+  "gh_login": "SamLeonard93",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Windwalker \u2013 A Modern PHP Framework' by 'asika32764' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Randolph Lee",
+  "company": "Sonar",
+  "slug": "sonar",
+  "batch": "Summer 2020",
+  "gh_login": "randolphlee",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: I built a sonar into my surfboard' by 'foobarbecue' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Sonar \u2013 A tiny CLI to see and kill whatever's running on localhost' by 'raskrebs' \u2014 author does not match this founder",
+   "launch/show story 'Launch HN: Sunu (YC S17) \u2013 Sonar wristband helping blind people navigate' by 'marco_trujillo' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Recommendarr \u2013 AI Driven Recommendations Based on Sonarr/Radarr Media' by 'fingerthieff' \u2014 author does not match this founder",
+   "launch/show story 'Launch HN: Sonarly (YC W26) \u2013 AI agent to triage and fix your production alerts' by 'Dimittri' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Andras Toth",
+  "company": "OpenMeter",
+  "slug": "openmeter",
+  "batch": "Winter 2023",
+  "gh_login": "tothandras",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Launch HN: OpenMeter (YC W23) \u2013 Real-Time, Open Source Usage Metering' by 'hekike' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: OpenMeters \u2013 A fast and free audio metering/visualization suite' by 'httpsworldview' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Daniel Wigh",
+  "company": "ReactWise",
+  "slug": "reactwise",
+  "batch": "Summer 2024",
+  "gh_login": "DanielWigh",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Nate Smith",
+  "company": "Lever",
+  "slug": "lever",
+  "batch": "Summer 2012",
+  "gh_login": "nateps",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company domain lever.co",
+   "about mentions company name 'Lever'",
+   "karma=419"
+  ],
+  "quality": "strong",
+  "hn_username": "nateps",
+  "hn_url": "https://news.ycombinator.com/user?id=nateps"
+ },
+ {
+  "founder_name": "Jo\u00e3o de Paula",
+  "company": "Mesmer",
+  "slug": "mesmer",
+  "batch": "Spring 2025",
+  "gh_login": "joaodepaula",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company name 'Mesmer'",
+   "karma=656"
+  ],
+  "quality": "strong",
+  "hn_username": "joaodepaula",
+  "hn_url": "https://news.ycombinator.com/user?id=joaodepaula"
+ },
+ {
+  "founder_name": "Gianluca Bencomo",
+  "company": "Efference",
+  "slug": "efference",
+  "batch": "Fall 2025",
+  "gh_login": "gianlucabencomo",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Viraat Das",
+  "company": "Exla",
+  "slug": "exla",
+  "batch": "Winter 2025",
+  "gh_login": "viraatdas",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company domain exla.ai",
+   "about mentions company name 'Exla'",
+   "karma=10"
+  ],
+  "quality": "strong",
+  "hn_username": "viraatdas",
+  "hn_url": "https://news.ycombinator.com/user?id=viraatdas"
+ },
+ {
+  "founder_name": "Umur Cubukcu",
+  "company": "Ubicloud",
+  "slug": "ubicloud",
+  "batch": "Winter 2024",
+  "gh_login": "umurc",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Raghav Pillai",
+  "company": "Speck",
+  "slug": "speck",
+  "batch": "Winter 2024",
+  "gh_login": "raghavpillai",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Detecting keypresses using laser speckle patterns' by 'anfractuosity' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Modern Reimplementation of the Speck Molecule Renderer' by 'vlad_angelov' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Speck, a WebGL molecule renderer' by 'wwwtyro' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: SpeckJS \u2013 Comment Driven Development' by 'Luke_Savage' \u2014 author does not match this founder",
+   "launch/show story 'Show HN again: My new spec list app, Speckle - now with a homepage.' by 'elliottkember' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Speck, a WebGL molecule renderer for attractive and practical figures' by 'wwwtyro' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Speck, atomistic system rendering with ambient occlusion in WebGL' by 'wwwtyro' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Speck PBR \u2013 A WebGPU molecular visualizer' by 'wwwtyro' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "James Slezak",
+  "company": "Swayable",
+  "slug": "swayable",
+  "batch": "Winter 2018",
+  "gh_login": "jslez",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Xinwei He",
+  "company": "TraceRoot.AI",
+  "slug": "traceroot-ai",
+  "batch": "Summer 2025",
+  "gh_login": "XinweiHe",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Jared Downing",
+  "company": "Gamebytes",
+  "slug": "gamebytes",
+  "batch": "Summer 2019",
+  "gh_login": "j-down",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Quin Wills",
+  "company": "Ochre Bio",
+  "slug": "ochre-bio",
+  "batch": "Winter 2020",
+  "gh_login": "quinwills",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Rick Harrison",
+  "company": "Meadow",
+  "slug": "meadow",
+  "batch": "Winter 2015",
+  "gh_login": "rickharrison",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company domain getmeadow.com",
+   "about mentions company name 'Meadow'",
+   "karma=888"
+  ],
+  "quality": "strong",
+  "hn_username": "rickharrison",
+  "hn_url": "https://news.ycombinator.com/user?id=rickharrison"
+ },
+ {
+  "founder_name": "Shaishav Parekh",
+  "company": "Quindar",
+  "slug": "quindar",
+  "batch": "Summer 2022",
+  "gh_login": "smparekh",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Recreate NASA's Apollo Space Beeps (Quindar Tones) with Web Audio' by 'outputchannel' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Avi Peltz",
+  "company": "Superset",
+  "slug": "superset",
+  "batch": "Spring 2026",
+  "gh_login": "AviPeltz",
+  "linked": true,
+  "method": "company launch story found, different author + launch/show HN author match",
+  "evidence": [
+   "launch/show story 'Show HN: MDV \u2013 a Markdown superset for docs, dashboards, and slides with data' by 'drasim' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Database for analyzing US companies, visualize using Apache SuperSet' by 'tessbi' \u2014 author does not match this founder",
+   "story 'Launch HN: Superset (YC P26) \u2013 IDE for the agents era' by avipeltz: author == gh_login",
+   "https://news.ycombinator.com/item?id=48236770"
+  ],
+  "quality": "strong",
+  "hn_username": "avipeltz",
+  "hn_url": "https://news.ycombinator.com/user?id=avipeltz"
+ },
+ {
+  "founder_name": "Gregor Zunic",
+  "company": "Browser Use",
+  "slug": "browser-use",
+  "batch": "Winter 2025",
+  "gh_login": "gregpr07",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'gregpr07' exists, karma=390, no confirming about",
+   "launch/show story 'Launch HN: Browser Use (YC W25) \u2013 open-source web agents' by 'MagMueller' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "gregpr07",
+  "hn_url": "https://news.ycombinator.com/user?id=gregpr07"
+ },
+ {
+  "founder_name": "Or Avidov",
+  "company": "Elementary",
+  "slug": "elementary",
+  "batch": "Winter 2022",
+  "gh_login": "oravi",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'oravi' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "oravi",
+  "hn_url": "https://news.ycombinator.com/user?id=oravi"
+ },
+ {
+  "founder_name": "Carlo Badini",
+  "company": "FirstQuadrant",
+  "slug": "firstquadrant",
+  "batch": "Summer 2021",
+  "gh_login": "carlobadini",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'carlobadini' exists, karma=11, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "carlobadini",
+  "hn_url": "https://news.ycombinator.com/user?id=carlobadini"
+ },
+ {
+  "founder_name": "Ben Mappen",
+  "company": "Armory",
+  "slug": "armory",
+  "batch": "Winter 2017",
+  "gh_login": "benmappen",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Launch HN: Armory.io (YC W17) \u2013 We Make Deployments Boring and Self-Service' by 'imosquera' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Guild Wars 2 Armory Made with React and Node' by 'madou' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Mac Klinkachorn",
+  "company": "Trellis AI",
+  "slug": "trellis-ai",
+  "batch": "Winter 2024",
+  "gh_login": "MacKlinkachorn",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Aditya Agarwalla",
+  "company": "Kisan Network",
+  "slug": "kisan-network",
+  "batch": "Winter 2016",
+  "gh_login": "adiagarwalla",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Victor Vannara",
+  "company": "Trope",
+  "slug": "trope",
+  "batch": "Summer 2026",
+  "gh_login": "voctory",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Performative-UI \u2013 A react component library of design tropes' by 'lizhang' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Tropes.fyi \u2013 Name and shame AI writing' by 'ossa-ma' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "vincent albouy",
+  "company": "TeamOut",
+  "slug": "teamout",
+  "batch": "Winter 2022",
+  "gh_login": "vincent-albouy",
+  "linked": true,
+  "method": " + launch/show HN author match",
+  "evidence": [
+   "story 'Launch HN: TeamOut (YC W22) \u2013 AI agent for planning company retreats' by vincentalbouy: author matches founder name variant (vincentalbouy)",
+   "https://news.ycombinator.com/item?id=47151598"
+  ],
+  "quality": "medium",
+  "hn_username": "vincentalbouy",
+  "hn_url": "https://news.ycombinator.com/user?id=vincentalbouy"
+ },
+ {
+  "founder_name": "Henry Liu",
+  "company": "Glider",
+  "slug": "glider",
+  "batch": "Winter 2012",
+  "gh_login": "liuhenry",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'liuhenry' exists, karma=987, no confirming about",
+   "launch/show story 'Show HN: Glider, a better email client' by 'cj' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "liuhenry",
+  "hn_url": "https://news.ycombinator.com/user?id=liuhenry"
+ },
+ {
+  "founder_name": "Gabriel Birnbaum",
+  "company": "Y/n",
+  "slug": "yn",
+  "batch": "Summer 2023",
+  "gh_login": "killah-t-cell",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Continue? Y/N: A 60-second game about AI agent permission fatigue' by 'Wirbelwind' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Navvye Anand",
+  "company": "Bindwell",
+  "slug": "bindwell",
+  "batch": "Winter 2025",
+  "gh_login": "navvye",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Vincent Pribble",
+  "company": "Micro Meat",
+  "slug": "micro-meat",
+  "batch": "Summer 2021",
+  "gh_login": "leghairweave",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Launch HN: Micro Meat (YC S21) \u2013 Technology for scaling cultivated meat' by 'asmertgen' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Siggi Simonarson",
+  "company": "BuildBuddy",
+  "slug": "buildbuddy",
+  "batch": "Winter 2020",
+  "gh_login": "siggisim",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Gabriele Venturi",
+  "company": "PandasAI",
+  "slug": "pandasai",
+  "batch": "Winter 2024",
+  "gh_login": "gventuri",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'gventuri' exists, karma=2, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "gventuri",
+  "hn_url": "https://news.ycombinator.com/user?id=gventuri"
+ },
+ {
+  "founder_name": "Seungmin Hong",
+  "company": "Simantic",
+  "slug": "simantic",
+  "batch": "Fall 2026",
+  "gh_login": "SHONG0504",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Anubhav Malik",
+  "company": "Weekday",
+  "slug": "weekday",
+  "batch": "Winter 2021",
+  "gh_login": "anubhavmalik",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'anubhavmalik' exists, karma=2, no confirming about",
+   "launch/show story 'Launch HN: Weekday (YC W21) \u2013 Hire engineers vouched for by other engineers' by 'amitsy' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Weekday clock, a clock for people who dont work or go to school' by 'wenjian' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Exploring best weekday to auto-buy Bitcoin' by 'berkserbet' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "anubhavmalik",
+  "hn_url": "https://news.ycombinator.com/user?id=anubhavmalik"
+ },
+ {
+  "founder_name": "Matin Movassate",
+  "company": "Heap",
+  "slug": "heap",
+  "batch": "Winter 2013",
+  "gh_login": "matinm",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'matinm' exists, karma=-2, no confirming about",
+   "launch/show story 'Show HN: Heap is a new approach to analytics. Just capture everything' by 'raviparikh' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Kent Dybvig's Scheme Machine in 400 Lines of C (Heap-Memory Model)' by 'swatson741' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "matinm",
+  "hn_url": "https://news.ycombinator.com/user?id=matinm"
+ },
+ {
+  "founder_name": "R\u00e9mi Bouteiller",
+  "company": "AICE",
+  "slug": "aice",
+  "batch": "Spring 2026",
+  "gh_login": "rbouteiller",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'rbouteiller' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "rbouteiller",
+  "hn_url": "https://news.ycombinator.com/user?id=rbouteiller"
+ },
+ {
+  "founder_name": "Walter Raftus",
+  "company": "Forge Automation",
+  "slug": "forge-automation",
+  "batch": "Winter 2025",
+  "gh_login": "wraftus",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'wraftus' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "wraftus",
+  "hn_url": "https://news.ycombinator.com/user?id=wraftus"
+ },
+ {
+  "founder_name": "Chris Szymansky",
+  "company": "Fieldguide",
+  "slug": "fieldguide",
+  "batch": "Summer 2020",
+  "gh_login": "cszy",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'cszy' exists, karma=6, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "cszy",
+  "hn_url": "https://news.ycombinator.com/user?id=cszy"
+ },
+ {
+  "founder_name": "Ciar\u00e1n O'Mara",
+  "company": "Protex AI",
+  "slug": "protex-ai",
+  "batch": "Summer 2021",
+  "gh_login": "ciaran-protex",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Andrew Duberstein",
+  "company": "Mercator",
+  "slug": "mercator",
+  "batch": "Summer 2022",
+  "gh_login": "ajduberstein",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: the Mercator projection like you've never seen it before' by 'mrgriscom' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Toni Lopez",
+  "company": "Karumi",
+  "slug": "karumi",
+  "batch": "Fall 2025",
+  "gh_login": "tonilopezmr",
+  "linked": true,
+  "method": "username==gh_login, unconfirmed + launch/show HN author match",
+  "evidence": [
+   "HN user 'tonilopezmr' exists, karma=21, no confirming about",
+   "story 'Launch HN: Karumi (YC F25) \u2013 Personalized, agentic product demos' by tonilopezmr: author == gh_login",
+   "https://news.ycombinator.com/item?id=46037416"
+  ],
+  "quality": "strong",
+  "hn_username": "tonilopezmr",
+  "hn_url": "https://news.ycombinator.com/user?id=tonilopezmr"
+ },
+ {
+  "founder_name": "Yo Shibata",
+  "company": "Tailor",
+  "slug": "tailor",
+  "batch": "Summer 2022",
+  "gh_login": "yoshibata",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: HN Resume to Jobs \u2013 AI Powered Job Matching Tailored to Your Resume' by 'SCUSKU' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Domain-tailored CRDTs for collaboration without server involvement' by 'archagon' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: OneModel \u2013 Diagramming tailor-made for Software Engineers' by 'koahmad' \u2014 author does not match this founder",
+   "launch/show story 'Launch HN: Nutrigene (YC W18) \u2013 Tailor-made liquid supplements using health data' by 'vancanwin' \u2014 author does not match this founder",
+   "launch/show story 'Launch HN: Frey (YC S18) \u2013 Laundry and Clothing Care Products Tailored for Men' by 'thefreybrothers' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: A website that tailors your resume for each job you apply for' by 'samixg' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Gavin Bains",
+  "company": "Paper Instruments",
+  "slug": "paper-instruments",
+  "batch": "Spring 2025",
+  "gh_login": "gavinbains",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'gavinbains' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "gavinbains",
+  "hn_url": "https://news.ycombinator.com/user?id=gavinbains"
+ },
+ {
+  "founder_name": "Vlad Magdalin",
+  "company": "Webflow",
+  "slug": "webflow",
+  "batch": "Summer 2013",
+  "gh_login": "callmevlad",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company domain webflow.com",
+   "about mentions company name 'Webflow'",
+   "karma=3663"
+  ],
+  "quality": "strong",
+  "hn_username": "callmevlad",
+  "hn_url": "https://news.ycombinator.com/user?id=callmevlad"
+ },
+ {
+  "founder_name": "Ethan Gibbs",
+  "company": "Embedder",
+  "slug": "embedder",
+  "batch": "Summer 2025",
+  "gh_login": "etgibbs",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'etgibbs' exists, karma=6, no confirming about",
+   "launch/show story 'Launch HN: Embedder (YC S25) \u2013 Claude code for embedded software' by 'bobwei1' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Ion, a Rust/Tokio powered JavaScript runtime for embedders' by 'apatheticonion' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "etgibbs",
+  "hn_url": "https://news.ycombinator.com/user?id=etgibbs"
+ },
+ {
+  "founder_name": "Essam Sleiman",
+  "company": "Canvas",
+  "slug": "canvas",
+  "batch": "Fall 2024",
+  "gh_login": "essamsleiman",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'essamsleiman' exists, karma=5, no confirming about",
+   "launch/show story 'Show HN: Obsidian Canvas \u2013 An infinite space for your ideas' by 'ericax' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Haystack \u2013 an IDE for exploring and editing code on an infinite canvas' by 'akshaysg' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: X-spreadsheet \u2013 A JavaScript canvas spreadsheet for web' by 'myliang' \u2014 author does not match this founder",
+   "launch/show story 'Launch HN: Haystack (YC S24) \u2013 Visualize and edit code on an infinite canvas' by 'akshaysg' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Make a business model canvas in your browser' by 'sbussard' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "essamsleiman",
+  "hn_url": "https://news.ycombinator.com/user?id=essamsleiman"
+ },
+ {
+  "founder_name": "Philip Miglinci",
+  "company": "Glasskube",
+  "slug": "glasskube",
+  "batch": "Summer 2024",
+  "gh_login": "pmig",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company domain distr.sh",
+   "karma=590"
+  ],
+  "quality": "strong",
+  "hn_username": "pmig",
+  "hn_url": "https://news.ycombinator.com/user?id=pmig"
+ },
+ {
+  "founder_name": "Tim Ogilvie",
+  "company": "Think Gaming",
+  "slug": "think-gaming",
+  "batch": "Summer 2014",
+  "gh_login": "timogilvie",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Daniel Driscoll",
+  "company": "Elodin",
+  "slug": "elodin",
+  "batch": "Winter 2024",
+  "gh_login": "x46085",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Elodin \u2013 A better framework for physics simulation' by 'sphw' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Philip Scott",
+  "company": "Hyperbeam",
+  "slug": "hyperbeam",
+  "batch": "Winter 2022",
+  "gh_login": "philipjscott",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Launch HN: Hyperbeam API (YC W22) \u2013 Multiplayer embeds of any website' by 'declan_g' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Musawir Shah",
+  "company": "Jerry",
+  "slug": "jerry-inc",
+  "batch": "Summer 2017",
+  "gh_login": "musawirali",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company name 'Jerry'",
+   "karma=4"
+  ],
+  "quality": "strong",
+  "hn_username": "musawirali",
+  "hn_url": "https://news.ycombinator.com/user?id=musawirali"
+ },
+ {
+  "founder_name": "William Hart",
+  "company": "Glass Health",
+  "slug": "glass-health",
+  "batch": "Winter 2023",
+  "gh_login": "wshart",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'wshart' exists, karma=5, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "wshart",
+  "hn_url": "https://news.ycombinator.com/user?id=wshart"
+ },
+ {
+  "founder_name": "Ronald Ding",
+  "company": "Shadeform",
+  "slug": "shadeform",
+  "batch": "Summer 2023",
+  "gh_login": "cholical",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Shadeform \u2013 Single Platform and API for Provisioning GPUs' by 'edgoode' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Kartikye Mittal",
+  "company": "Dots \ud83d\udcb8",
+  "slug": "dots-2",
+  "batch": "Summer 2021",
+  "gh_login": "kartikye",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'kartikye' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "kartikye",
+  "hn_url": "https://news.ycombinator.com/user?id=kartikye"
+ },
+ {
+  "founder_name": "Pranay Prakash",
+  "company": "Windsor",
+  "slug": "windsor",
+  "batch": "Winter 2019",
+  "gh_login": "pranaygp",
+  "linked": true,
+  "method": "username==gh_login, unconfirmed + launch/show HN author match",
+  "evidence": [
+   "HN user 'pranaygp' exists, karma=158, no confirming about",
+   "story 'Show HN: Windsor \u2013 See All Your Users' Events' by pranaygp: author == gh_login",
+   "https://news.ycombinator.com/item?id=20531197"
+  ],
+  "quality": "strong",
+  "hn_username": "pranaygp",
+  "hn_url": "https://news.ycombinator.com/user?id=pranaygp"
+ },
+ {
+  "founder_name": "Nikhil Unni",
+  "company": "Cortex",
+  "slug": "cortex",
+  "batch": "Winter 2020",
+  "gh_login": "nikhilunni",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'nikhilunni' exists, karma=8, no confirming about",
+   "launch/show story 'Show HN: Rust, ARM Cortex M, and a Generated HAL' by 'jamesmunns' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: TinyOS \u2013 A minimalist RTOS for Cortex-M written in C' by 'hpscript' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "nikhilunni",
+  "hn_url": "https://news.ycombinator.com/user?id=nikhilunni"
+ },
+ {
+  "founder_name": "Marcelo Cortes",
+  "company": "Faire",
+  "slug": "faire",
+  "batch": "Winter 2017",
+  "gh_login": "marcelo-faire",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: Quality News \u2013 Towards a fairer ranking algorithm for Hacker News' by 'manx' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Quality News \u2013 Towards a fairer ranking algorithm for Hacker News' by 'jwarden' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Johan Brissmyr",
+  "company": "Castle",
+  "slug": "castle-2",
+  "batch": "Winter 2016",
+  "gh_login": "brissmyr",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company domain castle.io",
+   "about mentions company name 'Castle'",
+   "karma=73"
+  ],
+  "quality": "strong",
+  "hn_username": "brissmyr",
+  "hn_url": "https://news.ycombinator.com/user?id=brissmyr"
+ },
+ {
+  "founder_name": "Chrisjan Wust",
+  "company": "Sphinx",
+  "slug": "sphinx",
+  "batch": "Fall 2024",
+  "gh_login": "ChrisjanWust",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'ChrisjanWust' exists, karma=1, no confirming about",
+   "launch/show story 'Show HN: Cocktail search written in Python using scrapy and sphinx' by 'wallunit' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Sphinx GraphiQL Plugin' by 'rikinsk' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Voice model creator for CMU Sphinx' by 'umhau' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Sphinx \u2013 the Jupyter-native AI copilot for data scientists' by '_jab' \u2014 author does not match this founder"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "ChrisjanWust",
+  "hn_url": "https://news.ycombinator.com/user?id=ChrisjanWust"
+ },
+ {
+  "founder_name": "David Marquez",
+  "company": "Shipmates",
+  "slug": "shipmates",
+  "batch": "Summer 2022",
+  "gh_login": "dayvough",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'dayvough' exists, karma=11, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "dayvough",
+  "hn_url": "https://news.ycombinator.com/user?id=dayvough"
+ },
+ {
+  "founder_name": "Marcelo Canovas",
+  "company": "Vendah",
+  "slug": "vendah",
+  "batch": "Winter 2023",
+  "gh_login": "marcelocanovas",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'marcelocanovas' exists, karma=1, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "marcelocanovas",
+  "hn_url": "https://news.ycombinator.com/user?id=marcelocanovas"
+ },
+ {
+  "founder_name": "Daivik Goel",
+  "company": "Shor",
+  "slug": "shor",
+  "batch": "Summer 2025",
+  "gh_login": "DaivikGoel",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: I built an app to block Shorts and Reels' by 'adrianhacar' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: 30 Hour Jobs \u2013 a job board for shorter work weeks' by 'nbrempel' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Madhavan Malolan",
+  "company": "Reclaim Protocol",
+  "slug": "reclaim-protocol",
+  "batch": "Winter 2021",
+  "gh_login": "madhavanmalolan",
+  "linked": true,
+  "method": "username==gh_login + about confirmation",
+  "evidence": [
+   "about mentions company domain reclaimprotocol.org",
+   "karma=45"
+  ],
+  "quality": "strong",
+  "hn_username": "madhavanmalolan",
+  "hn_url": "https://news.ycombinator.com/user?id=madhavanmalolan"
+ },
+ {
+  "founder_name": "Sven Myhre",
+  "company": "Ara",
+  "slug": "ara",
+  "batch": "Spring 2026",
+  "gh_login": "svemyh",
+  "linked": false,
+  "method": "username==gh_login, unconfirmed",
+  "evidence": [
+   "HN user 'svemyh' exists, karma=0, no confirming about"
+  ],
+  "quality": "weak-unconfirmed",
+  "hn_username": "svemyh",
+  "hn_url": "https://news.ycombinator.com/user?id=svemyh"
+ },
+ {
+  "founder_name": "Ivan Torroledo",
+  "company": "Littio",
+  "slug": "littio",
+  "batch": "Winter 2023",
+  "gh_login": "Torroledo",
+  "linked": false,
+  "method": null,
+  "evidence": [],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Parth Ajmera",
+  "company": "Agnost AI",
+  "slug": "agnost-ai",
+  "batch": "Summer 2026",
+  "gh_login": "AjmeraParth132",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Launch HN: Agnost AI (YC S26) \u2013 Extract user feedback from agent conversations' by 'laalshaitaan' \u2014 author does not match this founder",
+   "launch/show story 'Show HN: Agnost AI \u2013 Analytics for Conversational Text/Voice Agents' by 'laalshaitaan' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ },
+ {
+  "founder_name": "Pietro Zullo",
+  "company": "Manufact",
+  "slug": "manufact",
+  "batch": "Summer 2025",
+  "gh_login": "pietrozullo",
+  "linked": false,
+  "method": "company launch story found, different author",
+  "evidence": [
+   "launch/show story 'Show HN: I've been building an ERP for manufacturing for the last 3 years' by 'barbinbrad' \u2014 author does not match this founder"
+  ],
+  "quality": null,
+  "hn_username": null,
+  "hn_url": null
+ }
+]
