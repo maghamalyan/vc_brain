@@ -366,10 +366,17 @@
             use:observeCandidate={candidate.gh_login}
             style:--score-color={scoreColor(candidate.historicalScore)}
           >
-            <button class="candidate-main" type="button" onfocus={() => selected = index} onclick={() => navigate(`/candidate/${candidate.gh_login}`)} aria-label={`Open ${shortName(candidate.founder_name)} record`}>
+            <button class="candidate-main" type="button" onfocus={() => selected = index} onclick={() => navigate(`/candidate/${candidate.gh_login}`)} aria-label={`Open ${shortName(candidate.founder_name)} record; ${candidate.has_memo ? 'memo available' : 'no memo available'}`}>
               <span class="rank-number">{String(index + 1).padStart(2, '0')}</span>
               <span class="avatar" aria-hidden="true">{shortName(candidate.founder_name, candidate.gh_login).split(' ').map((part) => part[0]).slice(0,2).join('')}</span>
-              <span class="candidate-name"><strong>{shortName(candidate.founder_name, candidate.gh_login)}</strong><small>{candidate.company ?? 'Company not disclosed'} · @{candidate.gh_login.replace('-fixture', '')}</small><span class="source-badge source-{candidate.source}">{sourceLabel(candidate.source)}</span></span>
+              <span class="candidate-name">
+                <strong>{shortName(candidate.founder_name, candidate.gh_login)}</strong>
+                <small>{candidate.company ?? 'Company not disclosed'} · @{candidate.gh_login.replace('-fixture', '')}</small>
+                <span class="candidate-badges">
+                  <span class="source-badge source-{candidate.source}">{sourceLabel(candidate.source)}</span>
+                  <span class="memo-badge memo-{candidate.has_memo ? 'available' : 'unavailable'}" data-testid="memo-status" data-state={candidate.has_memo ? 'available' : 'unavailable'}>{candidate.has_memo ? 'Memo available' : 'No memo'}</span>
+                </span>
+              </span>
             </button>
             <div class="trajectory-cell" style:--forest={scoreColor(candidate.historicalScore)}>
               <MiniArea values={trajectoryValues(candidate)} width={90} height={30} label={`${shortName(candidate.founder_name)} signal trajectory through ${monthLabel(selectedMonth)}`} />
@@ -381,7 +388,7 @@
                   <div><span>{axisLabels[axis]}</span><MiniBars values={Array.from({ length: 10 }, (_, bar) => bar < Math.round(detail.three_axis?.[axis].score ?? 0) ? 1 : 0)} width={72} height={7} label={`${axisLabels[axis]} ${detail.three_axis[axis].score.toFixed(1)} out of 10`} segments /><strong>{detail.three_axis[axis].score.toFixed(1)}</strong></div>
                 {/each}
               {:else}
-                <span class="axes-pending">{candidate.status === 'memo_ready' ? 'Loading memo axes…' : 'Axes not yet observed'}</span>
+                <span class="axes-pending">{candidate.has_memo ? 'Loading memo axes…' : 'Axes not yet observed'}</span>
               {/if}
               <small>{candidate.profile?.sector ?? 'Technical founder'} · {candidate.profile?.stage ?? 'Early stage'}</small>
             </div>

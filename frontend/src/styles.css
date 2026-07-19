@@ -192,6 +192,12 @@ kbd { padding: 2px 6px; border: 1px solid var(--line); border-bottom-color: #c9c
 .candidate-row:hover,
 .candidate-row.selected { z-index: 2; transform: translateY(-2px); background: var(--nested-surface); box-shadow: 0 14px 28px rgba(29,40,33,.1), 0 2px 5px rgba(29,40,33,.05); }
 .candidate-row.selected { box-shadow: inset 3px 0 var(--forest), 0 14px 28px rgba(29,40,33,.1), 0 2px 5px rgba(29,40,33,.05); }
+.candidate-badges { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 5px; }
+.candidate-badges .source-badge,
+.memo-badge { width: max-content; margin-top: 0; padding: 2px 7px; border: 1px solid transparent; border-radius: 999px; font-size: 8px; font-weight: 720; letter-spacing: .06em; line-height: 1.35; text-transform: uppercase; white-space: nowrap; }
+.candidate-badges .source-badge { display: inline-block; }
+.memo-available { border-color: #c7dacf; background: var(--forest-pale); color: var(--forest); }
+.memo-unavailable { border-color: var(--line); background: var(--nested-surface); color: var(--muted); }
 .trajectory-cell { width: 90px; min-width: 0; }
 .trajectory-cell .mini-area { width: 90px; height: 30px; display: block; }
 .trajectory-cell small { display: block; margin-top: 4px; color: var(--muted); font: 650 7px/1 var(--mono-font); white-space: nowrap; }

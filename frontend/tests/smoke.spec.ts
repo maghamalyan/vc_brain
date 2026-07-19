@@ -47,6 +47,34 @@ test('mock app boots and all primary route shells render', async ({ page }) => {
   expect(external).toEqual([]);
 });
 
+test('radar flags memo availability on every founder record', async ({ page }) => {
+  const external = enforceOffline(page);
+  await page.goto('/');
+
+  const memoStatuses = page.getByTestId('memo-status');
+  await expect(memoStatuses).toHaveCount(12);
+  await expect(page.locator('[data-testid="memo-status"][data-state="available"]')).toHaveCount(3);
+  await expect(page.locator('[data-testid="memo-status"][data-state="unavailable"]')).toHaveCount(9);
+
+  const memoRow = page.locator('.candidate-row[data-login="ada-lovelace-fixture"]');
+  const noMemoRow = page.locator('.candidate-row[data-login="edsger-dijkstra-fixture"]');
+  await expect(memoRow.getByTestId('memo-status')).toHaveText('Memo available');
+  await expect(noMemoRow.getByTestId('memo-status')).toHaveText('No memo');
+  await expect(memoRow.locator('.candidate-main')).toHaveAttribute('aria-label', /memo available/i);
+  await expect(noMemoRow.locator('.candidate-main')).toHaveAttribute('aria-label', /no memo available/i);
+
+  const scrubber = page.getByTestId('radar-scrubber');
+  await scrubber.focus();
+  await scrubber.press('ArrowLeft');
+  await expect(memoRow.getByTestId('memo-status')).toHaveAttribute('data-state', 'available');
+  await expect(noMemoRow.getByTestId('memo-status')).toHaveAttribute('data-state', 'unavailable');
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await expect(memoRow.getByTestId('memo-status')).toBeVisible();
+  await expect(noMemoRow.getByTestId('memo-status')).toBeVisible();
+  expect(external).toEqual([]);
+});
+
 test('command palette opens, searches, and navigates by keyboard', async ({ page }) => {
   const external = enforceOffline(page);
   await page.goto('/');
