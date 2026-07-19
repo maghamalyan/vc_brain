@@ -27,8 +27,11 @@ FOUNDERS_RESOLVED_PATH = LABELS_DIR / "founders_resolved.parquet"
 
 CONFIDENT_GITHUB_THRESHOLD = 0.5
 WINDOW_MONTHS = 48
-ACTOR_BATCH_SIZE = 300
-RESULT_ROW_GUARD = 900_000
+# Playground quota is rows READ per hour; every actor-batch query full-scans the
+# actor_login column, so fewer+bigger batches is the only real lever. Result sets
+# stay small (aggregates), hence the generous guard.
+ACTOR_BATCH_SIZE = 1500
+RESULT_ROW_GUARD = 3_000_000
 HASH_MODULUS = 400
 DEFAULT_HASH_SEEDS = (0, 1, 2)
 NEGATIVES_PER_POSITIVE = 5

@@ -121,8 +121,17 @@ class ClickHouseClient:
                 headers={"Content-Type": "text/plain; charset=utf-8"},
             )
         if response.status_code == 429 or response.status_code >= 500:
+            body_head = response.content[:300].decode("utf-8", "replace")
+            if "QUOTA_EXCEEDED" in body_head:
+                # Shared hourly read quota; hammering it is pointless. Sleep out
+                # most of the window, then let tenacity retry.
+                LOGGER.warning(
+                    "ClickHouse playground quota exhausted; sleeping 600s before retry"
+                )
+                time.sleep(600)
             raise RetryableClickHouseError(
-                f"ClickHouse playground returned HTTP {response.status_code}"
+                f"ClickHouse playground returned HTTP {response.status_code}: "
+                f"{body_head[:120]}"
             )
         try:
             response.raise_for_status()
