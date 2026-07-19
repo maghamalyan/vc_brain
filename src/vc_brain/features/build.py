@@ -13,6 +13,13 @@ from pathlib import Path
 import polars as pl
 
 from vc_brain.features.taxonomy import capital_families, capital_family
+from vc_brain.semantics.contracts import ANNOTATIONS_PATH
+from vc_brain.semantics.features import (
+    annotation_feature_maps,
+    annotation_feature_names,
+    annotation_level_feature_names,
+    semantic_features_for_month,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DATA_ROOT = Path(os.environ.get("VC_BRAIN_DATA_DIR", PROJECT_ROOT / "data"))
@@ -409,6 +416,47 @@ def feature_definitions() -> list[FeatureDefinition]:
             ),
         ]
     )
+    level_descriptions = {
+        "productization_markers": "LLM-coded 0-3 evidence level for docs, CI, licensing, onboarding, or deployment markers in the current person-quarter.",
+        "commercial_language": "LLM-coded 0-3 level of customer, pricing, sales, or commercial language in the current person-quarter.",
+        "seriousness": "LLM-coded 0-3 level of sustained execution seriousness in the current person-quarter.",
+        "domain_shift": "LLM-coded 0-3 degree to which current-quarter work redeploys into a different domain or stack than earlier supplied context.",
+        "stated_founding_intent": "Ordinal stated founding intent in the current person-quarter: none=0, implicit=1, explicit=2.",
+    }
+    for name in annotation_level_feature_names():
+        if name.startswith("building_what_"):
+            description = (
+                "One-hot LLM-coded current-quarter building category: "
+                f"{name.removeprefix('building_what_')}."
+            )
+        elif name.startswith("audience_orientation_"):
+            description = (
+                "One-hot LLM-coded current-quarter audience orientation: "
+                f"{name.removeprefix('audience_orientation_')}."
+            )
+        elif name.startswith("collaboration_posture_"):
+            description = (
+                "One-hot LLM-coded current-quarter collaboration posture: "
+                f"{name.removeprefix('collaboration_posture_')}."
+            )
+        else:
+            description = level_descriptions[name]
+        definitions.append(
+            FeatureDefinition(
+                name,
+                "semantics",
+                description,
+                "Null when no schema-valid annotation exists for the calendar quarter; model matrices neutral-impute this documented null to zero.",
+            )
+        )
+        definitions.append(
+            FeatureDefinition(
+                f"{name}_delta",
+                "semantics",
+                f"Current-quarter `{name}` minus the immediately preceding calendar-quarter level.",
+                "Null unless schema-valid annotations exist in both adjacent quarters and both levels are defined; model matrices neutral-impute this documented null to zero.",
+            )
+        )
     return definitions
 
 
@@ -786,6 +834,7 @@ def build_features(
     repo_creations_dir: Path = EVENTS_ROOT / "repo_creations",
     baselines_path: Path = EVENTS_ROOT / "baselines" / "monthly_totals.parquet",
     matches_path: Path = EVENTS_ROOT / "negatives" / "matched.parquet",
+    annotations_path: Path = ANNOTATIONS_PATH,
     output_path: Path = PANEL_PATH,
     data_card_json_path: Path = DATA_CARD_JSON_PATH,
     data_card_md_path: Path = DATA_CARD_MD_PATH,
@@ -799,6 +848,7 @@ def build_features(
     creations = _read_parquet_collection(repo_creations_dir)
     baselines = _read_parquet_collection(baselines_path)
     matches = _read_parquet_collection(matches_path)
+    annotations = _read_parquet_collection(annotations_path, required=False)
     _validate_columns(
         labels,
         {
@@ -979,6 +1029,7 @@ def build_features(
     own_repo, ownership_total = _ownership_maps(ownership)
     collaborator_counts = _collaborator_maps(collaborators)
     composition, composition_event_types = _composition_maps(monthly)
+    semantic_maps = annotation_feature_maps(annotations)
 
     people: list[dict[str, object]] = []
     for login, label in positives.items():
@@ -1094,6 +1145,11 @@ def build_features(
                         composition=composition,
                         composition_event_types=composition_event_types,
                     ),
+                    **semantic_features_for_month(
+                        semantic_maps,
+                        login=login,
+                        month=month,
+                    ),
                 }
             )
     definitions = feature_definitions()
@@ -1105,8 +1161,9 @@ def build_features(
         .select(*METADATA_COLUMNS, *feature_names)
         .sort("match_group_id", "gh_login", "month")
     )
+    nullable_features = {"context_divergence_2q", *annotation_feature_names()}
     non_nullable_features = [
-        name for name in feature_names if name != "context_divergence_2q"
+        name for name in feature_names if name not in nullable_features
     ]
     if panel.select(
         pl.any_horizontal(pl.col(non_nullable_features).is_null()).any()

@@ -43,6 +43,7 @@ def _features(data_dir: Path) -> None:
         repo_creations_dir=data_dir / "events" / "repo_creations",
         baselines_path=data_dir / "events" / "baselines" / "monthly_totals.parquet",
         matches_path=data_dir / "events" / "negatives" / "matched.parquet",
+        annotations_path=data_dir / "semantics" / "annotations.parquet",
         output_path=data_dir / "features" / "panel.parquet",
         data_card_json_path=data_dir / "features" / "data_card.json",
         data_card_md_path=data_dir / "features" / "data_card.md",

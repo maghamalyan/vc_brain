@@ -210,3 +210,44 @@ capital-family mapping, with financial capital explicitly empty. Verification:
 `uv run pytest -q` -> 78 passed (27 upstream joblib/NumPy deprecation warnings);
 `uv run ruff check src tests` and `git diff --check` -> clean. Protected eval/report
 and dashboard paths were untouched; no commit was created.
+
+## 2026-07-19 12:20 — deep-slice worktree MERGED into overnight/poc (Claude)
+
+Merge 0f8e58b (30 files, pure additions, zero conflicts; no in-flight stream-A
+files touched). Person-level semantic instrument consolidated under
+`semantics/person_*` (v2 = production: anchored 0-100, structure-preserving
+masking) + `semantics/studies/` provenance; label streams under `labels/`
+(hn_persons, hn_harvest, control_screen*). Data + caches migrated additively
+(data/pilot/, data/labels/hn_*.parquet, data/cache/{pilot*,labelnoise,gh_commits}).
+Headline (see docs/exploration/corrected_metrics.md): matched-pairs AUC 0.776 vs
+0.640 counts; corrected semantic p@10 10/10; noise curve 5.1/7.3/25.8%; HN
+pre-cutoff Show HN P(founder)=77-82%. USER DECISION: A3a person-quarter
+annotation HELD (pipeline stays, unrun); person-level instrument is the
+submission's semantic layer — see docs/integration_deep_slice.md. Stream-A
+follow-up owed: fold data/pilot/excluded_controls.parquet into the matched-group
+eval at next gate (34.2% headline is label-noise-polluted).
+
+## 2026-07-19 14:29 +04 — A3 checkpoint-only semantics pilot
+
+Consumed the intentionally stopped 5,200-row annotation checkpoint without issuing
+any LLM annotation work. Built the specified 14 ordinal semantic level/delta features,
+preserved quarter-level missingness, filled only within calendar quarters, and excluded
+all non-checkpoint people before model-matrix imputation. The pilot panel contains 420
+people (150 founders, 270 controls): 243 development and 177 held-out test people.
+
+Counts-only versus counts+semantics held-out within-month PR-AUC was 0.4199 versus
+0.4312, a paired person-bootstrap change of +0.0113 with 95% CI [-0.0070, +0.0298]
+over 200 resamples: no detectable lift. Both small-prefix shuffled-label null gates
+failed (0.3409 and 0.3155 versus a 0.2770 limit), so the report marks all estimates
+descriptive only. Four eligible held-out matched groups survived; rank-1 probability
+was unchanged at 0.5000 (chance 0.3333), top-half probability unchanged at 0.7500,
+and mean normalized rank unchanged at 0.3750.
+
+Wrote `data/eval/semantics_pilot.{json,md}`, a blind mixed 40-bundle validation sample,
+and quarterly demo trajectories for `andreybavt`, `28andrew`, and `akshaynarisetti`.
+Verification: `uv run pytest -q` -> 88 passed (27 upstream joblib/NumPy warnings);
+`uv run ruff check src tests` -> clean. `eval/report.py` and `dashboard/` were untouched;
+no commit was created.
+
+## 2026-07-19 14:32 — Claude gate: semantics PILOT reviewed (honest inconclusive)
+On 420 people (150 founders): within-month PR-AUC 0.4199 -> 0.4312 with semantics, paired bootstrap +0.0113, 95% CI [-0.007, +0.030] — includes zero. Null gates FAIL on this prefix subsample (matched-group structure broken: only 4 groups survive; founder prevalence 36% vs 25% design) so estimates are descriptive only. Verdict: underpowered pilot, semantics NOT yet demonstrated nor refuted; full-cohort annotation queued post-demo (cache-resumable). Demo keeps qualitative annotation trajectories (andreybavt, 28andrew, akshaynarisetti) + instrument story. A5 frozen-clock rerouted to a Claude subagent after two Codex pre-session stalls (forensics: no rollout file ever created).

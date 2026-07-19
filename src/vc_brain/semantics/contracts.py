@@ -14,6 +14,10 @@ COHORT_D_PATH = SEMANTICS_DIR / "cohort_d.parquet"
 TEXT_ITEMS_PATH = TEXT_DIR / "items.parquet"
 EXTRACTION_SUMMARY_PATH = SEMANTICS_DIR / "extraction_summary.json"
 ANNOTATIONS_PATH = SEMANTICS_DIR / "annotations.parquet"
+ANNOTATION_RUN_SUMMARY_PATH = SEMANTICS_DIR / "annotation_run_summary.json"
+ANNOTATION_VALIDATION_SAMPLE_PATH = (
+    DATA_ROOT.parent / "docs" / "exploration" / "annotation_validation_sample.md"
+)
 
 TEXT_EVENT_TYPES = (
     "IssuesEvent",

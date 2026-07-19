@@ -1,5 +1,6 @@
 import json
 import shutil
+from collections import deque
 from datetime import date, datetime
 from pathlib import Path
 
@@ -10,9 +11,20 @@ from pydantic import ValidationError
 
 from vc_brain.features.build import add_months, context_divergence_2q
 from vc_brain.features.taxonomy import capital_families, capital_family
-from vc_brain.semantics.annotate import annotate_bundle, build_annotation_payload
+from vc_brain.semantics.annotate import (
+    FAILURE_WINDOW_SIZE,
+    _failure_rate_exceeded,
+    annotate_bundle,
+    annotate_bundle_result,
+    build_annotation_payload,
+)
 from vc_brain.semantics.extract import freeze_cohort_d, text_items_sql
+from vc_brain.semantics.features import (
+    annotation_feature_maps,
+    semantic_features_for_month,
+)
 from vc_brain.semantics.schema import SemanticAnnotation
+from vc_brain.semantics.validation import write_validation_sample
 
 FIXTURES = Path(__file__).parent / "fixtures" / "semantics"
 
@@ -163,6 +175,188 @@ def test_annotation_payload_is_bounded_and_keeps_current_indices() -> None:
 
     assert [row["item_index"] for row in payload["current_quarter_items"]] == [1, 2]
     assert all("item_index" not in row for row in payload["earlier_context_items"])
+
+
+def test_live_adapter_sets_reasoning_budget_retries_validation_and_tracks_usage(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    items = json.loads((FIXTURES / "items.json").read_text(encoding="utf-8"))
+    valid = json.loads(
+        (FIXTURES / "fixture-dev__2023-04-01.json").read_text(encoding="utf-8")
+    )
+    invalid = json.loads(json.dumps(valid))
+    invalid["domain_shift"]["citations"] = [99]
+    bodies = []
+    for raw, prompt_tokens, completion_tokens in (
+        (invalid, 100, 80),
+        (valid, 140, 90),
+    ):
+        bodies.append(
+            {
+                "choices": [
+                    {
+                        "finish_reason": "stop",
+                        "message": {
+                            "content": json.dumps(raw),
+                            "reasoning": "internal reasoning",
+                        },
+                    }
+                ],
+                "usage": {
+                    "prompt_tokens": prompt_tokens,
+                    "completion_tokens": completion_tokens,
+                    "completion_tokens_details": {"reasoning_tokens": 50},
+                },
+            }
+        )
+
+    class FakeResponse:
+        def __init__(self, body):  # noqa: ANN001
+            self.body = body
+
+        def raise_for_status(self) -> None:
+            return None
+
+        def json(self):  # noqa: ANN201
+            return self.body
+
+    class FakeClient:
+        def __init__(self) -> None:
+            self.requests = []
+
+        def post(self, url, *, headers, json):  # noqa: ANN001, ANN201
+            self.requests.append(json)
+            return FakeResponse(bodies.pop(0))
+
+    client = FakeClient()
+    monkeypatch.setenv("OPENROUTER_KEY", "fixture-key")
+    monkeypatch.setenv("OPENROUTER_MODEL", "z-ai/glm-5.2")
+    monkeypatch.setattr("vc_brain.semantics.annotate.time.sleep", lambda _delay: None)
+    outcome = annotate_bundle_result(
+        actor_login="fixture-dev",
+        quarter=date(2023, 4, 1),
+        current_items=items,
+        cache_dir=tmp_path / "cache",
+        client=client,  # type: ignore[arg-type]
+    )
+
+    assert outcome.attempts == 2
+    assert outcome.usage.input_tokens == 240
+    assert outcome.usage.output_tokens == 170
+    assert outcome.usage.reasoning_tokens == 100
+    assert outcome.reasoning_present
+    assert client.requests[0]["max_tokens"] == 2_000
+    assert client.requests[0]["reasoning"] == {"effort": "low"}
+    assert "failed validation" in client.requests[1]["messages"][-1]["content"]
+
+
+def test_annotation_features_fill_months_within_quarter_and_delta_adjacent_quarters(
+) -> None:
+    annotations = pl.DataFrame(
+        [
+            {
+                "actor_login": "person",
+                "quarter": date(2023, 1, 1),
+                "annotation_status": "ok",
+                "building_what_category": "developer_tool",
+                "audience_orientation": "developers",
+                "productization_markers": 1,
+                "commercial_language": 0,
+                "collaboration_posture": "solo",
+                "stated_founding_intent": "none",
+                "seriousness": 1,
+                "domain_shift": 0,
+            },
+            {
+                "actor_login": "person",
+                "quarter": date(2023, 4, 1),
+                "annotation_status": "ok",
+                "building_what_category": "application",
+                "audience_orientation": "customers",
+                "productization_markers": 3,
+                "commercial_language": 2,
+                "collaboration_posture": "team_forming",
+                "stated_founding_intent": "implicit",
+                "seriousness": 3,
+                "domain_shift": 2,
+            },
+        ]
+    )
+
+    maps = annotation_feature_maps(annotations)
+    may = semantic_features_for_month(maps, login="person", month=date(2023, 5, 1))
+    june = semantic_features_for_month(maps, login="person", month=date(2023, 6, 1))
+
+    assert may == june
+    assert may["productization_markers"] == 3.0
+    assert may["productization_markers_delta"] == 2.0
+    assert may["building_what_application"] == 1.0
+    assert may["building_what_application_delta"] == 1.0
+    assert may["stated_founding_intent_delta"] == 1.0
+
+
+def test_failure_window_aborts_only_after_more_than_five_percent() -> None:
+    at_threshold = deque(
+        [True] * 25 + [False] * (FAILURE_WINDOW_SIZE - 25),
+        maxlen=FAILURE_WINDOW_SIZE,
+    )
+    over_threshold = deque(
+        [True] * 26 + [False] * (FAILURE_WINDOW_SIZE - 26),
+        maxlen=FAILURE_WINDOW_SIZE,
+    )
+
+    assert not _failure_rate_exceeded(at_threshold)
+    assert _failure_rate_exceeded(over_threshold)
+
+
+def test_validation_sample_is_40_bundles_and_withholds_outcome_labels(
+    tmp_path: Path,
+) -> None:
+    quarters = [date(year, month, 1) for year in range(2020, 2025) for month in (1, 4)]
+    annotations = []
+    items = []
+    for person_type in ("positive", "control"):
+        for index in range(30):
+            login = f"blind-{person_type[0]}-{index:02d}"
+            quarter = quarters[index % len(quarters)]
+            annotations.append(
+                {
+                    "actor_login": login,
+                    "quarter": quarter,
+                    "person_type": person_type,
+                    "annotation_status": "ok",
+                    "annotation_json": '{"measurement": "fixture"}',
+                }
+            )
+            items.append(
+                {
+                    "actor_login": login,
+                    "quarter": quarter,
+                    "item_index": 1,
+                    "created_at": datetime(quarter.year, quarter.month, 2),
+                    "event_type": "IssuesEvent",
+                    "repo_name": "person/repo",
+                    "title": "Fixture title",
+                    "body": "Fixture body",
+                }
+            )
+    annotations_path = tmp_path / "annotations.parquet"
+    items_path = tmp_path / "items.parquet"
+    output_path = tmp_path / "sample.md"
+    pl.DataFrame(annotations).write_parquet(annotations_path)
+    pl.DataFrame(items).write_parquet(items_path)
+
+    write_validation_sample(
+        items_path=items_path,
+        annotations_path=annotations_path,
+        output_path=output_path,
+    )
+    rendered = output_path.read_text(encoding="utf-8")
+
+    assert rendered.count("\n## Bundle ") == 40
+    assert "person_type" not in rendered
+    assert "matched_positive_login" not in rendered
+    assert "blind-p-" in rendered and "blind-c-" in rendered
 
 
 def test_context_divergence_uses_event_mix_and_requires_two_prior_quarters() -> None:

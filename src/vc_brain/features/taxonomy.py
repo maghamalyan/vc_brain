@@ -16,7 +16,11 @@ CAPITAL_FAMILIES: tuple[CapitalFamily, ...] = (
 
 def capital_family(feature_name: str) -> CapitalFamily:
     """Classify observed signals without changing model weights."""
-    if feature_name in {"context_divergence_2q", "domain_shift"}:
+    if feature_name in {
+        "context_divergence_2q",
+        "domain_shift",
+        "domain_shift_delta",
+    }:
         return "cognitive"
     if feature_name.startswith(
         (
