@@ -123,3 +123,6 @@ left untouched.
 
 ## 2026-07-19 05:50 — Claude verification: SECOND label spot-check PASSED
 Seed 42, 25 rows spanning W22..P26 batches incl. training cohort: 25/25 correct person (2 company-named accounts of the right founder). Combined audits: >=48/50, zero wrong-person links. Also raised ClickHouse max_attempts 5->12 for quota resilience.
+
+## 2026-07-19 06:11 — First REAL end-to-end result (partial cohort)
+Eval null gate FIRED on run2 (global shuffled-label PR-AUC 0.098 vs 0.054 limit) — Claude diagnosed calendar-composition artifact; switched primary metric + null gate to within-month macro PR-AUC. Corrected results (704 test founders, partial labels): within-month PR-AUC 0.174 vs null 0.153 (base 0.094) — real but thin person-level lift; ROC 0.734; precision@50 0.32 (1.3x). Detection rate 71% but most detections censored at panel start (propensity, not rising intent) — presentation fix delegated to Codex. Score exports passed the gate; real site built; 3 real OpenRouter memos generated (evidence-grounded, gaps flagged). Final full-cohort run pending resolution completion.

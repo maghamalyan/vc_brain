@@ -85,10 +85,21 @@ def _write_real_contract(root: Path, *, founder_count: int = 7) -> None:
     trajectories = []
     labels = []
     creations = []
+    first_panel_month = date(2021, 1, 1)
+    dynamic_leads = [12, 14, 16, 18]
+    lead_months = []
     for index in range(founder_count):
         login = f"real-founder-{index}"
-        detection = date(2024, index + 1, 1)
-        batch_start = date(2025, index + 1, 1)
+        batch_start = date(2025, 1, 1)
+        if index < 3:
+            detection = first_panel_month
+            lead = 48
+        else:
+            lead = dynamic_leads[(index - 3) % len(dynamic_leads)]
+            detection = date(2025 - lead // 12, 1 - lead % 12 or 12, 1)
+            if lead % 12:
+                detection = date(2024 - lead // 12, 13 - lead % 12, 1)
+        lead_months.append(lead)
         candidates.append(
             {
                 "gh_login": login,
@@ -102,17 +113,17 @@ def _write_real_contract(root: Path, *, founder_count: int = 7) -> None:
                 "status": "candidate",
             }
         )
-        trajectories.extend(
-            {
-                "gh_login": login,
-                "month": date(2023, month, 1),
-                "score": 0.1 + month * 0.03 + index * 0.001,
-            }
-            for month in range(1, 13)
-        )
         trajectories.append(
-            {"gh_login": login, "month": detection, "score": 0.9 - index * 0.01}
+            {"gh_login": login, "month": first_panel_month, "score": 0.2}
         )
+        if detection != first_panel_month:
+            trajectories.append(
+                {
+                    "gh_login": login,
+                    "month": detection,
+                    "score": 0.9 - index * 0.01,
+                }
+            )
         labels.append(
             {
                 "founder_name": f"Real Founder {index}",
@@ -144,8 +155,9 @@ def _write_real_contract(root: Path, *, founder_count: int = 7) -> None:
                     "detected": founder_count,
                     "total_test_founders": 10,
                     "detection_rate": founder_count / 10,
-                    "lead_months_median": 12.0,
-                    "lead_months_iqr": [11.0, 13.0],
+                    "lead_months_median": 18.0,
+                    "lead_months_iqr": [15.0, 48.0],
+                    "lead_months": lead_months,
                     "threshold": (
                         "99th percentile of control scores in the same calendar month"
                     ),
@@ -170,6 +182,20 @@ def test_real_wiring_builds_honest_backtest_and_real_evidence(tmp_path: Path) ->
     _write_real_contract(data_root)
 
     inputs = wire_real_data(data_root)
+    assert inputs.backtest.window_start_detected == 3
+    assert inputs.backtest.window_start_share == pytest.approx(3 / 7)
+    assert inputs.backtest.rising_signal_detected == 4
+    assert inputs.backtest.rising_median_lead_months == 15.0
+    assert inputs.backtest.rising_lead_months_iqr == (13.5, 16.5)
+    assert [founder.high_propensity_from_start for founder in inputs.backtest.founders] == [
+        True,
+        True,
+        True,
+        False,
+        False,
+        False,
+        False,
+    ]
     output = tmp_path / "site"
     build_site(inputs=inputs, output_dir=output)
 
@@ -187,7 +213,16 @@ def test_real_wiring_builds_honest_backtest_and_real_evidence(tmp_path: Path) ->
 
     _, backtest_html = parse(output / "backtest.html")
     assert "70%" in backtest_html
-    assert "12 months" in backtest_html
+    assert "High-propensity from window start" in backtest_html
+    assert "43%" in backtest_html
+    assert "3 of 7 detected founders" in backtest_html
+    assert "true lead is at least 48 months" in backtest_html
+    assert "Rising signal during window" in backtest_html
+    assert "15 months" in backtest_html
+    assert "IQR 13.5–16.5 months" in backtest_html
+    assert "Median lead time" not in backtest_html
+    assert "Panel prevalence is case-control (~25%), not population base rate" in backtest_html
+    assert "calibrated probabilities live in the eval report" in backtest_html
     assert "Real Founder 0" in backtest_html
     assert backtest_html.count("data-backtest-founder") == 7
     assert "YC BATCH" in backtest_html
