@@ -324,3 +324,6 @@ capped edge stream, attention != explanation) in
 `docs/exploration/temporal_gnn.md`; metrics in `data/gnn/metrics.json`.
 Verification: `uv run pytest -q` -> 97 passed; `uv run ruff check scripts/gnn` ->
 clean. No commit created.
+
+Blind review of A3 annotation instrument (40 bundles, independent rater vs GLM-5.2): scales solid — productization/commercial/seriousness all 100% within-1 (commercial 98% exact), founding intent 88%; categoricals weak — category 65%, audience 60%, collaboration 60% exact, driven by model bias toward developer_tool/developers/solo. domain_shift (48% exact) is confounded: the sample omits the earlier-context text the model saw.
+Verdicts in docs/exploration/annotation_validation_sample.md '## Blind review results': KEEP productization, commercial, seriousness, intent; MERGE/REVISE category, audience, collaboration, domain_shift (regenerate sample with earlier context first). No commit created.

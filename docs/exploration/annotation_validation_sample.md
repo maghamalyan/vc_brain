@@ -11489,3 +11489,37 @@ None</pre>
   }
 }</pre>
 
+
+## Blind review results
+
+Independent blind re-annotation of all 40 bundles by a second rater (Claude, 2026-07-19), compared against the GLM-5.2 annotations in `data/semantics/annotations.parquet` (joined on `actor_login` + `quarter`; all 40 matched).
+
+### Protocol notes
+
+- The sample file interleaves `### Model annotation` blocks with bundle text. Before reading any bundle past the first, all model-annotation sections were mechanically stripped into a text-only copy (`grep`-based script), and the blind pass was done exclusively on that copy. Model outputs were loaded only after all 40 ratings were recorded. For bundle 01 the top of the original file was read before extraction, but the read window ended before its model-annotation block, so it stayed blind too. Full protocol adherence.
+- Important caveat: the sample file contains only CURRENT QUARTER text, while the model prompt also received EARLIER CONTEXT bundles for the `domain_shift` comparison. The blind rater therefore defaulted `domain_shift` to 0 in nearly every bundle. The `domain_shift` row below measures a protocol artifact more than instrument quality; regenerate the sample with earlier-context excerpts before drawing conclusions on that field.
+
+### Per-field agreement (n = 40)
+
+| Field | Exact | Within-1 | Bias (model − rater) | Verdict |
+|---|---|---|---|---|
+| building_what_category | 26/40 (65%) | — | model over-uses `developer_tool` (10/14 disagreements) | MERGE/REVISE |
+| audience_orientation | 24/40 (60%) | — | model favors `developers`/`self`; rater's `end_users`/`customers` rarely reproduced | MERGE/REVISE |
+| productization_markers | 26/40 (65%) | 40/40 (100%) | +0.00 (symmetric 1-step noise) | KEEP |
+| commercial_language | 39/40 (98%) | 40/40 (100%) | +0.03 | KEEP |
+| collaboration_posture | 24/40 (60%) | — | model favors `solo` where rater saw `leading` (maintainer-with-community bundles) | MERGE/REVISE |
+| stated_founding_intent | 35/40 (88%) | — | model over-triggers `implicit` on ordinary side-project publishing; missed org/venture context twice | KEEP |
+| seriousness | 24/40 (60%) | 40/40 (100%) | −0.20 (model compresses the top: 6 of rater's 3s scored 2) | KEEP |
+| domain_shift | 19/40 (48%) | 32/40 (80%) | +0.80 (confounded: rater lacked earlier context) | MERGE/REVISE |
+
+Verdict rule applied: KEEP if >=70% exact, or >=90% within-1 for 0-3 scales.
+
+### Three worst disagreements
+
+1. **Bundle 17 `armandofox` 2013-04** — rater: category `other` (course autograder), audience `self`, collab `leading`; model: `developer_tool`, `developers`, `contributing`. The single item is a professor merging homework-grading support into `saasbook/rag` while directing a collaborator ("I don't know what you (Richard) were trying to do... please take a look", "I think we should either move... or make this repository private"). That is directing others on internal course tooling, not contributing a developer tool to an external audience. Model defaulted to its modal categories on thin evidence.
+2. **Bundle 26 `aliscott` 2017-10** — rater: audience `customers`, intent `implicit`, commercial 1; model: `developers`, `none`, commercial 2. The bundle is customer-facing documentation and hosted-service infrastructure for AbarCloud ("our hosted services", official templates, load-balancer log docs for paying users). The model read a commercial PaaS operation as generic developer documentation — it scores surface commercial vocabulary but misses whose product it is. This is the single `commercial_language` disagreement and one of two missed venture-context cases (the other: bundle 29 `danielhanchen`, "we're still fixing things up... join our Discord").
+3. **Bundle 19 `davidhu2000` 2022-10** — rater: intent `none`, collab `leading`, seriousness 2; model: `implicit`, `solo`, 1. Publishing `use-better-effect` to npm and maintaining `react-spinners` (responding to user bug reports, cutting 0.13.7) is routine OSS maintenance. Calling founding intent `implicit` here over-triggers on ordinary package publishing; calling a maintainer with an active user community `solo` shows the posture labels are not anchored (same pattern in bundles 02, 12, 21, 29; and `team_forming` appears for employer-org PRs in bundle 13).
+
+### Summary
+
+Scales behave well: all three 0-3 scales that both raters could actually score hit 100% within-1 with near-zero bias, and `commercial_language` is near-perfect exact. The weak fields are the three categoricals whose label boundaries are undefined at the margins: `building_what_category` needs tie-break rules (tool-vs-application, tool-vs-domain like `data_ai`/`security`/`hardware`), `audience_orientation` needs a rule for library-maintainer vs end-user-product vs coursework bundles, and `collaboration_posture` needs an explicit definition of `leading` (does answering your own repo's users count?). `domain_shift` cannot be validated with this sample design.
