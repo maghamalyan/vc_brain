@@ -4,6 +4,7 @@ from vc_brain.ingest.sql import (
     monthly_agg_sql,
     negative_candidates_sql,
     owned_repo_agg_sql,
+    ownership_collab_sql,
     repo_creations_sql,
 )
 
@@ -28,6 +29,19 @@ def test_owned_repo_query_has_verified_traction_received_contract() -> None:
     assert "e.actor_login != arrayElement" in sql
     assert "'WatchEvent', 'ForkEvent'" in sql
     assert "e.event_type = 'IssuesEvent' AND e.action = 'opened'" in sql
+    assert "e.created_at < toDateTime(a.t_cutoff)" in sql
+
+
+def test_ownership_and_collaboration_queries_are_batched_and_leakage_safe() -> None:
+    sql = ownership_collab_sql(ACTORS)
+
+    assert "AS own_repo_events" in sql
+    assert "AS other_repo_events" in sql
+    assert "uniqExactIf(" in sql
+    assert "lower(e.actor_login) != lower(e.target_actor)" in sql
+    assert "(?i)(bot|\\[bot\\]|-ci|automation)" in sql
+    assert "arrayJoin(arrayDistinct(arrayFilter(" in sql
+    assert "addMonths(toDateTime(a.t_cutoff), -48)" in sql
     assert "e.created_at < toDateTime(a.t_cutoff)" in sql
 
 

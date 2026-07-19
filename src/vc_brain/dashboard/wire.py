@@ -30,6 +30,12 @@ CANDIDATE_COLUMNS = {
     "status",
 }
 TRAJECTORY_COLUMNS = {"gh_login", "month", "score"}
+ATTRIBUTION_COLUMNS = {
+    "login",
+    "crossing_month",
+    "feature",
+    "delta_contrib",
+}
 LABEL_COLUMNS = {
     "founder_name",
     "company",
@@ -58,6 +64,7 @@ class BacktestFounder:
     lead_months: int
     high_propensity_from_start: bool
     current_score: float
+    flagged_on: tuple[str, ...]
     trajectory: list[dict[str, Any]]
 
 
@@ -74,6 +81,9 @@ class BacktestSummary:
     rising_median_lead_months: float | None
     rising_lead_months_iqr: tuple[float, float] | None
     threshold: str
+    matched_group_rank_one: float
+    matched_group_chance: float
+    matched_group_count: int
     founders: list[BacktestFounder]
 
 
@@ -97,6 +107,7 @@ def wire_real_data(data_root: Path = Path("data")) -> DashboardInputs:
     paths = {
         "candidates": data_root / "scores" / "candidates.parquet",
         "trajectories": data_root / "scores" / "trajectories.parquet",
+        "attributions": data_root / "scores" / "attributions.parquet",
         "report": data_root / "eval" / "report.json",
         "labels": data_root / "labels" / "founders.parquet",
         "repo_creations": data_root / "events" / "repo_creations",
@@ -112,6 +123,7 @@ def wire_real_data(data_root: Path = Path("data")) -> DashboardInputs:
 
     candidates_frame = pl.read_parquet(paths["candidates"])
     trajectories_frame = pl.read_parquet(paths["trajectories"])
+    attributions_frame = pl.read_parquet(paths["attributions"])
     labels_frame = pl.read_parquet(paths["labels"])
     repo_frames = [
         pl.read_parquet(path)
@@ -125,6 +137,9 @@ def wire_real_data(data_root: Path = Path("data")) -> DashboardInputs:
     _require_columns("scores/candidates.parquet", candidates_frame, CANDIDATE_COLUMNS)
     _require_columns(
         "scores/trajectories.parquet", trajectories_frame, TRAJECTORY_COLUMNS
+    )
+    _require_columns(
+        "scores/attributions.parquet", attributions_frame, ATTRIBUTION_COLUMNS
     )
     _require_columns("labels/founders.parquet", labels_frame, LABEL_COLUMNS)
     for frame in repo_frames:
@@ -149,7 +164,13 @@ def wire_real_data(data_root: Path = Path("data")) -> DashboardInputs:
     events = _real_events(repositories, candidates, label_by_login)
     profiles = _real_profiles(candidates, label_by_login)
     memos, memo_paths = _real_memos(data_root / "memos", candidates)
-    backtest = _real_backtest(candidates, trajectories, label_by_login, report)
+    backtest = _real_backtest(
+        candidates,
+        trajectories,
+        attributions_frame,
+        label_by_login,
+        report,
+    )
     return DashboardInputs(
         candidates=candidates,
         trajectories=trajectories,
@@ -340,6 +361,7 @@ def _real_memos(
 def _real_backtest(
     candidates: list[dict[str, Any]],
     trajectories: list[dict[str, Any]],
+    attributions: pl.DataFrame,
     label_by_login: dict[str, dict[str, Any]],
     report: dict[str, Any],
 ) -> BacktestSummary:
@@ -372,6 +394,36 @@ def _real_backtest(
     for row in trajectories:
         by_login.setdefault(str(row["gh_login"]), []).append(row)
 
+    display_names = report["feature_display_names"]
+    attribution_by_login: dict[str, tuple[str, ...]] = {}
+    attribution_crossing_by_login: dict[str, date] = {}
+    ordered_attributions = attributions.with_columns(
+        pl.col("delta_contrib").abs().alias("_magnitude")
+    ).sort("login", "_magnitude", descending=[False, True])
+    for login, group in ordered_attributions.group_by(
+        "login", maintain_order=True
+    ):
+        login_value = str(login[0])
+        features = group.get_column("feature").to_list()
+        missing_names = [name for name in features if name not in display_names]
+        if missing_names:
+            raise DashboardWiringError(
+                "Invalid eval/report.json: feature_display_names is missing "
+                f"attribution features {missing_names}"
+            )
+        attribution_by_login[login_value] = tuple(
+            str(display_names[name]) for name in features
+        )
+        crossing_months = group.get_column("crossing_month").unique().to_list()
+        if len(crossing_months) != 1:
+            raise DashboardWiringError(
+                "Invalid scores/attributions.parquet: attribution rows for "
+                f"{login_value!r} disagree on crossing_month"
+            )
+        attribution_crossing_by_login[login_value] = _as_date(
+            crossing_months[0], "attribution crossing_month"
+        )
+
     founders: list[BacktestFounder] = []
     for candidate in candidates[:BACKTEST_EXAMPLE_LIMIT]:
         login = str(candidate["gh_login"])
@@ -391,6 +443,17 @@ def _real_backtest(
                 "Invalid scores/candidates.parquet: first detection for "
                 f"{login!r} precedes the founder's first panel month"
             )
+        flagged_on = attribution_by_login.get(login, ())
+        if len(flagged_on) != 3:
+            raise DashboardWiringError(
+                "Invalid scores/attributions.parquet: expected exactly three "
+                f"features for detected founder {login!r}, found {len(flagged_on)}"
+            )
+        if attribution_crossing_by_login[login] != detection:
+            raise DashboardWiringError(
+                "Invalid scores/attributions.parquet: crossing month does not match "
+                f"first detection for {login!r}"
+            )
         founders.append(
             BacktestFounder(
                 gh_login=login,
@@ -402,6 +465,7 @@ def _real_backtest(
                 lead_months=_month_distance(batch_start, detection),
                 high_propensity_from_start=detection == first_panel_month,
                 current_score=float(candidate["current_score"]),
+                flagged_on=flagged_on,
                 trajectory=trajectory,
             )
         )
@@ -428,6 +492,13 @@ def _real_backtest(
             (rising_quartiles[0], rising_quartiles[2]) if rising_quartiles else None
         ),
         threshold=threshold,
+        matched_group_rank_one=float(
+            report["matched_group_rank"]["rank_1_probability"]
+        ),
+        matched_group_chance=float(
+            report["matched_group_rank"]["chance_rank_1_probability"]
+        ),
+        matched_group_count=int(report["matched_group_rank"]["groups"]),
         founders=founders,
     )
 
@@ -436,6 +507,14 @@ def _load_report(path: Path) -> dict[str, Any]:
     try:
         report = json.loads(path.read_text(encoding="utf-8"))
         lead = report["lead_time"]
+        matched = report["matched_group_rank"]
+        report["feature_display_names"]
+        for field in (
+            "rank_1_probability",
+            "chance_rank_1_probability",
+            "groups",
+        ):
+            matched[field]
         for field in (
             "detected",
             "total_test_founders",

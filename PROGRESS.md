@@ -149,3 +149,38 @@ All 10,854 founders resolved; 2,052 confident links. Final held-out results (690
 
 ## 2026-07-19 09:58 — Stream B: three lanes verified & committed (Claude)
 Data sources: HN 18.7% person / 40% company launch labels (verified live). False positives: 76% clear FP dominated by tutorial-burst pattern (=> semantic annotation justified empirically); YC-only labels confirmed to hide real founders (precision floor). Missed founders: 16 portraits, 75% own-profile <=1; 7/16 zero countable events under resolved login => blind spot is mostly measurement (resolution/ownership/window), not invisibility; 12/16 show prestige-free network signal (cofounder-pair formation + upward embedding); 5 leakage-audited feature candidates. Cofounder-pairing lane still running.
+
+## 2026-07-19 10:08 +04 — Stream A1: maturity-controlled metrics complete
+
+Added held-out matched-group peak-score ranking with tie-expectation handling and
+tenure-quintile within-month PR-AUC. Across 415 eligible groups, founder rank-1
+probability is 0.3418 versus 0.1667 chance, top-half probability is 0.6595, and mean
+normalized rank is 0.3648 (0 is best). Tenure-controlled PR-AUC is 0.2679 versus a
+0.1469 cell base rate over 160 non-degenerate cells; quintile PR-AUC/base summaries
+are Q1 0.2941/0.2131, Q2 0.0985/0.0620, Q3 0.0999/0.0569, Q4 0.1769/0.0803, and
+Q5 0.3394/0.1328. The real backtest headline now reports the matched-control result.
+
+## 2026-07-19 10:08 +04 — Stream A2: ownership and collaboration complete
+
+Added one cached, quota-resilient ClickHouse query family that produces both
+ownership and collaborator aggregates with strict event-month-before-cutoff checks.
+Real aggregate row counts are ownership 35,489 positive / 133,949 negative and
+collaboration 11,808 positive / 29,277 negative; all four artifacts have zero nulls
+and zero cutoff violations. The five new ownership/collaboration features are finite
+and non-null across all 276,316 panel rows. The new `all_plus_ownership_collab`
+ablation selects LightGBM at test PR-AUC 0.1556, marginal -0.0026. The final null gate
+passes: within-month PR-AUC 0.1332 versus a 0.1901 limit and 0.0951 base rate.
+
+## 2026-07-19 10:08 +04 — Stream A4: crossing attribution complete
+
+Wrote 1,557 top-three first-crossing contribution-delta rows for 519 detected test
+founders to `data/scores/attributions.parquet`; each founder has exactly three rows,
+with 372 boundary-censored crossings compared against the model baseline. Added the
+complete human-readable feature dictionary grouped as cognitive (7), human (48),
+contextual (17), and financial (none observed), explicitly as presentation taxonomy
+only. The rebuilt real backtest renders ten founder examples with human-readable
+`Flagged on:` lines. Verification: 70 tests passed; Ruff and `git diff --check` are
+clean; protected memo and labels source paths were untouched. No commit was created.
+
+## 2026-07-19 10:11 — Claude gate: A1+A2+A4 ACCEPTED
+Matched-group rank in eval: 34.2% vs 16.7% chance (415 groups; reproduces Claude reference). Leakage zero on ownership_agg (169k rows) and collab_influx (41k). Attributions 3/founder for 519 detected. HONEST NEGATIVE: ownership_collab ablation adds no lift (0.1556 vs 0.1586) — likely inherits identity-resolution failures (see missed_founders.md); fix is resolution hardening, not feature removal. Null gate still passes (0.1332 vs 0.2344 real).

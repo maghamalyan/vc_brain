@@ -469,7 +469,7 @@ tr:hover .row-arrow { color: white; background: var(--forest); border-color: var
 .backtest-method .eyebrow { color: #91bba4; margin-bottom: 8px; }
 .backtest-method strong { display: block; font-size: 17px; }
 .backtest-method > p:last-child { margin: 10px 0 0; color: #b9cec2; font-size: 11px; line-height: 1.65; }
-.backtest-scoreboard { display: grid; grid-template-columns: .8fr .8fr 1.4fr; background: white; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.backtest-scoreboard { display: grid; grid-template-columns: .85fr .75fr .75fr 1.25fr; background: white; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
 .backtest-scoreboard > div { min-height: 126px; padding: 25px 29px; border-right: 1px solid var(--line-soft); display: flex; flex-direction: column; justify-content: center; }
 .backtest-scoreboard > div:last-child { border-right: 0; }
 .backtest-scoreboard span { color: var(--muted); font-size: 9px; font-weight: 730; letter-spacing: .09em; text-transform: uppercase; }
@@ -477,6 +477,8 @@ tr:hover .row-arrow { color: white; background: var(--forest); border-color: var
 .backtest-scoreboard small { margin-top: 6px; color: var(--muted); font-size: 10px; }
 .backtest-scoreboard .honesty-note { background: #fff8ec; }
 .honesty-note p { margin: 8px 0 0; color: #755b3d; font-size: 11px; line-height: 1.6; }
+.flagged-on { margin: 0; padding: 0 22px 18px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.flagged-on strong { color: var(--ink); }
 .backtest-results { padding: 58px 0 90px; }
 .backtest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .backtest-card { min-width: 0; background: white; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 7px 26px rgba(24,32,27,.045); overflow: hidden; }

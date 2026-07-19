@@ -83,6 +83,7 @@ def _write_real_contract(root: Path, *, founder_count: int = 7) -> None:
 
     candidates = []
     trajectories = []
+    attributions = []
     labels = []
     creations = []
     first_panel_month = date(2021, 1, 1)
@@ -112,6 +113,17 @@ def _write_real_contract(root: Path, *, founder_count: int = 7) -> None:
                 "status": "candidate",
             }
         )
+        for feature_index, feature in enumerate(
+            ("tenure_months", "activity_push_3m", "own_repo_share_3m")
+        ):
+            attributions.append(
+                {
+                    "login": login,
+                    "crossing_month": detection,
+                    "feature": feature,
+                    "delta_contrib": 0.3 - feature_index * 0.1,
+                }
+            )
         trajectories.append(
             {"gh_login": login, "month": first_panel_month, "score": 0.2}
         )
@@ -144,12 +156,23 @@ def _write_real_contract(root: Path, *, founder_count: int = 7) -> None:
 
     pl.DataFrame(candidates).write_parquet(score_dir / "candidates.parquet")
     pl.DataFrame(trajectories).write_parquet(score_dir / "trajectories.parquet")
+    pl.DataFrame(attributions).write_parquet(score_dir / "attributions.parquet")
     pl.DataFrame(labels).write_parquet(label_dir / "founders.parquet")
     pl.DataFrame(creations).write_parquet(event_dir / "positives.parquet")
     (eval_dir / "report.json").write_text(
         json.dumps(
             {
                 "split_contract": {"test": "B >= 2024-01-01"},
+                "matched_group_rank": {
+                    "groups": 415,
+                    "rank_1_probability": 0.345,
+                    "chance_rank_1_probability": 1 / 6,
+                },
+                "feature_display_names": {
+                    "tenure_months": "GitHub tenure",
+                    "activity_push_3m": "3-month push activity",
+                    "own_repo_share_3m": "recent own-repository focus",
+                },
                 "lead_time": {
                     "detected": founder_count,
                     "total_test_founders": 10,
@@ -231,6 +254,10 @@ def test_real_wiring_builds_honest_backtest_and_real_evidence(tmp_path: Path) ->
     assert backtest_html.count("data-backtest-founder") == 7
     assert "YC BATCH" in backtest_html
     assert "99th percentile" in backtest_html
+    assert "Against age- and activity-matched controls" in backtest_html
+    assert "34.5%" in backtest_html
+    assert "Flagged on:" in backtest_html
+    assert "recent own-repository focus" in backtest_html
 
 
 def test_real_wiring_lists_all_missing_model_outputs(tmp_path: Path) -> None:
@@ -240,6 +267,7 @@ def test_real_wiring_lists_all_missing_model_outputs(tmp_path: Path) -> None:
     message = str(error.value)
     assert "scores/candidates.parquet" in message
     assert "scores/trajectories.parquet" in message
+    assert "scores/attributions.parquet" in message
     assert "eval/report.json" in message
     assert "labels/founders.parquet" in message
     assert "events/repo_creations" in message

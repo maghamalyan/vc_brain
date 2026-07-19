@@ -15,6 +15,11 @@
 
   <section class="backtest-scoreboard shell" aria-label="Held-out backtest summary">
     <div>
+      <span>Against age- and activity-matched controls</span>
+      <strong>{{ backtest.matched_group_rank_one }}%</strong>
+      <small>Founder ranked first by peak score versus {{ backtest.matched_group_chance }}% chance across {{ backtest.matched_group_count }} held-out matched groups.</small>
+    </div>
+    <div>
       <span>High-propensity from window start</span>
       <strong>{{ backtest.window_start_share }}%</strong>
       <small>{{ backtest.window_start_detected }} of {{ backtest.detected }} detected founders were already above the 99th control percentile at the start of our 4-year window — censored: their true lead is at least 48 months.</small>
@@ -46,6 +51,7 @@
               <div class="lead-pill"><strong>{% if founder.high_propensity_from_start %}≥{% endif %}{{ founder.lead_months }}</strong><span>{% if founder.high_propensity_from_start %}months · censored{% else %}months early{% endif %}</span></div>
             </header>
             <div class="backtest-chart">{{ founder.chart | safe }}</div>
+            <p class="flagged-on"><strong>Flagged on:</strong> {{ founder.flagged_on | join(", ") }}.</p>
             <footer>
               <span><i class="detected"></i>Detected {{ founder.detection_month | date }}</span>
               <span><i class="batch"></i>YC batch {{ founder.batch_start | date }}</span>

@@ -146,8 +146,10 @@ class ClickHouseClient:
         try:
             response.raise_for_status()
         except httpx.HTTPStatusError as error:
+            body_head = response.content[:500].decode("utf-8", "replace")
             raise ClickHouseQueryError(
-                f"ClickHouse query rejected with HTTP {response.status_code}"
+                f"ClickHouse query rejected with HTTP {response.status_code}: "
+                f"{body_head}"
             ) from error
         return response.content
 

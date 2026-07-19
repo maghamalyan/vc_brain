@@ -14,6 +14,8 @@ LABELS_DIR = DATA_ROOT / "labels"
 BASELINES_PATH = EVENTS_DIR / "baselines" / "monthly_totals.parquet"
 MONTHLY_AGG_DIR = EVENTS_DIR / "monthly_agg"
 OWNED_REPO_AGG_DIR = EVENTS_DIR / "owned_repo_agg"
+OWNERSHIP_AGG_DIR = EVENTS_DIR / "ownership_agg"
+COLLAB_INFLUX_DIR = EVENTS_DIR / "collab_influx"
 REPO_CREATIONS_DIR = EVENTS_DIR / "repo_creations"
 NEGATIVES_DIR = EVENTS_DIR / "negatives"
 NEGATIVE_CANDIDATES_PATH = NEGATIVES_DIR / "candidates.parquet"
@@ -31,6 +33,9 @@ WINDOW_MONTHS = 48
 # actor_login column, so fewer+bigger batches is the only real lever. Result sets
 # stay small (aggregates), hence the generous guard.
 ACTOR_BATCH_SIZE = 1500
+# Large enough for two full-cohort scans while staying below ClickHouse's 256 KiB
+# query-text limit; the client bisects further only on a playground 408.
+OWNERSHIP_COLLAB_BATCH_SIZE = 4_000
 RESULT_ROW_GUARD = 3_000_000
 HASH_MODULUS = 400
 DEFAULT_HASH_SEEDS = (0, 1, 2)
@@ -62,6 +67,23 @@ OWNED_REPO_SCHEMA: dict[str, pl.DataType] = {
     "month": pl.Date,
     "event_type": pl.String,
     "event_count": pl.Int64,
+    "t_cutoff": pl.Date,
+    "cohort": pl.String,
+}
+
+OWNERSHIP_SCHEMA: dict[str, pl.DataType] = {
+    "actor_login": pl.String,
+    "month": pl.Date,
+    "is_own_repo": pl.Boolean,
+    "event_count": pl.Int64,
+    "t_cutoff": pl.Date,
+    "cohort": pl.String,
+}
+
+COLLAB_INFLUX_SCHEMA: dict[str, pl.DataType] = {
+    "owner_login": pl.String,
+    "month": pl.Date,
+    "distinct_collaborators": pl.Int64,
     "t_cutoff": pl.Date,
     "cohort": pl.String,
 }

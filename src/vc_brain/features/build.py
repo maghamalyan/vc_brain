@@ -374,6 +374,31 @@ def feature_definitions() -> list[FeatureDefinition]:
                 "levels",
                 "One when the person has no non-sentinel GitHub activity in the extracted window.",
             ),
+            FeatureDefinition(
+                "own_repo_share_3m",
+                "ownership_collab",
+                "Share of the actor's trailing 3-month events occurring on repositories whose owner login equals the actor login.",
+            ),
+            FeatureDefinition(
+                "own_repo_share_delta_3m_prior12m",
+                "ownership_collab",
+                "Trailing 3-month own-repository event share minus the share in the preceding 12 months.",
+            ),
+            FeatureDefinition(
+                "distinct_collaborators_3m",
+                "ownership_collab",
+                "Sum of monthly distinct non-bot collaborators observed on the actor's repositories over the trailing 3 months.",
+            ),
+            FeatureDefinition(
+                "distinct_collaborators_delta_3m_prior12m",
+                "ownership_collab",
+                "Recent 3-month mean monthly collaborator count minus the preceding 12-month mean.",
+            ),
+            FeatureDefinition(
+                "new_collaborator_burst_zscore",
+                "ownership_collab",
+                "Z-score of the recent 3-month mean monthly collaborator count against the preceding 12 monthly values; zero when prior variance is zero.",
+            ),
         ]
     )
     return definitions
@@ -475,6 +500,30 @@ def _repo_maps(creations: pl.DataFrame) -> dict[str, dict[date, float]]:
     return result
 
 
+def _ownership_maps(
+    ownership: pl.DataFrame,
+) -> tuple[dict[str, dict[date, float]], dict[str, dict[date, float]]]:
+    own: dict[str, dict[date, float]] = defaultdict(lambda: defaultdict(float))
+    total: dict[str, dict[date, float]] = defaultdict(lambda: defaultdict(float))
+    for row in ownership.to_dicts():
+        login = str(row["actor_login"]).lower()
+        month = _month_value(row["month"])
+        count = float(row["event_count"])
+        total[login][month] += count
+        if bool(row["is_own_repo"]):
+            own[login][month] += count
+    return own, total
+
+
+def _collaborator_maps(collaborators: pl.DataFrame) -> dict[str, dict[date, float]]:
+    result: dict[str, dict[date, float]] = defaultdict(lambda: defaultdict(float))
+    for row in collaborators.to_dicts():
+        result[str(row["owner_login"]).lower()][_month_value(row["month"])] += float(
+            row["distinct_collaborators"]
+        )
+    return result
+
+
 def _share(
     numerator: Mapping[date, float],
     denominator: Mapping[date, float],
@@ -496,6 +545,9 @@ def _feature_row(
     total: Mapping[str, Mapping[date, float]],
     traction: Mapping[tuple[str, str], Mapping[date, float]],
     repos: Mapping[str, Mapping[date, float]],
+    own_repo: Mapping[str, Mapping[date, float]],
+    ownership_total: Mapping[str, Mapping[date, float]],
+    collaborators: Mapping[str, Mapping[date, float]],
 ) -> dict[str, float]:
     result: dict[str, float] = {}
     for event_class in ACTIVITY_CLASSES:
@@ -559,6 +611,18 @@ def _feature_row(
     else:
         result["activity_gini"] = 0.0
     result["no_gh_activity"] = float(not active_months)
+
+    own_values = own_repo.get(login, {})
+    ownership_values = ownership_total.get(login, {})
+    recent_own_share = _share(own_values, ownership_values, month, -2, 0)
+    prior_own_share = _share(own_values, ownership_values, month, -14, -3)
+    result["own_repo_share_3m"] = recent_own_share
+    result["own_repo_share_delta_3m_prior12m"] = recent_own_share - prior_own_share
+    collaborator_values = collaborators.get(login, {})
+    result["distinct_collaborators_3m"] = _sum_window(collaborator_values, month, 3)
+    _, collaborator_delta = _ratio_delta(collaborator_values, month)
+    result["distinct_collaborators_delta_3m_prior12m"] = collaborator_delta
+    result["new_collaborator_burst_zscore"] = _burst_z(collaborator_values, month)
     return result
 
 
@@ -573,7 +637,7 @@ def _render_data_card(
         "people": panel.get_column("gh_login").n_unique(),
         "panel_contract": "One row per person-month from B-48 months through B-12 months inclusive; y=1 exactly from B-15 through B-12 for positives and is always zero for controls.",
         "normalization": "Mapped actor activity and received traction are divided by the same calendar month's mapped global GitHub event total and multiplied by 1,000,000.",
-        "source_cutoff": "All event, traction, and repository-creation source timestamps are strictly before each person's t_cutoff=B-12 months.",
+        "source_cutoff": "All event, traction, ownership, collaboration, and repository-creation source timestamps are strictly before each person's t_cutoff=B-12 months.",
         "exclusions": exclusions,
         "features": [asdict(definition) for definition in definitions],
     }
@@ -602,6 +666,8 @@ def build_features(
     labels_path: Path = LABELS_PATH,
     monthly_agg_dir: Path = EVENTS_ROOT / "monthly_agg",
     owned_repo_agg_dir: Path = EVENTS_ROOT / "owned_repo_agg",
+    ownership_agg_dir: Path = EVENTS_ROOT / "ownership_agg",
+    collab_influx_dir: Path = EVENTS_ROOT / "collab_influx",
     repo_creations_dir: Path = EVENTS_ROOT / "repo_creations",
     baselines_path: Path = EVENTS_ROOT / "baselines" / "monthly_totals.parquet",
     matches_path: Path = EVENTS_ROOT / "negatives" / "matched.parquet",
@@ -613,6 +679,8 @@ def build_features(
     labels = _read_parquet_collection(labels_path)
     monthly = _read_parquet_collection(monthly_agg_dir)
     owned = _read_parquet_collection(owned_repo_agg_dir)
+    ownership = _read_parquet_collection(ownership_agg_dir)
+    collaborators = _read_parquet_collection(collab_influx_dir)
     creations = _read_parquet_collection(repo_creations_dir)
     baselines = _read_parquet_collection(baselines_path)
     matches = _read_parquet_collection(matches_path)
@@ -646,6 +714,29 @@ def build_features(
         owned_repo_agg_dir,
     )
     _validate_columns(
+        ownership,
+        {
+            "actor_login",
+            "month",
+            "is_own_repo",
+            "event_count",
+            "t_cutoff",
+            "cohort",
+        },
+        ownership_agg_dir,
+    )
+    _validate_columns(
+        collaborators,
+        {
+            "owner_login",
+            "month",
+            "distinct_collaborators",
+            "t_cutoff",
+            "cohort",
+        },
+        collab_influx_dir,
+    )
+    _validate_columns(
         creations,
         {"actor_login", "created_at", "t_cutoff", "cohort"},
         repo_creations_dir,
@@ -674,6 +765,35 @@ def build_features(
         owned_repo_agg_dir,
     )
     _validate_counts(owned, count_column="event_count", source=owned_repo_agg_dir)
+    _validate_non_null(
+        ownership,
+        {
+            "actor_login",
+            "month",
+            "is_own_repo",
+            "event_count",
+            "t_cutoff",
+            "cohort",
+        },
+        ownership_agg_dir,
+    )
+    _validate_counts(ownership, count_column="event_count", source=ownership_agg_dir)
+    _validate_non_null(
+        collaborators,
+        {
+            "owner_login",
+            "month",
+            "distinct_collaborators",
+            "t_cutoff",
+            "cohort",
+        },
+        collab_influx_dir,
+    )
+    _validate_counts(
+        collaborators,
+        count_column="distinct_collaborators",
+        source=collab_influx_dir,
+    )
     _validate_non_null(
         creations,
         {"actor_login", "created_at", "t_cutoff", "cohort"},
@@ -707,6 +827,18 @@ def build_features(
         source_name="owned_repo_agg",
     )
     _assert_source_before_cutoff(
+        ownership,
+        actor_column="actor_login",
+        time_column="month",
+        source_name="ownership_agg",
+    )
+    _assert_source_before_cutoff(
+        collaborators,
+        actor_column="owner_login",
+        time_column="month",
+        source_name="collab_influx",
+    )
+    _assert_source_before_cutoff(
         creations,
         actor_column="actor_login",
         time_column="created_at",
@@ -729,6 +861,8 @@ def build_features(
     normalized, weekend, total = _activity_maps(monthly, baselines)
     traction = _traction_maps(owned, baselines)
     repos = _repo_maps(creations)
+    own_repo, ownership_total = _ownership_maps(ownership)
+    collaborator_counts = _collaborator_maps(collaborators)
 
     people: list[dict[str, object]] = []
     for login, label in positives.items():
@@ -796,6 +930,18 @@ def build_features(
         source_name="owned_repo_agg",
     )
     _assert_expected_cutoffs(
+        ownership,
+        actor_column="actor_login",
+        expected=expected_cutoffs,
+        source_name="ownership_agg",
+    )
+    _assert_expected_cutoffs(
+        collaborators,
+        actor_column="owner_login",
+        expected=expected_cutoffs,
+        source_name="collab_influx",
+    )
+    _assert_expected_cutoffs(
         creations,
         actor_column="actor_login",
         expected=expected_cutoffs,
@@ -826,6 +972,9 @@ def build_features(
                         total=total,
                         traction=traction,
                         repos=repos,
+                        own_repo=own_repo,
+                        ownership_total=ownership_total,
+                        collaborators=collaborator_counts,
                     ),
                 }
             )

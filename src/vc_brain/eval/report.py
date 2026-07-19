@@ -181,6 +181,123 @@ def _within_month_pr_auc(
     }
 
 
+def _matched_group_rank_metrics(scored: pl.DataFrame) -> dict[str, Any]:
+    """Rank each test founder's peak score against its matched controls."""
+    peaks = (
+        scored.group_by("match_group_id", "gh_login")
+        .agg(
+            pl.col("person_type").first(),
+            pl.col("score").max().alias("peak_score"),
+        )
+        .sort("match_group_id", "gh_login")
+    )
+    rank_one_probabilities: list[float] = []
+    top_half_probabilities: list[float] = []
+    normalized_ranks: list[float] = []
+    group_sizes: list[int] = []
+    for group in peaks.partition_by("match_group_id", maintain_order=True):
+        founders = group.filter(pl.col("person_type") == "positive")
+        if founders.height != 1 or group.height < 3:
+            continue
+        founder_peak = float(founders.get_column("peak_score").item())
+        scores = group.get_column("peak_score").to_list()
+        higher = sum(float(score) > founder_peak for score in scores)
+        tied = sum(float(score) == founder_peak for score in scores)
+        possible_ranks = range(higher + 1, higher + tied + 1)
+        rank_one_probabilities.append(1.0 / tied if higher == 0 else 0.0)
+        top_half = math.ceil(group.height / 2)
+        top_half_probabilities.append(
+            sum(rank <= top_half for rank in possible_ranks) / tied
+        )
+        normalized_ranks.append(
+            sum((rank - 1) / (group.height - 1) for rank in possible_ranks) / tied
+        )
+        group_sizes.append(group.height)
+    if not group_sizes:
+        raise ValueError(
+            "Test split has no matched groups with exactly one founder and at least three members"
+        )
+    return {
+        "groups": len(group_sizes),
+        "rank_1_probability": float(np.mean(rank_one_probabilities)),
+        "chance_rank_1_probability": float(
+            np.mean([1.0 / size for size in group_sizes])
+        ),
+        "top_half_probability": float(np.mean(top_half_probabilities)),
+        "mean_normalized_rank": float(np.mean(normalized_ranks)),
+        "rank_definition": "Expected rank under uniform ordering within tied peak-score positions; normalized rank is (rank-1)/(group size-1), where 0 is best",
+    }
+
+
+def _tenure_stratified_within_month_pr_auc(
+    months: np.ndarray,
+    tenure: np.ndarray,
+    labels: np.ndarray,
+    probabilities: np.ndarray,
+) -> dict[str, Any]:
+    """Evaluate ranking inside calendar-month and within-month tenure cells."""
+    quintiles = np.full(labels.shape, -1, dtype=np.int8)
+    for month in np.unique(months):
+        month_mask = months == month
+        month_tenure = tenure[month_mask]
+        boundaries = np.quantile(month_tenure, [0.2, 0.4, 0.6, 0.8])
+        quintiles[month_mask] = np.searchsorted(
+            boundaries, month_tenure, side="left"
+        ).astype(np.int8)
+
+    rows: list[dict[str, Any]] = []
+    total_weighted = 0.0
+    total_base_weighted = 0.0
+    total_positives = 0
+    total_cells = 0
+    for quintile in range(5):
+        weighted = 0.0
+        base_weighted = 0.0
+        positives_used = 0
+        cells_used = 0
+        rows_in_quintile = int((quintiles == quintile).sum())
+        for month in np.unique(months):
+            mask = (months == month) & (quintiles == quintile)
+            cell_labels = labels[mask]
+            positives = int(cell_labels.sum())
+            if positives == 0 or positives == len(cell_labels):
+                continue
+            weighted += (
+                float(average_precision_score(cell_labels, probabilities[mask]))
+                * positives
+            )
+            base_weighted += float(cell_labels.mean()) * positives
+            positives_used += positives
+            cells_used += 1
+        pr_auc = weighted / positives_used if positives_used else float("nan")
+        base_rate = base_weighted / positives_used if positives_used else float("nan")
+        rows.append(
+            {
+                "tenure_quintile": quintile + 1,
+                "rows": rows_in_quintile,
+                "positive_weight": positives_used,
+                "cells_evaluated": cells_used,
+                "within_month_pr_auc": pr_auc,
+                "within_month_base_rate": base_rate,
+            }
+        )
+        total_weighted += weighted
+        total_base_weighted += base_weighted
+        total_positives += positives_used
+        total_cells += cells_used
+    return {
+        "method": "Tenure quintiles are computed separately within each calendar month; PR-AUC is evaluated in non-degenerate (month, quintile) cells and positive-weighted.",
+        "within_month_tenure_pr_auc": (
+            total_weighted / total_positives if total_positives else float("nan")
+        ),
+        "within_month_tenure_base_rate": (
+            total_base_weighted / total_positives if total_positives else float("nan")
+        ),
+        "cells_evaluated": total_cells,
+        "quintiles": rows,
+    }
+
+
 def _scored_frame(frame: pl.DataFrame, probabilities: np.ndarray) -> pl.DataFrame:
     return frame.with_columns(pl.Series("score", probabilities, dtype=pl.Float64))
 
@@ -334,7 +451,7 @@ def _feature_blocks(
         raise ValueError(f"Feature data card does not define blocks for: {missing}")
     return {
         block: [name for name in feature_names if by_name[name] == block]
-        for block in ("levels", "dynamics", "traction")
+        for block in ("levels", "dynamics", "traction", "ownership_collab")
     }
 
 
@@ -375,6 +492,151 @@ def _top_feature_importances(bundle: TrainingBundle) -> list[dict[str, float | s
         }
         for name, gain in items
     ]
+
+
+def _human_feature_name(name: str) -> str:
+    """Map model column names to concise investor-facing attribution labels."""
+    exact = {
+        "burst_push_zscore": "push-activity burst",
+        "burst_create_zscore": "repository-creation burst",
+        "months_since_last_new_repo": "recency of repository creation",
+        "cumulative_repos": "cumulative repositories created",
+        "weekend_share_3m": "recent weekend activity share",
+        "weekend_share_prior12m": "prior weekend activity share",
+        "weekend_share_delta": "increase in weekend activity share",
+        "tenure_months": "GitHub tenure",
+        "activity_gini": "activity concentration over time",
+        "no_gh_activity": "absence of observed GitHub activity",
+        "own_repo_share_3m": "recent own-repository focus",
+        "own_repo_share_delta_3m_prior12m": "increase in own-repository focus",
+        "distinct_collaborators_3m": "recent distinct collaborators",
+        "distinct_collaborators_delta_3m_prior12m": "growth in distinct collaborators",
+        "new_collaborator_burst_zscore": "new-collaborator burst",
+    }
+    if name in exact:
+        return exact[name]
+    activity_labels = {
+        "push": "push",
+        "create": "creation",
+        "pr": "pull-request",
+        "pr_review": "code-review",
+        "issue": "issue",
+        "comment": "discussion",
+        "watch_given": "repository-watching",
+    }
+    for key, label in activity_labels.items():
+        prefix = f"activity_{key}_"
+        if name.startswith(prefix):
+            suffix = name.removeprefix(prefix)
+            if suffix.endswith("m") and suffix[:-1].isdigit():
+                return f"{suffix[:-1]}-month {label} activity"
+            if suffix == "ratio_3m_prior12m":
+                return f"recent-to-prior {label} activity ratio"
+            if suffix == "delta_3m_prior12m":
+                return f"growth in {label} activity"
+    if name.startswith("new_repos_"):
+        return f"repositories created over {name.removeprefix('new_repos_').removesuffix('m')} months"
+    traction_labels = {
+        "stars": "stars received",
+        "forks": "forks received",
+        "issues_by_others": "outside issues opened",
+    }
+    for key, label in traction_labels.items():
+        prefix = f"traction_{key}_"
+        if name.startswith(prefix):
+            suffix = name.removeprefix(prefix)
+            if suffix.endswith("m") and suffix[:-1].isdigit():
+                return f"{suffix[:-1]}-month {label}"
+            if suffix == "ratio_3m_prior12m":
+                return f"recent-to-prior {label} ratio"
+            if suffix == "delta_3m_prior12m":
+                return f"growth in {label}"
+    return name.replace("_", " ")
+
+
+def _feature_capital_family(name: str) -> str:
+    """Assign an observed feature to the A4 capital-family taxonomy."""
+    if name.startswith(
+        (
+            "traction_",
+            "own_repo_",
+            "distinct_collaborators_",
+            "new_collaborator_",
+        )
+    ):
+        return "contextual"
+    if name == "tenure_months" or name.startswith("activity_watch_given_"):
+        return "cognitive"
+    return "human"
+
+
+def _feature_capital_families(feature_names: list[str]) -> dict[str, list[str]]:
+    families = {
+        "cognitive": [],
+        "human": [],
+        "contextual": [],
+        "financial": [],
+    }
+    for name in feature_names:
+        families[_feature_capital_family(name)].append(name)
+    return families
+
+
+def _feature_contributions(bundle: TrainingBundle, frame: pl.DataFrame) -> np.ndarray:
+    matrix = frame.select(bundle.feature_names).to_numpy().astype(np.float64)
+    if bundle.selected_model_name == "lightgbm":
+        contributions = bundle.lightgbm_model.booster_.predict(
+            matrix, pred_contrib=True
+        )
+        return np.asarray(contributions[:, :-1], dtype=np.float64)
+    standardizer = bundle.logistic_model.named_steps["standardize"]
+    classifier = bundle.logistic_model.named_steps["classifier"]
+    standardized = standardizer.transform(matrix)
+    return np.asarray(standardized * classifier.coef_[0], dtype=np.float64)
+
+
+def _crossing_attributions(
+    scored: pl.DataFrame,
+    detections: dict[str, date],
+    bundle: TrainingBundle,
+) -> tuple[pl.DataFrame, int]:
+    rows: list[dict[str, Any]] = []
+    boundary_references = 0
+    for login, crossing_month in sorted(detections.items()):
+        person = scored.filter(pl.col("gh_login") == login).sort("month")
+        months = person.get_column("month").to_list()
+        current_index = months.index(crossing_month)
+        current = _feature_contributions(bundle, person.slice(current_index, 1))[0]
+        if current_index > 0:
+            previous = _feature_contributions(
+                bundle, person.slice(current_index - 1, 1)
+            )[0]
+        else:
+            # A boundary-censored detection has no prior panel month. Attribute
+            # its initial model log-odds against the model intercept instead.
+            previous = np.zeros_like(current)
+            boundary_references += 1
+        deltas = current - previous
+        ranked = sorted(
+            zip(bundle.feature_names, deltas, strict=True),
+            key=lambda item: (-abs(float(item[1])), item[0]),
+        )[:3]
+        rows.extend(
+            {
+                "login": login,
+                "crossing_month": crossing_month,
+                "feature": feature,
+                "delta_contrib": float(delta),
+            }
+            for feature, delta in ranked
+        )
+    schema = {
+        "login": pl.String,
+        "crossing_month": pl.Date,
+        "feature": pl.String,
+        "delta_contrib": pl.Float64,
+    }
+    return pl.DataFrame(rows, schema=schema, strict=False), boundary_references
 
 
 def _write_figure(figure: go.Figure, stem: Path) -> dict[str, Any]:
@@ -551,6 +813,8 @@ def _markdown(report: dict[str, Any]) -> str:
     person = report["person_level"]
     lead = report["lead_time"]
     null = report["null_run"]
+    matched = report["matched_group_rank"]
+    tenure = report["tenure_stratified_within_month"]
     lines = [
         "# Tier-1 Founder Hazard Model — Honest Evaluation\n\n",
         f"Generated: `{report['generated_at']}`\n\n",
@@ -561,21 +825,52 @@ def _markdown(report: dict[str, Any]) -> str:
         f"| Logistic baseline | {primary['logistic']['pr_auc']:.4f} | {primary['logistic']['roc_auc']:.4f} |\n",
         f"| LightGBM | {primary['lightgbm']['pr_auc']:.4f} | {primary['lightgbm']['roc_auc']:.4f} |\n",
         f"| Selected ({report['selected_model']}) | {primary['selected']['pr_auc']:.4f} | {primary['selected']['roc_auc']:.4f} |\n\n",
-        "## Person-level utility\n\n",
-        f"Pool: {person['people']} people ({person['positives']} founders). Precision@50: {person['precision_at_50']['precision']:.3f}; precision@100: {person['precision_at_100']['precision']:.3f}; recall at the 10% review budget: {person['recall_at_review_budget']['recall']:.3f}; lift@1%: {person['lift_at_1pct']['lift']:.2f}×.\n\n",
-        "## Calibration\n\n",
-        "Probabilities use prior-odds case-control correction. The primary assumed population person-month base rate is **1%**, with sensitivity at **0.5%** and **2%**. Weighted Brier scores are reported in JSON because the sampled test prevalence is not the population prevalence.\n\n",
-        "## Lead time\n\n",
-        f"Detected {lead['detected']} of {lead['total_test_founders']} test founders ({lead['detection_rate']:.1%}) at or above the same-month 99th percentile of control scores. Median lead: {lead['lead_months_median']} months; IQR: {lead['lead_months_iqr']}.\n\n",
-        "## Mandatory null run\n\n",
-        f"Development labels were shuffled within calendar month using seed {null['seed']}; held-out test labels remained the oracle. Null within-month PR-AUC: **{null['within_month_pr_auc']:.4f}** (limit {null['maximum_allowed_within_month_pr_auc']:.4f}; within-month base {null['within_month_base_rate']:.4f}); global null PR-AUC {null['global_pr_auc']:.4f} shown for transparency — it retains calendar-composition effects. Sanity check: **{'PASS' if null['passed'] else 'FAIL — possible leakage; score exports withheld'}**.\n\n",
-        "## Ablations\n\n",
-        "| Features | Count | Selected model | Test PR-AUC | Marginal |\n| --- | ---: | --- | ---: | ---: |\n",
+        "## Maturity-controlled evaluation\n\n",
+        f"Across {matched['groups']} held-out matched groups, the founder ranked first by peak score in **{matched['rank_1_probability']:.1%}** versus **{matched['chance_rank_1_probability']:.1%}** chance; top-half probability was {matched['top_half_probability']:.1%}, and mean normalized rank was {matched['mean_normalized_rank']:.3f} (0 is best).\n\n",
+        f"Tenure-stratified within-month PR-AUC: **{tenure['within_month_tenure_pr_auc']:.4f}** versus cell base **{tenure['within_month_tenure_base_rate']:.4f}**, across {tenure['cells_evaluated']} non-degenerate cells.\n\n",
+        "| Tenure quintile | Rows | Cells | PR-AUC | Cell base |\n| ---: | ---: | ---: | ---: | ---: |\n",
     ]
+    for row in tenure["quintiles"]:
+        lines.append(
+            f"| {row['tenure_quintile']} | {row['rows']} | {row['cells_evaluated']} | {row['within_month_pr_auc']:.4f} | {row['within_month_base_rate']:.4f} |\n"
+        )
+    lines.extend(
+        [
+            "\n## Person-level utility\n\n",
+            f"Pool: {person['people']} people ({person['positives']} founders). Precision@50: {person['precision_at_50']['precision']:.3f}; precision@100: {person['precision_at_100']['precision']:.3f}; recall at the 10% review budget: {person['recall_at_review_budget']['recall']:.3f}; lift@1%: {person['lift_at_1pct']['lift']:.2f}×.\n\n",
+            "## Calibration\n\n",
+            "Probabilities use prior-odds case-control correction. The primary assumed population person-month base rate is **1%**, with sensitivity at **0.5%** and **2%**. Weighted Brier scores are reported in JSON because the sampled test prevalence is not the population prevalence.\n\n",
+            "## Lead time\n\n",
+            f"Detected {lead['detected']} of {lead['total_test_founders']} test founders ({lead['detection_rate']:.1%}) at or above the same-month 99th percentile of control scores. Median lead: {lead['lead_months_median']} months; IQR: {lead['lead_months_iqr']}.\n\n",
+            "## Mandatory null run\n\n",
+            f"Development labels were shuffled within calendar month using seed {null['seed']}; held-out test labels remained the oracle. Null within-month PR-AUC: **{null['within_month_pr_auc']:.4f}** (limit {null['maximum_allowed_within_month_pr_auc']:.4f}; within-month base {null['within_month_base_rate']:.4f}); global null PR-AUC {null['global_pr_auc']:.4f} shown for transparency — it retains calendar-composition effects. Sanity check: **{'PASS' if null['passed'] else 'FAIL — possible leakage; score exports withheld'}**.\n\n",
+            "## Ablations\n\n",
+            "| Features | Count | Selected model | Test PR-AUC | Marginal |\n| --- | ---: | --- | ---: | ---: |\n",
+        ]
+    )
     for name, result in report["ablations"].items():
         lines.append(
             f"| {name} | {result['feature_count']} | {result['selected_model']} | {result['test']['selected_pr_auc']:.4f} | {result['marginal_pr_auc']:+.4f} |\n"
         )
+    if outputs := report["score_outputs"]:
+        lines.extend(
+            [
+                "\n## Crossing attribution\n\n",
+                f"The top three signed feature-contribution changes were written for {outputs['attributed_founders']} detected founders. For {outputs['boundary_baseline_references']} boundary-censored detections with no prior panel month, contributions are measured against the model baseline rather than a nonexistent previous month.\n\n",
+                "The mapping below groups observed signals into the four requested capital families. This is a presentation taxonomy only and does not change model weighting.\n",
+            ]
+        )
+        for family, features in report["feature_capital_families"].items():
+            lines.append(f"\n### {family.title()} capital\n\n")
+            if not features:
+                lines.append("None observed in the available GitHub data.\n")
+                continue
+            lines.append(
+                "| Model feature | Dashboard label |\n| --- | --- |\n"
+            )
+            for feature in features:
+                display_name = report["feature_display_names"][feature]
+                lines.append(f"| `{feature}` | {display_name} |\n")
     lines.extend(
         [
             "\n## LightGBM gain importances — review required\n\n",
@@ -625,6 +920,13 @@ def build_report(
     scored = _scored_frame(test, selected_scores)
     summary = _person_summary(scored)
     lead, detections = _lead_time(scored)
+    matched_group_rank = _matched_group_rank_metrics(scored)
+    tenure_stratified = _tenure_stratified_within_month_pr_auc(
+        test_months,
+        test.get_column("tenure_months").to_numpy().astype(np.float64),
+        labels,
+        selected_scores,
+    )
 
     sample_prevalence = float(labels.mean())
     calibration: dict[str, Any] = {}
@@ -669,6 +971,10 @@ def build_report(
         "levels_plus_dynamics_plus_traction": blocks["levels"]
         + blocks["dynamics"]
         + blocks["traction"],
+        "all_plus_ownership_collab": blocks["levels"]
+        + blocks["dynamics"]
+        + blocks["traction"]
+        + blocks["ownership_collab"],
         # tenure_months dominated gain (84% on the partial cohort); this
         # quantifies how much skill survives without any account-age signal.
         "all_minus_tenure": [
@@ -719,6 +1025,8 @@ def build_report(
             ),
         },
         "person_level": _person_level_metrics(summary),
+        "matched_group_rank": matched_group_rank,
+        "tenure_stratified_within_month": tenure_stratified,
         "calibration": {
             "sample_person_month_prevalence": sample_prevalence,
             "primary_assumed_population_base_rate": 0.01,
@@ -739,11 +1047,21 @@ def build_report(
         },
         "ablations": ablations,
         "top_feature_importances": _top_feature_importances(bundle),
+        "feature_display_names": {
+            name: _human_feature_name(name) for name in bundle.feature_names
+        },
+        "feature_capital_families": _feature_capital_families(
+            bundle.feature_names
+        ),
         "feature_importance_review_required": True,
         "figures": figures,
         "score_outputs": None,
     }
     if null_passed:
+        attributions, boundary_references = _crossing_attributions(
+            scored, detections, bundle
+        )
+        _atomic_write_parquet(attributions, scores_dir / "attributions.parquet")
         trajectories, candidates = _score_outputs(
             scored, detections, scores_dir=scores_dir, top_k=top_k
         )
@@ -752,6 +1070,10 @@ def build_report(
             "trajectory_rows": trajectories.height,
             "candidates": str(scores_dir / "candidates.parquet"),
             "candidate_rows": candidates.height,
+            "attributions": str(scores_dir / "attributions.parquet"),
+            "attribution_rows": attributions.height,
+            "attributed_founders": attributions.get_column("login").n_unique(),
+            "boundary_baseline_references": boundary_references,
         }
     output_dir.mkdir(parents=True, exist_ok=True)
     _atomic_write_text(

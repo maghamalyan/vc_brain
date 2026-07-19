@@ -92,6 +92,47 @@ ORDER BY owner_login, month, event_type
 """.strip()
 
 
+def ownership_collab_sql(actors: Sequence[dict[str, Any]]) -> str:
+    owner = "arrayElement(splitByChar('/', e.repo_name), 1)"
+    return f"""
+WITH cohort AS (SELECT * FROM {_actor_values(actors)})
+SELECT
+    e.target_actor AS actor_login,
+    toStartOfMonth(e.created_at) AS month,
+    toInt64(countIf(e.actor_login = e.target_actor AND e.repo_owner = e.target_actor)) AS own_repo_events,
+    toInt64(countIf(e.actor_login = e.target_actor AND e.repo_owner != e.target_actor)) AS other_repo_events,
+    toInt64(uniqExactIf(
+        lower(e.actor_login),
+        e.repo_owner = e.target_actor
+        AND e.actor_login != ''
+        AND lower(e.actor_login) != lower(e.target_actor)
+        AND NOT match(e.actor_login, '(?i)(bot|\\[bot\\]|-ci|automation)')
+    )) AS distinct_collaborators,
+    a.t_cutoff AS t_cutoff
+FROM (
+    SELECT
+        e.actor_login,
+        e.created_at,
+        {owner} AS repo_owner,
+        arrayJoin(arrayDistinct(arrayFilter(
+            login -> login != '',
+            [
+                if(e.actor_login IN (SELECT actor_login FROM cohort), e.actor_login, ''),
+                if({owner} IN (SELECT actor_login FROM cohort), {owner}, '')
+            ]
+        ))) AS target_actor
+    FROM github_events AS e
+    WHERE e.actor_login IN (SELECT actor_login FROM cohort)
+       OR {owner} IN (SELECT actor_login FROM cohort)
+) AS e
+INNER JOIN cohort AS a ON e.target_actor = a.actor_login
+WHERE e.created_at >= addMonths(toDateTime(a.t_cutoff), -{WINDOW_MONTHS})
+  AND e.created_at < toDateTime(a.t_cutoff)
+GROUP BY e.target_actor, month, t_cutoff
+ORDER BY actor_login, month
+""".strip()
+
+
 def repo_creations_sql(actors: Sequence[dict[str, Any]]) -> str:
     return f"""
 WITH cohort AS (SELECT * FROM {_actor_values(actors)})

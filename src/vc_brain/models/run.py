@@ -38,6 +38,8 @@ def _features(data_dir: Path) -> None:
         labels_path=data_dir / "labels" / "founders.parquet",
         monthly_agg_dir=data_dir / "events" / "monthly_agg",
         owned_repo_agg_dir=data_dir / "events" / "owned_repo_agg",
+        ownership_agg_dir=data_dir / "events" / "ownership_agg",
+        collab_influx_dir=data_dir / "events" / "collab_influx",
         repo_creations_dir=data_dir / "events" / "repo_creations",
         baselines_path=data_dir / "events" / "baselines" / "monthly_totals.parquet",
         matches_path=data_dir / "events" / "negatives" / "matched.parquet",

@@ -97,7 +97,9 @@ def build_site(
             synthetic=inputs.synthetic,
             current_page="radar",
         )
-        (candidate_dir / f"{login}.html").write_text(detail_html, encoding="utf-8")
+        (candidate_dir / f"{login}.html").write_text(
+            _clean_rendered_html(detail_html), encoding="utf-8"
+        )
 
     summary = {
         "candidates": len(decorated),
@@ -115,7 +117,7 @@ def build_site(
         current_page="radar",
     )
     index_path = output_dir / "index.html"
-    index_path.write_text(index_html, encoding="utf-8")
+    index_path.write_text(_clean_rendered_html(index_html), encoding="utf-8")
     backtest_html = backtest_template.render(
         page_title="We found them first — VC Brain",
         asset_prefix="",
@@ -123,8 +125,15 @@ def build_site(
         synthetic=inputs.synthetic,
         current_page="backtest",
     )
-    (output_dir / "backtest.html").write_text(backtest_html, encoding="utf-8")
+    (output_dir / "backtest.html").write_text(
+        _clean_rendered_html(backtest_html), encoding="utf-8"
+    )
     return index_path
+
+
+def _clean_rendered_html(rendered: str) -> str:
+    """Remove template-only indentation while preserving rendered content."""
+    return "\n".join(line.rstrip() for line in rendered.splitlines()) + "\n"
 
 
 def _fixture_inputs(data_dir: Path) -> DashboardInputs:
@@ -190,6 +199,11 @@ def _fixture_backtest(
                 lead_months=_month_distance(batch_start, detection),
                 high_propensity_from_start=detection == first_panel_month,
                 current_score=float(candidate["current_score"]),
+                flagged_on=(
+                    "recent own-repository focus",
+                    "growth in push activity",
+                    "new-collaborator burst",
+                ),
                 trajectory=trajectory,
             )
         )
@@ -221,6 +235,9 @@ def _fixture_backtest(
         threshold=(
             "99th percentile of synthetic control scores in the same calendar month"
         ),
+        matched_group_rank_one=0.34,
+        matched_group_chance=1 / 6,
+        matched_group_count=total,
         founders=all_founders[:8],
     )
 
@@ -315,6 +332,7 @@ def _backtest_view(backtest: BacktestSummary) -> dict[str, Any]:
                 "lead_months": founder.lead_months,
                 "high_propensity_from_start": founder.high_propensity_from_start,
                 "current_score": round(founder.current_score * 100),
+                "flagged_on": founder.flagged_on,
                 "chart": _backtest_trajectory_chart(founder),
             }
         )
@@ -336,6 +354,9 @@ def _backtest_view(backtest: BacktestSummary) -> dict[str, Any]:
             else None
         ),
         "threshold": backtest.threshold,
+        "matched_group_rank_one": round(backtest.matched_group_rank_one * 100, 1),
+        "matched_group_chance": round(backtest.matched_group_chance * 100, 1),
+        "matched_group_count": backtest.matched_group_count,
         "founders": founders,
     }
 
