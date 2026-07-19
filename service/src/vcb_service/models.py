@@ -15,10 +15,23 @@ CandidateStatus = Literal["candidate", "screened", "memo_ready"]
 DocType = Literal[
     "founder", "company", "claim", "evidence", "memo_section", "thesis_term"
 ]
+RecognitionKind = Literal["yc_batch", "seed_round", "press"]
 
 
 class ApiModel(BaseModel):
     model_config = ConfigDict(extra="forbid")
+
+
+class Recognition(ApiModel):
+    month: str = Field(pattern=r"^\d{4}-(0[1-9]|1[0-2])$")
+    kind: RecognitionKind
+    label: str
+
+
+class ScoreComponent(ApiModel):
+    key: str
+    label: str
+    contribution: float = Field(ge=0.0, le=1.0)
 
 
 class Candidate(ApiModel):
@@ -34,19 +47,27 @@ class Candidate(ApiModel):
     has_memo: bool
 
 
-class CandidatePage(ApiModel):
-    items: list[Candidate]
-    total: int
-
-
 class TrajectoryPoint(ApiModel):
     month: date
     score: float = Field(ge=0.0, le=1.0)
 
 
+class CandidateListItem(Candidate):
+    recognition: Recognition | None
+    lead_time_months: int | None
+    trajectory: list[TrajectoryPoint]
+
+
+class CandidatePage(ApiModel):
+    items: list[CandidateListItem]
+    total: int
+
+
 class CandidateDetail(ApiModel):
     candidate: Candidate
     trajectory: list[TrajectoryPoint]
+    recognition: Recognition | None
+    score_components: list[ScoreComponent]
     three_axis: ThreeAxis | None
     memo_available: bool
     evidence_counts_by_type: dict[str, int]

@@ -20,7 +20,7 @@ def _parser() -> argparse.ArgumentParser:
     build.add_argument(
         "--verify",
         action="store_true",
-        help="print FTS document counts and fail on unresolved evidence references",
+        help="print counts/lead times and verify evidence plus score components",
     )
     return parser
 
@@ -33,8 +33,18 @@ def run(argv: Sequence[str] | None = None) -> int:
         if args.verify:
             for doc_type, count in result.doc_counts.items():
                 print(f"{doc_type}: {count}")
-            if result.unresolved:
-                raise VerificationError(result.unresolved)
+            if result.unresolved or result.component_sum_errors:
+                raise VerificationError(
+                    result.unresolved, result.component_sum_errors
+                )
+            summary = result.lead_time_summary
+            print("lead-time distribution:")
+            print(
+                "recognized-after-detection: "
+                f"{summary.recognized_after_detection}"
+            )
+            print(f"not-yet-recognized: {summary.not_yet_recognized}")
+            print(f"miss: {summary.miss}")
             print("verification: ok")
         return 0
     except IndexBuildError as error:

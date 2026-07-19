@@ -1,5 +1,6 @@
 import asyncio
 import json
+import shutil
 from collections.abc import Callable
 from datetime import date, datetime
 from pathlib import Path
@@ -8,8 +9,9 @@ import httpx
 import pytest
 
 from vcb_service.app import create_app
+from vcb_service.indexer import build_index
 
-from conftest import DATA_DIR
+from conftest import DATA_DIR, THESIS_PATH
 
 
 ADA = "ada-lovelace-fixture"
@@ -38,6 +40,19 @@ def test_candidates_filter_sort_and_paginate(api_get: Callable[..., httpx.Respon
     assert len(payload["items"]) == 12
     assert payload["items"][0]["gh_login"] == ADA
     assert payload["items"][0]["has_memo"] is True
+    assert payload["items"][0]["recognition"] == {
+        "month": "2026-07",
+        "kind": "seed_round",
+        "label": "Synthetic seed round announced",
+    }
+    assert payload["items"][0]["lead_time_months"] == 16
+    assert len(payload["items"][0]["trajectory"]) == 24
+    assert set(payload["items"][0]["trajectory"][0]) == {"month", "score"}
+    assert all(
+        item["lead_time_months"] is None
+        for item in payload["items"]
+        if item["recognition"] is None
+    )
     assert [item["current_score"] for item in payload["items"]] == sorted(
         [item["current_score"] for item in payload["items"]], reverse=True
     )
@@ -66,6 +81,12 @@ def test_candidate_detail_memo_claim_and_evidence(
     assert detail.status_code == 200
     payload = detail.json()
     assert payload["candidate"]["gh_login"] == ADA
+    assert payload["recognition"]["kind"] == "seed_round"
+    assert 4 <= len(payload["score_components"]) <= 6
+    assert set(payload["score_components"][0]) == {"key", "label", "contribution"}
+    assert sum(
+        component["contribution"] for component in payload["score_components"]
+    ) == pytest.approx(payload["candidate"]["current_score"], abs=0.001)
     assert len(payload["trajectory"]) == 24
     assert payload["trajectory"] == sorted(payload["trajectory"], key=lambda row: row["month"])
     assert payload["three_axis"]["founder"]["score"] == 9.1
@@ -201,3 +222,36 @@ def test_history_fallback_serves_frontend_when_present(
     assert root.status_code == 200
     assert history_route.status_code == 200
     assert "VC Brain frontend" in history_route.text
+
+
+def test_api_normalizes_missing_optional_d1_upstream_fields(tmp_path: Path) -> None:
+    partial_data = tmp_path / "fixtures"
+    shutil.copytree(DATA_DIR, partial_data)
+    (partial_data / "candidates.parquet").unlink()
+    candidates_path = partial_data / "candidates.json"
+    candidates = json.loads(candidates_path.read_text(encoding="utf-8"))
+    candidates[0].pop("recognition")
+    candidates[0].pop("score_components")
+    candidates_path.write_text(json.dumps(candidates), encoding="utf-8")
+    partial_index = tmp_path / "partial.sqlite"
+    build_index(partial_data, THESIS_PATH, partial_index, verify=True)
+    app = create_app(index_path=partial_index, frontend_dist=tmp_path / "no-frontend")
+
+    async def request(path: str) -> httpx.Response:
+        transport = httpx.ASGITransport(app=app)
+        async with httpx.AsyncClient(
+            transport=transport, base_url="http://testserver"
+        ) as client:
+            return await client.get(path)
+
+    listing = asyncio.run(request("/api/v1/candidates"))
+    item = next(row for row in listing.json()["items"] if row["gh_login"] == ADA)
+    detail = asyncio.run(request(f"/api/v1/candidates/{ADA}"))
+
+    assert listing.status_code == 200
+    assert item["recognition"] is None
+    assert item["lead_time_months"] is None
+    assert len(item["trajectory"]) == 24
+    assert detail.status_code == 200
+    assert detail.json()["recognition"] is None
+    assert detail.json()["score_components"] == []

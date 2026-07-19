@@ -30,6 +30,10 @@ def test_index_builds_one_complete_sqlite_artifact(index_path: Path) -> None:
             )
         }
         assert {"docs", "candidates", "trajectories", "events", "memos", "claims"} <= tables
+        candidate_columns = {
+            row[1] for row in connection.execute("PRAGMA table_info(candidates)")
+        }
+        assert {"recognition_json", "score_components_json"} <= candidate_columns
         assert connection.execute("SELECT count(*) FROM candidates").fetchone()[0] == 12
         assert connection.execute("SELECT count(*) FROM events").fetchone()[0] == 480
         assert connection.execute("SELECT count(*) FROM claims").fetchone()[0] == 8
@@ -99,4 +103,23 @@ def test_cli_verify_prints_counts(tmp_path: Path, capsys: pytest.CaptureFixture[
     stdout = capsys.readouterr().out
     assert exit_code == 0
     assert "founder: 12" in stdout
+    assert "recognized-after-detection: 9" in stdout
+    assert "not-yet-recognized: 2" in stdout
+    assert "miss: 1" in stdout
     assert "verification: ok" in stdout
+
+
+def test_verify_fails_when_score_components_do_not_sum(tmp_path: Path) -> None:
+    broken_data = tmp_path / "fixtures"
+    shutil.copytree(DATA_DIR, broken_data)
+    (broken_data / "candidates.parquet").unlink()
+    candidates_path = broken_data / "candidates.json"
+    candidates = json.loads(candidates_path.read_text(encoding="utf-8"))
+    candidates[0]["score_components"][0]["contribution"] += 0.01
+    candidates_path.write_text(json.dumps(candidates), encoding="utf-8")
+
+    with pytest.raises(VerificationError) as captured:
+        build_index(broken_data, THESIS_PATH, tmp_path / "broken-score.sqlite", verify=True)
+
+    assert captured.value.unresolved == []
+    assert captured.value.component_sum_errors[0][0] == "ada-lovelace-fixture"

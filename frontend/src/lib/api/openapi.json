@@ -774,6 +774,23 @@
             "type": "array",
             "title": "Trajectory"
           },
+          "recognition": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Recognition"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "score_components": {
+            "items": {
+              "$ref": "#/components/schemas/ScoreComponent"
+            },
+            "type": "array",
+            "title": "Score Components"
+          },
           "three_axis": {
             "anyOf": [
               {
@@ -801,17 +818,142 @@
         "required": [
           "candidate",
           "trajectory",
+          "recognition",
+          "score_components",
           "three_axis",
           "memo_available",
           "evidence_counts_by_type"
         ],
         "title": "CandidateDetail"
       },
+      "CandidateListItem": {
+        "properties": {
+          "gh_login": {
+            "type": "string",
+            "title": "Gh Login"
+          },
+          "founder_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Founder Name"
+          },
+          "company": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "outbound_detector",
+              "inbound_application"
+            ],
+            "title": "Source"
+          },
+          "current_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Current Score"
+          },
+          "score_percentile": {
+            "type": "number",
+            "title": "Score Percentile"
+          },
+          "momentum_3mo": {
+            "type": "number",
+            "title": "Momentum 3Mo"
+          },
+          "first_detection_month": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Detection Month"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "candidate",
+              "screened",
+              "memo_ready"
+            ],
+            "title": "Status"
+          },
+          "has_memo": {
+            "type": "boolean",
+            "title": "Has Memo"
+          },
+          "recognition": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Recognition"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "lead_time_months": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lead Time Months"
+          },
+          "trajectory": {
+            "items": {
+              "$ref": "#/components/schemas/TrajectoryPoint"
+            },
+            "type": "array",
+            "title": "Trajectory"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "gh_login",
+          "founder_name",
+          "company",
+          "source",
+          "current_score",
+          "score_percentile",
+          "momentum_3mo",
+          "first_detection_month",
+          "status",
+          "has_memo",
+          "recognition",
+          "lead_time_months",
+          "trajectory"
+        ],
+        "title": "CandidateListItem"
+      },
       "CandidatePage": {
         "properties": {
           "items": {
             "items": {
-              "$ref": "#/components/schemas/Candidate"
+              "$ref": "#/components/schemas/CandidateListItem"
             },
             "type": "array",
             "title": "Items"
@@ -1425,6 +1567,36 @@
         ],
         "title": "MemoSections"
       },
+      "Recognition": {
+        "properties": {
+          "month": {
+            "type": "string",
+            "pattern": "^\\d{4}-(0[1-9]|1[0-2])$",
+            "title": "Month"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "yc_batch",
+              "seed_round",
+              "press"
+            ],
+            "title": "Kind"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "month",
+          "kind",
+          "label"
+        ],
+        "title": "Recognition"
+      },
       "RunStep": {
         "properties": {
           "seq": {
@@ -1484,6 +1656,32 @@
           "ts"
         ],
         "title": "RunStep"
+      },
+      "ScoreComponent": {
+        "properties": {
+          "key": {
+            "type": "string",
+            "title": "Key"
+          },
+          "label": {
+            "type": "string",
+            "title": "Label"
+          },
+          "contribution": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Contribution"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "key",
+          "label",
+          "contribution"
+        ],
+        "title": "ScoreComponent"
       },
       "SearchGroup": {
         "properties": {

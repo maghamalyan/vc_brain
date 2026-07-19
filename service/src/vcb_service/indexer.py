@@ -33,12 +33,33 @@ class IndexBuildError(RuntimeError):
 
 
 class VerificationError(IndexBuildError):
-    """Raised when an index contains dangling claim evidence references."""
+    """Raised when an index fails one or more integrity checks."""
 
-    def __init__(self, unresolved: list[tuple[str, str]]) -> None:
+    def __init__(
+        self,
+        unresolved: list[tuple[str, str]],
+        component_sum_errors: list[tuple[str, float, float]] | None = None,
+    ) -> None:
         self.unresolved = unresolved
-        detail = ", ".join(f"{claim_key} -> {ref}" for claim_key, ref in unresolved)
-        super().__init__(f"unresolved memo evidence references: {detail}")
+        self.component_sum_errors = component_sum_errors or []
+        failures: list[str] = []
+        if unresolved:
+            detail = ", ".join(f"{claim_key} -> {ref}" for claim_key, ref in unresolved)
+            failures.append(f"unresolved memo evidence references: {detail}")
+        if self.component_sum_errors:
+            detail = ", ".join(
+                f"{login} score={score:.3f} components={total:.3f}"
+                for login, score, total in self.component_sum_errors
+            )
+            failures.append(f"score component sums do not match: {detail}")
+        super().__init__("; ".join(failures))
+
+
+@dataclass(frozen=True)
+class LeadTimeSummary:
+    recognized_after_detection: int
+    not_yet_recognized: int
+    miss: int
 
 
 @dataclass(frozen=True)
@@ -47,6 +68,8 @@ class BuildResult:
     built_at: str
     doc_counts: dict[str, int]
     unresolved: list[tuple[str, str]]
+    component_sum_errors: list[tuple[str, float, float]]
+    lead_time_summary: LeadTimeSummary
 
 
 def _first_existing(paths: Iterable[Path], *, label: str) -> Path:
@@ -151,6 +174,8 @@ def _create_schema(connection: sqlite3.Connection) -> None:
             current_score REAL NOT NULL,
             momentum_3mo REAL NOT NULL,
             has_memo INTEGER NOT NULL CHECK (has_memo IN (0, 1)),
+            recognition_json TEXT,
+            score_components_json TEXT,
             data_json TEXT NOT NULL
         );
         CREATE TABLE trajectories (
@@ -247,8 +272,21 @@ def _populate(
     for candidate in candidates:
         login = str(candidate["gh_login"])
         has_memo = login in memo_logins
+        recognition_json = (
+            _dump(candidate["recognition"]) if "recognition" in candidate else None
+        )
+        score_components_json = (
+            _dump(candidate["score_components"])
+            if "score_components" in candidate
+            else None
+        )
         connection.execute(
-            "INSERT INTO candidates VALUES (?, ?, ?, ?, ?, ?, ?)",
+            """
+            INSERT INTO candidates(
+                gh_login, source, status, current_score, momentum_3mo, has_memo,
+                recognition_json, score_components_json, data_json
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """,
             (
                 login,
                 candidate["source"],
@@ -256,6 +294,8 @@ def _populate(
                 candidate["current_score"],
                 candidate["momentum_3mo"],
                 int(has_memo),
+                recognition_json,
+                score_components_json,
                 _dump(candidate),
             ),
         )
@@ -421,7 +461,56 @@ def inspect_index(path: Path) -> BuildResult:
                 "ORDER BY claim_key, evidence_ref"
             )
         ]
-        return BuildResult(path, str(built_at_row[0]), doc_counts, unresolved)
+        component_sum_errors: list[tuple[str, float, float]] = []
+        recognized_after_detection = 0
+        not_yet_recognized = 0
+        miss = 0
+        candidate_rows = connection.execute(
+            """
+            SELECT gh_login, current_score, recognition_json,
+                   score_components_json, data_json
+            FROM candidates
+            ORDER BY gh_login
+            """
+        ).fetchall()
+        for login, current_score, recognition_json, components_json, data_json in candidate_rows:
+            candidate = json.loads(data_json)
+            if components_json is not None:
+                components = json.loads(components_json)
+                total = sum(float(component["contribution"]) for component in components)
+                if abs(total - float(current_score)) > 0.001 + 1e-12:
+                    component_sum_errors.append(
+                        (str(login), float(current_score), total)
+                    )
+
+            detection_value = candidate.get("first_detection_month")
+            recognition = (
+                json.loads(recognition_json) if recognition_json is not None else None
+            )
+            if detection_value and recognition is None:
+                not_yet_recognized += 1
+            elif detection_value and recognition:
+                detection = date.fromisoformat(str(detection_value)[:10])
+                recognition_month = date.fromisoformat(f"{recognition['month']}-01")
+                month_delta = (recognition_month.year - detection.year) * 12 + (
+                    recognition_month.month - detection.month
+                )
+                if month_delta > 0:
+                    recognized_after_detection += 1
+                elif month_delta < 0:
+                    miss += 1
+        return BuildResult(
+            path,
+            str(built_at_row[0]),
+            doc_counts,
+            unresolved,
+            component_sum_errors,
+            LeadTimeSummary(
+                recognized_after_detection=recognized_after_detection,
+                not_yet_recognized=not_yet_recognized,
+                miss=miss,
+            ),
+        )
     finally:
         connection.close()
 
@@ -480,6 +569,6 @@ def build_index(
         raise
 
     result = inspect_index(out_path)
-    if verify and result.unresolved:
-        raise VerificationError(result.unresolved)
+    if verify and (result.unresolved or result.component_sum_errors):
+        raise VerificationError(result.unresolved, result.component_sum_errors)
     return result

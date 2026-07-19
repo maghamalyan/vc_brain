@@ -18,6 +18,18 @@ class IndexUnavailable(RuntimeError):
     """The configured SQLite artifact is absent or not a valid VC Brain index."""
 
 
+def _lead_time_months(
+    detection_value: str | None, recognition: dict[str, Any] | None
+) -> int | None:
+    if not detection_value or recognition is None:
+        return None
+    detection = date.fromisoformat(detection_value[:10])
+    recognition_month = date.fromisoformat(f"{recognition['month']}-01")
+    return (recognition_month.year - detection.year) * 12 + (
+        recognition_month.month - detection.month
+    )
+
+
 class ReadStore:
     def __init__(self, index_path: Path) -> None:
         self.index_path = index_path.resolve()
@@ -94,21 +106,53 @@ class ReadStore:
                 f"SELECT count(*) FROM candidates {where}", parameters
             ).fetchone()[0]
             rows = connection.execute(
-                f"SELECT data_json, has_memo FROM candidates {where} "
+                f"SELECT gh_login, data_json, has_memo, recognition_json "
+                f"FROM candidates {where} "
                 f"ORDER BY {order_column} DESC, gh_login ASC LIMIT ? OFFSET ?",
                 [*parameters, limit, offset],
             ).fetchall()
+            logins = [str(row["gh_login"]) for row in rows]
+            if logins:
+                placeholders = ", ".join("?" for _ in logins)
+                trajectory_rows = connection.execute(
+                    f"SELECT gh_login, month, score FROM trajectories "
+                    f"WHERE gh_login IN ({placeholders}) ORDER BY gh_login, month",
+                    logins,
+                ).fetchall()
+            else:
+                trajectory_rows = []
+        trajectories: dict[str, list[dict[str, Any]]] = {}
+        for point in trajectory_rows:
+            trajectories.setdefault(str(point["gh_login"]), []).append(
+                {"month": point["month"], "score": point["score"]}
+            )
         items = []
         for row in rows:
             item = json.loads(row["data_json"])
+            raw_recognition = item.pop("recognition", None)
+            item.pop("score_components", None)
+            recognition = (
+                json.loads(row["recognition_json"])
+                if row["recognition_json"] is not None
+                else raw_recognition
+            )
             item["has_memo"] = bool(row["has_memo"])
+            item["recognition"] = recognition
+            item["lead_time_months"] = _lead_time_months(
+                item.get("first_detection_month"), recognition
+            )
+            item["trajectory"] = trajectories.get(str(row["gh_login"]), [])
             items.append(item)
         return {"items": items, "total": total}
 
     def candidate(self, login: str) -> dict[str, Any] | None:
         with self._connection() as connection:
             candidate_row = connection.execute(
-                "SELECT data_json, has_memo FROM candidates WHERE gh_login = ?", (login,)
+                """
+                SELECT data_json, has_memo, recognition_json, score_components_json
+                FROM candidates WHERE gh_login = ?
+                """,
+                (login,),
             ).fetchone()
             if candidate_row is None:
                 return None
@@ -125,7 +169,19 @@ class ReadStore:
                 (login,),
             ).fetchall()
         candidate = json.loads(candidate_row["data_json"])
+        raw_recognition = candidate.pop("recognition", None)
+        raw_components = candidate.pop("score_components", [])
         candidate["has_memo"] = bool(candidate_row["has_memo"])
+        recognition = (
+            json.loads(candidate_row["recognition_json"])
+            if candidate_row["recognition_json"] is not None
+            else raw_recognition
+        )
+        score_components = (
+            json.loads(candidate_row["score_components_json"])
+            if candidate_row["score_components_json"] is not None
+            else raw_components
+        )
         memo = json.loads(memo_row["data_json"]) if memo_row else None
         return {
             "candidate": candidate,
@@ -133,6 +189,8 @@ class ReadStore:
                 {"month": row["month"], "score": row["score"]}
                 for row in trajectory_rows
             ],
+            "recognition": recognition,
+            "score_components": score_components,
             "three_axis": memo["three_axis"] if memo else None,
             "memo_available": memo is not None,
             "evidence_counts_by_type": {

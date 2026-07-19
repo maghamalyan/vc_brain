@@ -222,3 +222,23 @@ The deep-dive agent is a **code-mode agent** modeled on
 - Do not modify anything outside `service/`, `frontend/`, `docs/thread2/`,
   `data/` (gitignored), `config/thesis.json` (only if service needs a copy —
   prefer `--thesis` flag).
+
+## D1 OPTIONAL merge-contract addendum (2026-07-19)
+
+The frozen merge contract above is unchanged. Real P4/P5 producers MAY add these
+fields incrementally; every field in this addendum is **OPTIONAL in upstream data**,
+and the index accepts candidate rows that omit them:
+
+- Candidate `recognition`: nullable `{month: "YYYY-MM", kind:
+  "yc_batch"|"seed_round"|"press", label: str}` for the first conventional public
+  signal. Omitted/null means no recognition has been observed yet.
+- Candidate `score_components`: 4–6 `{key, label, contribution}` rows whose
+  contributions sum to `current_score` within 0.001. Omitted means decomposition is
+  not available yet; verification checks the invariant whenever components exist.
+- `GET /api/v1/candidates` list items add normalized `recognition`, derived
+  `lead_time_months: int|null`, and compact `trajectory: [{month, score}]` fields.
+- `GET /api/v1/candidates/{login}` adds top-level normalized `recognition` and
+  `score_components`; absent upstream values are returned as `null` and `[]`.
+
+These are additive SQLite columns and response members only. Existing tables, fields,
+filters, ordering, routes, and claim/evidence contracts retain their v1 behavior.
