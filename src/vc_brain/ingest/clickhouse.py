@@ -43,6 +43,10 @@ class ResultSizeLimitError(RuntimeError):
     """A single-actor result cannot be reduced by batch splitting."""
 
 
+class QueryTimeoutError(RuntimeError):
+    """The playground rejected the query for exceeding its execution budget."""
+
+
 def _sql_with_format(sql: str) -> str:
     normalized = sql.strip().rstrip(";")
     if normalized.upper().endswith("FORMAT TSVWITHNAMES"):
@@ -135,6 +139,10 @@ class ClickHouseClient:
                 f"ClickHouse playground returned HTTP {response.status_code}: "
                 f"{body_head[:120]}"
             )
+        if response.status_code == 408:
+            # Playground execution timeout: the query is too big for its 60s
+            # budget. Surface as an oversize signal so the batch bisects.
+            raise QueryTimeoutError("ClickHouse playground query timed out (408)")
         try:
             response.raise_for_status()
         except httpx.HTTPStatusError as error:
@@ -170,7 +178,23 @@ class ClickHouseClient:
         """Query actors together and bisect any result reaching the row guard."""
         if not actors:
             return pl.DataFrame()
-        frame = self.query(sql_builder(actors))
+        try:
+            frame = self.query(sql_builder(actors))
+        except QueryTimeoutError:
+            if len(actors) == 1:
+                raise
+            LOGGER.warning(
+                "Bisecting actor batch after playground timeout actors=%d",
+                len(actors),
+            )
+            middle = len(actors) // 2
+            return pl.concat(
+                [
+                    self.query_actor_batch(actors[:middle], sql_builder),
+                    self.query_actor_batch(actors[middle:], sql_builder),
+                ],
+                how="diagonal_relaxed",
+            )
         if frame.height < self.result_row_guard:
             return frame
         if len(actors) == 1:
