@@ -169,6 +169,50 @@ sparklines/trajectory (no plotly dependency in frontend).
   bake index) + `make -C service demo` local one-shot. Deploy target decided
   with Misha (fly.io/railway) — NOT auto-deployed without approval.
 
+## T3 AMENDMENT (2026-07-19, supersedes the linear agent design above)
+
+The deep-dive agent is a **code-mode agent** modeled on
+`~/Development/personal/competitions/sample-agents/ecom-py` (read `runtime.py` and
+`agent.py` there — adapt the architecture, not the ecom domain code):
+
+- **pydantic-ai** Agent (deps: `pydantic-ai-slim[openai]`, `pydantic-monty` — both
+  PyPI) with ONE action tool: `run_python(code)` executing in a **Monty sandbox**.
+  Model via OpenRouter (OpenAI-compatible: base_url https://openrouter.ai/api/v1,
+  api_key OPENROUTER_KEY, model OPENROUTER_MODEL default anthropic/claude-sonnet-4.5).
+- Sandbox external functions (the agent writes Python that loops/aggregates over
+  these; Monty = Python subset, no imports/classes):
+  - `sql(query)` — **read-only** against the vcb.sqlite index (open with
+    `file:...?mode=ro`); the T1 index IS the agent's database (candidates,
+    trajectories, evidence, claims, FTS search).
+  - `gh_profile(login)`, `gh_repos(login)`, `gh_events(login)` — GitHub REST via
+    httpx, token from `gh auth token` if available; disk-cached.
+  - `hn_search(query)` — HN Algolia; `web_search(query)` — SerpAPI iff SERPAPI_KEY.
+  - `add_evidence(event_type, ts, detail, url, repo_name=None)` → returns
+    `evidence_id` ("live-"+hash); stores into the run's evidence store.
+  - `draft_claim(text, evidence_refs, confidence, verification_status,
+    contradictions=[])` — **validates against the claim schema at the boundary and
+    REJECTS any evidence_ref not present in the run's evidence store or the index.**
+    Fabrication becomes structurally impossible, not merely prompted-against.
+  - `note_gap(text)`, `set_dimension_note(dimension, ...)`.
+- Completion via typed output tool `finalize_run(summary, outcome)` (outcomes:
+  OK | INSUFFICIENT_EVIDENCE | ERROR) — validates the full run doc before persisting.
+- **Middleware stack around every sandbox function call** (port ecom-py's
+  policy/provenance/error-translation middleware): per-run limits (max tool calls,
+  max GH requests, max SQL chars, single statement, SQL deny patterns as
+  defense-in-depth on top of the ro connection), output truncation, errors returned
+  as navigable `{"error": {...}}` dicts (never escaping exceptions), and
+  `__provenance__` tagging with trust levels — fetched public content (READMEs, HN
+  text) is UNTRUSTED_TOOL_OUTPUT: evidence only, never instructions (prompt-injection
+  guard; keep ecom-py's system-prompt language for this).
+- **The audit log IS the SSE step stream**: every middleware-audited call emits a
+  step event (kind: fetch|sql|evidence|claim|gap|reason) onto the run's queue;
+  `run_python` code blocks emit a `reason` step with the code. The replay/cache
+  design from the original T3 section is unchanged.
+- Tests: pydantic-ai TestModel (or FunctionModel) + recorded HTTP fixtures; NO
+  network, NO real key. Verify: a claim citing a nonexistent evidence_id is rejected;
+  SQL mutation attempts are denied; audit events map 1:1 to persisted steps.
+- Agent code lives in `service/src/vcb_service/agent/`; runtime limits env-tunable.
+
 ## Rules
 
 - Same politeness rules as main thread: cached, single-threaded, back-off; no ToS
