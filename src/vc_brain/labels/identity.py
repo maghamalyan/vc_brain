@@ -18,8 +18,13 @@ def normalize_domain(value: str | None) -> str | None:
     if not value:
         return None
     candidate = value.strip()
-    parsed = urlparse(candidate if "://" in candidate else f"//{candidate}")
-    host = parsed.hostname
+    try:
+        parsed = urlparse(candidate if "://" in candidate else f"//{candidate}")
+        host = parsed.hostname
+    except ValueError:
+        # Garbage like "[object Object]" parses as a bracketed IPv6 host and
+        # raises deep inside urllib (observed live 2026-07-19).
+        return None
     if not host:
         return None
     host = host.lower().rstrip(".")
