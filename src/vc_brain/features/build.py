@@ -832,7 +832,9 @@ def build_features(
     definitions = feature_definitions()
     feature_names = [definition.name for definition in definitions]
     panel = (
-        pl.DataFrame(rows)
+        # infer_schema_length=None scans every row: metadata like founder_name is
+        # None for controls and str for founders, which breaks windowed inference.
+        pl.DataFrame(rows, infer_schema_length=None)
         .select(*METADATA_COLUMNS, *feature_names)
         .sort("match_group_id", "gh_login", "month")
     )
