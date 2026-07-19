@@ -76,7 +76,9 @@ class ClickHouseClient:
         client: httpx.Client | None = None,
         timeout_seconds: float = 180.0,
         minimum_interval_seconds: float = 0.25,
-        max_attempts: int = 5,
+        # Generous: quota-exhaustion retries sleep 600s each, and the shared
+        # playground can stay contested for more than an hour.
+        max_attempts: int = 12,
         result_row_guard: int = RESULT_ROW_GUARD,
     ) -> None:
         if timeout_seconds <= 0 or minimum_interval_seconds < 0 or max_attempts < 1:

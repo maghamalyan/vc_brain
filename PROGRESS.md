@@ -120,3 +120,6 @@ warnings); `uv run ruff check src tests` → clean; changed dashboard/test files
 `ruff format --check`; `git diff --check` → clean. Repository-wide format checking still
 reports 20 pre-existing drifts outside this task, including prohibited paths, which were
 left untouched.
+
+## 2026-07-19 05:50 — Claude verification: SECOND label spot-check PASSED
+Seed 42, 25 rows spanning W22..P26 batches incl. training cohort: 25/25 correct person (2 company-named accounts of the right founder). Combined audits: >=48/50, zero wrong-person links. Also raised ClickHouse max_attempts 5->12 for quota resilience.
