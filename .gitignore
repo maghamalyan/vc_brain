@@ -16,3 +16,6 @@ wheels/
 # Data & OS noise
 data/
 .DS_Store
+
+# Other-thread worktrees & local claude state
+.claude/worktrees/

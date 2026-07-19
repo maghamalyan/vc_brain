@@ -96,3 +96,6 @@ Also: Claude diagnosed resolution bottleneck (serial HTTP, not rate limits; both
 
 ## 2026-07-19 04:04 — Claude verification: LABEL SPOT-CHECK PASSED (gate open)
 25 random confident (>=0.5) linkages hand-verified against LIVE GitHub profiles: 23/25 clean person matches, 2/25 company-named accounts of the right founder (empty pre-t history; handled as no_gh_activity). Zero wrong-person links. Precision >=92% strict. Resolution continues (~45/min after Claude fixed shared reset_at bug + serial-latency patches; was 4/min).
+
+## 2026-07-19 04:35 — Resolution crash fixed
+Process died at 2050/10854 on ValueError from urlparse of a founder blog field containing the literal string [object Object]. Patched normalize_domain with try/except + regression test; restarted from checkpoint. Watchdog re-armed.

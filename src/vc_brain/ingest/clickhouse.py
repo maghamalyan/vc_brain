@@ -60,6 +60,9 @@ def _parse_tsv(content: bytes) -> pl.DataFrame:
         try_parse_dates=True,
         infer_schema_length=10_000,
         truncate_ragged_lines=False,
+        # cityHash64 emits full-range UInt64; i64 inference overflows on values
+        # above 2^63 (hit live 2026-07-19).
+        schema_overrides={"actor_hash": pl.UInt64},
     )
 
 
