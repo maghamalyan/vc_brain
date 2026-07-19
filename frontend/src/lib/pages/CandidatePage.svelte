@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, tick } from 'svelte';
   import { flip } from 'svelte/animate';
-  import { api } from '../api/client';
+  import { api, isDeepDiveEnabled } from '../api/client';
   import type { CandidateDetailResponse, DeepDiveRun, EvidenceEvent, Memo, MemoTextSection, TrajectoryPoint } from '../api/types';
   import { navigate } from '../router';
   import Chip from '../components/Chip.svelte';
@@ -53,7 +53,7 @@
     { id: 'timeline', label: 'Timeline', icon: '⌁' },
     { id: 'memo', label: 'Memo', icon: '▤' },
     { id: 'claims', label: 'Claims', icon: '✓' },
-    { id: 'runs', label: 'Runs', icon: '↗' }
+    ...(isDeepDiveEnabled ? [{ id: 'runs', label: 'Runs', icon: '↗' }] : [])
   ];
   const axisLabel: Record<string, string> = { founder: 'Founder', market: 'Market', idea_vs_market: 'Idea ↔ market' };
   const eventIcon: Record<string, string> = {
@@ -363,7 +363,7 @@
         const [eventResponse, memoResponse, runSummaries] = await Promise.all([
           api.getEvidence(login),
           detail.memo_available ? api.getMemo(login) : Promise.resolve(null),
-          api.getDeepDiveRuns(login).catch(() => [])
+          isDeepDiveEnabled ? api.getDeepDiveRuns(login).catch(() => []) : Promise.resolve([])
         ]);
         // Curate: merge back only the LATEST successful capture; earlier or
         // failed runs stay on disk (noted, not merged).
@@ -439,10 +439,12 @@
           </div>
         </div>
       </div>
-      <div class="deepdive-action">
-        <button class="live-button" disabled={startingDive} onclick={startDeepDive}><i aria-hidden="true"></i>{startingDive ? 'Starting…' : 'Deep dive'} <span>↗</span></button>
-        {#if diveError}<small role="alert">{diveError}</small>{/if}
-      </div>
+      {#if isDeepDiveEnabled}
+        <div class="deepdive-action">
+          <button class="live-button" disabled={startingDive} onclick={startDeepDive}><i aria-hidden="true"></i>{startingDive ? 'Starting…' : 'Deep dive'} <span>↗</span></button>
+          {#if diveError}<small role="alert">{diveError}</small>{/if}
+        </div>
+      {/if}
     </div>
 
     <nav class="record-section-nav" aria-label="Founder record sections">
@@ -642,13 +644,15 @@
     <section id="memo" class="shell no-memo"><h2>Memo not observed</h2><p>This founder has a signal record, but no evidence-backed memo is available yet.</p></section>
   {/if}
 
-  <LiveCapture runs={liveRuns} backtestEvidence={evidence} />
-  {#if priorCaptureCount > 0}
-    <p class="prior-captures shell">{priorCaptureCount} earlier {priorCaptureCount === 1 ? 'capture' : 'captures'} retained on disk (not merged — only the latest validated run is shown).</p>
-  {/if}
+  {#if isDeepDiveEnabled}
+    <LiveCapture runs={liveRuns} backtestEvidence={evidence} />
+    {#if priorCaptureCount > 0}
+      <p class="prior-captures shell">{priorCaptureCount} earlier {priorCaptureCount === 1 ? 'capture' : 'captures'} retained on disk (not merged — only the latest validated run is shown).</p>
+    {/if}
 
-  <section id="runs" class="run-launch shell" aria-labelledby="runs-title">
-    <div><p class="eyebrow">Live diligence workspace</p><h2 id="runs-title">Turn this record into an auditable run.</h2><p>Investigate the same source-linked evidence across founder, market, and idea-to-market dimensions.</p></div>
-    <div class="deepdive-action"><button class="live-button" disabled={startingDive} onclick={startDeepDive}><i aria-hidden="true"></i>{startingDive ? 'Starting…' : 'Start deep dive'} <span>↗</span></button>{#if diveError}<small role="alert">{diveError}</small>{/if}</div>
-  </section>
+    <section id="runs" class="run-launch shell" aria-labelledby="runs-title">
+      <div><p class="eyebrow">Live diligence workspace</p><h2 id="runs-title">Turn this record into an auditable run.</h2><p>Investigate the same source-linked evidence across founder, market, and idea-to-market dimensions.</p></div>
+      <div class="deepdive-action"><button class="live-button" disabled={startingDive} onclick={startDeepDive}><i aria-hidden="true"></i>{startingDive ? 'Starting…' : 'Start deep dive'} <span>↗</span></button>{#if diveError}<small role="alert">{diveError}</small>{/if}</div>
+    </section>
+  {/if}
 {/if}

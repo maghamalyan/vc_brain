@@ -8,7 +8,7 @@ import re
 import sqlite3
 import tempfile
 from collections import Counter
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
@@ -55,6 +55,18 @@ class VerificationError(IndexBuildError):
         super().__init__("; ".join(failures))
 
 
+class CountVerificationError(IndexBuildError):
+    """Raised when frozen snapshot counts do not match the built index."""
+
+    def __init__(self, mismatches: dict[str, tuple[int, int]]) -> None:
+        self.mismatches = mismatches
+        detail = ", ".join(
+            f"{name}: expected {expected}, built {actual}"
+            for name, (expected, actual) in sorted(mismatches.items())
+        )
+        super().__init__(f"snapshot count verification failed: {detail}")
+
+
 @dataclass(frozen=True)
 class LeadTimeSummary:
     recognized_after_detection: int
@@ -67,6 +79,7 @@ class BuildResult:
     path: Path
     built_at: str
     doc_counts: dict[str, int]
+    entity_counts: dict[str, int]
     unresolved: list[tuple[str, str]]
     component_sum_errors: list[tuple[str, float, float]]
     lead_time_summary: LeadTimeSummary
@@ -454,6 +467,10 @@ def inspect_index(path: Path) -> BuildResult:
         ).fetchall()
         found_counts = dict(count_rows)
         doc_counts = {doc_type: int(found_counts.get(doc_type, 0)) for doc_type in DOC_TYPES}
+        entity_counts = {
+            table: int(connection.execute(f"SELECT count(*) FROM {table}").fetchone()[0])
+            for table in ("candidates", "trajectories", "events", "memos", "claims")
+        }
         unresolved = [
             (str(row[0]), str(row[1]))
             for row in connection.execute(
@@ -503,6 +520,7 @@ def inspect_index(path: Path) -> BuildResult:
             path,
             str(built_at_row[0]),
             doc_counts,
+            entity_counts,
             unresolved,
             component_sum_errors,
             LeadTimeSummary(
@@ -521,6 +539,8 @@ def build_index(
     out_path: Path,
     *,
     verify: bool = False,
+    built_at: str | None = None,
+    expected_counts: dict[str, int] | None = None,
 ) -> BuildResult:
     """Atomically build an idempotent SQLite index from an upstream data directory."""
 
@@ -537,7 +557,16 @@ def build_index(
     profiles_path = _profiles_file(data_dir)
     profiles = _load_json_object(profiles_path) if profiles_path else {}
     thesis = _load_json_object(thesis_path)
-    built_at = datetime.now(timezone.utc).isoformat()
+    if built_at is None:
+        resolved_built_at = datetime.now(timezone.utc).isoformat()
+    else:
+        try:
+            parsed_built_at = datetime.fromisoformat(built_at)
+        except ValueError as error:
+            raise IndexBuildError("built_at must be an ISO-8601 datetime") from error
+        if parsed_built_at.tzinfo is None:
+            raise IndexBuildError("built_at must include a timezone")
+        resolved_built_at = parsed_built_at.isoformat()
 
     out_path.parent.mkdir(parents=True, exist_ok=True)
     handle = tempfile.NamedTemporaryFile(
@@ -557,18 +586,32 @@ def build_index(
                 memos=memos,
                 profiles=profiles,
                 thesis=thesis,
-                built_at=built_at,
+                built_at=resolved_built_at,
             )
             connection.commit()
             connection.execute("VACUUM")
         finally:
             connection.close()
+
+        result = inspect_index(temp_path)
+        if verify and (result.unresolved or result.component_sum_errors):
+            raise VerificationError(result.unresolved, result.component_sum_errors)
+        if expected_counts is not None:
+            unknown = sorted(set(expected_counts) - set(result.entity_counts))
+            if unknown:
+                raise IndexBuildError(
+                    f"unsupported expected count keys: {', '.join(unknown)}"
+                )
+            mismatches = {
+                name: (expected, result.entity_counts[name])
+                for name, expected in expected_counts.items()
+                if result.entity_counts[name] != expected
+            }
+            if mismatches:
+                raise CountVerificationError(mismatches)
+
         os.replace(temp_path, out_path)
+        return replace(result, path=out_path)
     except Exception:
         temp_path.unlink(missing_ok=True)
         raise
-
-    result = inspect_index(out_path)
-    if verify and (result.unresolved or result.component_sum_errors):
-        raise VerificationError(result.unresolved, result.component_sum_errors)
-    return result

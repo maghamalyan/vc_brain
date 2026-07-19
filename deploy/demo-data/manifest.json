@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "snapshot_id": "vc-brain-railway-demo-2026-07-19",
+  "built_at": "2026-07-19T11:25:04.318866+00:00",
+  "provenance": "Frozen public-derived competition demo produced by the verified vcb-integrate pipeline from the 2026-07-19 real-data build.",
+  "expected_counts": {
+    "candidates": 100,
+    "events": 4090,
+    "claims": 50
+  },
+  "files": {
+    "candidates.parquet": "8ec8ee585d13ceadc38ac220188193781968a89ea4082df5a68700f43f07d87d",
+    "events.parquet": "7a36f1405208184f47c817049468b63b495e82cd4583a8f9dfec3dccb9bcadbb",
+    "memos/123vivekr.json": "00e6ece3d5ec5a5fa75dcfd00382200c71d7790faef1b4b715fb98b54063c33a",
+    "memos/28andrew.json": "993170c2094a2efaae1c017c2aa27f86abd79f269bff284afb4e9abaeb8f0457",
+    "memos/abhiaiyer91.json": "026dabd4525786dd5349e52daa5289d2aa17ca361b997d06431778628c7d59e2",
+    "memos/drappier-charles.json": "f8df6481529580efd417933c0e328002004369c851e3e643a0be18f3d8e6a45a",
+    "memos/nyacg.json": "8593e37abc909cf0d623b92724dda9a81b6463f1b2e427208a0e0e50d8723760",
+    "memos/yoswagenmans.json": "dd95a35f07a584f0f3bc4e96fa8f4d6341c27af8d576cd3807aedec091eee2b9",
+    "profiles.json": "c5f2a74634148afda4b056a4f3ea541b35fe012bdccc6903ce685f1b19e01072",
+    "trajectories.parquet": "39f8568213fd495dba482491dcc1b1e052c443be819c3bf831626adf3f17021a"
+  }
+}

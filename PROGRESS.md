@@ -327,3 +327,30 @@ clean. No commit created.
 
 Blind review of A3 annotation instrument (40 bundles, independent rater vs GLM-5.2): scales solid — productization/commercial/seriousness all 100% within-1 (commercial 98% exact), founding intent 88%; categoricals weak — category 65%, audience 60%, collaboration 60% exact, driven by model bias toward developer_tool/developers/solo. domain_shift (48% exact) is confounded: the sample omits the earlier-context text the model saw.
 Verdicts in docs/exploration/annotation_validation_sample.md '## Blind review results': KEEP productization, commercial, seriousness, intent; MERGE/REVISE category, audience, collaboration, domain_shift (regenerate sample with earlier context first). No commit created.
+
+## 2026-07-19 15:55 +04 — GNN as GBDT reranker (tie-break wins; blends null)
+
+Tested whether the temporal-attention GNN improves the production GBDT as a
+reranker/blend rather than an independent scorer (`scripts/gnn/rerank.py`;
+validation-only tuning, test scored once). The tie problem it targets is
+severe: the 7-tree LightGBM emits only 305 distinct peak scores across 2,765
+test people — 92.4% sit in tied peak groups, 85.3% in ties spanning
+founder+control, and 77 people share the exact score at the rank-50 cut.
+GBDT validation scores came from an exact tuning-stage replication (val PR-AUC
+matches training_metrics.json to machine precision); GNN retrained identically
+since run.py saved no checkpoint (val PR-AUC 0.1782 vs original 0.1786;
+checkpoint now saved). On the 731-person GNN-scoreable test pool:
+(a) tie-break (GNN orders only inside exact GBDT ties): P@50 0.640→0.720,
+matched-group P(rank=1) 0.459→0.482 (141 groups), within-month mean PR-AUC
+0.433→0.457 with bootstrap delta CI [+0.013, +0.040] excluding zero — WIN,
+and risk-free by construction. (b) logit blend (α=0.95 tuned on validation
+P(rank=1)) and (c) per-month top-200 rerank: both at-or-below baseline on
+test (blend P@100 delta −0.11, CI excludes 0) — honest nulls; the 45
+validation groups were too few to tune α. Recommendation: a two-hop GNN over
+data/graph/coactivity_edges.parquet is worth building for the tie-break slot
+specifically (leakage rules per data/graph/README.md). Artifacts:
+`data/eval/gnn_rerank.json`, `docs/exploration/gnn_rerank.md`,
+`data/gnn/{rerank_scores.parquet,model_rerank.pt}`.
+Verification: `uv run pytest tests/test_gnn_rerank.py -q` -> 9 passed;
+`uv run ruff check scripts/gnn/rerank.py tests/test_gnn_rerank.py` -> clean.
+No commit created.

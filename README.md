@@ -55,11 +55,69 @@ The calibration section applies prior-odds case-control correction under an assu
 
 - The shuffled-label check is a release gate, not a diagnostic footnote. Evaluation always writes its report, but if the null exceeds the limit it raises `LeakageSanityError` and publishes no new `trajectories.parquet` or `candidates.parquet`. Existing exports from an earlier run must not be treated as outputs of the failed run.
 
-- The current repository test run passes 67 tests. Fixture tests cover hand-computed feature windows, temporal split boundaries, memo contracts, citation membership, deterministic screening, and both censored and rising-signal backtest rendering.
+- The repository keeps the research and service test environments separate. Fixture tests cover hand-computed feature windows, temporal split boundaries, memo contracts, citation membership, deterministic screening, API/index integrity, and both censored and rising-signal backtest rendering. Run `make test-all` before publishing.
 
 ## Reproduce
 
 The deterministic fixture dashboard needs no external credentials. The live pipeline needs Python 3.13, [`uv`](https://docs.astral.sh/uv/), GitHub CLI authentication for handle resolution, and network access to YC, GitHub, and the public ClickHouse playground. `SERPAPI_KEY` is optional for resolution fallback; `OPENROUTER_KEY` is needed only to generate new live memos. Put optional keys in the ignored `.env` file.
+
+## Deterministic Railway deployment
+
+The production deployment is one container and one origin: FastAPI serves both
+the `/api/v1` API and the compiled Svelte application. `Dockerfile.railway`
+installs only the lightweight service dependencies, verifies the committed
+snapshot in `deploy/demo-data`, builds an immutable SQLite index, and runs as a
+non-root user. The public build has live deep-dives disabled and requires no
+secrets, volume, database service, or runtime data fetch.
+
+Build and smoke-test exactly what Railway will run:
+
+```bash
+make deploy-audit
+make railway-build
+make railway-smoke
+```
+
+The smoke test checks the frozen counts (100 candidates, 4,090 events, 50
+claims), static assets, SPA history fallback, the disabled deep-dive contract,
+and read-only index permissions.
+
+Railway setup:
+
+1. Create one service connected to this GitHub repository and the `master`
+   branch. Keep the service root directory at `/` because the image consumes
+   both `frontend/` and `service/`.
+2. Railway automatically reads `railway.json` and uses
+   `Dockerfile.railway`. Select EU West (Amsterdam), one replica, and generate a
+   public HTTPS domain.
+3. Add no service variables, secrets, databases, or volumes. Railway injects
+   `PORT`; the image already sets `VCB_INDEX=/app/data/vcb.sqlite` and
+   `VCB_DEEPDIVE_ENABLED=0`.
+4. Enable **Wait for CI** on the GitHub deployment trigger. The CI workflow
+   tests both Python projects, checks/builds the frontend, audits tracked
+   artifacts, and smoke-tests the final image.
+5. After the first deploy, verify `/api/v1/health`, the radar, search, a nested
+   candidate route after refresh, memo citations, and a phone-sized viewport in
+   a logged-out browser. Record the deployed commit and public URL in the
+   submission checklist.
+
+Operational contract:
+
+- Railway readiness path: `GET /api/v1/health`, 30-second deployment timeout.
+- Startup failure: a missing or corrupt index aborts application startup; look
+  for `event=service_ready` in logs on success.
+- Live-agent disable path: `VCB_DEEPDIVE_ENABLED=0`; direct creation returns
+  `503` with code `LIVE_DEEPDIVE_DISABLED` before any provider is called.
+- Restart policy: on failure, at most 10 retries, with a 10-second deployment
+  drain window.
+- Rollback: select the previous Railway deployment. The image has no migrations
+  or mutable state, so rollback does not require data repair.
+
+Railway healthchecks gate deployment activation but are not continuous uptime
+monitoring. If the public URL fails later, check deployment status and logs,
+request `/api/v1/health`, confirm the expected counts, and restart the existing
+image or roll back. Do not attach a volume or rebuild data interactively inside
+the running container.
 
 ### Build and verify the environment
 
@@ -70,6 +128,7 @@ make build
 
 uv sync --frozen
 make test
+make test-service
 make lint
 ```
 

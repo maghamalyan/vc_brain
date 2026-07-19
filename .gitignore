@@ -20,3 +20,4 @@ data/
 # Other-thread worktrees & local claude state
 .claude/worktrees/
 app_data/
+media/

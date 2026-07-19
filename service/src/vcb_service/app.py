@@ -1,7 +1,9 @@
 """FastAPI application for the frozen VC Brain v1 read API."""
 
 import json
+import logging
 import os
+from contextlib import asynccontextmanager
 from datetime import date
 from pathlib import Path
 from typing import Annotated, Literal
@@ -38,6 +40,20 @@ from vcb_service.store import IndexUnavailable, ReadStore, normalize_search_type
 
 load_dotenv()
 
+logger = logging.getLogger("vcb_service")
+
+
+def _environment_flag(name: str, *, default: bool) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+    normalized = raw.strip().casefold()
+    if normalized in {"1", "true", "yes", "on"}:
+        return True
+    if normalized in {"0", "false", "no", "off"}:
+        return False
+    raise ValueError(f"{name} must be a boolean value")
+
 
 def _workspace_root() -> Path:
     return Path(__file__).resolve().parents[3]
@@ -48,6 +64,7 @@ def create_app(
     index_path: Path | None = None,
     frontend_dist: Path | None = None,
     deepdive_manager: DeepDiveManager | None = None,
+    deepdive_enabled: bool | None = None,
 ) -> FastAPI:
     configured_index = index_path or Path(os.getenv("VCB_INDEX", "data/index/vcb.sqlite"))
     store = ReadStore(configured_index)
@@ -55,11 +72,30 @@ def create_app(
     manager = deepdive_manager or DeepDiveManager(
         AgentSettings.from_env(index_path=configured_index)
     )
+    live_deepdive_enabled = (
+        _environment_flag("VCB_DEEPDIVE_ENABLED", default=True)
+        if deepdive_enabled is None
+        else deepdive_enabled
+    )
+
+    @asynccontextmanager
+    async def lifespan(_application: FastAPI):
+        readiness = store.health()
+        counts = readiness["counts"]
+        logger.info(
+            "event=service_ready index_built_at=%s candidates=%d events=%d claims=%d",
+            readiness["index_built_at"],
+            counts["candidates"],
+            counts["events"],
+            counts["claims"],
+        )
+        yield
 
     application = FastAPI(
         title="VC Brain Intelligence API",
         version="1.0.0",
         openapi_url="/api/v1/openapi.json",
+        lifespan=lifespan,
     )
     application.add_middleware(
         CORSMiddleware,
@@ -69,6 +105,7 @@ def create_app(
         allow_credentials=False,
     )
     application.state.deepdive_manager = manager
+    application.state.deepdive_enabled = live_deepdive_enabled
 
     @application.exception_handler(IndexUnavailable)
     async def index_unavailable_handler(
@@ -173,6 +210,14 @@ def create_app(
         tags=["deepdive"],
     )
     async def start_deepdive(body: DeepDiveRequest) -> DeepDiveAccepted:
+        if not live_deepdive_enabled:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail={
+                    "code": "LIVE_DEEPDIVE_DISABLED",
+                    "message": "Live deep-dives are disabled for this deployment.",
+                },
+            )
         try:
             run_id = await manager.start(body)
         except DeepDiveAdmissionError as error:

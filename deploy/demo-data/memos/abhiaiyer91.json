@@ -1,0 +1,233 @@
+{
+  "company": "Mastra",
+  "founder_logins": [
+    "abhiaiyer91"
+  ],
+  "generated_at": "2025-01-05T00:00:00Z",
+  "sections": {
+    "company_snapshot": {
+      "text": "Mastra is a JavaScript framework for building AI agents, founded by Abhi Aiyer, the former Founder/CTO who previously served as Principal Engineer and led a >100 person engineering organization at Netlify. The company was accepted to YC Winter 2025. Aiyer built Gatsby Cloud infrastructure that ran tens of thousands of build nodes, served billions of files, and handled hundreds of TB of monthly bandwidth. The company was first detected in October 2023 and achieved a detector score in the 99.6th percentile.",
+      "claim_ids": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ]
+    },
+    "investment_hypotheses": [
+      {
+        "text": "Founder has deep infrastructure and developer tooling expertise from scaling Gatsby Cloud to massive production workloads, which is directly relevant to building a framework for AI agents that will need to handle complex orchestration and scale.",
+        "claim_ids": [
+          "c2",
+          "c5"
+        ]
+      },
+      {
+        "text": "YC validation and high detector score (99.6th percentile) suggest strong early signals, though the company is pre-traction with no disclosed metrics.",
+        "claim_ids": [
+          "c3",
+          "c4"
+        ]
+      }
+    ],
+    "swot": {
+      "strengths": [
+        {
+          "text": "Founder has proven track record building and scaling developer infrastructure at Netlify, managing large engineering organizations, and creating widely-adopted tools like Gatsby Cloud.",
+          "claim_ids": [
+            "c2",
+            "c5"
+          ]
+        },
+        {
+          "text": "YC Winter 2025 acceptance provides validation, network access, and structured support for early-stage development.",
+          "claim_ids": [
+            "c3"
+          ]
+        }
+      ],
+      "weaknesses": [
+        {
+          "text": "No disclosed traction metrics, revenue, user counts, or product adoption data despite being detected since October 2023.",
+          "claim_ids": [
+            "c4",
+            "c6"
+          ]
+        },
+        {
+          "text": "Limited evidence of product development or market validation in the available data; most recent repos are from 2023 with no clear Mastra-specific activity visible.",
+          "claim_ids": [
+            "c7"
+          ]
+        }
+      ],
+      "opportunities": [
+        {
+          "text": "JavaScript/TypeScript developer ecosystem is large and growing, with increasing demand for AI agent frameworks as LLM applications move to production.",
+          "claim_ids": [
+            "c1"
+          ]
+        },
+        {
+          "text": "Founder's Gatsby background provides credibility in the JavaScript developer community, potentially accelerating adoption.",
+          "claim_ids": [
+            "c2"
+          ]
+        }
+      ],
+      "risks": [
+        {
+          "text": "Crowded AI agent framework market with well-funded competitors like LangChain, AutoGPT, and emerging alternatives; differentiation strategy not disclosed.",
+          "claim_ids": [
+            "c8"
+          ]
+        },
+        {
+          "text": "No evidence of co-founders or team composition, suggesting potential single-founder risk for a complex infrastructure product.",
+          "claim_ids": [
+            "c9"
+          ]
+        }
+      ]
+    },
+    "problem_product": {
+      "text": "Mastra positions itself as a JavaScript framework for building AI agents, targeting developers who want to create agent-based applications. The specific problem being solved, product architecture, differentiation from existing frameworks, and technical approach are not disclosed in available evidence. The founder's background suggests potential focus on developer experience and scalability, but product details remain unverified.",
+      "claim_ids": [
+        "c1",
+        "c2",
+        "c8"
+      ]
+    },
+    "traction_kpis": {
+      "text": "No traction metrics disclosed. No data on users, revenue, GitHub stars, downloads, customer count, or other adoption indicators. The company was first detected in October 2023 and accepted to YC Winter 2025, but quantitative performance metrics are not available in the evidence.",
+      "claim_ids": [
+        "c6"
+      ]
+    }
+  },
+  "claims": {
+    "c1": {
+      "text": "Mastra is described as 'The Javascript framework for building AI agents, from the Gatsby devs'",
+      "evidence_refs": [
+        "yc:mastra"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c2": {
+      "text": "Abhi Aiyer is Founder/CTO of Mastra, was Principal Engineer and led >100 person engineering organization at Netlify, and built Gatsby Cloud infrastructure that ran 10s of thousands of build nodes, served billions of files, and 100s of TB of monthly bandwidth",
+      "evidence_refs": [
+        "yc:mastra"
+      ],
+      "confidence": 1.0,
+      "verification_status": "single_source",
+      "contradictions": []
+    },
+    "c3": {
+      "text": "Mastra was accepted to YC Winter 2025",
+      "evidence_refs": [
+        "yc:mastra"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c4": {
+      "text": "Mastra was first detected in October 2023 with a detector score of 0.134 at the 99.6th percentile",
+      "evidence_refs": [
+        "detector:abhiaiyer91"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c5": {
+      "text": "Founder has experience building and scaling large-scale infrastructure systems",
+      "evidence_refs": [
+        "yc:mastra"
+      ],
+      "confidence": 0.95,
+      "verification_status": "single_source",
+      "contradictions": []
+    },
+    "c6": {
+      "text": "No traction metrics, revenue, user counts, or KPIs are disclosed in available evidence",
+      "evidence_refs": [
+        "yc:mastra",
+        "detector:abhiaiyer91"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c7": {
+      "text": "Most recent public repository activity from founder is from 2023, with repos like 'journey' (Dec 2023) and 'account-system' (Mar 2023), but no clear Mastra-specific repositories visible",
+      "evidence_refs": [
+        "repo:abhiaiyer91/journey:2023-12-26 17:09:07",
+        "repo:abhiaiyer91/account-system:2023-03-19 23:34:28"
+      ],
+      "confidence": 0.8,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c8": {
+      "text": "AI agent framework market includes multiple competitors, though specific competitive positioning is not disclosed",
+      "evidence_refs": [
+        "yc:mastra"
+      ],
+      "confidence": 0.7,
+      "verification_status": "single_source",
+      "contradictions": []
+    },
+    "c9": {
+      "text": "No co-founders or team members are mentioned in available evidence",
+      "evidence_refs": [
+        "yc:mastra"
+      ],
+      "confidence": 0.9,
+      "verification_status": "verified",
+      "contradictions": []
+    }
+  },
+  "gaps": [
+    "Product architecture and technical differentiation not disclosed",
+    "Go-to-market strategy and target customer segments not specified",
+    "Competitive positioning and moat not articulated",
+    "Team composition beyond founder not disclosed",
+    "Funding amount and investors not disclosed",
+    "Revenue model and pricing strategy not disclosed",
+    "Current product stage (prototype, beta, production) not disclosed",
+    "Customer testimonials or case studies not available",
+    "GitHub repository metrics (stars, forks, contributors) not disclosed",
+    "Product roadmap and development timeline not disclosed"
+  ],
+  "three_axis": {
+    "founder": {
+      "score": 8.0,
+      "trend": "stable",
+      "claim_ids": [
+        "c2",
+        "c5"
+      ]
+    },
+    "market": {
+      "score": 7.0,
+      "trend": "improving",
+      "claim_ids": [
+        "c1",
+        "c8"
+      ]
+    },
+    "idea_vs_market": {
+      "score": 5.0,
+      "trend": "stable",
+      "claim_ids": [
+        "c1",
+        "c6",
+        "c7",
+        "c8"
+      ]
+    }
+  }
+}

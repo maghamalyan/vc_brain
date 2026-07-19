@@ -8,7 +8,14 @@ from pathlib import Path
 import pytest
 
 from vcb_service.cli import run
-from vcb_service.indexer import DOC_TYPES, VerificationError, build_index, inspect_index
+from vcb_service.indexer import (
+    DOC_TYPES,
+    CountVerificationError,
+    VerificationError,
+    build_index,
+    inspect_index,
+)
+from vcb_service.snapshot import SnapshotManifestError, load_and_verify_snapshot
 
 from conftest import DATA_DIR, THESIS_PATH
 
@@ -50,6 +57,57 @@ def test_build_is_idempotent(tmp_path: Path) -> None:
     assert first.doc_counts == second.doc_counts
     assert inspect_index(output).unresolved == []
     assert [path.name for path in output.parent.iterdir()] == ["vcb.sqlite"]
+
+
+def test_build_uses_fixed_timestamp(tmp_path: Path) -> None:
+    output = tmp_path / "vcb.sqlite"
+    built_at = "2026-07-19T11:25:04.318866+00:00"
+
+    result = build_index(
+        DATA_DIR, THESIS_PATH, output, verify=True, built_at=built_at
+    )
+
+    assert result.built_at == built_at
+    assert inspect_index(output).built_at == built_at
+
+
+def test_count_failure_does_not_replace_existing_index(tmp_path: Path) -> None:
+    output = tmp_path / "vcb.sqlite"
+    build_index(DATA_DIR, THESIS_PATH, output, verify=True)
+    original = output.read_bytes()
+
+    with pytest.raises(CountVerificationError) as captured:
+        build_index(
+            DATA_DIR,
+            THESIS_PATH,
+            output,
+            verify=True,
+            expected_counts={"candidates": 999},
+        )
+
+    assert captured.value.mismatches == {"candidates": (999, 12)}
+    assert output.read_bytes() == original
+
+
+def test_snapshot_manifest_rejects_hash_mismatch(tmp_path: Path) -> None:
+    data_dir = tmp_path / "data"
+    data_dir.mkdir()
+    (data_dir / "input.json").write_text("{}", encoding="utf-8")
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(
+        json.dumps(
+            {
+                "schema_version": 1,
+                "built_at": "2026-07-19T11:25:04+00:00",
+                "expected_counts": {"candidates": 1},
+                "files": {"input.json": "0" * 64},
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(SnapshotManifestError, match="SHA-256 mismatch"):
+        load_and_verify_snapshot(manifest, data_dir)
 
 
 def test_verify_fails_for_dangling_claim_evidence(

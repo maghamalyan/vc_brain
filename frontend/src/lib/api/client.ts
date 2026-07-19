@@ -197,3 +197,4 @@ const mockClient: ApiClient = {
 
 export const api: ApiClient = import.meta.env.VITE_MOCK === '1' ? mockClient : realClient;
 export const isMockMode = import.meta.env.VITE_MOCK === '1';
+export const isDeepDiveEnabled = import.meta.env.VITE_DEEPDIVE_ENABLED !== '0';

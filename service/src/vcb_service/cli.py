@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Sequence
 
 from vcb_service.indexer import IndexBuildError, VerificationError, build_index
+from vcb_service.snapshot import load_and_verify_snapshot
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -17,6 +18,11 @@ def _parser() -> argparse.ArgumentParser:
     build.add_argument("--data-dir", type=Path, default=Path("../data/fixtures"))
     build.add_argument("--thesis", type=Path, default=Path("../config/thesis.json"))
     build.add_argument("--out", type=Path, default=Path("../data/index/vcb.sqlite"))
+    build.add_argument(
+        "--manifest",
+        type=Path,
+        help="verify a frozen snapshot manifest and use its timestamp/count contract",
+    )
     build.add_argument(
         "--verify",
         action="store_true",
@@ -28,7 +34,19 @@ def _parser() -> argparse.ArgumentParser:
 def run(argv: Sequence[str] | None = None) -> int:
     args = _parser().parse_args(argv)
     try:
-        result = build_index(args.data_dir, args.thesis, args.out, verify=False)
+        snapshot = (
+            load_and_verify_snapshot(args.manifest, args.data_dir)
+            if args.manifest is not None
+            else None
+        )
+        result = build_index(
+            args.data_dir,
+            args.thesis,
+            args.out,
+            verify=args.verify,
+            built_at=snapshot.built_at if snapshot else None,
+            expected_counts=snapshot.expected_counts if snapshot else None,
+        )
         print(f"built {result.path}")
         if args.verify:
             for doc_type, count in result.doc_counts.items():

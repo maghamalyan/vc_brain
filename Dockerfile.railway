@@ -1,0 +1,53 @@
+# syntax=docker/dockerfile:1
+
+FROM node:22-alpine AS frontend-builder
+
+WORKDIR /build/frontend
+COPY frontend/package.json frontend/package-lock.json ./
+RUN npm ci
+COPY frontend/ ./
+ENV VITE_DEEPDIVE_ENABLED=0
+RUN npm run check && npm run build
+
+
+FROM python:3.13-slim AS service-builder
+
+ARG UV_VERSION=0.11.21
+RUN pip install --no-cache-dir "uv==${UV_VERSION}"
+
+WORKDIR /app/service
+COPY service/pyproject.toml service/uv.lock service/README.md ./
+COPY service/src/ ./src/
+RUN uv sync --frozen --no-dev
+
+COPY deploy/demo-data/ /app/deploy/demo-data/
+COPY config/thesis.json /app/config/thesis.json
+RUN .venv/bin/vcb-index build \
+    --data-dir /app/deploy/demo-data \
+    --manifest /app/deploy/demo-data/manifest.json \
+    --thesis /app/config/thesis.json \
+    --out /app/data/vcb.sqlite \
+    --verify
+
+
+FROM python:3.13-slim AS runtime
+
+RUN useradd --create-home --uid 10001 app
+
+WORKDIR /app
+COPY --from=service-builder /app/service/ /app/service/
+COPY --from=service-builder /app/data/ /app/data/
+COPY --from=frontend-builder /build/frontend/dist/ /app/frontend/dist/
+
+ENV PATH="/app/service/.venv/bin:${PATH}" \
+    PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    VCB_INDEX=/app/data/vcb.sqlite \
+    VCB_DEEPDIVE_ENABLED=0
+
+RUN chmod 0444 /app/data/vcb.sqlite
+
+USER app
+EXPOSE 8000
+
+CMD ["sh", "-c", "exec uvicorn vcb_service.app:app --host 0.0.0.0 --port \"${PORT:-8000}\" --workers 1 --timeout-graceful-shutdown 10"]

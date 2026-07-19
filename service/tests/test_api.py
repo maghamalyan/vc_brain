@@ -1,5 +1,6 @@
 import asyncio
 import json
+import logging
 import shutil
 from collections.abc import Callable
 from datetime import date, datetime
@@ -7,9 +8,11 @@ from pathlib import Path
 
 import httpx
 import pytest
+from fastapi.testclient import TestClient
 
 from vcb_service.app import create_app
 from vcb_service.indexer import build_index
+from vcb_service.store import IndexUnavailable
 
 from conftest import DATA_DIR, THESIS_PATH
 
@@ -199,6 +202,79 @@ def test_openapi_contains_read_and_deepdive_routes(api_get: Callable[..., httpx.
     assert "/api/v1/candidates/{login}/memo" in paths
     assert "/api/v1/deepdive" in paths
     assert "/api/v1/deepdive/runs/{run_id}/stream" in paths
+
+
+def test_disabled_deepdive_fails_closed_before_manager_start(
+    index_path: Path, tmp_path: Path
+) -> None:
+    class ExplodingManager:
+        called = False
+
+        async def start(self, _body: object) -> str:
+            self.called = True
+            raise AssertionError("disabled deployment must not start the manager")
+
+    manager = ExplodingManager()
+    app = create_app(
+        index_path=index_path,
+        frontend_dist=tmp_path / "no-frontend",
+        deepdive_manager=manager,  # type: ignore[arg-type]
+        deepdive_enabled=False,
+    )
+
+    async def request() -> httpx.Response:
+        transport = httpx.ASGITransport(app=app)
+        async with httpx.AsyncClient(
+            transport=transport, base_url="http://testserver"
+        ) as client:
+            return await client.post(
+                "/api/v1/deepdive",
+                json={"entity_type": "founder", "entity_id": ADA},
+            )
+
+    response = asyncio.run(request())
+
+    assert response.status_code == 503
+    assert response.json() == {
+        "detail": {
+            "code": "LIVE_DEEPDIVE_DISABLED",
+            "message": "Live deep-dives are disabled for this deployment.",
+        }
+    }
+    assert manager.called is False
+
+
+def test_startup_validates_index_and_logs_readiness(
+    index_path: Path, tmp_path: Path, caplog: pytest.LogCaptureFixture
+) -> None:
+    app = create_app(index_path=index_path, frontend_dist=tmp_path / "no-frontend")
+
+    with caplog.at_level(logging.INFO, logger="vcb_service"):
+        with TestClient(app) as client:
+            assert client.get("/api/v1/health").status_code == 200
+
+    assert "event=service_ready" in caplog.text
+    assert "candidates=12 events=480 claims=8" in caplog.text
+
+
+def test_startup_rejects_missing_index(tmp_path: Path) -> None:
+    app = create_app(
+        index_path=tmp_path / "missing.sqlite",
+        frontend_dist=tmp_path / "no-frontend",
+    )
+
+    with pytest.raises(IndexUnavailable, match="index file not found"):
+        with TestClient(app):
+            pass
+
+
+def test_invalid_deepdive_flag_is_rejected(
+    index_path: Path, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setenv("VCB_DEEPDIVE_ENABLED", "sometimes")
+
+    with pytest.raises(ValueError, match="VCB_DEEPDIVE_ENABLED must be a boolean"):
+        create_app(index_path=index_path, frontend_dist=tmp_path / "no-frontend")
 
 
 def test_history_fallback_serves_frontend_when_present(

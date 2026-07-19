@@ -1,0 +1,502 @@
+{
+  "lukaspetersson": {
+    "name": "Lukas Petersson",
+    "company": "Andon Labs",
+    "login": "lukaspetersson"
+  },
+  "lollcat": {
+    "name": "Laurence Midgley",
+    "company": "Ångström AI",
+    "login": "lollcat"
+  },
+  "ilaffey2": {
+    "name": "Ian Laffey",
+    "company": "Theseus",
+    "login": "ilaffey2"
+  },
+  "enriqueferrao": {
+    "name": "Enrique Ferrao",
+    "company": "Pipeshift",
+    "login": "enriqueferrao"
+  },
+  "gventuri": {
+    "name": "Gabriele Venturi",
+    "company": "PandasAI",
+    "login": "gventuri"
+  },
+  "wiwa": {
+    "name": "Win Wang",
+    "company": "ParaQuery",
+    "login": "wiwa"
+  },
+  "risos8200": {
+    "name": "Rishabh Chanana",
+    "company": "OS3",
+    "login": "risos8200"
+  },
+  "28andrew": {
+    "name": "Andrew Tran",
+    "company": "Alkera AI",
+    "login": "28andrew"
+  },
+  "akshaynarisetti": {
+    "name": "Akshay Narisetti",
+    "company": "Pocket",
+    "login": "akshaynarisetti"
+  },
+  "aldolipani": {
+    "name": "Aldo Lipani",
+    "company": "Eloquent AI",
+    "login": "aldolipani"
+  },
+  "sgondala": {
+    "name": "Sashank Gondala",
+    "company": "FurtherAI",
+    "login": "sgondala"
+  },
+  "vineeth-vk11": {
+    "name": "Vineeth Kumar",
+    "company": "Samora AI",
+    "login": "vineeth-vk11"
+  },
+  "vshah1016": {
+    "name": "Veer Shah",
+    "company": "Cumulus Labs",
+    "login": "vshah1016"
+  },
+  "maxmclau": {
+    "name": "Maxmillion McLaughlin",
+    "company": "Sorcerer",
+    "login": "maxmclau"
+  },
+  "avyayv": {
+    "name": "Avyay Varadarajan",
+    "company": "dari.dev",
+    "login": "avyayv"
+  },
+  "kunaals": {
+    "name": "Kunaal Sikka",
+    "company": "SubImage",
+    "login": "kunaals"
+  },
+  "therne": {
+    "name": "Jun Kim",
+    "company": "Aside",
+    "login": "therne"
+  },
+  "taranjeet": {
+    "name": "Taranjeet Singh",
+    "company": "Mem0",
+    "login": "taranjeet"
+  },
+  "alessiapacca": {
+    "name": "Alessia Paccagnella",
+    "company": "VibeFlow",
+    "login": "alessiapacca"
+  },
+  "danielchalef": {
+    "name": "Daniel Chalef",
+    "company": "Zep AI",
+    "login": "danielchalef"
+  },
+  "rebryk": {
+    "name": "Yurii Rebryk",
+    "company": "Fluently",
+    "login": "rebryk"
+  },
+  "topher-lo": {
+    "name": "Chris Lo",
+    "company": "Tracecat",
+    "login": "topher-lo"
+  },
+  "davidhu2000": {
+    "name": "David Hu",
+    "company": "Magic Hour",
+    "login": "davidhu2000"
+  },
+  "francedot": {
+    "name": "Francesco Bonacci",
+    "company": "Cua",
+    "login": "francedot"
+  },
+  "tonychang04": {
+    "name": "Tony Chang",
+    "company": "InsForge",
+    "login": "tonychang04"
+  },
+  "zarif101": {
+    "name": "Zarif Azher",
+    "company": "Nexa Labs",
+    "login": "zarif101"
+  },
+  "manmohitgrewal1": {
+    "name": "Manmohit Grewal",
+    "company": "Crustdata",
+    "login": "manmohitgrewal1"
+  },
+  "onewarmheart": {
+    "name": "Huimin Xie",
+    "company": "Perfectly",
+    "login": "onewarmheart"
+  },
+  "jackmpcollins": {
+    "name": "Jack Collins",
+    "company": "Ventura",
+    "login": "jackmpcollins"
+  },
+  "viraatdas": {
+    "name": "Viraat Das",
+    "company": "Exla",
+    "login": "viraatdas"
+  },
+  "jjmachan": {
+    "name": "Jithin James",
+    "company": "Vibrant Labs",
+    "login": "jjmachan"
+  },
+  "levkk": {
+    "name": "Lev Kokotov",
+    "company": "PgDog",
+    "login": "levkk"
+  },
+  "andreybavt": {
+    "name": "Andrey Avtomonov",
+    "company": "Kaelio",
+    "login": "andreybavt"
+  },
+  "marius-se": {
+    "name": "Marius Seufzer",
+    "company": "autarc",
+    "login": "marius-se"
+  },
+  "123vivekr": {
+    "name": "Vivek R",
+    "company": "winfunc",
+    "login": "123vivekr"
+  },
+  "jash101": {
+    "name": "Jash Mota",
+    "company": "Flywheel AI",
+    "login": "jash101"
+  },
+  "nuwandavek": {
+    "name": "Vivek Aithal",
+    "company": "MinusX",
+    "login": "nuwandavek"
+  },
+  "abhiaiyer91": {
+    "name": "Abhi Aiyer",
+    "company": "Mastra",
+    "login": "abhiaiyer91"
+  },
+  "achantavy": {
+    "name": "Alex Chantavy",
+    "company": "SubImage",
+    "login": "achantavy"
+  },
+  "ralphr123": {
+    "name": "Ralph Rouhana",
+    "company": "Stempad",
+    "login": "ralphr123"
+  },
+  "erikqu": {
+    "name": "Erik Quintanilla",
+    "company": "Refresh",
+    "login": "erikqu"
+  },
+  "a-churchill": {
+    "name": "Andrew Churchill",
+    "company": "Weave",
+    "login": "a-churchill"
+  },
+  "browningjp": {
+    "name": "Jonny Browning",
+    "company": "SchemeFlow",
+    "login": "browningjp"
+  },
+  "emdoyle": {
+    "name": "Evan Doyle",
+    "company": "Gauge",
+    "login": "emdoyle"
+  },
+  "kurushdubash": {
+    "name": "Kurush Dubash",
+    "company": "Dome",
+    "login": "kurushdubash"
+  },
+  "louismurerwa": {
+    "name": "Louis Murerwa",
+    "company": "Ocular AI",
+    "login": "louismurerwa"
+  },
+  "nicohaenggi": {
+    "name": "Nico Hänggi",
+    "company": "Casey",
+    "login": "nicohaenggi"
+  },
+  "david1542": {
+    "name": "Dudu Lasry",
+    "company": "Vespper",
+    "login": "david1542"
+  },
+  "teichman": {
+    "name": "Alex Teichman",
+    "company": "Happenstance",
+    "login": "teichman"
+  },
+  "boriskurikhin": {
+    "name": "Boris Skurikhin",
+    "company": "Docket",
+    "login": "boriskurikhin"
+  },
+  "kamrynohly": {
+    "name": "Kamryn Ohly",
+    "company": "Design Arena",
+    "login": "kamrynohly"
+  },
+  "nyacg": {
+    "name": "Robert Chandler",
+    "company": "Wordware",
+    "login": "nyacg"
+  },
+  "saryazdi": {
+    "name": "Soroush Saryazdi",
+    "company": "Swerve",
+    "login": "saryazdi"
+  },
+  "skull8888888": {
+    "name": "Robert Kim",
+    "company": "Laminar",
+    "login": "skull8888888"
+  },
+  "yoavz": {
+    "name": "Yoav Zimmerman",
+    "company": "Third Chair",
+    "login": "yoavz"
+  },
+  "saviomartin": {
+    "name": "Savio Martin",
+    "company": "Result",
+    "login": "saviomartin"
+  },
+  "deshraj": {
+    "name": "Deshraj Yadav",
+    "company": "Mem0",
+    "login": "deshraj"
+  },
+  "michaelfester": {
+    "name": "Michael Fester",
+    "company": "14.ai",
+    "login": "michaelfester"
+  },
+  "ucarion": {
+    "name": "Ulysse Carion",
+    "company": "Tesseral",
+    "login": "ucarion"
+  },
+  "dbmikus": {
+    "name": "Dylan Mikus",
+    "company": "Amika",
+    "login": "dbmikus"
+  },
+  "egrigokhan": {
+    "name": "Gokhan Egri",
+    "company": "Brainbase Labs",
+    "login": "egrigokhan"
+  },
+  "jw122": {
+    "name": "Julia Wu",
+    "company": "Spark",
+    "login": "jw122"
+  },
+  "kevinschaich": {
+    "name": "Kevin Schaich",
+    "company": "Darkgrade",
+    "login": "kevinschaich"
+  },
+  "bhairavmehta95": {
+    "name": "Bhairav Mehta",
+    "company": "CharacterQuilt",
+    "login": "bhairavmehta95"
+  },
+  "davidoort": {
+    "name": "David Oort Alonso",
+    "company": "Bloom",
+    "login": "davidoort"
+  },
+  "adtac": {
+    "name": "Adhityaa Chandrasekar",
+    "company": "Subtrace",
+    "login": "adtac"
+  },
+  "aymannadeem": {
+    "name": "Ayman Nadeem",
+    "company": "Nuanced",
+    "login": "aymannadeem"
+  },
+  "chetan-parthiban": {
+    "name": "Chetan Parthiban",
+    "company": "Ultra",
+    "login": "chetan-parthiban"
+  },
+  "danielhanchen": {
+    "name": "Daniel Han",
+    "company": "Unsloth AI",
+    "login": "danielhanchen"
+  },
+  "dastratakos": {
+    "name": "Dean Stratakos",
+    "company": "Stage",
+    "login": "dastratakos"
+  },
+  "drewag": {
+    "name": "Andrew Wagner",
+    "company": "Odo",
+    "login": "drewag"
+  },
+  "essamsleiman": {
+    "name": "Essam Sleiman",
+    "company": "Canvas",
+    "login": "essamsleiman"
+  },
+  "ishandeveloper": {
+    "name": "Ishan Sharma",
+    "company": "Cardboard",
+    "login": "ishandeveloper"
+  },
+  "jeff-an": {
+    "name": "Jeff An",
+    "company": "Momentic",
+    "login": "jeff-an"
+  },
+  "kcelebi": {
+    "name": "Kaya Celebi",
+    "company": "GUILD",
+    "login": "kcelebi"
+  },
+  "kechua": {
+    "name": "Ivan Zakazov",
+    "company": "Compresr",
+    "login": "kechua"
+  },
+  "ketan0": {
+    "name": "Ketan Agrawal",
+    "company": "/dev/fast",
+    "login": "ketan0"
+  },
+  "kristian1108": {
+    "name": "Kristian Gaylord",
+    "company": "Enhanced Radar",
+    "login": "kristian1108"
+  },
+  "luca-martial": {
+    "name": "Luca Martial",
+    "company": "Kaelio",
+    "login": "luca-martial"
+  },
+  "lukasmartinelli": {
+    "name": "Lukas Martinelli",
+    "company": "Reprompt",
+    "login": "lukasmartinelli"
+  },
+  "maebert": {
+    "name": "Manu Ebert",
+    "company": "Hyperspell",
+    "login": "maebert"
+  },
+  "msukkari": {
+    "name": "Michael Sukkarieh",
+    "company": "Sourcebot",
+    "login": "msukkari"
+  },
+  "owalerys": {
+    "name": "Oliver Walerys",
+    "company": "GovernGPT",
+    "login": "owalerys"
+  },
+  "samagra14": {
+    "name": "Samagra Sharma",
+    "company": "Whip",
+    "login": "samagra14"
+  },
+  "spencer-brown": {
+    "name": "Spencer Brown",
+    "company": "Chestnut",
+    "login": "spencer-brown"
+  },
+  "stasbel": {
+    "name": "Stanislav Beliaev",
+    "company": "Fluently",
+    "login": "stasbel"
+  },
+  "ulmewennberg": {
+    "name": "Ulme Wennberg",
+    "company": "Vantel",
+    "login": "ulmewennberg"
+  },
+  "yuhongsun96": {
+    "name": "Yuhong Sun",
+    "company": "Onyx",
+    "login": "yuhongsun96"
+  },
+  "abhishekray07": {
+    "name": "Abhishek Ray",
+    "company": "Opslane",
+    "login": "abhishekray07"
+  },
+  "yoeven": {
+    "name": "Yoeven D Khemlani",
+    "company": "Interfaze",
+    "login": "yoeven"
+  },
+  "gosulap": {
+    "name": "Pradhit Gosula",
+    "company": "Reform",
+    "login": "gosulap"
+  },
+  "pensono": {
+    "name": "Ethan Shea",
+    "company": "Regbase",
+    "login": "pensono"
+  },
+  "qionghuang6": {
+    "name": "Qiong Zhou Huang",
+    "company": "Lumona",
+    "login": "qionghuang6"
+  },
+  "tigger0jk": {
+    "name": "Patrick Fay",
+    "company": "Magnetic",
+    "login": "tigger0jk"
+  },
+  "bergholmalexander": {
+    "name": "Alexander Bergholm",
+    "company": "Klarify",
+    "login": "bergholmalexander"
+  },
+  "mfogelson": {
+    "name": "Mitchell Fogelson",
+    "company": "Beyond Reach Labs",
+    "login": "mfogelson"
+  },
+  "oschwartz10612": {
+    "name": "Owen Schwartz",
+    "company": "Pangolin",
+    "login": "oschwartz10612"
+  },
+  "teej": {
+    "name": "TJ Murphy",
+    "company": "Downlink",
+    "login": "teej"
+  },
+  "vdeturckheim": {
+    "name": "Vladimir de Turckheim",
+    "company": "Tolmo",
+    "login": "vdeturckheim"
+  },
+  "aluzzardi": {
+    "name": "Andrea Luzzardi",
+    "company": "Mendral",
+    "login": "aluzzardi"
+  }
+}

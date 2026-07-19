@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { api, isMockMode } from '../api/client';
+  import { api, isDeepDiveEnabled, isMockMode } from '../api/client';
   import type { SearchHit } from '../api/types';
   import { navigate } from '../router';
   import { setThesisFilter } from '../thesisStore';
@@ -42,7 +42,7 @@
       navigate('/');
       return;
     }
-    if (row.action === 'deepdive') {
+    if (row.action === 'deepdive' && isDeepDiveEnabled) {
       invoking = true;
       actionError = '';
       try {
@@ -74,7 +74,7 @@
       const sector = resultRows.find((row) => row.doc_type === 'thesis_term');
       const verbs: PaletteRow[] = [];
       if (founder) {
-        verbs.push({ ...founder, doc_id: `deep-${founder.doc_id}`, title: `Deep dive on ${founder.title}…`, subtitle: 'Start founder analysis', snippet: 'Run all three diligence dimensions', group: 'Actions', verb: true, action: 'deepdive', actionValue: founder.doc_id });
+        if (isDeepDiveEnabled) verbs.push({ ...founder, doc_id: `deep-${founder.doc_id}`, title: `Deep dive on ${founder.title}…`, subtitle: 'Start founder analysis', snippet: 'Run all three diligence dimensions', group: 'Actions', verb: true, action: 'deepdive', actionValue: founder.doc_id });
         verbs.push({ ...founder, doc_id: `memo-${founder.doc_id}`, title: 'Open memo…', subtitle: founder.title, snippet: `Review claims for ${founder.title}`, route: `${founder.route}#memo`, group: 'Actions', verb: true, action: 'memo' });
       }
       if (sector) verbs.push({ ...sector, doc_id: `filter-${sector.doc_id}`, title: `Filter radar to ${sector.title}`, subtitle: 'Apply thesis lens', group: 'Actions', verb: true, action: 'filter', actionValue: sector.title });

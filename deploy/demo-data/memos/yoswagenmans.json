@@ -1,0 +1,216 @@
+{
+  "company": "Amby Health",
+  "founder_logins": [
+    "yoswagenmans"
+  ],
+  "generated_at": "2025-01-05T00:00:00Z",
+  "sections": {
+    "company_snapshot": {
+      "text": "Amby Health is an AI copilot for ambulance agencies (EMS) founded by Yos Wagenmans, who dropped out of MIT CS. The company was accepted to Y Combinator Winter 2025. The founder has a background in ML research at MIT CSAIL, AI work at Meta, and pre-hospital software development at ALLM.",
+      "claim_ids": [
+        "c1",
+        "c2",
+        "c3"
+      ]
+    },
+    "investment_hypotheses": [
+      {
+        "text": "YC validation: Acceptance into YC W25 provides institutional validation and access to network, capital, and mentorship that historically correlates with higher success rates for early-stage startups.",
+        "claim_ids": [
+          "c2"
+        ]
+      },
+      {
+        "text": "Technical founder with domain expertise: Founder combines ML research credentials from MIT CSAIL, AI experience at Meta, and direct pre-hospital software development experience at ALLM, suggesting both technical capability and domain understanding.",
+        "claim_ids": [
+          "c3"
+        ]
+      },
+      {
+        "text": "Early signal detection: Outbound detector identified the founder in January 2024 with a score of 0.309 (99.8th percentile), suggesting early-stage promise before YC acceptance.",
+        "claim_ids": [
+          "c4"
+        ]
+      }
+    ],
+    "swot": {
+      "strengths": [
+        {
+          "text": "Strong technical pedigree: MIT CS background with ML research at CSAIL and AI experience at Meta demonstrates deep technical capability relevant to building AI products.",
+          "claim_ids": [
+            "c3"
+          ]
+        },
+        {
+          "text": "Domain-specific experience: Prior work developing pre-hospital software at ALLM provides insider knowledge of EMS workflows and pain points.",
+          "claim_ids": [
+            "c3"
+          ]
+        }
+      ],
+      "weaknesses": [
+        {
+          "text": "No disclosed traction: No revenue, customer, or usage metrics are available in the evidence, making it impossible to assess product-market fit or commercial validation.",
+          "claim_ids": [
+            "c5"
+          ]
+        },
+        {
+          "text": "Limited public technical output: Only two public GitHub repositories (PathfindingVisualizer and Kernel_Void) with no indication of EMS-related development or significant technical depth.",
+          "claim_ids": [
+            "c6",
+            "c7"
+          ]
+        }
+      ],
+      "opportunities": [
+        {
+          "text": "YC network effects: W25 batch participation provides access to alumni network, potential customers, and follow-on investors in the healthcare and enterprise software space.",
+          "claim_ids": [
+            "c2"
+          ]
+        }
+      ],
+      "risks": [
+        {
+          "text": "Regulatory complexity: EMS software likely requires compliance with healthcare regulations (HIPAA, FDA) and integration with legacy systems, which can extend sales cycles and increase development costs.",
+          "claim_ids": [
+            "c1"
+          ]
+        },
+        {
+          "text": "Unproven execution: Dropping out of MIT CS before completion may indicate high conviction but also represents incomplete formal training and no prior startup exit or leadership track record.",
+          "claim_ids": [
+            "c3"
+          ]
+        }
+      ]
+    },
+    "problem_product": {
+      "text": "Amby Health is building an AI copilot for ambulance agencies (EMS). The specific problem being solved, product features, and differentiation from existing EMS software are not disclosed in the available evidence. The founder's prior experience developing pre-hospital software at ALLM suggests familiarity with the domain, but no product details, customer workflows, or technical architecture are documented.",
+      "claim_ids": [
+        "c1",
+        "c3",
+        "c8"
+      ]
+    },
+    "traction_kpis": {
+      "text": "No traction or KPI data is disclosed. Revenue, customer count, user metrics, pilot deployments, and growth rates are not available in the evidence.",
+      "claim_ids": [
+        "c5"
+      ]
+    }
+  },
+  "claims": {
+    "c1": {
+      "text": "Amby Health is an AI copilot for ambulance agencies (EMS)",
+      "evidence_refs": [
+        "yc:amby-health"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c2": {
+      "text": "Amby Health was accepted to Y Combinator Winter 2025 batch",
+      "evidence_refs": [
+        "yc:amby-health"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c3": {
+      "text": "Yos Wagenmans is co-founder and CEO, dropped out of MIT CS, previously led ML research at MIT CSAIL, worked on AI at Meta, and developed pre-hospital software at ALLM",
+      "evidence_refs": [
+        "yc:amby-health"
+      ],
+      "confidence": 0.9,
+      "verification_status": "single_source",
+      "contradictions": []
+    },
+    "c4": {
+      "text": "Outbound detector identified yoswagenmans with score 0.309 (99.8th percentile) in January 2024",
+      "evidence_refs": [
+        "detector:yoswagenmans"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c5": {
+      "text": "No traction, revenue, customer, or usage metrics are disclosed",
+      "evidence_refs": [
+        "yc:amby-health",
+        "detector:yoswagenmans"
+      ],
+      "confidence": 1.0,
+      "verification_status": "not_disclosed",
+      "contradictions": []
+    },
+    "c6": {
+      "text": "Created public repository PathfindingVisualizer on July 6, 2021",
+      "evidence_refs": [
+        "repo:yoswagenmans/PathfindingVisualizer:2021-07-06 14:30:27"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c7": {
+      "text": "Created public repository Kernel_Void on August 4, 2023",
+      "evidence_refs": [
+        "repo:yoswagenmans/Kernel_Void:2023-08-04 20:48:59"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c8": {
+      "text": "Product details, features, and technical architecture are not disclosed",
+      "evidence_refs": [
+        "yc:amby-health"
+      ],
+      "confidence": 1.0,
+      "verification_status": "not_disclosed",
+      "contradictions": []
+    }
+  },
+  "gaps": [
+    "No product details, features, or technical architecture disclosed",
+    "No traction metrics: revenue, customers, users, growth rate",
+    "No team composition beyond founder",
+    "No competitive landscape or differentiation details",
+    "No funding amount or investor information",
+    "No go-to-market strategy or sales pipeline data",
+    "No technical validation of AI capabilities or model performance",
+    "No customer testimonials or case studies",
+    "No regulatory compliance status (HIPAA, FDA)",
+    "No details on ALLM or Meta tenure duration or specific contributions"
+  ],
+  "three_axis": {
+    "founder": {
+      "score": 6.5,
+      "trend": "stable",
+      "claim_ids": [
+        "c3",
+        "c4"
+      ]
+    },
+    "market": {
+      "score": 7.0,
+      "trend": "stable",
+      "claim_ids": [
+        "c1"
+      ]
+    },
+    "idea_vs_market": {
+      "score": 5.0,
+      "trend": "stable",
+      "claim_ids": [
+        "c1",
+        "c8"
+      ]
+    }
+  }
+}
