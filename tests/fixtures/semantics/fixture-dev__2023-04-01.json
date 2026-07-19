@@ -1,0 +1,36 @@
+{
+  "building_what": {
+    "category": "application",
+    "description": "A customer-facing application with repeatable onboarding.",
+    "citations": [1, 2]
+  },
+  "audience_orientation": {
+    "value": "customers",
+    "citations": [1]
+  },
+  "productization_markers": {
+    "value": 3,
+    "citations": [1, 2]
+  },
+  "commercial_language": {
+    "value": 2,
+    "citations": [1]
+  },
+  "collaboration_posture": {
+    "value": "team_forming",
+    "citations": [2]
+  },
+  "stated_founding_intent": {
+    "value": "implicit",
+    "quote": null,
+    "citations": [1]
+  },
+  "seriousness": {
+    "value": 3,
+    "citations": [1, 2]
+  },
+  "domain_shift": {
+    "value": 2,
+    "citations": [1]
+  }
+}

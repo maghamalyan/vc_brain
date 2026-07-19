@@ -69,8 +69,11 @@ def test_panel_cutoff_gestation_labels_matching_exclusion_and_zero_activity(
         "dynamics",
         "traction",
         "ownership_collab",
+        "semantics",
     }
     assert all(item["null_policy"] for item in card["features"])
+    assert card["capital_families"]["financial"] == []
+    assert "context_divergence_2q" in card["capital_families"]["cognitive"]
     assert (output_root / "data_card.md").exists()
 
 
@@ -91,6 +94,7 @@ def test_feature_windows_match_hand_computed_fixture_values(tmp_path: Path) -> N
     assert row["traction_stars_3m"] == pytest.approx(21_000.0)
     assert 0.0 < row["own_repo_share_3m"] < 1.0
     assert row["distinct_collaborators_3m"] > 0.0
+    assert "context_divergence_2q" in row
 
 
 def test_every_source_timestamp_is_strictly_before_cutoff() -> None:

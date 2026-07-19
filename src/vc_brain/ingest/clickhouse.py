@@ -47,6 +47,10 @@ class QueryTimeoutError(RuntimeError):
     """The playground rejected the query for exceeding its execution budget."""
 
 
+class QueryCapacityError(RuntimeError):
+    """The playground could not execute a batch within its memory budget."""
+
+
 def _sql_with_format(sql: str) -> str:
     normalized = sql.strip().rstrip(";")
     if normalized.upper().endswith("FORMAT TSVWITHNAMES"):
@@ -126,8 +130,12 @@ class ClickHouseClient:
                 content=_sql_with_format(sql).encode("utf-8"),
                 headers={"Content-Type": "text/plain; charset=utf-8"},
             )
+        body_head = response.content[:500].decode("utf-8", "replace")
+        if response.status_code >= 500 and "memory limit exceeded" in body_head.lower():
+            raise QueryCapacityError(
+                "ClickHouse playground query exceeded its memory budget"
+            )
         if response.status_code == 429 or response.status_code >= 500:
-            body_head = response.content[:300].decode("utf-8", "replace")
             if "QUOTA_EXCEEDED" in body_head:
                 # Shared hourly read quota; hammering it is pointless. Sleep out
                 # most of the window, then let tenacity retry.
@@ -182,11 +190,11 @@ class ClickHouseClient:
             return pl.DataFrame()
         try:
             frame = self.query(sql_builder(actors))
-        except QueryTimeoutError:
+        except (QueryTimeoutError, QueryCapacityError):
             if len(actors) == 1:
                 raise
             LOGGER.warning(
-                "Bisecting actor batch after playground timeout actors=%d",
+                "Bisecting actor batch after playground capacity rejection actors=%d",
                 len(actors),
             )
             middle = len(actors) // 2
@@ -230,11 +238,7 @@ class ClickHouseClient:
             self.query_actor_batch(actors[start : start + batch_size], sql_builder)
             for start in range(0, len(actors), batch_size)
         ]
-        return (
-            pl.concat(frames, how="diagonal_relaxed")
-            if frames
-            else pl.DataFrame()
-        )
+        return pl.concat(frames, how="diagonal_relaxed") if frames else pl.DataFrame()
 
 
 def query(sql: str) -> pl.DataFrame:

@@ -184,3 +184,29 @@ clean; protected memo and labels source paths were untouched. No commit was crea
 
 ## 2026-07-19 10:11 — Claude gate: A1+A2+A4 ACCEPTED
 Matched-group rank in eval: 34.2% vs 16.7% chance (415 groups; reproduces Claude reference). Leakage zero on ownership_agg (169k rows) and collab_influx (41k). Attributions 3/founder for 519 detected. HONEST NEGATIVE: ownership_collab ablation adds no lift (0.1556 vs 0.1586) — likely inherits identity-resolution failures (see missed_founders.md); fix is resolution hardening, not feature removal. Null gate still passes (0.1332 vs 0.2344 real).
+
+## 2026-07-19 10:41 +04 — Stream A3 part one: extraction and annotation code
+
+Implemented the authored event-time text extractor for the five specified GitHub
+event types, with strict pre-cutoff filtering, 1,500-character bodies, deterministic
+global 40-item actor-quarter caps after distributed-query merge, SQL-hash batch
+caching, and capacity/408 bisection. The real Cohort-D extraction retained 620
+founders and 1,300 matched controls after applying the same >=20-item filter: 1,920
+people, 24,410 person-quarters, and 375,514 text items. Candidate extraction rows
+were 112,665 founders and 270,468 controls. There are zero cutoff violations; the
+maximum bundle is 40 items and the minimum included-person total is 20.
+
+Added the offline-safe OpenRouter annotation pipeline with temperature 0, strict
+Pydantic/JSON schema including cited `domain_shift`, content/model/mode-hash caching,
+bounded earlier-bundle context, fixture-backed `--mock`, and current-item citation
+validation. No real annotation or semantic cache write was made. Estimated approval
+gate: 24,410 person-quarters x ~1,500 tokens = 36,615,000 tokens.
+
+Added `context_divergence_2q` from cached monthly/ownership aggregates only under the
+`semantics` feature block. The rebuilt 276,316-row panel has 133,179 defined values in
+[0, 1] and 143,137 contractually null values; model-matrix construction explicitly
+neutral-imputes the documented undefined state. Added the presentation-only four
+capital-family mapping, with financial capital explicitly empty. Verification:
+`uv run pytest -q` -> 78 passed (27 upstream joblib/NumPy deprecation warnings);
+`uv run ruff check src tests` and `git diff --check` -> clean. Protected eval/report
+and dashboard paths were untouched; no commit was created.

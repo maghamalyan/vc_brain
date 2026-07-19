@@ -12,6 +12,8 @@ from pathlib import Path
 
 import polars as pl
 
+from vc_brain.features.taxonomy import capital_families, capital_family
+
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DATA_ROOT = Path(os.environ.get("VC_BRAIN_DATA_DIR", PROJECT_ROOT / "data"))
 EVENTS_ROOT = DATA_ROOT / "events"
@@ -399,6 +401,12 @@ def feature_definitions() -> list[FeatureDefinition]:
                 "ownership_collab",
                 "Z-score of the recent 3-month mean monthly collaborator count against the preceding 12 monthly values; zero when prior variance is zero.",
             ),
+            FeatureDefinition(
+                "context_divergence_2q",
+                "semantics",
+                "One minus cosine similarity between the actor's event-type distribution plus own-repository share in the trailing six months and the same composition over all earlier cached history.",
+                "Null when fewer than six calendar months of prior cached history exist or either composition vector has zero magnitude; model matrices neutral-impute this documented null to zero.",
+            ),
         ]
     )
     return definitions
@@ -515,6 +523,95 @@ def _ownership_maps(
     return own, total
 
 
+def _composition_maps(
+    monthly: pl.DataFrame,
+) -> tuple[dict[str, dict[date, dict[str, float]]], tuple[str, ...]]:
+    result: dict[str, dict[date, dict[str, float]]] = defaultdict(
+        lambda: defaultdict(lambda: defaultdict(float))
+    )
+    event_types: set[str] = set()
+    for row in monthly.to_dicts():
+        event_type = str(row["event_type"])
+        count = float(row["event_count"])
+        if event_type == "__NO_ACTIVITY__" or count <= 0:
+            continue
+        login = str(row["actor_login"]).lower()
+        month = _month_value(row["month"])
+        result[login][month][event_type] += count
+        event_types.add(event_type)
+    return result, tuple(sorted(event_types))
+
+
+def _composition_vector(
+    *,
+    event_counts: Mapping[date, Mapping[str, float]],
+    own_counts: Mapping[date, float],
+    ownership_counts: Mapping[date, float],
+    dates: Iterable[date],
+    event_types: tuple[str, ...],
+) -> list[float]:
+    selected = set(dates)
+    totals = [
+        sum(event_counts.get(point, {}).get(event_type, 0.0) for point in selected)
+        for event_type in event_types
+    ]
+    event_total = sum(totals)
+    distribution = (
+        [value / event_total for value in totals]
+        if event_total > 0
+        else [0.0 for _ in event_types]
+    )
+    ownership_total = sum(ownership_counts.get(point, 0.0) for point in selected)
+    own_share = (
+        sum(own_counts.get(point, 0.0) for point in selected) / ownership_total
+        if ownership_total > 0
+        else 0.0
+    )
+    return [*distribution, own_share]
+
+
+def context_divergence_2q(
+    *,
+    month: date,
+    event_counts: Mapping[date, Mapping[str, float]],
+    own_counts: Mapping[date, float],
+    ownership_counts: Mapping[date, float],
+    event_types: tuple[str, ...],
+) -> float | None:
+    """Compare trailing-six-month activity composition with all earlier history."""
+    observed_months = set(event_counts) | set(ownership_counts)
+    if not observed_months:
+        return None
+    recent_start = add_months(month, -5)
+    earliest = min(observed_months)
+    if month_distance(recent_start, earliest) < 6:
+        return None
+    recent_dates = [add_months(month, offset) for offset in range(-5, 1)]
+    prior_dates = [point for point in observed_months if point < recent_start]
+    recent = _composition_vector(
+        event_counts=event_counts,
+        own_counts=own_counts,
+        ownership_counts=ownership_counts,
+        dates=recent_dates,
+        event_types=event_types,
+    )
+    prior = _composition_vector(
+        event_counts=event_counts,
+        own_counts=own_counts,
+        ownership_counts=ownership_counts,
+        dates=prior_dates,
+        event_types=event_types,
+    )
+    recent_norm = math.sqrt(sum(value * value for value in recent))
+    prior_norm = math.sqrt(sum(value * value for value in prior))
+    if recent_norm == 0 or prior_norm == 0:
+        return None
+    cosine = sum(left * right for left, right in zip(recent, prior, strict=True)) / (
+        recent_norm * prior_norm
+    )
+    return 1.0 - min(max(cosine, -1.0), 1.0)
+
+
 def _collaborator_maps(collaborators: pl.DataFrame) -> dict[str, dict[date, float]]:
     result: dict[str, dict[date, float]] = defaultdict(lambda: defaultdict(float))
     for row in collaborators.to_dicts():
@@ -548,8 +645,10 @@ def _feature_row(
     own_repo: Mapping[str, Mapping[date, float]],
     ownership_total: Mapping[str, Mapping[date, float]],
     collaborators: Mapping[str, Mapping[date, float]],
-) -> dict[str, float]:
-    result: dict[str, float] = {}
+    composition: Mapping[str, Mapping[date, Mapping[str, float]]],
+    composition_event_types: tuple[str, ...],
+) -> dict[str, float | None]:
+    result: dict[str, float | None] = {}
     for event_class in ACTIVITY_CLASSES:
         values = normalized.get((login, event_class), {})
         for window in (1, 3, 6, 12):
@@ -623,6 +722,13 @@ def _feature_row(
     _, collaborator_delta = _ratio_delta(collaborator_values, month)
     result["distinct_collaborators_delta_3m_prior12m"] = collaborator_delta
     result["new_collaborator_burst_zscore"] = _burst_z(collaborator_values, month)
+    result["context_divergence_2q"] = context_divergence_2q(
+        month=month,
+        event_counts=composition.get(login, {}),
+        own_counts=own_values,
+        ownership_counts=ownership_values,
+        event_types=composition_event_types,
+    )
     return result
 
 
@@ -637,9 +743,16 @@ def _render_data_card(
         "people": panel.get_column("gh_login").n_unique(),
         "panel_contract": "One row per person-month from B-48 months through B-12 months inclusive; y=1 exactly from B-15 through B-12 for positives and is always zero for controls.",
         "normalization": "Mapped actor activity and received traction are divided by the same calendar month's mapped global GitHub event total and multiplied by 1,000,000.",
-        "source_cutoff": "All event, traction, ownership, collaboration, and repository-creation source timestamps are strictly before each person's t_cutoff=B-12 months.",
+        "source_cutoff": "All event, traction, ownership, collaboration, context-composition, and repository-creation source timestamps are strictly before each person's t_cutoff=B-12 months.",
         "exclusions": exclusions,
-        "features": [asdict(definition) for definition in definitions],
+        "capital_family_note": "Presentation taxonomy only; no weighting change. Financial capital is not observed in the current feature set.",
+        "capital_families": capital_families(
+            definition.name for definition in definitions
+        ),
+        "features": [
+            {**asdict(definition), "capital_family": capital_family(definition.name)}
+            for definition in definitions
+        ],
     }
     markdown = [
         "# Feature Data Card\n\n",
@@ -652,10 +765,12 @@ def _render_data_card(
     ]
     markdown.extend(f"- {name}: {count}\n" for name, count in exclusions.items())
     markdown.append(
-        "\n## Feature dictionary\n\n| Name | Block | Definition | Null policy |\n| --- | --- | --- | --- |\n"
+        "\n## Capital-family mapping\n\n"
+        f"{payload['capital_family_note']}\n\n"
+        "## Feature dictionary\n\n| Name | Block | Capital family | Definition | Null policy |\n| --- | --- | --- | --- | --- |\n"
     )
     markdown.extend(
-        f"| `{item.name}` | {item.block} | {item.definition} | {item.null_policy} |\n"
+        f"| `{item.name}` | {item.block} | {capital_family(item.name)} | {item.definition} | {item.null_policy} |\n"
         for item in definitions
     )
     return json.dumps(payload, indent=2, sort_keys=True), "".join(markdown)
@@ -863,6 +978,7 @@ def build_features(
     repos = _repo_maps(creations)
     own_repo, ownership_total = _ownership_maps(ownership)
     collaborator_counts = _collaborator_maps(collaborators)
+    composition, composition_event_types = _composition_maps(monthly)
 
     people: list[dict[str, object]] = []
     for login, label in positives.items():
@@ -975,6 +1091,8 @@ def build_features(
                         own_repo=own_repo,
                         ownership_total=ownership_total,
                         collaborators=collaborator_counts,
+                        composition=composition,
+                        composition_event_types=composition_event_types,
                     ),
                 }
             )
@@ -987,7 +1105,12 @@ def build_features(
         .select(*METADATA_COLUMNS, *feature_names)
         .sort("match_group_id", "gh_login", "month")
     )
-    if panel.select(pl.any_horizontal(pl.col(feature_names).is_null()).any()).item():
+    non_nullable_features = [
+        name for name in feature_names if name != "context_divergence_2q"
+    ]
+    if panel.select(
+        pl.any_horizontal(pl.col(non_nullable_features).is_null()).any()
+    ).item():
         raise AssertionError("Feature builder emitted null model inputs")
     exclusions = {
         "labels_below_confidence_or_without_positive_aggregate": max(
