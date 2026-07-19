@@ -57,6 +57,7 @@
     line-height: 1;
     text-decoration: none;
     white-space: nowrap;
+    flex-shrink: 0;
     cursor: pointer;
     transition: transform 150ms ease, border-color 150ms ease, background 150ms ease, color 150ms ease;
   }

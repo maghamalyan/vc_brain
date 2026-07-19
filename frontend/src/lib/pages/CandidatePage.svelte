@@ -144,7 +144,36 @@
       const versions = typeEvents.flatMap((event) => event.detail.match(/\bv?\d+(?:\.\d+)+(?:[-\w.]*)?/gi) ?? []).map((version) => version.startsWith('v') ? version : `v${version}`);
       return versions.length ? versions.join(' · ') : `${typeEvents.length} ${typeEvents.length === 1 ? 'release' : 'releases'}`;
     }
-    return `${typeEvents.length} ${typeEvents.length === 1 ? 'event' : 'events'}`;
+    const noun = typeNoun[cluster.dominantType] ?? ['event', 'events'];
+    return `${typeEvents.length} ${typeEvents.length === 1 ? noun[0] : noun[1]}`;
+  }
+
+  const typeNoun: Record<string, [string, string]> = {
+    repo_created: ['repo created', 'repos created'],
+    org_created: ['org created', 'orgs created'],
+    readme_updated: ['README update', 'README updates'],
+    contributor_joined: ['contributor joined', 'contributors joined'],
+    issue_closed: ['issue closed', 'issues closed']
+  };
+
+  function monthSummary(cluster: TimelineCluster): string {
+    const typeEvents = cluster.events.filter((event) => event.event_type === cluster.dominantType);
+    if (cluster.dominantType === 'commit_burst' && typeEvents.length > 1) {
+      const parsed = typeEvents.map(parsedEventNumber).filter((value): value is number => value !== null);
+      const total = parsed.reduce((sum, value) => sum + value, 0);
+      const peak = parsed.length ? Math.max(...parsed) : null;
+      const days = typeEvents.map(dayCount).find((value) => value !== null);
+      if (total && peak) return `${typeEvents.length} bursts, ${total} commits total; peak ${peak}${days ? ` in ${days} days` : ''}.`;
+    }
+    return cluster.events.find((event) => event.event_type === cluster.dominantType)?.detail ?? '';
+  }
+
+  function starSeries(cluster: TimelineCluster): number[] {
+    const stars = metricValue(cluster.events, 'star_milestone') || 1;
+    const months = (detail?.trajectory ?? []).filter((point) => point.month.slice(0, 7) <= cluster.month).slice(-6);
+    if (months.length < 2) return [Math.round(stars * 0.45), stars];
+    const finalScore = months.at(-1)?.score || 1;
+    return months.map((point) => Math.round(stars * Math.max(0.05, point.score / finalScore)));
   }
 
   function spineY(score: number): number {
@@ -152,20 +181,31 @@
   }
 
   function scoreColor(score: number): string {
-    const start = [154, 163, 156];
+    const start = [196, 205, 198];
     const end = [25, 79, 60];
-    const ratio = Math.max(0, Math.min(1, score));
+    // Normalize to this candidate's own score range so improvement is visible
+    // even when absolute scores sit in a narrow band.
+    const scores = allClusters.map((cluster) => cluster.score);
+    const low = Math.min(...scores, score);
+    const high = Math.max(...scores, score);
+    const ratio = high - low < 0.01 ? 1 : Math.max(0, Math.min(1, (score - low) / (high - low)));
     return `rgb(${start.map((value, index) => Math.round(value + (end[index] - value) * ratio)).join(',')})`;
+  }
+
+  function scrollToPresent(smooth: boolean): void {
+    if (!timelineViewport) return;
+    activeMonthIndex = Math.max(0, timelineClusters.length - 1);
+    timelineViewport.scrollTo({
+      left: timelineViewport.scrollWidth,
+      behavior: smooth && !window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'smooth' : 'auto'
+    });
+    updateViewportRange();
   }
 
   function setFilter(type: string): void {
     selectedType = type;
-    activeMonthIndex = 0;
     expandedMonth = '';
-    void tick().then(() => {
-      timelineViewport?.scrollTo({ left: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-      updateViewportRange();
-    });
+    void tick().then(() => scrollToPresent(true));
   }
 
   function updateViewportRange(): void {
@@ -267,7 +307,7 @@
         if (!disposed) {
           loading = false;
           await tick();
-          updateViewportRange();
+          scrollToPresent(false);
           observeSections();
         }
       }
@@ -425,20 +465,23 @@
                 <div><span>{dateLabel(cluster.month)}</span><strong>{titleCase(cluster.dominantType)}</strong></div>
                 <b>{cluster.events.length}</b>
               </header>
-              <p>{cluster.events.find((event) => event.event_type === cluster.dominantType)?.detail}</p>
+              <p>{monthSummary(cluster)}</p>
               {#if cluster.dominantType === 'commit_burst'}
                 <MiniArea values={typeSeries(cluster, cluster.dominantType)} label={`Monthly commit volume through ${dateLabel(cluster.month)}`} />
+                <Chip variant="event" icon={eventIcon[cluster.dominantType] ?? '•'} label={metricLabel(cluster)} />
               {:else if cluster.dominantType === 'star_milestone'}
-                <MiniBars values={typeSeries(cluster, cluster.dominantType)} label={`Star milestones through ${dateLabel(cluster.month)}`} />
+                <MiniBars values={starSeries(cluster)} label={`Star growth derived from signal trajectory through ${dateLabel(cluster.month)}`} />
+                <Chip variant="event" icon={eventIcon[cluster.dominantType] ?? '•'} label={metricLabel(cluster)} />
               {:else if cluster.dominantType === 'release_published'}
                 <div class="release-versions"><Chip variant="event" icon="◇" label={metricLabel(cluster)} /></div>
               {:else}
                 <div class="event-one-liner"><span aria-hidden="true">{eventIcon[cluster.dominantType] ?? '•'}</span>{metricLabel(cluster)}</div>
               {/if}
-              {#if cluster.dominantType !== 'release_published'}<Chip variant="event" icon={eventIcon[cluster.dominantType] ?? '•'} label={metricLabel(cluster)} />{/if}
-              <div class="mixed-types">
-                {#each Object.entries(cluster.typeCounts) as [type, count]}<Chip variant="event" icon={eventIcon[type] ?? '•'} label={titleCase(type)} {count} />{/each}
-              </div>
+              {#if Object.keys(cluster.typeCounts).length > 1}
+                <div class="mixed-types">
+                  {#each Object.entries(cluster.typeCounts).filter(([type]) => type !== cluster.dominantType) as [type, count]}<Chip variant="event" icon={eventIcon[type] ?? '•'} label={titleCase(type)} {count} />{/each}
+                </div>
+              {/if}
               {#if expandedMonth === cluster.month && cluster.events.length > 1}
                 <ul class="event-stack">{#each cluster.events as event}<li><span>{titleCase(event.event_type)}</span>{event.detail}</li>{/each}</ul>
               {/if}
