@@ -41,5 +41,5 @@ def test_candidate_query_uses_hash_sample_bot_filter_and_all_label_exclusion() -
     assert "cityHash64(e.actor_login) % 400 = 2" in sql
     assert "total_events >= 20" in sql
     assert "(?i)(bot|\\[bot\\]|-ci|automation)" in sql
-    assert "e.actor_login NOT IN ('founder', 'low-confidence-founder')" in sql
+    assert "lower(e.actor_login) NOT IN ('founder', 'low-confidence-founder')" in sql
     assert "cityHash64(e.actor_login) AS actor_hash" in sql

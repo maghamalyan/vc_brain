@@ -158,9 +158,14 @@ def negative_candidates_sql(
         raise ValueError(f"hash_seed must be in [0, {HASH_MODULUS})")
     exclusions = ""
     if excluded_logins:
+        # GitHub logins are case-insensitive but GH Archive preserves whatever
+        # case the event carried; a case-sensitive NOT IN let a founder slip
+        # into the negative pool (caught live by the leakage assertion).
         exclusions = (
-            "\n  AND e.actor_login NOT IN ("
-            + ", ".join(quote(login) for login in sorted(set(excluded_logins)))
+            "\n  AND lower(e.actor_login) NOT IN ("
+            + ", ".join(
+                quote(login.lower()) for login in sorted(set(excluded_logins))
+            )
             + ")"
         )
     return f"""
