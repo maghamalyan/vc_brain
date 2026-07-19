@@ -116,15 +116,23 @@ export interface HealthResponse {
   counts: { candidates: number; events: number; claims: number };
 }
 
-export type RunStepKind = 'plan' | 'fetch' | 'evidence' | 'reason' | 'claim' | 'done' | 'error';
+export type RunStepKind = 'plan' | 'fetch' | 'sql' | 'evidence' | 'reason' | 'claim' | 'gap' | 'done' | 'error';
 export interface RunStep {
   seq: number;
   kind: RunStepKind;
   label: string;
   detail: string;
   ts: string;
-  payload?: Claim;
+  payload?: Record<string, unknown>;
 }
+export type DeepDiveDimension = AxisKey;
+export interface DeepDiveRequest {
+  entity_type: 'founder';
+  entity_id: string;
+  dimensions: DeepDiveDimension[];
+  mode?: 'live' | 'replay';
+}
+export interface DeepDiveAccepted { run_id: string }
 
 export interface CandidateQuery {
   source?: string;

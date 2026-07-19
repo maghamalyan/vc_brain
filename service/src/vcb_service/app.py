@@ -1,16 +1,25 @@
 """FastAPI application for the frozen VC Brain v1 read API."""
 
-from __future__ import annotations
-
+import json
 import os
 from datetime import date
 from pathlib import Path
 from typing import Annotated, Literal
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi import FastAPI, HTTPException, Query, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
+from sse_starlette.sse import EventSourceResponse
+
+from vcb_service.agent.manager import DeepDiveAdmissionError, DeepDiveManager
+from vcb_service.agent.models import (
+    DeepDiveAccepted,
+    DeepDiveRequest,
+    DeepDiveRun,
+    DeepDiveRunSummary,
+)
+from vcb_service.agent.settings import AgentSettings
 
 from vcb_service.models import (
     CandidateDetail,
@@ -38,10 +47,14 @@ def create_app(
     *,
     index_path: Path | None = None,
     frontend_dist: Path | None = None,
+    deepdive_manager: DeepDiveManager | None = None,
 ) -> FastAPI:
     configured_index = index_path or Path(os.getenv("VCB_INDEX", "data/index/vcb.sqlite"))
     store = ReadStore(configured_index)
     dist = (frontend_dist or (_workspace_root() / "frontend" / "dist")).resolve()
+    manager = deepdive_manager or DeepDiveManager(
+        AgentSettings.from_env(index_path=configured_index)
+    )
 
     application = FastAPI(
         title="VC Brain Intelligence API",
@@ -55,6 +68,7 @@ def create_app(
         allow_headers=["*"],
         allow_credentials=False,
     )
+    application.state.deepdive_manager = manager
 
     @application.exception_handler(IndexUnavailable)
     async def index_unavailable_handler(
@@ -151,6 +165,60 @@ def create_app(
         except ValueError as error:
             raise HTTPException(status_code=422, detail=str(error)) from error
         return store.search(q, types=normalized_types, limit=limit)
+
+    @application.post(
+        "/api/v1/deepdive",
+        response_model=DeepDiveAccepted,
+        status_code=status.HTTP_202_ACCEPTED,
+        tags=["deepdive"],
+    )
+    async def start_deepdive(body: DeepDiveRequest) -> DeepDiveAccepted:
+        try:
+            run_id = await manager.start(body)
+        except DeepDiveAdmissionError as error:
+            raise HTTPException(
+                status_code=error.status_code,
+                detail={"code": error.code, "message": str(error)},
+            ) from error
+        return DeepDiveAccepted(run_id=run_id)
+
+    @application.get(
+        "/api/v1/deepdive/runs",
+        response_model=list[DeepDiveRunSummary],
+        tags=["deepdive"],
+    )
+    def list_deepdives(entity_id: str | None = None) -> list[DeepDiveRunSummary]:
+        return manager.list_runs(entity_id)
+
+    @application.get(
+        "/api/v1/deepdive/runs/{run_id}",
+        response_model=DeepDiveRun,
+        tags=["deepdive"],
+    )
+    def get_deepdive(run_id: str) -> DeepDiveRun:
+        document = manager.load(run_id)
+        if document is None:
+            raise HTTPException(status_code=404, detail="deep-dive run not found")
+        return document
+
+    @application.get(
+        "/api/v1/deepdive/runs/{run_id}/stream",
+        response_class=EventSourceResponse,
+        tags=["deepdive"],
+    )
+    async def stream_deepdive(run_id: str) -> EventSourceResponse:
+        if manager.load(run_id) is None:
+            raise HTTPException(status_code=404, detail="deep-dive run not found")
+
+        async def events():
+            async for step in manager.stream(run_id):
+                yield {
+                    "event": "step",
+                    "id": str(step.seq),
+                    "data": json.dumps(step.model_dump(mode="json"), ensure_ascii=False),
+                }
+
+        return EventSourceResponse(events(), ping=15)
 
     @application.get("/{full_path:path}", include_in_schema=False)
     def frontend_fallback(full_path: str) -> FileResponse:

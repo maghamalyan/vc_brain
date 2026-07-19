@@ -4,6 +4,8 @@ import type {
   CandidateListResponse,
   CandidateQuery,
   ClaimResponse,
+  DeepDiveAccepted,
+  DeepDiveRequest,
   EvidenceEvent,
   EvidenceQuery,
   EvidenceResponse,
@@ -37,6 +39,7 @@ export interface ApiClient {
   getClaim(claimId: string): Promise<ClaimResponse>;
   search(query: string, types?: string[], limit?: number): Promise<SearchResponse>;
   getProfile(login: string): Promise<Profile | null>;
+  startDeepDive(body: DeepDiveRequest): Promise<DeepDiveAccepted>;
 }
 
 const API_ROOT = '/api/v1';
@@ -48,8 +51,11 @@ function params(values: Record<string, string | number | undefined>): string {
   return query ? `?${query}` : '';
 }
 
-async function request<T>(path: string): Promise<T> {
-  const response = await fetch(`${API_ROOT}${path}`, { headers: { Accept: 'application/json' } });
+async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  const response = await fetch(`${API_ROOT}${path}`, {
+    ...init,
+    headers: { Accept: 'application/json', ...(init?.body ? { 'Content-Type': 'application/json' } : {}), ...init?.headers }
+  });
   if (!response.ok) throw new Error(`API request failed (${response.status})`);
   return response.json() as Promise<T>;
 }
@@ -63,7 +69,8 @@ const realClient: ApiClient = {
   getMemo: (login) => request<Memo>(`/candidates/${encodeURIComponent(login)}/memo`),
   getClaim: (claimId) => request<ClaimResponse>(`/claims/${encodeURIComponent(claimId)}`),
   search: (query, types, limit = 20) => request<SearchResponse>(`/search${params({ q: query, types: types?.join(','), limit })}`),
-  getProfile: async () => null
+  getProfile: async () => null,
+  startDeepDive: (body) => request<DeepDiveAccepted>('/deepdive', { method: 'POST', body: JSON.stringify(body) })
 };
 
 const candidates = (candidatesFixture as Omit<Candidate, 'has_memo'>[]).map((candidate) => ({
@@ -159,7 +166,8 @@ const mockClient: ApiClient = {
     }
     return { groups };
   },
-  async getProfile(login) { return profiles[login] ?? null; }
+  async getProfile(login) { return profiles[login] ?? null; },
+  async startDeepDive(body) { return { run_id: `mock-${body.entity_id}` }; }
 };
 
 export const api: ApiClient = import.meta.env.VITE_MOCK === '1' ? mockClient : realClient;

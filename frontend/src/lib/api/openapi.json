@@ -461,6 +461,177 @@
           }
         }
       }
+    },
+    "/api/v1/deepdive": {
+      "post": {
+        "tags": [
+          "deepdive"
+        ],
+        "summary": "Start Deepdive",
+        "operationId": "start_deepdive_api_v1_deepdive_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DeepDiveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeepDiveAccepted"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/deepdive/runs": {
+      "get": {
+        "tags": [
+          "deepdive"
+        ],
+        "summary": "List Deepdives",
+        "operationId": "list_deepdives_api_v1_deepdive_runs_get",
+        "parameters": [
+          {
+            "name": "entity_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Entity Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DeepDiveRunSummary"
+                  },
+                  "title": "Response List Deepdives Api V1 Deepdive Runs Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/deepdive/runs/{run_id}": {
+      "get": {
+        "tags": [
+          "deepdive"
+        ],
+        "summary": "Get Deepdive",
+        "operationId": "get_deepdive_api_v1_deepdive_runs__run_id__get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DeepDiveRun"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/deepdive/runs/{run_id}/stream": {
+      "get": {
+        "tags": [
+          "deepdive"
+        ],
+        "summary": "Stream Deepdive",
+        "operationId": "stream_deepdive_api_v1_deepdive_runs__run_id__stream_get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -736,6 +907,234 @@
         ],
         "title": "ClaimResponse"
       },
+      "DeepDiveAccepted": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "run_id"
+        ],
+        "title": "DeepDiveAccepted"
+      },
+      "DeepDiveRequest": {
+        "properties": {
+          "entity_type": {
+            "type": "string",
+            "const": "founder",
+            "title": "Entity Type",
+            "default": "founder"
+          },
+          "entity_id": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Entity Id"
+          },
+          "dimensions": {
+            "items": {
+              "type": "string",
+              "enum": [
+                "founder",
+                "market",
+                "idea_vs_market"
+              ]
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Dimensions"
+          },
+          "mode": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "live",
+                  "replay"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mode"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "entity_id"
+        ],
+        "title": "DeepDiveRequest"
+      },
+      "DeepDiveRun": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "entity_id": {
+            "type": "string",
+            "title": "Entity Id"
+          },
+          "provenance": {
+            "type": "string",
+            "const": "live",
+            "title": "Provenance",
+            "default": "live"
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Started At"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "steps": {
+            "items": {
+              "$ref": "#/components/schemas/RunStep"
+            },
+            "type": "array",
+            "title": "Steps"
+          },
+          "evidence": {
+            "items": {
+              "$ref": "#/components/schemas/LiveEvidence"
+            },
+            "type": "array",
+            "title": "Evidence"
+          },
+          "claims": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Claim"
+            },
+            "type": "object",
+            "title": "Claims"
+          },
+          "dimension_notes": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Axis"
+            },
+            "propertyNames": {
+              "enum": [
+                "founder",
+                "market",
+                "idea_vs_market"
+              ]
+            },
+            "type": "object",
+            "title": "Dimension Notes"
+          },
+          "gaps": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Gaps"
+          },
+          "model": {
+            "type": "string",
+            "title": "Model"
+          },
+          "token_usage": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Token Usage"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "run_id",
+          "entity_id",
+          "started_at",
+          "finished_at",
+          "steps",
+          "evidence",
+          "claims",
+          "dimension_notes",
+          "gaps",
+          "model",
+          "token_usage"
+        ],
+        "title": "DeepDiveRun"
+      },
+      "DeepDiveRunSummary": {
+        "properties": {
+          "run_id": {
+            "type": "string",
+            "title": "Run Id"
+          },
+          "entity_id": {
+            "type": "string",
+            "title": "Entity Id"
+          },
+          "started_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Started At"
+          },
+          "finished_at": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Finished At"
+          },
+          "outcome": {
+            "anyOf": [
+              {
+                "type": "string",
+                "enum": [
+                  "OK",
+                  "INSUFFICIENT_EVIDENCE",
+                  "ERROR"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Outcome"
+          },
+          "claim_count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Claim Count"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "run_id",
+          "entity_id",
+          "started_at",
+          "finished_at",
+          "outcome",
+          "claim_count"
+        ],
+        "title": "DeepDiveRunSummary"
+      },
       "EvidenceEvent": {
         "properties": {
           "evidence_id": {
@@ -865,6 +1264,51 @@
         ],
         "title": "HealthResponse"
       },
+      "LiveEvidence": {
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "title": "Evidence Id"
+          },
+          "gh_login": {
+            "type": "string",
+            "title": "Gh Login"
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Ts"
+          },
+          "event_type": {
+            "type": "string",
+            "title": "Event Type"
+          },
+          "repo_name": {
+            "type": "string",
+            "title": "Repo Name",
+            "default": ""
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "gh_login",
+          "ts",
+          "event_type",
+          "detail",
+          "url"
+        ],
+        "title": "LiveEvidence"
+      },
       "Memo": {
         "properties": {
           "company": {
@@ -980,6 +1424,66 @@
           "traction_kpis"
         ],
         "title": "MemoSections"
+      },
+      "RunStep": {
+        "properties": {
+          "seq": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Seq"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "plan",
+              "fetch",
+              "sql",
+              "evidence",
+              "reason",
+              "claim",
+              "gap",
+              "done",
+              "error"
+            ],
+            "title": "Kind"
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Label"
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Ts"
+          },
+          "payload": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Payload"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "seq",
+          "kind",
+          "label",
+          "detail",
+          "ts"
+        ],
+        "title": "RunStep"
       },
       "SearchGroup": {
         "properties": {

@@ -1,0 +1,41 @@
+{
+  "gh_profile": {
+    "login": "ada-lovelace",
+    "name": "Ada Lovelace",
+    "public_repos": 14,
+    "followers": 512,
+    "html_url": "https://github.com/ada-lovelace",
+    "bio": "Computing pioneer"
+  },
+  "gh_repos": [
+    {
+      "name": "analytical-engine",
+      "html_url": "https://github.com/ada-lovelace/analytical-engine",
+      "description": "Tools for programmable computation",
+      "stargazers_count": 128,
+      "forks_count": 18,
+      "pushed_at": "2026-07-17T09:30:00Z"
+    }
+  ],
+  "gh_events": [
+    {
+      "type": "PushEvent",
+      "created_at": "2026-07-17T09:30:00Z",
+      "repo": {"name": "ada-lovelace/analytical-engine"}
+    }
+  ],
+  "hn_search": {
+    "hits": [
+      {
+        "objectID": "42424242",
+        "title": "Analytical Engine attracts developer interest",
+        "url": "https://example.test/analytical-engine",
+        "created_at": "2026-07-16T08:00:00Z",
+        "story_text": "Developers discuss the public project; no revenue is disclosed."
+      }
+    ]
+  },
+  "web_search": {
+    "organic_results": []
+  }
+}

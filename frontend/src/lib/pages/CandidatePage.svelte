@@ -13,11 +13,29 @@
   let selectedType = 'all';
   let loading = true;
   let error = '';
+  let startingDive = false;
+  let diveError = '';
 
   const titleCase = (value: string) => value.replaceAll('_', ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
   const dateLabel = (value: string) => new Intl.DateTimeFormat('en', { month: 'short', year: 'numeric', timeZone: 'UTC' }).format(new Date(value));
   const axisLabel: Record<string, string> = { founder: 'Founder', market: 'Market', idea_vs_market: 'Idea ↔ market' };
   const founderName = (value: string | null) => value?.replace(' (fixture)', '') ?? login.replace('-fixture', '');
+
+  async function startDeepDive(): Promise<void> {
+    startingDive = true;
+    diveError = '';
+    try {
+      const run = await api.startDeepDive({
+        entity_type: 'founder',
+        entity_id: login,
+        dimensions: ['founder', 'market', 'idea_vs_market']
+      });
+      navigate(`/runs/${encodeURIComponent(run.run_id)}`);
+    } catch (reason) {
+      diveError = reason instanceof Error ? reason.message : 'Unable to start deep dive';
+      startingDive = false;
+    }
+  }
 
   onMount(async () => {
     try {
@@ -48,7 +66,7 @@
     <div class="record-breadcrumb"><button onclick={() => navigate('/')} aria-label="Back to radar">←</button><span>Radar / Founder record</span><span class="record-status">Observed through Jul ’26</span></div>
     <div class="record-title-row">
       <div class="record-identity"><div class="record-avatar">{founderName(detail.candidate.founder_name).split(' ').map((part) => part[0]).slice(0,2).join('')}</div><div><p class="eyebrow">Founder health record · {detail.candidate.source.replaceAll('_', ' ')}</p><h1>{founderName(detail.candidate.founder_name)}</h1><p>{detail.candidate.company ?? 'Company not disclosed'} <span>·</span> @{detail.candidate.gh_login.replace('-fixture', '')}</p></div></div>
-      <button class="live-button" onclick={() => navigate(`/runs/mock-${login}`)}><i aria-hidden="true"></i>Deep dive <span>↗</span></button>
+      <div class="deepdive-action"><button class="live-button" disabled={startingDive} onclick={startDeepDive}><i aria-hidden="true"></i>{startingDive ? 'Starting…' : 'Deep dive'} <span>↗</span></button>{#if diveError}<small role="alert">{diveError}</small>{/if}</div>
     </div>
     <div class="vitals-grid">
       <div class="score-vital"><span>Signal score</span><strong>{Math.round(detail.candidate.current_score * 100)}</strong><small>Top {Math.round(100 - detail.candidate.score_percentile + 1)}% of observed founders</small></div>

@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import asyncio
 import json
 from collections.abc import Callable
@@ -170,7 +168,7 @@ def test_missing_resources_and_absent_frontend_return_404(
     assert api_get(path).status_code == 404
 
 
-def test_openapi_contains_only_t1_read_routes(api_get: Callable[..., httpx.Response]) -> None:
+def test_openapi_contains_read_and_deepdive_routes(api_get: Callable[..., httpx.Response]) -> None:
     response = api_get("/api/v1/openapi.json")
 
     assert response.status_code == 200
@@ -178,7 +176,8 @@ def test_openapi_contains_only_t1_read_routes(api_get: Callable[..., httpx.Respo
     assert "/api/v1/health" in paths
     assert "/api/v1/search" in paths
     assert "/api/v1/candidates/{login}/memo" in paths
-    assert not any("deepdive" in path for path in paths)
+    assert "/api/v1/deepdive" in paths
+    assert "/api/v1/deepdive/runs/{run_id}/stream" in paths
 
 
 def test_history_fallback_serves_frontend_when_present(
