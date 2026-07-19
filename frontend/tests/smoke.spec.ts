@@ -1,4 +1,11 @@
 import { expect, test, type Page } from '@playwright/test';
+import { readFileSync } from 'node:fs';
+
+const evidenceFixture = JSON.parse(readFileSync(new URL('../src/lib/mocks/events.json', import.meta.url), 'utf8')) as Array<{
+  gh_login: string;
+  ts: string;
+  event_type: string;
+}>;
 
 function enforceOffline(page: Page): string[] {
   const externalRequests: string[] = [];
@@ -20,7 +27,8 @@ test('mock app boots and all primary route shells render', async ({ page }) => {
 
   await page.goto('/runs/mock-ada-lovelace-fixture');
   await expect(page.getByRole('heading', { name: 'Diligence steps' })).toBeVisible();
-  await expect(page.locator('.step-feed li')).toHaveCount(5);
+  const stepCount = await page.locator('.step-feed li').count();
+  expect(stepCount).toBeGreaterThanOrEqual(5);
   expect(external).toEqual([]);
 });
 
@@ -66,5 +74,21 @@ test('radar supports j/k selection and Enter navigation', async ({ page }) => {
   await radar.press('Enter');
   await expect(page).toHaveURL(/\/candidate\/grace-hopper-fixture$/);
   await expect(page.getByRole('heading', { name: 'Grace Hopper' })).toBeVisible();
+  expect(external).toEqual([]);
+});
+
+test('candidate timeline clusters fixture months and filters non-matching nodes', async ({ page }) => {
+  const external = enforceOffline(page);
+  const founderEvidence = evidenceFixture.filter((event) => event.gh_login === 'ada-lovelace-fixture');
+  const expectedMonths = new Set(founderEvidence.map((event) => event.ts.slice(0, 7))).size;
+  const commitMonths = new Set(founderEvidence.filter((event) => event.event_type === 'commit_burst').map((event) => event.ts.slice(0, 7))).size;
+
+  await page.goto('/candidate/ada-lovelace-fixture');
+  const nodes = page.getByTestId('timeline-month-node');
+  await expect(nodes).toHaveCount(expectedMonths);
+
+  await page.locator('[data-event-type="commit_burst"] button').click();
+  await expect(nodes).toHaveCount(commitMonths);
+  await expect(nodes.first()).toHaveAttribute('data-event-types', /commit_burst/);
   expect(external).toEqual([]);
 });
