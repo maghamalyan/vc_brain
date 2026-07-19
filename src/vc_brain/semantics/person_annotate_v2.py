@@ -49,9 +49,9 @@ import httpx
 import polars as pl
 from dotenv import load_dotenv
 
-from vc_brain.pilot.annotate import FULL_ANNOTATIONS_PATH, build_digest
-from vc_brain.pilot.blind_check import _BOUNDARY, _sub_tokens
-from vc_brain.pilot.extract import (
+from vc_brain.semantics.person_annotate import FULL_ANNOTATIONS_PATH, build_digest
+from vc_brain.semantics.person_masking import _BOUNDARY, _sub_tokens
+from vc_brain.semantics.person_extract import (
     FULL_COHORT_PATH,
     FULL_TEXT_EVENTS_PATH,
     PILOT_COHORT_PATH,

@@ -34,8 +34,8 @@ import httpx
 import polars as pl
 from dotenv import load_dotenv
 
-from vc_brain.pilot.annotate import ANNOTATIONS_PATH, annotate_one, build_digest
-from vc_brain.pilot.extract import PILOT_DIR, TEXT_EVENTS_PATH
+from vc_brain.semantics.person_annotate import ANNOTATIONS_PATH, annotate_one, build_digest
+from vc_brain.semantics.person_extract import PILOT_DIR, TEXT_EVENTS_PATH
 
 LOGGER = logging.getLogger(__name__)
 BLIND_CACHE_DIR = Path("data/cache/pilot_annotations_blind")

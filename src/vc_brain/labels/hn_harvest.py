@@ -19,7 +19,7 @@ import httpx
 import polars as pl
 
 from vc_brain.ingest.contracts import DATA_ROOT
-from vc_brain.labelnoise.net import USER_AGENT, get_json
+from vc_brain.labels.probe_net import USER_AGENT, get_json
 
 LOGGER = logging.getLogger(__name__)
 FOUNDERS_PATH = DATA_ROOT / "labels" / "founders.parquet"

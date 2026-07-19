@@ -10,9 +10,9 @@ from __future__ import annotations
 
 import polars as pl
 
-from vc_brain.pilot.annotate import FULL_ANNOTATIONS_PATH
-from vc_brain.pilot.content_features import auc
-from vc_brain.pilot.extract import FULL_COHORT_PATH, FULL_TEXT_EVENTS_PATH
+from vc_brain.semantics.person_annotate import FULL_ANNOTATIONS_PATH
+from vc_brain.semantics.studies.content_features import auc
+from vc_brain.semantics.person_extract import FULL_COHORT_PATH, FULL_TEXT_EVENTS_PATH
 
 TOP_REGION_PEAK = 0.28  # same threshold as the pilot's top_region stratum
 K_LIST = (10, 25, 50, 100, 200)

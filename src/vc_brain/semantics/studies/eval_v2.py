@@ -18,12 +18,12 @@ from __future__ import annotations
 
 import polars as pl
 
-from vc_brain.pilot.annotate import FULL_ANNOTATIONS_PATH
-from vc_brain.pilot.annotate_v2 import V2_ANNOTATIONS_PATH
-from vc_brain.pilot.blind_check import BLIND_ANNOTATIONS_PATH
-from vc_brain.pilot.content_features import auc
-from vc_brain.pilot.eval_blind import portrait_classes
-from vc_brain.pilot.extract import (
+from vc_brain.semantics.person_annotate import FULL_ANNOTATIONS_PATH
+from vc_brain.semantics.person_annotate_v2 import V2_ANNOTATIONS_PATH
+from vc_brain.semantics.person_masking import BLIND_ANNOTATIONS_PATH
+from vc_brain.semantics.studies.content_features import auc
+from vc_brain.semantics.studies.eval_blind import portrait_classes
+from vc_brain.semantics.person_extract import (
     FULL_COHORT_PATH,
     FULL_TEXT_EVENTS_PATH,
     PILOT_COHORT_PATH,

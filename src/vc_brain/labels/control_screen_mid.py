@@ -25,15 +25,15 @@ import polars as pl
 from dotenv import load_dotenv
 
 from vc_brain.ingest.contracts import DATA_ROOT
-from vc_brain.labelnoise.net import USER_AGENT
-from vc_brain.labelnoise.screen import (
+from vc_brain.labels.probe_net import USER_AGENT
+from vc_brain.labels.control_screen import (
     HIGH_GESTATION,
     LOW_GESTATION,
     binomial_ci,
     screen_one,
 )
-from vc_brain.pilot.annotate import ANNOTATIONS_PATH
-from vc_brain.pilot.extract import PILOT_COHORT_PATH
+from vc_brain.semantics.person_annotate import ANNOTATIONS_PATH
+from vc_brain.semantics.person_extract import PILOT_COHORT_PATH
 
 LOGGER = logging.getLogger(__name__)
 MID_SCREEN_PATH = DATA_ROOT / "pilot" / "control_screen_mid.parquet"

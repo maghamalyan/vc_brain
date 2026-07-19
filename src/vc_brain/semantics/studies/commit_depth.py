@@ -28,16 +28,15 @@ import logging
 import subprocess
 import time
 from concurrent.futures import ThreadPoolExecutor
-from pathlib import Path
 
 import httpx
 import polars as pl
 
 from vc_brain.ingest.contracts import DATA_ROOT
-from vc_brain.pilot import annotate
-from vc_brain.pilot.annotate import build_digest
-from vc_brain.pilot.content_features import auc
-from vc_brain.pilot.extract import PILOT_COHORT_PATH, PILOT_DIR, TEXT_EVENTS_PATH
+from vc_brain.semantics import person_annotate as annotate
+from vc_brain.semantics.person_annotate import build_digest
+from vc_brain.semantics.studies.content_features import auc
+from vc_brain.semantics.person_extract import PILOT_COHORT_PATH, PILOT_DIR, TEXT_EVENTS_PATH
 
 LOGGER = logging.getLogger(__name__)
 

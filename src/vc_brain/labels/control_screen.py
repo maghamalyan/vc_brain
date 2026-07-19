@@ -19,7 +19,6 @@ import logging
 import os
 import random
 import re
-from pathlib import Path
 
 import httpx
 import polars as pl
@@ -27,15 +26,15 @@ from dotenv import load_dotenv
 from scipy.stats import beta
 
 from vc_brain.ingest.contracts import DATA_ROOT
-from vc_brain.labelnoise.net import (
+from vc_brain.labels.probe_net import (
     USER_AGENT,
     gh_api_user,
     get_json,
     get_text,
     strip_html,
 )
-from vc_brain.pilot.annotate import ANNOTATIONS_PATH
-from vc_brain.pilot.extract import PILOT_COHORT_PATH
+from vc_brain.semantics.person_annotate import ANNOTATIONS_PATH
+from vc_brain.semantics.person_extract import PILOT_COHORT_PATH
 
 LOGGER = logging.getLogger(__name__)
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"

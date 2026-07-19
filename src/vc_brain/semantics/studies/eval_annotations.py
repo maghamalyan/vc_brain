@@ -5,9 +5,9 @@ from __future__ import annotations
 
 import polars as pl
 
-from vc_brain.pilot.annotate import ANNOTATIONS_PATH
-from vc_brain.pilot.content_features import auc, portrait_crosscheck
-from vc_brain.pilot.extract import PILOT_COHORT_PATH
+from vc_brain.semantics.person_annotate import ANNOTATIONS_PATH
+from vc_brain.semantics.studies.content_features import auc
+from vc_brain.semantics.person_extract import PILOT_COHORT_PATH
 
 
 def main() -> None:
@@ -60,7 +60,6 @@ def main() -> None:
         p_sem = (ranked_sem.head(k)["person_type"] == "positive").mean()
         print(f"@{k:<4d} counts={p_counts:.3f}  semantic={p_sem:.3f}")
 
-    feats_like = frame.rename({"gestation_likelihood": "g"})  # portrait check below
     portrait = with_text.select(
         "gh_login", "person_type", "builder_type", "gestation_likelihood"
     )

@@ -37,8 +37,8 @@ from scipy.stats import beta, fisher_exact
 from vc_brain.ingest.contracts import DATA_ROOT
 from vc_brain.ingest.sql import quote
 from vc_brain.ingest.storage import atomic_write_parquet
-from vc_brain.pilot.commit_depth import REPO_STATUS_PATH, SAMPLE_PATH
-from vc_brain.pilot.extract import QueryTimeout, _request_parquet
+from vc_brain.semantics.studies.commit_depth import REPO_STATUS_PATH, SAMPLE_PATH
+from vc_brain.semantics.person_extract import QueryTimeout, _request_parquet
 
 LOGGER = logging.getLogger(__name__)
 

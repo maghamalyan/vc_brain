@@ -17,8 +17,8 @@ import polars as pl
 from scipy.stats import fisher_exact
 
 from vc_brain.ingest.contracts import DATA_ROOT
-from vc_brain.labelnoise.hn_persons import PERSONS_PATH, STORIES_PATH
-from vc_brain.labelnoise.screen import binomial_ci
+from vc_brain.labels.hn_persons import PERSONS_PATH, STORIES_PATH
+from vc_brain.labels.control_screen import binomial_ci
 
 FULL_ANNOTATIONS_PATH = DATA_ROOT / "pilot" / "full_annotations.parquet"
 CONTROL_SCREEN_PATH = DATA_ROOT / "pilot" / "control_screen.parquet"

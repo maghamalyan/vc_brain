@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import polars as pl
 
-from vc_brain.pilot.extract import PILOT_COHORT_PATH, PILOT_DIR, TEXT_EVENTS_PATH
+from vc_brain.semantics.person_extract import PILOT_COHORT_PATH, PILOT_DIR, TEXT_EVENTS_PATH
 
 FEATURES_PATH = PILOT_DIR / "content_features.parquet"
 

@@ -53,7 +53,7 @@ import polars as pl
 from dotenv import load_dotenv
 
 from vc_brain.ingest.contracts import DATA_ROOT
-from vc_brain.labelnoise.net import USER_AGENT, get_json, gh_api_user
+from vc_brain.labels.probe_net import USER_AGENT, get_json, gh_api_user
 
 LOGGER = logging.getLogger(__name__)
 

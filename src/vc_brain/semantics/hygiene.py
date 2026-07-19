@@ -23,8 +23,8 @@ from __future__ import annotations
 import polars as pl
 
 from vc_brain.ingest.contracts import DATA_ROOT
-from vc_brain.pilot.content_features import auc
-from vc_brain.pilot.eval_full import K_LIST, TOP_REGION_PEAK, load_frame, precision_at_k
+from vc_brain.semantics.studies.content_features import auc
+from vc_brain.semantics.person_eval import K_LIST, TOP_REGION_PEAK, load_frame, precision_at_k
 
 SCREEN_PATH = DATA_ROOT / "pilot" / "control_screen.parquet"
 MID_SCREEN_PATH = DATA_ROOT / "pilot" / "control_screen_mid.parquet"

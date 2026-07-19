@@ -24,7 +24,7 @@ import httpx
 import polars as pl
 from dotenv import load_dotenv
 
-from vc_brain.pilot.extract import (
+from vc_brain.semantics.person_extract import (
     FULL_COHORT_PATH,
     FULL_TEXT_EVENTS_PATH,
     PILOT_COHORT_PATH,

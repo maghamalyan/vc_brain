@@ -16,10 +16,10 @@ from pathlib import Path
 
 import polars as pl
 
-from vc_brain.pilot.annotate import ANNOTATIONS_PATH
-from vc_brain.pilot.blind_check import BLIND_ANNOTATIONS_PATH
-from vc_brain.pilot.content_features import auc
-from vc_brain.pilot.extract import PILOT_COHORT_PATH
+from vc_brain.semantics.person_annotate import ANNOTATIONS_PATH
+from vc_brain.semantics.person_masking import BLIND_ANNOTATIONS_PATH
+from vc_brain.semantics.studies.content_features import auc
+from vc_brain.semantics.person_extract import PILOT_COHORT_PATH
 
 
 def load_joined() -> pl.DataFrame:
