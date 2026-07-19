@@ -251,3 +251,29 @@ no commit was created.
 
 ## 2026-07-19 14:32 — Claude gate: semantics PILOT reviewed (honest inconclusive)
 On 420 people (150 founders): within-month PR-AUC 0.4199 -> 0.4312 with semantics, paired bootstrap +0.0113, 95% CI [-0.007, +0.030] — includes zero. Null gates FAIL on this prefix subsample (matched-group structure broken: only 4 groups survive; founder prevalence 36% vs 25% design) so estimates are descriptive only. Verdict: underpowered pilot, semantics NOT yet demonstrated nor refuted; full-cohort annotation queued post-demo (cache-resumable). Demo keeps qualitative annotation trajectories (andreybavt, 28andrew, akshaynarisetti) + instrument story. A5 frozen-clock rerouted to a Claude subagent after two Codex pre-session stalls (forensics: no rollout file ever created).
+
+## 2026-07-19 — A5 frozen-clock top-of-funnel precision (vintage 2023-06-01)
+
+New `scripts/frozen_clock.py` (+ `tests/test_frozen_clock.py`); no existing src/
+module, eval/report.py, or site/ file touched. Froze the clock at 2023-06-01:
+deterministically sampled 8,000 pool actors (seed 7, total_events >= 20, confident
+founder logins excluded case-insensitively) from the 102,750-login hash pool at
+t_cutoff 2023-06-01, extracted their monthly_agg + repo_creations live from
+ClickHouse (cached, quota-aware, no quota sleeps needed), and added all 422
+scoreable future founders (714 confident future-founder logins; 24 without cached
+aggregates, 268 without any pre-cutoff activity — all counted, none silently
+dropped; 76 scored founders have t_cutoff < vintage so their windows end early).
+Ownership/collab/owned-repo blocks neutral-filled identically for ALL scored
+actors. Features at month 2023-05-01 via build.py internals, scored with the
+trained LightGBM, deterministic login tiebreak.
+
+Results (n=8,422, base rate 5.01%): precision@100 = 0.060 (6/100, lift 1.20x),
+precision@500 = 0.054 (27/500, lift 1.08x), median founder rank percentile 0.507.
+Honest read: at a frozen calendar clock the detector is near chance overall —
+BUT founders whose batch started within 12 months of the vintage (n=76, i.e. the
+ones actually near the trained B-15..B-12 hazard window) rank at median
+percentile 0.135 versus 0.565 for later batches. The detector concentrates
+founders it was built to catch; it is not a years-ahead oracle. YC-only outcomes
+make every precision number a floor. Wrote `data/eval/frozen_clock_2023.{json,md}`.
+Verification: `uv run pytest -q` -> 91 passed; `uv run ruff check src tests` ->
+clean. No commit created.
