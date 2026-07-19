@@ -114,3 +114,19 @@ there was.
 *All numbers from `uv run python -m vc_brain.pilot.commit_depth` (deterministic: seed 42,
 temp 0, content-addressed caches). Repo status snapshot taken 2026-07-19 via
 authenticated gh CLI as `maghamalyan`.*
+
+## Addendum (wave 3, Pod E): the missing 20 filled — verdict confirmed on the full 180
+
+The 20 annotations lost to OpenRouter credit exhaustion (alphabetical t–z tail) were
+filled from the cached digests (20 fresh LLM calls ≈ $0.40; the original 160
+reproduced byte-identically from `data/cache/pilot_annotations_commits/`).
+On the full paired 180: **event-only AUC 0.557 → commit-augmented 0.514; paired
+ΔAUC = −0.043, 95% bootstrap CI [−0.092, +0.004]** (2,000 resamples, seed 42) —
+numerically the same delta as the 160-actor preliminary, with the CI now all but
+excluding any lift. Churn without discrimination also holds at n=180: 43/180 changed
+builder_type, 22/180 moved gestation ≥ 30 (both directions, both classes; new
+examples in the tail: tipstrade, control, 15 → 75 on commit volume; yashgoenka,
+founder, 25 → 72). The verdict above stands unchanged. Headline-number bookkeeping
+lives in `docs/exploration/corrected_metrics.md` §5.
+`data/pilot/annotations_commits.parquet` now has 200 rows (180 augmented, 20 reused
+event-only).

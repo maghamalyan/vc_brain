@@ -29,7 +29,23 @@ NO_EVIDENCE. Output: `data/pilot/control_screen.parquet`, every row with a URL.
 | group | FOUNDER_EVIDENCE | rate | exact 95% CI | +MEET_WORTHY | GONE |
 |---|---|---|---|---|---|
 | high-gestation (g≥50) | 8/31 | **25.8%** | 11.9%–44.6% | 9/31 = 29.0% | 1/32 |
+| mid-gestation (15<g<50) — wave 3 | 3/41 | **7.3%** | 1.5%–19.9% | 4/41 = 9.8% | 0/41 |
 | low-gestation (g≤15) | 2/39 | **5.1%** | 0.6%–17.3% | 2/39 = 5.1% | 1/40 |
+
+**Mid-band update (wave 3, Pod E).** The previously unscreened mid band — all 41
+annotated pilot controls with 15 < gestation < 50 (gestation values 25/35/45) — was run
+through the identical pipeline (`src/vc_brain/labelnoise/mid_screen.py`, same evidence
+collection, adjudicator prompt/model, caches; ~30 LLM adjudications, <$1). Result:
+**3/41 = 7.3% FOUNDER_EVIDENCE (exact 95% CI 1.5%–19.9%)**, one additional MEET_WORTHY
+(`k9mil`, building a calendar product "allocate"), zero GONE. The noise curve is
+**monotone in gestation — 5.1% low / 7.3% mid / 25.8% high** — and the mid band sits
+much closer to the low band than the ~10–15% interpolation this doc previously assumed.
+Hand-grading the 3 hits (danielballoch — freelance web development; remy — Left Logic,
+a long-running Brighton consultancy; sisoje — Red Hot Bits, a small commercial entity):
+**all three are consultancy/small-business shaped; venture-strict mid-band rate 0/41**.
+The instrument's flag is what carries venture-shaped noise: every venture-shaped
+unlabeled founder found so far sits at gestation ≥ 85. Output:
+`data/pilot/control_screen_mid.parquet` (41 rows, every row with a URL).
 
 Fisher exact: odds ratio **6.4, p = 0.018** (founder+meet: OR 7.6, p = 0.009). The
 pilot's semantic instrument is doing exactly what it claims: when it says a "control"
@@ -65,11 +81,12 @@ instrument's read that their GitHub activity showed no product gestation.
 ### What this does to reported precision floors
 
 - **Top-region composition** (265 controls): 32 at g≥50, 41 at 15<g<50, 113 at g≤15,
-  79 with no text (no annotation). Applying measured rates (25.8% / interpolated
-  ~10–15% / 5.1% / assume ≤5% for no-text) ⇒ expected **~17–22 unlabeled founders
-  among 265 top-region "controls" (~6–8%)**. Region label-precision 149/414 = 36.0%
-  is really ≈ **40–41%** — a ~4–5pp absolute understatement, concentrated exactly
-  where metrics are read.
+  79 with no text (no annotation). Applying measured rates (25.8% / **7.3% measured in
+  wave 3** / 5.1% / assume ≤5% for no-text) ⇒ expected **~17–21 unlabeled founders
+  among 265 top-region "controls" (~6.4–7.9%)** — the wave-2 interpolation (~17–22)
+  survives the mid-band measurement almost unchanged. Region label-precision
+  149/414 = 36.0% is really ≈ **40%** — a ~4pp absolute understatement, concentrated
+  exactly where metrics are read.
 - **Semantic re-rank precision@10 = 0.70** (pilot Finding 3): the 3 top-10 "misses"
   are high-gestation controls by construction, so ~0.26 × 3 ≈ 0.8 of them are expected
   unlabeled founders ⇒ true precision@10 ≈ **0.78**; with meet-worthy credit the
@@ -134,6 +151,30 @@ frozen-clock eval; (c) launch-date anchoring to replace the batch-date proxy for
    posts (not just known companies) is the natural next label-broadening step,
    followed by SEC Form D officer names (era-limited per the linkage study).
 
+## Corrected metrics (wave 3): the screen applied as negative-pool hygiene
+
+The 10 wave-2 FOUNDER_EVIDENCE controls (+3 mid-band, wave 3) are now materialized as
+an exclusion list — `data/pilot/excluded_controls.parquet` (gh_login, reason,
+evidence_url, source ∈ {wave2_screen, wave3_mid_screen}; built by
+`src/vc_brain/pilot/hygiene.py`) — and the full-cohort evaluation re-run with them
+**excluded from the control pool** (dropped, not relabeled; positives unchanged at 690):
+
+| metric | uncorrected | corrected (10 wave-2 excl) | corrected (all 13 excl) |
+|---|---|---|---|
+| gestation AUC (annotated) | 0.643 | 0.647 | 0.648 |
+| matched-pairs AUC, gestation | 0.774 | 0.776 | 0.776 |
+| semantic p@10 | 0.700 | **1.000** | 1.000 |
+| semantic p@25 | 0.680 | 0.760 | 0.760 |
+| top-region label precision | 36.0% | 36.9% | 37.2% |
+
+The p@10 jump is the cleanest single validation in the program: **all three semantic
+top-10 "misses" (martonlederer, samyakkkk, crohr — gestation 95) were confirmed
+unlabeled founders**, so with the negative pool cleaned, the semantic top-10 is
+10/10. Full tables, the blind-vs-unblinded column, and honest caveats (the screen
+targeted high-gestation controls, so this correction structurally favors the semantic
+ranking) live in `docs/exploration/corrected_metrics.md` — the single source of truth
+for headline numbers.
+
 ## Caveats
 
 - Current-day founder evidence ≠ founder at the evaluation horizon: someone may have
@@ -145,8 +186,9 @@ frozen-clock eval; (c) launch-date anchoring to replace the batch-date proxy for
   world-knowledge errors are possible, but the screen's inputs (bio/company/blog/HN)
   are independent of the annotation's inputs (pre-cutoff event text), so agreement is
   evidence, not circularity.
-- The mid-band (15 < g < 50, 41 controls) was not screened; the extrapolation
-  interpolates its rate. Screening it costs ~30 more LLM calls.
+- ~~The mid-band (15 < g < 50, 41 controls) was not screened~~ — closed in wave 3:
+  measured 3/41 = 7.3% (CI 1.5%–19.9%), all consultancy-shaped; see the mid-band
+  update above.
 - Consultancy/studio entities inflate the strict "founder" rate; the venture-strict
   number (12.9%) is the conservative quote for sourcing claims.
 - Launch-harvest coverage (15.1%) is a floor: Algolia title search misses launches
