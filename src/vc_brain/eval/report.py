@@ -503,9 +503,17 @@ def _score_outputs(
         .map_elements(lambda login: detections.get(str(login)), return_dtype=pl.Date)
         .alias("first_detection_month"),
     )
+    # Momentum breaks score ties (small-data LightGBM emits many identical leaf
+    # scores); among equally-scored candidates a rising signal ranks first, and
+    # the login only guarantees determinism.
     detected = (
         summary.filter(pl.col("first_detection_month").is_not_null())
-        .sort("current_score", "gh_login", descending=[True, False])
+        .sort(
+            "current_score",
+            "momentum_3mo",
+            "gh_login",
+            descending=[True, True, False],
+        )
         .head(top_k)
     )
     pool = summary.height
@@ -513,7 +521,10 @@ def _score_outputs(
         str(row["gh_login"]): (pool - rank) / pool if pool else 0.0
         for rank, row in enumerate(
             summary.sort(
-                "current_score", "gh_login", descending=[True, False]
+                "current_score",
+                "momentum_3mo",
+                "gh_login",
+                descending=[True, True, False],
             ).to_dicts()
         )
     }
