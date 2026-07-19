@@ -1,0 +1,1276 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "VC Brain Intelligence API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "tags": [
+          "read"
+        ],
+        "summary": "Health",
+        "operationId": "health_api_v1_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/thesis": {
+      "get": {
+        "tags": [
+          "read"
+        ],
+        "summary": "Thesis",
+        "operationId": "thesis_api_v1_thesis_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Thesis"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/candidates": {
+      "get": {
+        "tags": [
+          "candidates"
+        ],
+        "summary": "Candidates",
+        "operationId": "candidates_api_v1_candidates_get",
+        "parameters": [
+          {
+            "name": "source",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "outbound_detector",
+                    "inbound_application"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Source"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "enum": [
+                    "candidate",
+                    "screened",
+                    "memo_ready"
+                  ],
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Status"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "enum": [
+                "score",
+                "momentum"
+              ],
+              "type": "string",
+              "default": "score",
+              "title": "Sort"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CandidatePage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/candidates/{login}": {
+      "get": {
+        "tags": [
+          "candidates"
+        ],
+        "summary": "Candidate",
+        "operationId": "candidate_api_v1_candidates__login__get",
+        "parameters": [
+          {
+            "name": "login",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CandidateDetail"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/candidates/{login}/evidence": {
+      "get": {
+        "tags": [
+          "candidates"
+        ],
+        "summary": "Evidence",
+        "operationId": "evidence_api_v1_candidates__login__evidence_get",
+        "parameters": [
+          {
+            "name": "login",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Login"
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Type"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "After"
+            }
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Before"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500,
+              "minimum": 1,
+              "default": 100,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvidencePage"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/candidates/{login}/memo": {
+      "get": {
+        "tags": [
+          "candidates"
+        ],
+        "summary": "Memo",
+        "operationId": "memo_api_v1_candidates__login__memo_get",
+        "parameters": [
+          {
+            "name": "login",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Memo"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/claims/{claim_id}": {
+      "get": {
+        "tags": [
+          "claims"
+        ],
+        "summary": "Claim",
+        "operationId": "claim_api_v1_claims__claim_id__get",
+        "parameters": [
+          {
+            "name": "claim_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Claim Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClaimResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/search": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "summary": "Search",
+        "operationId": "search_api_v1_search_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "title": "Q"
+            }
+          },
+          {
+            "name": "types",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Types"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchResponse"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Axis": {
+        "properties": {
+          "score": {
+            "type": "number",
+            "maximum": 10.0,
+            "minimum": 1.0,
+            "title": "Score"
+          },
+          "trend": {
+            "type": "string",
+            "enum": [
+              "improving",
+              "stable",
+              "declining"
+            ],
+            "title": "Trend"
+          },
+          "claim_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Claim Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "score",
+          "trend",
+          "claim_ids"
+        ],
+        "title": "Axis"
+      },
+      "Candidate": {
+        "properties": {
+          "gh_login": {
+            "type": "string",
+            "title": "Gh Login"
+          },
+          "founder_name": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Founder Name"
+          },
+          "company": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "outbound_detector",
+              "inbound_application"
+            ],
+            "title": "Source"
+          },
+          "current_score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Current Score"
+          },
+          "score_percentile": {
+            "type": "number",
+            "title": "Score Percentile"
+          },
+          "momentum_3mo": {
+            "type": "number",
+            "title": "Momentum 3Mo"
+          },
+          "first_detection_month": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Detection Month"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "candidate",
+              "screened",
+              "memo_ready"
+            ],
+            "title": "Status"
+          },
+          "has_memo": {
+            "type": "boolean",
+            "title": "Has Memo"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "gh_login",
+          "founder_name",
+          "company",
+          "source",
+          "current_score",
+          "score_percentile",
+          "momentum_3mo",
+          "first_detection_month",
+          "status",
+          "has_memo"
+        ],
+        "title": "Candidate"
+      },
+      "CandidateDetail": {
+        "properties": {
+          "candidate": {
+            "$ref": "#/components/schemas/Candidate"
+          },
+          "trajectory": {
+            "items": {
+              "$ref": "#/components/schemas/TrajectoryPoint"
+            },
+            "type": "array",
+            "title": "Trajectory"
+          },
+          "three_axis": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/ThreeAxis"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "memo_available": {
+            "type": "boolean",
+            "title": "Memo Available"
+          },
+          "evidence_counts_by_type": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Evidence Counts By Type"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "candidate",
+          "trajectory",
+          "three_axis",
+          "memo_available",
+          "evidence_counts_by_type"
+        ],
+        "title": "CandidateDetail"
+      },
+      "CandidatePage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/Candidate"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "CandidatePage"
+      },
+      "Claim": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Text"
+          },
+          "evidence_refs": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Evidence Refs"
+          },
+          "confidence": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Confidence"
+          },
+          "verification_status": {
+            "type": "string",
+            "enum": [
+              "verified",
+              "single_source",
+              "unverified",
+              "not_disclosed"
+            ],
+            "title": "Verification Status"
+          },
+          "contradictions": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Contradictions"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "text",
+          "evidence_refs",
+          "confidence",
+          "verification_status",
+          "contradictions"
+        ],
+        "title": "Claim"
+      },
+      "ClaimResponse": {
+        "properties": {
+          "claim": {
+            "$ref": "#/components/schemas/Claim"
+          },
+          "resolved_evidence": {
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/EvidenceEvent"
+                },
+                {
+                  "$ref": "#/components/schemas/UrlEvidence"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Resolved Evidence"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "claim",
+          "resolved_evidence"
+        ],
+        "title": "ClaimResponse"
+      },
+      "EvidenceEvent": {
+        "properties": {
+          "evidence_id": {
+            "type": "string",
+            "title": "Evidence Id"
+          },
+          "gh_login": {
+            "type": "string",
+            "title": "Gh Login"
+          },
+          "ts": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Ts"
+          },
+          "event_type": {
+            "type": "string",
+            "title": "Event Type"
+          },
+          "repo_name": {
+            "type": "string",
+            "title": "Repo Name"
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          },
+          "url": {
+            "type": "string",
+            "title": "Url"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "evidence_id",
+          "gh_login",
+          "ts",
+          "event_type",
+          "repo_name",
+          "detail",
+          "url"
+        ],
+        "title": "EvidenceEvent"
+      },
+      "EvidencePage": {
+        "properties": {
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/EvidenceEvent"
+            },
+            "type": "array",
+            "title": "Items"
+          },
+          "total": {
+            "type": "integer",
+            "title": "Total"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "items",
+          "total"
+        ],
+        "title": "EvidencePage"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthCounts": {
+        "properties": {
+          "candidates": {
+            "type": "integer",
+            "title": "Candidates"
+          },
+          "events": {
+            "type": "integer",
+            "title": "Events"
+          },
+          "claims": {
+            "type": "integer",
+            "title": "Claims"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "candidates",
+          "events",
+          "claims"
+        ],
+        "title": "HealthCounts"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok",
+            "title": "Status"
+          },
+          "index_built_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Index Built At"
+          },
+          "counts": {
+            "$ref": "#/components/schemas/HealthCounts"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status",
+          "index_built_at",
+          "counts"
+        ],
+        "title": "HealthResponse"
+      },
+      "Memo": {
+        "properties": {
+          "company": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Company"
+          },
+          "founder_logins": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Founder Logins"
+          },
+          "generated_at": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Generated At"
+          },
+          "sections": {
+            "$ref": "#/components/schemas/MemoSections"
+          },
+          "claims": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Claim"
+            },
+            "type": "object",
+            "title": "Claims"
+          },
+          "gaps": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Gaps"
+          },
+          "three_axis": {
+            "$ref": "#/components/schemas/ThreeAxis"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "company",
+          "founder_logins",
+          "generated_at",
+          "sections",
+          "claims",
+          "gaps",
+          "three_axis"
+        ],
+        "title": "Memo"
+      },
+      "MemoSection": {
+        "properties": {
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "title": "Text"
+          },
+          "claim_ids": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Claim Ids"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "text",
+          "claim_ids"
+        ],
+        "title": "MemoSection"
+      },
+      "MemoSections": {
+        "properties": {
+          "company_snapshot": {
+            "$ref": "#/components/schemas/MemoSection"
+          },
+          "investment_hypotheses": {
+            "items": {
+              "$ref": "#/components/schemas/MemoSection"
+            },
+            "type": "array",
+            "title": "Investment Hypotheses"
+          },
+          "swot": {
+            "$ref": "#/components/schemas/SwotSection"
+          },
+          "problem_product": {
+            "$ref": "#/components/schemas/MemoSection"
+          },
+          "traction_kpis": {
+            "$ref": "#/components/schemas/MemoSection"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "company_snapshot",
+          "investment_hypotheses",
+          "swot",
+          "problem_product",
+          "traction_kpis"
+        ],
+        "title": "MemoSections"
+      },
+      "SearchGroup": {
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "founder",
+              "company",
+              "claim",
+              "evidence",
+              "memo_section",
+              "thesis_term"
+            ],
+            "title": "Type"
+          },
+          "hits": {
+            "items": {
+              "$ref": "#/components/schemas/SearchHit"
+            },
+            "type": "array",
+            "title": "Hits"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "type",
+          "hits"
+        ],
+        "title": "SearchGroup"
+      },
+      "SearchHit": {
+        "properties": {
+          "doc_type": {
+            "type": "string",
+            "enum": [
+              "founder",
+              "company",
+              "claim",
+              "evidence",
+              "memo_section",
+              "thesis_term"
+            ],
+            "title": "Doc Type"
+          },
+          "doc_id": {
+            "type": "string",
+            "title": "Doc Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "subtitle": {
+            "type": "string",
+            "title": "Subtitle"
+          },
+          "snippet": {
+            "type": "string",
+            "title": "Snippet"
+          },
+          "route": {
+            "type": "string",
+            "title": "Route"
+          },
+          "score": {
+            "type": "number",
+            "title": "Score"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "doc_type",
+          "doc_id",
+          "title",
+          "subtitle",
+          "snippet",
+          "route",
+          "score"
+        ],
+        "title": "SearchHit"
+      },
+      "SearchResponse": {
+        "properties": {
+          "groups": {
+            "items": {
+              "$ref": "#/components/schemas/SearchGroup"
+            },
+            "type": "array",
+            "title": "Groups"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "groups"
+        ],
+        "title": "SearchResponse"
+      },
+      "SwotSection": {
+        "properties": {
+          "strengths": {
+            "items": {
+              "$ref": "#/components/schemas/MemoSection"
+            },
+            "type": "array",
+            "title": "Strengths"
+          },
+          "weaknesses": {
+            "items": {
+              "$ref": "#/components/schemas/MemoSection"
+            },
+            "type": "array",
+            "title": "Weaknesses"
+          },
+          "opportunities": {
+            "items": {
+              "$ref": "#/components/schemas/MemoSection"
+            },
+            "type": "array",
+            "title": "Opportunities"
+          },
+          "risks": {
+            "items": {
+              "$ref": "#/components/schemas/MemoSection"
+            },
+            "type": "array",
+            "title": "Risks"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "strengths",
+          "weaknesses",
+          "opportunities",
+          "risks"
+        ],
+        "title": "SwotSection"
+      },
+      "Thesis": {
+        "properties": {
+          "sectors": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Sectors"
+          },
+          "stages": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Stages"
+          },
+          "geographies": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Geographies"
+          },
+          "check_size_usd": {
+            "items": {
+              "type": "integer"
+            },
+            "type": "array",
+            "maxItems": 2,
+            "minItems": 2,
+            "title": "Check Size Usd"
+          },
+          "risk_appetite": {
+            "type": "string",
+            "title": "Risk Appetite"
+          },
+          "notes": {
+            "type": "string",
+            "title": "Notes"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "sectors",
+          "stages",
+          "geographies",
+          "check_size_usd",
+          "risk_appetite",
+          "notes"
+        ],
+        "title": "Thesis"
+      },
+      "ThreeAxis": {
+        "properties": {
+          "founder": {
+            "$ref": "#/components/schemas/Axis"
+          },
+          "market": {
+            "$ref": "#/components/schemas/Axis"
+          },
+          "idea_vs_market": {
+            "$ref": "#/components/schemas/Axis"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "founder",
+          "market",
+          "idea_vs_market"
+        ],
+        "title": "ThreeAxis"
+      },
+      "TrajectoryPoint": {
+        "properties": {
+          "month": {
+            "type": "string",
+            "format": "date",
+            "title": "Month"
+          },
+          "score": {
+            "type": "number",
+            "maximum": 1.0,
+            "minimum": 0.0,
+            "title": "Score"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "month",
+          "score"
+        ],
+        "title": "TrajectoryPoint"
+      },
+      "UrlEvidence": {
+        "properties": {
+          "url": {
+            "type": "string",
+            "title": "Url"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "url"
+        ],
+        "title": "UrlEvidence"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "ada-lovelace-fixture": {
+    "sector": "Developer tools",
+    "stage": "Seed",
+    "geography": "UK",
+    "round_size_usd": 1200000
+  },
+  "grace-hopper-fixture": {
+    "sector": "AI infrastructure",
+    "stage": "Pre-seed",
+    "geography": "Germany",
+    "round_size_usd": 750000
+  },
+  "katherine-johnson-fixture": {
+    "sector": "Fintech",
+    "stage": "Seed",
+    "geography": "France",
+    "round_size_usd": 1800000
+  },
+  "edsger-dijkstra-fixture": {
+    "sector": "Cybersecurity",
+    "stage": "Pre-seed",
+    "geography": "Netherlands",
+    "round_size_usd": 900000
+  },
+  "margaret-hamilton-fixture": {
+    "sector": "Climate",
+    "stage": "Seed",
+    "geography": "US",
+    "round_size_usd": 2200000
+  },
+  "hedy-lamarr-fixture": {
+    "sector": "Connectivity",
+    "stage": "Pre-seed",
+    "geography": "Austria",
+    "round_size_usd": 650000
+  },
+  "donald-knuth-fixture": {
+    "sector": "Developer tools",
+    "stage": "Seed",
+    "geography": "US",
+    "round_size_usd": 1400000
+  },
+  "radia-perlman-fixture": {
+    "sector": "Cloud infrastructure",
+    "stage": "Pre-seed",
+    "geography": "Sweden",
+    "round_size_usd": 800000
+  },
+  "barbara-liskov-fixture": {
+    "sector": "Databases",
+    "stage": "Seed",
+    "geography": "US",
+    "round_size_usd": 2000000
+  },
+  "alan-turing-fixture": {
+    "sector": "AI infrastructure",
+    "stage": "Pre-seed",
+    "geography": "UK",
+    "round_size_usd": 600000
+  },
+  "mary-jackson-fixture": {
+    "sector": "Industrial software",
+    "stage": "Seed",
+    "geography": "US",
+    "round_size_usd": 1600000
+  },
+  "claude-shannon-fixture": {
+    "sector": "Semiconductors",
+    "stage": "Pre-seed",
+    "geography": "Ireland",
+    "round_size_usd": 1100000
+  }
+}

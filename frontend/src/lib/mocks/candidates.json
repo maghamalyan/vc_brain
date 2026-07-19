@@ -1,0 +1,134 @@
+[
+  {
+    "gh_login": "ada-lovelace-fixture",
+    "founder_name": "Ada Lovelace (fixture)",
+    "company": "VectorForge",
+    "source": "outbound_detector",
+    "current_score": 0.91,
+    "score_percentile": 99.0,
+    "momentum_3mo": 0.14,
+    "first_detection_month": "2025-03-01",
+    "status": "memo_ready"
+  },
+  {
+    "gh_login": "grace-hopper-fixture",
+    "founder_name": "Grace Hopper (fixture)",
+    "company": "Quiet Current",
+    "source": "outbound_detector",
+    "current_score": 0.86,
+    "score_percentile": 96.0,
+    "momentum_3mo": 0.09,
+    "first_detection_month": "2025-06-01",
+    "status": "memo_ready"
+  },
+  {
+    "gh_login": "katherine-johnson-fixture",
+    "founder_name": "Katherine Johnson (fixture)",
+    "company": "Orbital Ledger",
+    "source": "inbound_application",
+    "current_score": 0.82,
+    "score_percentile": 92.0,
+    "momentum_3mo": 0.06,
+    "first_detection_month": "2026-05-01",
+    "status": "memo_ready"
+  },
+  {
+    "gh_login": "edsger-dijkstra-fixture",
+    "founder_name": "Edsger Dijkstra (fixture)",
+    "company": "Proofrail",
+    "source": "outbound_detector",
+    "current_score": 0.78,
+    "score_percentile": 87.0,
+    "momentum_3mo": 0.11,
+    "first_detection_month": "2025-09-01",
+    "status": "screened"
+  },
+  {
+    "gh_login": "margaret-hamilton-fixture",
+    "founder_name": "Margaret Hamilton (fixture)",
+    "company": "Aster Control",
+    "source": "outbound_detector",
+    "current_score": 0.73,
+    "score_percentile": 80.0,
+    "momentum_3mo": 0.04,
+    "first_detection_month": "2025-11-01",
+    "status": "screened"
+  },
+  {
+    "gh_login": "hedy-lamarr-fixture",
+    "founder_name": "Hedy Lamarr (fixture)",
+    "company": "Signal Loom",
+    "source": "inbound_application",
+    "current_score": 0.69,
+    "score_percentile": 73.0,
+    "momentum_3mo": 0.02,
+    "first_detection_month": "2026-06-01",
+    "status": "candidate"
+  },
+  {
+    "gh_login": "donald-knuth-fixture",
+    "founder_name": "Donald Knuth (fixture)",
+    "company": "Typeset Labs",
+    "source": "outbound_detector",
+    "current_score": 0.64,
+    "score_percentile": 65.0,
+    "momentum_3mo": -0.01,
+    "first_detection_month": "2025-08-01",
+    "status": "screened"
+  },
+  {
+    "gh_login": "radia-perlman-fixture",
+    "founder_name": "Radia Perlman (fixture)",
+    "company": "Mesh Harbor",
+    "source": "outbound_detector",
+    "current_score": 0.59,
+    "score_percentile": 57.0,
+    "momentum_3mo": 0.05,
+    "first_detection_month": "2026-01-01",
+    "status": "candidate"
+  },
+  {
+    "gh_login": "barbara-liskov-fixture",
+    "founder_name": "Barbara Liskov (fixture)",
+    "company": "Durable State",
+    "source": "outbound_detector",
+    "current_score": 0.54,
+    "score_percentile": 48.0,
+    "momentum_3mo": -0.04,
+    "first_detection_month": "2025-05-01",
+    "status": "candidate"
+  },
+  {
+    "gh_login": "alan-turing-fixture",
+    "founder_name": "Alan Turing (fixture)",
+    "company": "Cipher Field",
+    "source": "outbound_detector",
+    "current_score": 0.47,
+    "score_percentile": 38.0,
+    "momentum_3mo": 0.01,
+    "first_detection_month": "2026-03-01",
+    "status": "candidate"
+  },
+  {
+    "gh_login": "mary-jackson-fixture",
+    "founder_name": "Mary Jackson (fixture)",
+    "company": "Flow Atlas",
+    "source": "outbound_detector",
+    "current_score": 0.39,
+    "score_percentile": 25.0,
+    "momentum_3mo": -0.06,
+    "first_detection_month": "2025-12-01",
+    "status": "candidate"
+  },
+  {
+    "gh_login": "claude-shannon-fixture",
+    "founder_name": "Claude Shannon (fixture)",
+    "company": "Bit Garden",
+    "source": "outbound_detector",
+    "current_score": 0.31,
+    "score_percentile": 14.0,
+    "momentum_3mo": -0.03,
+    "first_detection_month": null,
+    "status": "candidate"
+  }
+]
