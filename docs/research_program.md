@@ -58,6 +58,14 @@ agreement threshold are dropped or merged. Annotation runs strictly on
 event-time text — never on today's profiles or READMEs (post-outcome
 contamination), with deleted-content survivorship measured and reported.
 
+Literature grounding for the composition-shift emphasis: the returnee-
+entrepreneurship intention literature (see
+[docs/exploration/lit_repatriate_intention.md](exploration/lit_repatriate_intention.md))
+ranks accumulated knowledge/exposure and skill redeployment above financial
+capital as intention determinants, and locates propensity at the moment skills
+acquired in one context are redeployed in another — qualitative support for the
+taxonomy only, never a quantitative prior.
+
 ## Pillar 2 — Team formation and social structure (the graph)
 
 Founding is social; the strongest documented gestation signal is co-founder
