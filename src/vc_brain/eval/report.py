@@ -669,6 +669,13 @@ def build_report(
         "levels_plus_dynamics_plus_traction": blocks["levels"]
         + blocks["dynamics"]
         + blocks["traction"],
+        # tenure_months dominated gain (84% on the partial cohort); this
+        # quantifies how much skill survives without any account-age signal.
+        "all_minus_tenure": [
+            name
+            for name in bundle.feature_names
+            if not name.startswith("tenure")
+        ],
     }
     ablations: dict[str, dict[str, Any]] = {}
     previous = 0.0
