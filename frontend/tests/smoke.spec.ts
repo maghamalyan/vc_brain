@@ -57,8 +57,31 @@ test('command palette opens, searches, and navigates by keyboard', async ({ page
   await search.fill('Ada');
   await expect(palette.getByRole('option', { name: /Deep dive on Ada Lovelace/ })).toBeVisible();
   await page.keyboard.press('Enter');
-  await expect(page).toHaveURL(/\/candidate\/ada-lovelace-fixture$/);
-  await expect(page.getByRole('heading', { name: 'Ada Lovelace' })).toBeVisible();
+  await expect(page).toHaveURL(/\/runs\/mock-ada-lovelace-fixture$/);
+  await expect(page.getByRole('heading', { name: 'Diligence steps' })).toBeVisible();
+  expect(external).toEqual([]);
+});
+
+test('thesis sector selection persists and is shared with radar', async ({ page }) => {
+  const external = enforceOffline(page);
+  const sector = 'AI infrastructure';
+
+  await page.goto('/thesis');
+  await expect(page.getByRole('heading', { name: 'The lens behind the radar.' })).toBeVisible();
+  const sectorChips = page.getByTestId('thesis-sector-chips');
+  await expect(sectorChips.getByRole('button')).toHaveCount(5);
+  const sectorChip = sectorChips.getByRole('button', { name: sector, exact: true });
+  await expect(sectorChip).toHaveAttribute('aria-pressed', 'false');
+  await sectorChip.click();
+  await expect(sectorChip).toHaveAttribute('aria-pressed', 'true');
+  await expect.poll(async () => page.evaluate(() => JSON.parse(localStorage.getItem('vc-brain:thesis-overlay') ?? '{}').sector)).toBe(sector);
+
+  await page.reload();
+  await expect(page.getByTestId('thesis-sector-chips').getByRole('button', { name: sector, exact: true })).toHaveAttribute('aria-pressed', 'true');
+
+  await page.goto('/');
+  await expect(page.locator('.candidate-row')).toHaveCount(12);
+  await expect(page.locator('.thesis-controls').getByRole('button', { name: sector, exact: true })).toHaveAttribute('aria-pressed', 'true');
   expect(external).toEqual([]);
 });
 

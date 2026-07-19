@@ -7,6 +7,7 @@
   import Chip from '../components/Chip.svelte';
   import MiniArea from '../components/MiniArea.svelte';
   import MiniBars from '../components/MiniBars.svelte';
+  import { setThesisFilter, setThesisWeight, thesisSettings, toggleThesisFilter } from '../thesisStore';
 
   type RankedCandidate = Candidate & {
     profile: Profile | null;
@@ -35,12 +36,6 @@
   let loading = true;
   let selected = 0;
   let radarElement: HTMLElement;
-  let signalWeight = 64;
-  let momentumWeight = 22;
-  let thesisWeight = 14;
-  let sector = new URLSearchParams(location.search).get('sector') ?? '';
-  let stage = '';
-  let geography = '';
   let scrubberIndex = Number.MAX_SAFE_INTEGER;
   let reducedMotion = false;
   let previousSelectedMonth = '';
@@ -174,8 +169,6 @@
     previousSelectedMonth = month;
   }
 
-  function toggle(current: string, value: string): string { return current === value ? '' : value; }
-
   function pumpDetailQueue(): void {
     while (activeDetailLoads < 3 && detailQueue.length) {
       const login = detailQueue.shift();
@@ -219,6 +212,8 @@
 
   onMount(async () => {
     reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const requestedSector = new URLSearchParams(location.search).get('sector');
+    if (requestedSector) setThesisFilter('sector', requestedSector);
     const [candidateResponse, thesisResponse] = await Promise.all([api.getCandidates(), api.getThesis()]);
     candidates = candidateResponse.items;
     thesis = thesisResponse;
@@ -245,11 +240,11 @@
   $: baseOrder = [...candidates].sort((a, b) => trajectoryValueAtMonth(b, selectedMonth) - trajectoryValueAtMonth(a, selectedMonth));
   $: ranked = candidates.map((candidate): RankedCandidate => {
     const profile = profiles[candidate.gh_login] ?? null;
-    const fitMatches = [!sector || profile?.sector === sector, !stage || profile?.stage === stage, !geography || profile?.geography === geography];
+    const fitMatches = [!$thesisSettings.sector || profile?.sector === $thesisSettings.sector, !$thesisSettings.stage || profile?.stage === $thesisSettings.stage, !$thesisSettings.geography || profile?.geography === $thesisSettings.geography];
     const fit = fitMatches.filter(Boolean).length / 3;
     const historicalScore = trajectoryValueAtMonth(candidate, selectedMonth);
     const historicalMomentum = momentumAtMonth(candidate, selectedMonth);
-    const adjusted = historicalScore * signalWeight / 100 + Math.max(0, historicalMomentum * 4) * momentumWeight / 100 + fit * thesisWeight / 100;
+    const adjusted = historicalScore * $thesisSettings.signalWeight / 100 + Math.max(0, historicalMomentum * 4) * $thesisSettings.momentumWeight / 100 + fit * $thesisSettings.thesisWeight / 100;
     const originalRank = baseOrder.findIndex((item) => item.gh_login === candidate.gh_login) + 1;
     return { ...candidate, profile, adjusted, originalRank, rankDelta: 0, historicalScore, historicalMomentum, detected: isDetectedAtMonth(candidate, selectedMonth), evidenceCount: (evidence[candidate.gh_login] ?? []).filter((event) => event.ts.slice(0, 7) <= selectedMonth).length };
   }).sort((a, b) => b.adjusted - a.adjusted).map((candidate, index) => ({ ...candidate, rankDelta: candidate.originalRank - (index + 1) }));
@@ -335,14 +330,14 @@
   <aside class="thesis-controls" aria-labelledby="thesis-title">
     <div class="panel-heading"><div><p class="eyebrow">Investment lens</p><h2 id="thesis-title">Thesis controls</h2></div><span class="control-count">03</span></div>
     {#if thesis}
-      <fieldset><legend>Sector preference</legend><div class="toggle-cloud">{#each thesis.sectors as item}<Chip variant="filter" label={item} active={sector === item} pressed={sector === item} onclick={() => sector = toggle(sector, item)} />{/each}</div></fieldset>
-      <fieldset><legend>Stage</legend><div class="toggle-cloud">{#each thesis.stages as item}<Chip variant="filter" label={item} active={stage === item} pressed={stage === item} onclick={() => stage = toggle(stage, item)} />{/each}</div></fieldset>
-      <fieldset><legend>Geography</legend><div class="toggle-cloud compact">{#each thesis.geographies as item}<Chip variant="filter" label={item} active={geography === item} pressed={geography === item} onclick={() => geography = toggle(geography, item)} />{/each}</div></fieldset>
+      <fieldset><legend>Sector preference</legend><div class="toggle-cloud">{#each thesis.sectors as item}<Chip variant="filter" label={item} active={$thesisSettings.sector === item} pressed={$thesisSettings.sector === item} onclick={() => toggleThesisFilter('sector', item)} />{/each}</div></fieldset>
+      <fieldset><legend>Stage</legend><div class="toggle-cloud">{#each thesis.stages as item}<Chip variant="filter" label={item} active={$thesisSettings.stage === item} pressed={$thesisSettings.stage === item} onclick={() => toggleThesisFilter('stage', item)} />{/each}</div></fieldset>
+      <fieldset><legend>Geography</legend><div class="toggle-cloud compact">{#each thesis.geographies as item}<Chip variant="filter" label={item} active={$thesisSettings.geography === item} pressed={$thesisSettings.geography === item} onclick={() => toggleThesisFilter('geography', item)} />{/each}</div></fieldset>
       <div class="weight-block">
-        <div class="weight-heading"><legend>Ranking weights</legend><span>{signalWeight + momentumWeight + thesisWeight} pts</span></div>
-        <label><span>Signal strength <b>{signalWeight}</b></span><input aria-label="Signal strength weight" type="range" min="0" max="100" bind:value={signalWeight} /></label>
-        <label><span>Momentum <b>{momentumWeight}</b></span><input aria-label="Momentum weight" type="range" min="0" max="100" bind:value={momentumWeight} /></label>
-        <label><span>Thesis fit <b>{thesisWeight}</b></span><input aria-label="Thesis fit weight" type="range" min="0" max="100" bind:value={thesisWeight} /></label>
+        <div class="weight-heading"><legend>Ranking weights</legend><span>{$thesisSettings.signalWeight + $thesisSettings.momentumWeight + $thesisSettings.thesisWeight} pts</span></div>
+        <label><span>Signal strength <b>{$thesisSettings.signalWeight}</b></span><input aria-label="Signal strength weight" type="range" min="0" max="100" value={$thesisSettings.signalWeight} oninput={(event) => setThesisWeight('signalWeight', Number(event.currentTarget.value))} /></label>
+        <label><span>Momentum <b>{$thesisSettings.momentumWeight}</b></span><input aria-label="Momentum weight" type="range" min="0" max="100" value={$thesisSettings.momentumWeight} oninput={(event) => setThesisWeight('momentumWeight', Number(event.currentTarget.value))} /></label>
+        <label><span>Thesis fit <b>{$thesisSettings.thesisWeight}</b></span><input aria-label="Thesis fit weight" type="range" min="0" max="100" value={$thesisSettings.thesisWeight} oninput={(event) => setThesisWeight('thesisWeight', Number(event.currentTarget.value))} /></label>
       </div>
       <p class="thesis-note">{thesis.risk_appetite}</p>
     {/if}

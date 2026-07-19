@@ -1,16 +1,24 @@
 <script lang="ts">
   import { onMount } from 'svelte';
-  import { api } from '../api/client';
+  import { api, isMockMode } from '../api/client';
   import type { SearchHit } from '../api/types';
   import { navigate } from '../router';
+  import { setThesisFilter } from '../thesisStore';
 
-  interface PaletteRow extends SearchHit { group: string; verb?: boolean }
+  interface PaletteRow extends SearchHit {
+    group: string;
+    verb?: boolean;
+    action?: 'deepdive' | 'memo' | 'filter';
+    actionValue?: string;
+  }
   let open = false;
   let query = '';
   let input: HTMLInputElement;
   let rows: PaletteRow[] = [];
   let selected = 0;
   let searching = false;
+  let invoking = false;
+  let actionError = '';
   let timer: ReturnType<typeof setTimeout>;
 
   function openPalette(): void {
@@ -23,9 +31,33 @@
     open = false;
     query = '';
     rows = [];
+    actionError = '';
   }
 
-  function go(row: PaletteRow): void {
+  async function go(row: PaletteRow): Promise<void> {
+    if (invoking) return;
+    if (row.action === 'filter') {
+      setThesisFilter('sector', row.actionValue ?? row.title);
+      close();
+      navigate('/');
+      return;
+    }
+    if (row.action === 'deepdive') {
+      invoking = true;
+      actionError = '';
+      try {
+        const entityId = row.actionValue ?? row.doc_id;
+        const run = await api.startDeepDive({ entity_type: 'founder', entity_id: entityId, dimensions: ['founder', 'market', 'idea_vs_market'] });
+        const runId = isMockMode ? `mock-${entityId}` : run.run_id;
+        close();
+        navigate(`/runs/${encodeURIComponent(runId)}`);
+      } catch (reason) {
+        actionError = reason instanceof Error ? reason.message : 'Unable to start deep dive';
+      } finally {
+        invoking = false;
+      }
+      return;
+    }
     close();
     navigate(row.route);
   }
@@ -42,10 +74,10 @@
       const sector = resultRows.find((row) => row.doc_type === 'thesis_term');
       const verbs: PaletteRow[] = [];
       if (founder) {
-        verbs.push({ ...founder, doc_id: `deep-${founder.doc_id}`, title: `Deep dive on ${founder.title}…`, subtitle: 'Start founder analysis', snippet: 'Open the founder health record', group: 'Actions', verb: true });
-        verbs.push({ ...founder, doc_id: `memo-${founder.doc_id}`, title: 'Open memo…', subtitle: founder.title, snippet: `Review claims for ${founder.title}`, route: `${founder.route}#memo`, group: 'Actions', verb: true });
+        verbs.push({ ...founder, doc_id: `deep-${founder.doc_id}`, title: `Deep dive on ${founder.title}…`, subtitle: 'Start founder analysis', snippet: 'Run all three diligence dimensions', group: 'Actions', verb: true, action: 'deepdive', actionValue: founder.doc_id });
+        verbs.push({ ...founder, doc_id: `memo-${founder.doc_id}`, title: 'Open memo…', subtitle: founder.title, snippet: `Review claims for ${founder.title}`, route: `${founder.route}#memo`, group: 'Actions', verb: true, action: 'memo' });
       }
-      if (sector) verbs.push({ ...sector, doc_id: `filter-${sector.doc_id}`, title: `Filter radar to ${sector.title}`, subtitle: 'Apply thesis lens', group: 'Actions', verb: true });
+      if (sector) verbs.push({ ...sector, doc_id: `filter-${sector.doc_id}`, title: `Filter radar to ${sector.title}`, subtitle: 'Apply thesis lens', group: 'Actions', verb: true, action: 'filter', actionValue: sector.title });
       rows = [...verbs, ...resultRows];
       selected = 0;
       searching = false;
@@ -58,7 +90,7 @@
     if (event.key === 'Escape') { close(); return; }
     if (event.key === 'ArrowDown') { event.preventDefault(); selected = Math.min(selected + 1, rows.length - 1); }
     if (event.key === 'ArrowUp') { event.preventDefault(); selected = Math.max(selected - 1, 0); }
-    if (event.key === 'Enter' && rows[selected]) { event.preventDefault(); go(rows[selected]); }
+    if (event.key === 'Enter' && rows[selected]) { event.preventDefault(); void go(rows[selected]); }
   }
 
   onMount(() => {
@@ -93,6 +125,7 @@
         <kbd>esc</kbd>
       </div>
       <div id="palette-results" class="palette-results" role="listbox" aria-label="Search results">
+        {#if actionError}<p class="palette-error" role="alert">{actionError}</p>{/if}
         {#if searching}<p class="palette-state">Searching intelligence…</p>
         {:else if !query}<p class="palette-state">Type a name, company, memo claim, or sector.</p>
         {:else if !rows.length}<p class="palette-state">No matching intelligence found.</p>
@@ -102,7 +135,7 @@
               <div class="palette-group-label">{group}</div>
               {#each hits as row}
                 {@const index = rows.indexOf(row)}
-                <button id={`palette-${row.doc_id}`} class:active={index === selected} class:verb-row={row.verb} type="button" role="option" aria-selected={index === selected} onmouseenter={() => selected = index} onclick={() => go(row)}>
+                <button id={`palette-${row.doc_id}`} class:active={index === selected} class:verb-row={row.verb} type="button" role="option" aria-selected={index === selected} disabled={invoking} onmouseenter={() => selected = index} onclick={() => void go(row)}>
                   <span class="result-icon" aria-hidden="true">{row.verb ? '↳' : row.doc_type === 'founder' ? '◎' : row.doc_type === 'claim' ? '≡' : '⌁'}</span>
                   <span class="result-copy"><strong>{row.title}</strong><small>{row.subtitle}</small><span class="result-snippet">{@html row.snippet}</span></span>
                   <span class="result-enter" aria-hidden="true">↵</span>

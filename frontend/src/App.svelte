@@ -2,6 +2,7 @@
   import { route, navigate } from './lib/router';
   import CommandPalette from './lib/components/CommandPalette.svelte';
   import Radar from './lib/pages/Radar.svelte';
+  import ThesisPage from './lib/pages/ThesisPage.svelte';
   import CandidatePage from './lib/pages/CandidatePage.svelte';
   import RunPage from './lib/pages/RunPage.svelte';
   import { isMockMode } from './lib/api/client';
@@ -18,7 +19,7 @@
   <nav class="topnav" aria-label="Primary navigation">
     <a class:active={pathOnly($route) === '/' && !$route.includes('#proof')} href="/" onclick={(event) => { event.preventDefault(); navigate('/'); }}>Radar</a>
     <a class:active={$route.includes('#proof')} href="/#proof">Proof</a>
-    <span aria-disabled="true" title="Thesis view coming soon">Thesis</span>
+    <a class:active={pathOnly($route) === '/thesis'} href="/thesis" onclick={(event) => { event.preventDefault(); navigate('/thesis'); }}>Thesis</a>
   </nav>
   <div class="top-actions">
     {#if isMockMode}<span class="fixture-flag"><i></i>Fixture intelligence</span>{/if}
@@ -31,6 +32,8 @@
 <main id="main-content">
   {#if pathOnly($route) === '/'}
     <Radar />
+  {:else if pathOnly($route) === '/thesis'}
+    <ThesisPage />
   {:else if pathOnly($route).startsWith('/candidate/')}
     <CandidatePage login={decodeURIComponent(pathOnly($route).slice('/candidate/'.length))} />
   {:else if pathOnly($route).startsWith('/runs/')}
