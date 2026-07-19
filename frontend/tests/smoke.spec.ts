@@ -92,3 +92,32 @@ test('candidate timeline clusters fixture months and filters non-matching nodes'
   await expect(nodes.first()).toHaveAttribute('data-event-types', /commit_burst/);
   expect(external).toEqual([]);
 });
+
+test('radar ribbon renders month ticks and scrubs intelligence by pointer and keyboard', async ({ page }) => {
+  const external = enforceOffline(page);
+  await page.goto('/');
+
+  await expect(page.locator('.candidate-row')).toHaveCount(12);
+  const ticks = page.getByTestId('scrubber-month-tick');
+  await expect(ticks).toHaveCount(24);
+  await expect(ticks.first()).toBeVisible();
+  const cutoff = page.locator('.scrubber-copy strong');
+  const scrubber = page.getByTestId('radar-scrubber');
+  await expect(cutoff).toHaveText('Jul 2026');
+
+  await scrubber.focus();
+  await scrubber.press('ArrowLeft');
+  await expect(cutoff).toHaveText('Jun 2026');
+  await expect(page.getByText('Future evidence hidden', { exact: true })).toBeVisible();
+
+  const bounds = await scrubber.boundingBox();
+  expect(bounds).not.toBeNull();
+  if (bounds) {
+    await page.mouse.move(bounds.x + bounds.width * .75, bounds.y + bounds.height / 2);
+    await page.mouse.down();
+    await page.mouse.move(bounds.x + bounds.width * .25, bounds.y + bounds.height / 2, { steps: 5 });
+    await page.mouse.up();
+  }
+  await expect(cutoff).not.toHaveText('Jun 2026');
+  expect(external).toEqual([]);
+});

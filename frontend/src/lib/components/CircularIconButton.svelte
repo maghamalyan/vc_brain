@@ -1,5 +1,5 @@
 <script lang="ts">
-  export let icon: 'arrow-left' | 'arrow-right' | 'external' | 'expand' | 'back' = 'external';
+  export let icon: 'arrow-left' | 'arrow-right' | 'external' | 'expand' | 'back' | 'chevron-down' = 'external';
   export let label: string;
   export let size: 36 | 44 = 36;
   export let href = '';
@@ -16,6 +16,8 @@
       <path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5" />
     {:else if icon === 'arrow-right'}
       <path d="M5 12h14M14 7l5 5-5 5" />
+    {:else if icon === 'chevron-down'}
+      <path d="M6 9l6 6 6-6" />
     {:else}
       <path d="M19 12H5M10 7l-5 5 5 5" />
     {/if}
