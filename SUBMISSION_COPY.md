@@ -98,6 +98,9 @@ Use it everywhere — form, product header, video title card, README, deck.
 
 ## 14. Additional information
 
+**Graph-model addendum (verified in `docs/exploration/gnn_rerank.md`):**
+> The honest model is deliberately tiny — 7 trees, only 305 distinct scores across 2,765 held-out people, so 92% of people sit in tied score groups and 77 share the exact score at the rank-50 cut. A temporal graph model used **only to break those ties** improves within-month ranking by +0.025 (bootstrap CI excludes zero) and precision@50 from 0.640 to 0.720 on the graph-scoreable pool; every blend that lets it override distinct scores loses. In short: **the GBDT decides who's in the room; the GNN decides the seating order.** Caveats: single retrain, and the tie-break currently covers the graph-scoreable subset (731 people).
+
 **Full:**
 > Trust is the product, not a feature. Two independent human audits of founder-to-GitHub linkage found zero wrong-person matches across 50 samples (at least 48/50 strict). The shuffled-label null is a release gate, not a footnote: when an early version of it fired — the model was exploiting calendar composition, not people — we replaced the primary metric with a weaker but defensible within-month one and kept the old number in the report for transparency. The memo layer surfaces missing evidence and contradictions instead of hiding them. Known limitations: GitHub-only behavioral coverage, YC-biased labels, and case-control calibration assumptions — all documented in the evaluation report checked into the repository.
 
@@ -259,8 +262,10 @@ screenshots on dark background, no bullet walls — the spoken track carries the
   audio track for voiceover. Recorded from the live app (real 100-founder index) with
   a scripted Playwright take; cue sheet above matches its timestamps.
 - **Slide deck:** [docs/submission_deck.html](docs/submission_deck.html) —
-  self-contained (screenshots embedded), 8 slides, arrow keys/click to navigate,
+  self-contained (screenshots embedded), 9 slides, arrow keys/click to navigate,
   `F` for fullscreen. Speaker lines are printed at the bottom of each slide.
+  Slide 8 carries the graph-model one-liner: "The GBDT decides who's in the room.
+  The GNN decides the seating order." (305 distinct scores / 92% tied / +0.025).
 - **Product tweak made for the video:** the radar time scrubber is now sticky
   (`frontend/src/styles.css`) so the time machine and the candidate rows share the
   frame — review and keep or revert.

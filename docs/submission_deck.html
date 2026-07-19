@@ -127,7 +127,24 @@
   <p class="speaker">“This is the part we’d want as the investor on the other side of the table.”</p>
 </section>
 
-<!-- 8 · close -->
+<!-- 8 · gnn tie-break -->
+<section class="slide">
+  <p class="eyebrow">Next — where the graph model earns its seat</p>
+  <h2>The GBDT decides who’s in the room.<br>The GNN decides the seating order.</h2>
+  <div class="timeline">
+    <div class="bignum" style="flex-direction:column;align-items:flex-start;gap:2.4vh">
+      <div style="display:flex;gap:3vw">
+        <div><strong style="font-size:9vh">305</strong><span style="display:block;font-size:2vh;color:var(--ink-soft);max-width:18vw">distinct scores for 2,765 held-out people — the honest model is deliberately tiny</span></div>
+        <div><strong style="font-size:9vh">92%</strong><span style="display:block;font-size:2vh;color:var(--ink-soft);max-width:18vw">of people sit inside tied score groups; 77 share the exact score at the rank-50 cut</span></div>
+        <div><strong style="font-size:9vh">+0.025</strong><span style="display:block;font-size:2vh;color:var(--ink-soft);max-width:18vw">within-month ranking gain when a temporal graph model breaks only the ties — the one gain whose error bars exclude zero</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="caption">The graph model can never override a score the main model actually expresses — it only orders the people the main model can’t tell apart. Risk-free upside, measured the same honest way as everything else.</p>
+  <p class="speaker">“Blends that let the graph model overrule the ranking lose. Restricted to ties, it wins — that’s the roadmap.”</p>
+</section>
+
+<!-- 9 · close -->
 <section class="slide dark center">
   <h1 style="font-size:8.4vh">Early signal.<br>Honest evaluation.<br>Auditable decision.</h1>
   <div class="chips">
