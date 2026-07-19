@@ -17,8 +17,9 @@ RUN pip install --no-cache-dir "uv==${UV_VERSION}"
 
 WORKDIR /app/service
 COPY service/pyproject.toml service/uv.lock service/README.md ./
+RUN uv sync --frozen --no-dev --no-install-project
 COPY service/src/ ./src/
-RUN uv sync --frozen --no-dev
+RUN uv sync --frozen --no-dev --offline
 
 COPY deploy/demo-data/ /app/deploy/demo-data/
 COPY config/thesis.json /app/config/thesis.json

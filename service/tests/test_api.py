@@ -249,7 +249,7 @@ def test_startup_validates_index_and_logs_readiness(
 ) -> None:
     app = create_app(index_path=index_path, frontend_dist=tmp_path / "no-frontend")
 
-    with caplog.at_level(logging.INFO, logger="vcb_service"):
+    with caplog.at_level(logging.INFO, logger="uvicorn.error"):
         with TestClient(app) as client:
             assert client.get("/api/v1/health").status_code == 200
 

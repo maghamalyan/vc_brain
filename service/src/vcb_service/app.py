@@ -40,7 +40,7 @@ from vcb_service.store import IndexUnavailable, ReadStore, normalize_search_type
 
 load_dotenv()
 
-logger = logging.getLogger("vcb_service")
+logger = logging.getLogger("uvicorn.error")
 
 
 def _environment_flag(name: str, *, default: bool) -> bool:
