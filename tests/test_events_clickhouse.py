@@ -80,7 +80,9 @@ def test_query_does_not_retry_mocked_bad_sql(tmp_path: Path) -> None:
 def test_oversized_actor_batch_is_split_recursively(tmp_path: Path) -> None:
     client = ClickHouseClient(
         cache_dir=tmp_path,
-        client=httpx.Client(transport=httpx.MockTransport(lambda _: httpx.Response(500))),
+        client=httpx.Client(
+            transport=httpx.MockTransport(lambda _: httpx.Response(500))
+        ),
         minimum_interval_seconds=0,
         result_row_guard=3,
     )
@@ -103,7 +105,9 @@ def test_oversized_actor_batch_is_split_recursively(tmp_path: Path) -> None:
 def test_single_actor_at_result_guard_fails_clearly(tmp_path: Path) -> None:
     client = ClickHouseClient(
         cache_dir=tmp_path,
-        client=httpx.Client(transport=httpx.MockTransport(lambda _: httpx.Response(500))),
+        client=httpx.Client(
+            transport=httpx.MockTransport(lambda _: httpx.Response(500))
+        ),
         minimum_interval_seconds=0,
         result_row_guard=1,
     )
@@ -111,3 +115,29 @@ def test_single_actor_at_result_guard_fails_clearly(tmp_path: Path) -> None:
 
     with pytest.raises(ResultSizeLimitError, match="Single-actor"):
         client.query_actor_batch(["a"], lambda rows: rows[0])
+
+
+def test_memory_limit_response_bisects_actor_batch(tmp_path: Path) -> None:
+    requests: list[str] = []
+
+    def respond(request: httpx.Request) -> httpx.Response:
+        sql = request.content.decode()
+        requests.append(sql)
+        if "a,b" in sql:
+            return httpx.Response(
+                500,
+                text="Code: 241. DB::Exception: Query memory limit exceeded",
+            )
+        actor = sql.splitlines()[0]
+        return httpx.Response(200, text=f"actor_login\n{actor}\n")
+
+    client = ClickHouseClient(
+        cache_dir=tmp_path,
+        client=httpx.Client(transport=httpx.MockTransport(respond)),
+        minimum_interval_seconds=0,
+    )
+
+    frame = client.query_actor_batch(["a", "b"], lambda rows: ",".join(rows))
+
+    assert frame.get_column("actor_login").to_list() == ["a", "b"]
+    assert len(requests) == 3

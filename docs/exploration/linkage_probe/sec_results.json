@@ -1,0 +1,1605 @@
+[
+ {
+  "company": "CloudCruise",
+  "slug": "cloudcruise",
+  "batch": "Winter 2024",
+  "founders": [
+   "Adrian Ziegler",
+   "Felix Martin Eckert"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Anara",
+  "slug": "anara",
+  "batch": "Summer 2024",
+  "founders": [
+   "Naveed Janmohamed"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Leaping",
+  "slug": "leaping",
+  "batch": "Winter 2024",
+  "founders": [
+   "Adrien Philardeau"
+  ],
+  "fts_total": 4,
+  "entity_hits": [
+   {
+    "display_name": "Leaping Harts Inc.  (CIK 0001816075)",
+    "id": "0001816075-21-000001:primary_doc.xml",
+    "file_date": "2021-02-08"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": false,
+  "officers": [
+   {
+    "filing": "0001816075-21-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Evan Leaphart",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1816075/000181607521000001/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Instinct",
+  "slug": "instinct",
+  "batch": "Winter 2025",
+  "founders": [
+   "Alex Pinel Neparidze",
+   "Joaquim Dickson",
+   "Ashwin Iyer"
+  ],
+  "fts_total": 11,
+  "entity_hits": [
+   {
+    "display_name": "Instinct Science, LLC  (CIK 0001749823)",
+    "id": "0001749823-21-000001:primary_doc.xml",
+    "file_date": "2021-06-29"
+   },
+   {
+    "display_name": "Instinct Health Science, Inc.  (CIK 0001610313)",
+    "id": "0001140361-14-025949:primary_doc.xml",
+    "file_date": "2014-06-17"
+   },
+   {
+    "display_name": "INSTINCT ENVIRONMENTAL CO  (CIK 0001950302)",
+    "id": "0001950302-23-000001:primary_doc.xml",
+    "file_date": "2023-01-17"
+   },
+   {
+    "display_name": "Instinct Science, LLC  (CIK 0001749823)",
+    "id": "0001749823-18-000001:primary_doc.xml",
+    "file_date": "2018-08-13"
+   },
+   {
+    "display_name": "Instinct Science, LLC  (CIK 0001749823)",
+    "id": "0001749823-20-000001:primary_doc.xml",
+    "file_date": "2020-01-23"
+   },
+   {
+    "display_name": "INSTINCT ENVIRONMENTAL CO  (CIK 0001950302)",
+    "id": "0001950302-22-000001:primary_doc.xml",
+    "file_date": "2022-10-12"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": false,
+  "officers": [
+   {
+    "filing": "0001749823-21-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Caleb Frankel",
+      "roles": [
+       "Executive Officer",
+       "Director",
+       "Promoter"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1749823/000174982321000001/primary_doc.xml"
+     },
+     {
+      "name": "Richard Genzer",
+      "roles": [
+       "Promoter"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1749823/000174982321000001/primary_doc.xml"
+     },
+     {
+      "name": "Mickael Lucchini",
+      "roles": [
+       "Promoter"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1749823/000174982321000001/primary_doc.xml"
+     },
+     {
+      "name": "Derek Duncan",
+      "roles": [
+       "Promoter"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1749823/000174982321000001/primary_doc.xml"
+     },
+     {
+      "name": "Joyce Cavaliere",
+      "roles": [
+       "Promoter"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1749823/000174982321000001/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001140361-14-025949:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Susan Roberts",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1610313/000114036114025949/primary_doc.xml"
+     },
+     {
+      "name": "Norman Gorin",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1610313/000114036114025949/primary_doc.xml"
+     },
+     {
+      "name": "Lara Balter",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1610313/000114036114025949/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001950302-23-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "ASHWIN DATTA",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1950302/000195030223000001/primary_doc.xml"
+     },
+     {
+      "name": "TREVOR BACHAND",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1950302/000195030223000001/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001749823-18-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Caleb Frankel",
+      "roles": [
+       "Executive Officer",
+       "Director",
+       "Promoter"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1749823/000174982318000001/primary_doc.xml"
+     },
+     {
+      "name": "Richard Genzer",
+      "roles": [
+       "Promoter"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1749823/000174982318000001/primary_doc.xml"
+     },
+     {
+      "name": "Mickael Lucchini",
+      "roles": [
+       "Promoter"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1749823/000174982318000001/primary_doc.xml"
+     },
+     {
+      "name": "Joyce Cavaliere",
+      "roles": [
+       "Promoter"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1749823/000174982318000001/primary_doc.xml"
+     },
+     {
+      "name": "Derek Duncan",
+      "roles": [
+       "Promoter"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1749823/000174982318000001/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Handled",
+  "slug": "handled",
+  "batch": "Summer 2024",
+  "founders": [
+   "Audrey Djiya"
+  ],
+  "fts_total": 25,
+  "entity_hits": [
+   {
+    "display_name": "Handled, Inc.  (CIK 0002040141)",
+    "id": "0002040141-24-000001:primary_doc.xml",
+    "file_date": "2024-10-22"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": false,
+  "officers": [
+   {
+    "filing": "0002040141-24-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "John Clem",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2040141/000204014124000001/primary_doc.xml"
+     },
+     {
+      "name": "Maya Clem",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2040141/000204014124000001/primary_doc.xml"
+     },
+     {
+      "name": "Charles Atkinson",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2040141/000204014124000001/primary_doc.xml"
+     },
+     {
+      "name": "Nathan Jones",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2040141/000204014124000001/primary_doc.xml"
+     },
+     {
+      "name": "Kenneth McBride",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2040141/000204014124000001/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Dartboard Energy",
+  "slug": "dartboard-energy",
+  "batch": "Winter 2025",
+  "founders": [
+   "Rohun Ati"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Chestnut",
+  "slug": "chestnut",
+  "batch": "Spring 2025",
+  "founders": [
+   "Spencer Brown"
+  ],
+  "fts_total": 1187,
+  "entity_hits": [
+   {
+    "display_name": "Chestnut Exploration, Inc. Sun Oil 14 Re-Entry Joint Venture  (CIK 0001520298)",
+    "id": "0001520298-11-000003:primary_doc.xml",
+    "file_date": "2011-05-11"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": false,
+  "officers": [
+   {
+    "filing": "0001520298-11-000003:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Mark Plummer",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1520298/000152029811000003/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "TwentyTwo",
+  "slug": "twentytwo",
+  "batch": "Summer 2025",
+  "founders": [
+   "Evan Seeyave"
+  ],
+  "fts_total": 2,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Candor",
+  "slug": "candor",
+  "batch": "Winter 2025",
+  "founders": [
+   "Marcus Zimmerman",
+   "Ethne Laude"
+  ],
+  "fts_total": 7,
+  "entity_hits": [
+   {
+    "display_name": "Candor Inc.  (CIK 0002032572)",
+    "id": "0002032572-24-000001:primary_doc.xml",
+    "file_date": "2024-08-02"
+   },
+   {
+    "display_name": "Candor Development Inc  (CIK 0001850412)",
+    "id": "0001850412-21-000001:primary_doc.xml",
+    "file_date": "2021-03-31"
+   },
+   {
+    "display_name": "Candor Technology, Inc.  (CIK 0001826271)",
+    "id": "0001826271-21-000001:primary_doc.xml",
+    "file_date": "2021-08-18"
+   },
+   {
+    "display_name": "Candor Technology, Inc.  (CIK 0001826271)",
+    "id": "0001826271-22-000001:primary_doc.xml",
+    "file_date": "2022-10-18"
+   },
+   {
+    "display_name": "Candor Technology, Inc.  (CIK 0001826271)",
+    "id": "0001826271-20-000001:primary_doc.xml",
+    "file_date": "2020-10-01"
+   },
+   {
+    "display_name": "Candor Health, Inc.  (CIK 0001950369)",
+    "id": "0001950369-22-000002:primary_doc.xml",
+    "file_date": "2022-10-17"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": false,
+  "officers": [
+   {
+    "filing": "0002032572-24-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Stefaniya Dragova",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2032572/000203257224000001/primary_doc.xml"
+     },
+     {
+      "name": "David Chouinard",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2032572/000203257224000001/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001850412-21-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Andrew Kudelka",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1850412/000185041221000001/primary_doc.xml"
+     },
+     {
+      "name": "Kellen Leavitt",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1850412/000185041221000001/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001826271-21-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Thomas Showalter",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1826271/000182627121000001/primary_doc.xml"
+     },
+     {
+      "name": "Patrick Meenan",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1826271/000182627121000001/primary_doc.xml"
+     },
+     {
+      "name": "Mark Hinshaw",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1826271/000182627121000001/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001826271-22-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Thomas Showalter",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1826271/000182627122000001/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Zuni",
+  "slug": "zuni",
+  "batch": "Summer 2024",
+  "founders": [
+   "George Seabridge"
+  ],
+  "fts_total": 14,
+  "entity_hits": [
+   {
+    "display_name": "Zuni Learning Tree LLC  (CIK 0001667665)",
+    "id": "0001667665-16-000001:primary_doc.xml",
+    "file_date": "2016-02-23"
+   },
+   {
+    "display_name": "Zuni Learning Tree LLC  (CIK 0001667665)",
+    "id": "0001667665-18-000001:primary_doc.xml",
+    "file_date": "2018-01-17"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": false,
+  "officers": [
+   {
+    "filing": "0001667665-16-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Tina McCord",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1667665/000166766516000001/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001667665-18-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Tina McCord",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1667665/000166766518000001/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Random Labs",
+  "slug": "random-labs",
+  "batch": "Summer 2024",
+  "founders": [
+   "Kiran (Random Labs)",
+   "Mihir Chintawar"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Archil",
+  "slug": "archil",
+  "batch": "Fall 2024",
+  "founders": [
+   "Hunter Leath"
+  ],
+  "fts_total": 1,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Apten",
+  "slug": "apten",
+  "batch": "Summer 2024",
+  "founders": [
+   "Daniel Ho",
+   "Roshan Kumaraswamy"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Cartpole",
+  "slug": "cartpole",
+  "batch": "Spring 2025",
+  "founders": [
+   "Mateo Perez"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Granza Bio",
+  "slug": "granza-bio",
+  "batch": "Winter 2024",
+  "founders": [
+   "Ashwin Nandakumar",
+   "Ashwin Jainarayanan"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "HeroUI",
+  "slug": "heroui",
+  "batch": "Summer 2024",
+  "founders": [
+   "Junior Garcia"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Swerve",
+  "slug": "swerve",
+  "batch": "Winter 2025",
+  "founders": [
+   "Soroush Saryazdi",
+   "Jason Zhou"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Anglera",
+  "slug": "anglera",
+  "batch": "Summer 2024",
+  "founders": [
+   "Amay Aggarwal",
+   "Ray Iyer"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Vesence",
+  "slug": "vesence",
+  "batch": "Spring 2025",
+  "founders": [
+   "Henrik Hansson",
+   "Ludvig Swanstrom"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Fractal Labs",
+  "slug": "fractal-labs",
+  "batch": "Winter 2024",
+  "founders": [
+   "Alan Du",
+   "Jason Cai",
+   "Derrick Xin"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Quotain",
+  "slug": "quotain",
+  "batch": "Summer 2025",
+  "founders": [
+   "Alexander Talamonti",
+   "Jason He"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Guardian RF",
+  "slug": "guardian-rf",
+  "batch": "Summer 2024",
+  "founders": [
+   "Lucas Raskin",
+   "John Andrzejewski",
+   "Eli Kerstein"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "RowFlow",
+  "slug": "rowflow",
+  "batch": "Summer 2025",
+  "founders": [
+   "Alec Olesky",
+   "Jack Bubes"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "ZeroPath",
+  "slug": "zeropath",
+  "batch": "Summer 2024",
+  "founders": [
+   "Dean Valentine",
+   "Raphael Karger",
+   "Etienne Lunetta"
+  ],
+  "fts_total": 2,
+  "entity_hits": [
+   {
+    "display_name": "ZeroPath Corp.  (CIK 0002123552)",
+    "id": "0002123552-26-000001:primary_doc.xml",
+    "file_date": "2026-03-23"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": true,
+  "officers": [
+   {
+    "filing": "0002123552-26-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Dean Valentine",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2123552/000212355226000001/primary_doc.xml"
+     },
+     {
+      "name": "Etienne Lunetta",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2123552/000212355226000001/primary_doc.xml"
+     },
+     {
+      "name": "Raphael Karger",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2123552/000212355226000001/primary_doc.xml"
+     },
+     {
+      "name": "Nathan Hrncirik",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2123552/000212355226000001/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [
+   {
+    "founder": "Dean Valentine",
+    "officer": "Dean Valentine",
+    "roles": [
+     "Director"
+    ]
+   },
+   {
+    "founder": "Raphael Karger",
+    "officer": "Raphael Karger",
+    "roles": [
+     "Director"
+    ]
+   },
+   {
+    "founder": "Etienne Lunetta",
+    "officer": "Etienne Lunetta",
+    "roles": [
+     "Director"
+    ]
+   }
+  ],
+  "evidence_urls": [
+   "https://www.sec.gov/Archives/edgar/data/2123552/000212355226000001/primary_doc.xml",
+   "https://www.sec.gov/Archives/edgar/data/2123552/000212355226000001/primary_doc.xml",
+   "https://www.sec.gov/Archives/edgar/data/2123552/000212355226000001/primary_doc.xml"
+  ]
+ },
+ {
+  "company": "Lexi",
+  "slug": "lexi",
+  "batch": "Fall 2025",
+  "founders": [
+   "Harshit Garg",
+   "Kiran Mohan"
+  ],
+  "fts_total": 31,
+  "entity_hits": [
+   {
+    "display_name": "Lexi Devices, Inc.  (CIK 0001932835)",
+    "id": "0001932835-24-000009:primary_doc.xml",
+    "file_date": "2024-07-17"
+   },
+   {
+    "display_name": "Lexi Devices, Inc.  (CIK 0001932835)",
+    "id": "0001932835-24-000008:primary_doc.xml",
+    "file_date": "2024-07-17"
+   },
+   {
+    "display_name": "Lexi Devices, Inc.  (CIK 0001932835)",
+    "id": "0001932835-24-000011:primary_doc.xml",
+    "file_date": "2024-07-17"
+   },
+   {
+    "display_name": "Lexi Devices, Inc.  (CIK 0001932835)",
+    "id": "0001932835-24-000004:primary_doc.xml",
+    "file_date": "2024-07-17"
+   },
+   {
+    "display_name": "Lexi Devices, Inc.  (CIK 0001932835)",
+    "id": "0001932835-24-000007:primary_doc.xml",
+    "file_date": "2024-07-17"
+   },
+   {
+    "display_name": "Lexi Devices, Inc.  (CIK 0001932835)",
+    "id": "0001932835-24-000010:primary_doc.xml",
+    "file_date": "2024-07-17"
+   },
+   {
+    "display_name": "Lexi Devices, Inc.  (CIK 0001932835)",
+    "id": "0001932835-24-000006:primary_doc.xml",
+    "file_date": "2024-07-17"
+   },
+   {
+    "display_name": "Lexi Skin LLC  (CIK 0001841892)",
+    "id": "0001841892-21-000001:primary_doc.xml",
+    "file_date": "2021-01-26"
+   },
+   {
+    "display_name": "Lexi Devices, Inc.  (CIK 0001932835)",
+    "id": "0001932835-24-000003:primary_doc.xml",
+    "file_date": "2024-07-17"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": false,
+  "officers": [
+   {
+    "filing": "0001932835-24-000009:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Scott Cahill",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1932835/000193283524000009/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001932835-24-000008:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Scott Cahill",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1932835/000193283524000008/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001932835-24-000011:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Scott Cahill",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1932835/000193283524000011/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001932835-24-000004:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Scott Cahill",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1932835/000193283524000004/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Adapted",
+  "slug": "adapted",
+  "batch": "Winter 2024",
+  "founders": [
+   "Albert Jo"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Draft The Record",
+  "slug": "draft-the-record",
+  "batch": "Summer 2024",
+  "founders": [
+   "Adnan Sherif",
+   "Yash Ramchandani"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Rastro",
+  "slug": "rastro",
+  "batch": "Summer 2024",
+  "founders": [
+   "Baptiste Cumin",
+   "Augustin Baudoin",
+   "Papa Sougou Wele"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Nomi",
+  "slug": "nomi",
+  "batch": "Spring 2025",
+  "founders": [
+   "Swan Beaujard"
+  ],
+  "fts_total": 32,
+  "entity_hits": [
+   {
+    "display_name": "NOMI Corp  (CIK 0001217312)",
+    "id": "0001217312-15-000003:primary_doc.xml",
+    "file_date": "2015-09-16"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": false,
+  "officers": [
+   {
+    "filing": "0001217312-15-000003:primary_doc.xml",
+    "persons": [
+     {
+      "name": "STEPHEN JEFFERY",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1217312/000121731215000003/primary_doc.xml"
+     },
+     {
+      "name": "MOLHAM AREF",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1217312/000121731215000003/primary_doc.xml"
+     },
+     {
+      "name": "ARUN GUPTA",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1217312/000121731215000003/primary_doc.xml"
+     },
+     {
+      "name": "AMIR HUDDA",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1217312/000121731215000003/primary_doc.xml"
+     },
+     {
+      "name": "NANCY SHOENDORF",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1217312/000121731215000003/primary_doc.xml"
+     },
+     {
+      "name": "ROBERT ANTONIADES",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1217312/000121731215000003/primary_doc.xml"
+     },
+     {
+      "name": "JOHN KAHN",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1217312/000121731215000003/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Docket",
+  "slug": "docket",
+  "batch": "Spring 2025",
+  "founders": [
+   "Nishant Hooda",
+   "Boris Skurikhin"
+  ],
+  "fts_total": 7,
+  "entity_hits": [
+   {
+    "display_name": "Docket Inc.  (CIK 0001994773)",
+    "id": "0001994773-23-000001:primary_doc.xml",
+    "file_date": "2023-10-03"
+   },
+   {
+    "display_name": "Docket Series A2 ONEVC HM LLC  (CIK 0001794727)",
+    "id": "0001794727-19-000001:primary_doc.xml",
+    "file_date": "2019-12-23"
+   },
+   {
+    "display_name": "Docket Software Corp.  (CIK 0001744039)",
+    "id": "0001744039-24-000002:primary_doc.xml",
+    "file_date": "2024-07-11"
+   },
+   {
+    "display_name": "Docket HQ, Inc.  (CIK 0001822180)",
+    "id": "0001822180-20-000001:primary_doc.xml",
+    "file_date": "2020-08-21"
+   },
+   {
+    "display_name": "Docket HQ, Inc.  (CIK 0001822180)",
+    "id": "0001822180-21-000002:primary_doc.xml",
+    "file_date": "2021-09-10"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": false,
+  "officers": [
+   {
+    "filing": "0001994773-23-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Arjun Rajasekharan Pillai",
+      "roles": [
+       "Executive Officer",
+       "Director",
+       "Promoter"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1994773/000199477323000001/primary_doc.xml"
+     },
+     {
+      "name": "Anoop Thomas Mathew",
+      "roles": [
+       "Executive Officer",
+       "Director",
+       "Promoter"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1994773/000199477323000001/primary_doc.xml"
+     },
+     {
+      "name": "Ashu Garg",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1994773/000199477323000001/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001794727-19-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "LLC OneVC Venture Partners",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1794727/000179472719000001/primary_doc.xml"
+     },
+     {
+      "name": "LLC Assure Fund Management II",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1794727/000179472719000001/primary_doc.xml"
+     },
+     {
+      "name": "Richard Thoms",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1794727/000179472719000001/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001744039-24-000002:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Gerald Hetrick",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1744039/000174403924000002/primary_doc.xml"
+     },
+     {
+      "name": "Brian Ellis",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1744039/000174403924000002/primary_doc.xml"
+     },
+     {
+      "name": "Hardik Desai",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1744039/000174403924000002/primary_doc.xml"
+     },
+     {
+      "name": "Joseph Henderson",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1744039/000174403924000002/primary_doc.xml"
+     },
+     {
+      "name": "Michael Hughes",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1744039/000174403924000002/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001822180-20-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Darin Brown",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1822180/000182218020000001/primary_doc.xml"
+     },
+     {
+      "name": "Scott Dorsey",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1822180/000182218020000001/primary_doc.xml"
+     },
+     {
+      "name": "Eric Tobias",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1822180/000182218020000001/primary_doc.xml"
+     },
+     {
+      "name": "David Kerr",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1822180/000182218020000001/primary_doc.xml"
+     },
+     {
+      "name": "Kelly Shearon",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1822180/000182218020000001/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Glimmer",
+  "slug": "glimmer",
+  "batch": "Winter 2024",
+  "founders": [
+   "Praneeth Guduguntla",
+   "Arman Rafati"
+  ],
+  "fts_total": 4,
+  "entity_hits": [
+   {
+    "display_name": "Glimmer Body Art, LLC  (CIK 0001569043)",
+    "id": "0001569043-13-000001:primary_doc.xml",
+    "file_date": "2013-02-11"
+   },
+   {
+    "display_name": "GLIMMER MENTAL HEALTH, INC.  (CIK 0002005236)",
+    "id": "0002005236-24-000001:primary_doc.xml",
+    "file_date": "2024-01-12"
+   },
+   {
+    "display_name": "Glimmer Wish LLC  (CIK 0002140620)",
+    "id": "0002140620-26-000001:primary_doc.xml",
+    "file_date": "2026-06-22"
+   },
+   {
+    "display_name": "Glimmer Body Art, LLC  (CIK 0001569043)",
+    "id": "0001569043-13-000002:primary_doc.xml",
+    "file_date": "2013-02-11"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": false,
+  "officers": [
+   {
+    "filing": "0001569043-13-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Salustiano Samaco",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1569043/000156904313000001/primary_doc.xml"
+     },
+     {
+      "name": "Ana See",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1569043/000156904313000001/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0002005236-24-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Kestenbaum Menashe",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2005236/000200523624000001/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0002140620-26-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Byron Myers",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/2140620/000214062026000001/primary_doc.xml"
+     }
+    ]
+   },
+   {
+    "filing": "0001569043-13-000002:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Salustiano Samaco",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1569043/000156904313000002/primary_doc.xml"
+     },
+     {
+      "name": "Ana See",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1569043/000156904313000002/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "NetworkOcean",
+  "slug": "networkocean",
+  "batch": "Summer 2024",
+  "founders": [
+   "Sam Mendel",
+   "Eric Kim"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Carousel Technologies",
+  "slug": "carousel-technologies",
+  "batch": "Winter 2024",
+  "founders": [
+   "Daniel Wolf",
+   "Jude Rizzo"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Parse",
+  "slug": "parse-bot",
+  "batch": "Fall 2025",
+  "founders": [
+   "Alex Forman"
+  ],
+  "fts_total": 1,
+  "entity_hits": [
+   {
+    "display_name": "Parse, Inc.  (CIK 0001533821)",
+    "id": "0001533821-11-000001:primary_doc.xml",
+    "file_date": "2011-11-09"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": false,
+  "officers": [
+   {
+    "filing": "0001533821-11-000001:primary_doc.xml",
+    "persons": [
+     {
+      "name": "Tikhon Bernstam",
+      "roles": [
+       "Executive Officer",
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1533821/000153382111000001/primary_doc.xml"
+     },
+     {
+      "name": "James Yu",
+      "roles": [
+       "Executive Officer"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1533821/000153382111000001/primary_doc.xml"
+     },
+     {
+      "name": "Ilya Sukhar",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1533821/000153382111000001/primary_doc.xml"
+     },
+     {
+      "name": "John Connors",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1533821/000153382111000001/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Cekura",
+  "slug": "cekura-ai",
+  "batch": "Fall 2024",
+  "founders": [
+   "Tarush Agarwal",
+   "Shashij Gupta",
+   "Sidhant Kabra"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Operand",
+  "slug": "operand",
+  "batch": "Winter 2025",
+  "founders": [
+   "Ram Gorthi",
+   "Akhil Iyengar",
+   "Arjun Sahney"
+  ],
+  "fts_total": 10,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Nox Metals",
+  "slug": "nox-metals",
+  "batch": "Summer 2025",
+  "founders": [
+   "Zane Hengsperger"
+  ],
+  "fts_total": 2,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "Kestrel AI",
+  "slug": "kestrel-ai",
+  "batch": "Fall 2025",
+  "founders": [
+   "Raman Varma"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "AthenaHQ",
+  "slug": "athenahq",
+  "batch": "Winter 2025",
+  "founders": [
+   "Andrew Yan",
+   "Alan Yao"
+  ],
+  "fts_total": 0,
+  "entity_hits": [],
+  "form_d_found": false,
+  "officer_match": false,
+  "officers": [],
+  "matched_officers": [],
+  "evidence_urls": []
+ },
+ {
+  "company": "SchemeFlow",
+  "slug": "schemeflow",
+  "batch": "Summer 2024",
+  "founders": [
+   "Andrew Browning",
+   "Jonny Browning",
+   "James Griffith"
+  ],
+  "fts_total": 1,
+  "entity_hits": [
+   {
+    "display_name": "SCHEMEFLOW LTD  (CIK 0001997814)",
+    "id": "0001997814-23-000002:primary_doc.xml",
+    "file_date": "2023-11-20"
+   }
+  ],
+  "form_d_found": true,
+  "officer_match": true,
+  "officers": [
+   {
+    "filing": "0001997814-23-000002:primary_doc.xml",
+    "persons": [
+     {
+      "name": "ANDREW BROWNING",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1997814/000199781423000002/primary_doc.xml"
+     },
+     {
+      "name": "JONATHAN BROWNING",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1997814/000199781423000002/primary_doc.xml"
+     },
+     {
+      "name": "JAMES GRIFFITH",
+      "roles": [
+       "Director"
+      ],
+      "url": "https://www.sec.gov/Archives/edgar/data/1997814/000199781423000002/primary_doc.xml"
+     }
+    ]
+   }
+  ],
+  "matched_officers": [
+   {
+    "founder": "Andrew Browning",
+    "officer": "ANDREW BROWNING",
+    "roles": [
+     "Director"
+    ]
+   },
+   {
+    "founder": "James Griffith",
+    "officer": "JAMES GRIFFITH",
+    "roles": [
+     "Director"
+    ]
+   }
+  ],
+  "evidence_urls": [
+   "https://www.sec.gov/Archives/edgar/data/1997814/000199781423000002/primary_doc.xml",
+   "https://www.sec.gov/Archives/edgar/data/1997814/000199781423000002/primary_doc.xml"
+  ]
+ }
+]

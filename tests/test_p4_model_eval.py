@@ -9,6 +9,7 @@ import pytest
 
 from vc_brain.eval.report import (
     _lead_time,
+    _matched_group_rank_metrics,
     case_control_correct,
     shuffle_labels_within_month,
 )
@@ -61,6 +62,34 @@ def test_case_control_prior_odds_correction_is_exact() -> None:
         np.array([0.5]), sample_prevalence=0.5, population_prevalence=0.01
     )
     assert corrected.tolist() == [0.01]
+
+
+def test_matched_group_rank_uses_peak_scores_and_requires_three_members() -> None:
+    scored = pl.DataFrame(
+        {
+            "match_group_id": ["g1"] * 6 + ["small"] * 2,
+            "gh_login": ["founder", "founder", "c1", "c1", "c2", "c3", "p2", "n2"],
+            "person_type": [
+                "positive",
+                "positive",
+                "control",
+                "control",
+                "control",
+                "control",
+                "positive",
+                "control",
+            ],
+            "score": [0.2, 0.9, 0.1, 0.8, 0.4, 0.3, 0.9, 0.1],
+        }
+    )
+
+    metrics = _matched_group_rank_metrics(scored)
+
+    assert metrics["groups"] == 1
+    assert metrics["rank_1_probability"] == 1.0
+    assert metrics["chance_rank_1_probability"] == 0.25
+    assert metrics["top_half_probability"] == 1.0
+    assert metrics["mean_normalized_rank"] == 0.0
 
 
 def test_lead_time_requires_same_month_control_thresholds() -> None:
@@ -126,14 +155,29 @@ def test_fixture_cli_features_train_eval_produces_complete_report(
         "levels_only",
         "levels_plus_dynamics",
         "levels_plus_dynamics_plus_traction",
+        "all_plus_ownership_collab",
+        "all_minus_tenure",
     }
+    assert report["matched_group_rank"]["groups"] == 4
+    assert len(report["tenure_stratified_within_month"]["quintiles"]) == 5
     assert report["feature_importance_review_required"] is True
+    assert set(report["feature_capital_families"]) == {
+        "cognitive",
+        "human",
+        "contextual",
+        "financial",
+    }
+    assert report["feature_capital_families"]["financial"] == []
+    assert set().union(*report["feature_capital_families"].values()) == set(
+        report["feature_display_names"]
+    )
     assert len(report["top_feature_importances"]) <= 20
     assert (data_dir / "eval" / "report.md").exists()
     assert all(Path(details["html"]).exists() for details in report["figures"].values())
 
     trajectories = pl.read_parquet(data_dir / "scores" / "trajectories.parquet")
     candidates = pl.read_parquet(data_dir / "scores" / "candidates.parquet")
+    attributions = pl.read_parquet(data_dir / "scores" / "attributions.parquet")
     assert trajectories.columns == ["gh_login", "month", "score"]
     assert trajectories.get_column("gh_login").n_unique() == 24
     assert candidates.columns == [
@@ -147,6 +191,16 @@ def test_fixture_cli_features_train_eval_produces_complete_report(
         "first_detection_month",
         "status",
     ]
+    assert attributions.columns == [
+        "login",
+        "crossing_month",
+        "feature",
+        "delta_contrib",
+    ]
+    assert (
+        attributions.group_by("login").len().get_column("len").to_list()
+        == [3] * attributions.get_column("login").n_unique()
+    )
 
     bundle = load_training_bundle(data_dir / "models")
     panel = temporal_split(pl.read_parquet(data_dir / "features" / "panel.parquet"))

@@ -4,6 +4,7 @@ from vc_brain.ingest.sql import (
     monthly_agg_sql,
     negative_candidates_sql,
     owned_repo_agg_sql,
+    ownership_collab_sql,
     repo_creations_sql,
 )
 
@@ -31,6 +32,19 @@ def test_owned_repo_query_has_verified_traction_received_contract() -> None:
     assert "e.created_at < toDateTime(a.t_cutoff)" in sql
 
 
+def test_ownership_and_collaboration_queries_are_batched_and_leakage_safe() -> None:
+    sql = ownership_collab_sql(ACTORS)
+
+    assert "AS own_repo_events" in sql
+    assert "AS other_repo_events" in sql
+    assert "uniqExactIf(" in sql
+    assert "lower(e.actor_login) != lower(e.target_actor)" in sql
+    assert "(?i)(bot|\\[bot\\]|-ci|automation)" in sql
+    assert "arrayJoin(arrayDistinct(arrayFilter(" in sql
+    assert "addMonths(toDateTime(a.t_cutoff), -48)" in sql
+    assert "e.created_at < toDateTime(a.t_cutoff)" in sql
+
+
 def test_candidate_query_uses_hash_sample_bot_filter_and_all_label_exclusion() -> None:
     sql = negative_candidates_sql(
         [date(2024, 1, 5)],
@@ -41,5 +55,5 @@ def test_candidate_query_uses_hash_sample_bot_filter_and_all_label_exclusion() -
     assert "cityHash64(e.actor_login) % 400 = 2" in sql
     assert "total_events >= 20" in sql
     assert "(?i)(bot|\\[bot\\]|-ci|automation)" in sql
-    assert "e.actor_login NOT IN ('founder', 'low-confidence-founder')" in sql
+    assert "lower(e.actor_login) NOT IN ('founder', 'low-confidence-founder')" in sql
     assert "cityHash64(e.actor_login) AS actor_hash" in sql

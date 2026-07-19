@@ -43,6 +43,14 @@ class ResultSizeLimitError(RuntimeError):
     """A single-actor result cannot be reduced by batch splitting."""
 
 
+class QueryTimeoutError(RuntimeError):
+    """The playground rejected the query for exceeding its execution budget."""
+
+
+class QueryCapacityError(RuntimeError):
+    """The playground could not execute a batch within its memory budget."""
+
+
 def _sql_with_format(sql: str) -> str:
     normalized = sql.strip().rstrip(";")
     if normalized.upper().endswith("FORMAT TSVWITHNAMES"):
@@ -60,6 +68,9 @@ def _parse_tsv(content: bytes) -> pl.DataFrame:
         try_parse_dates=True,
         infer_schema_length=10_000,
         truncate_ragged_lines=False,
+        # cityHash64 emits full-range UInt64; i64 inference overflows on values
+        # above 2^63 (hit live 2026-07-19).
+        schema_overrides={"actor_hash": pl.UInt64},
     )
 
 
@@ -73,7 +84,9 @@ class ClickHouseClient:
         client: httpx.Client | None = None,
         timeout_seconds: float = 180.0,
         minimum_interval_seconds: float = 0.25,
-        max_attempts: int = 5,
+        # Generous: quota-exhaustion retries sleep 600s each, and the shared
+        # playground can stay contested for more than an hour.
+        max_attempts: int = 12,
         result_row_guard: int = RESULT_ROW_GUARD,
     ) -> None:
         if timeout_seconds <= 0 or minimum_interval_seconds < 0 or max_attempts < 1:
@@ -117,15 +130,34 @@ class ClickHouseClient:
                 content=_sql_with_format(sql).encode("utf-8"),
                 headers={"Content-Type": "text/plain; charset=utf-8"},
             )
-        if response.status_code == 429 or response.status_code >= 500:
-            raise RetryableClickHouseError(
-                f"ClickHouse playground returned HTTP {response.status_code}"
+        body_head = response.content[:500].decode("utf-8", "replace")
+        if response.status_code >= 500 and "memory limit exceeded" in body_head.lower():
+            raise QueryCapacityError(
+                "ClickHouse playground query exceeded its memory budget"
             )
+        if response.status_code == 429 or response.status_code >= 500:
+            if "QUOTA_EXCEEDED" in body_head:
+                # Shared hourly read quota; hammering it is pointless. Sleep out
+                # most of the window, then let tenacity retry.
+                LOGGER.warning(
+                    "ClickHouse playground quota exhausted; sleeping 600s before retry"
+                )
+                time.sleep(600)
+            raise RetryableClickHouseError(
+                f"ClickHouse playground returned HTTP {response.status_code}: "
+                f"{body_head[:120]}"
+            )
+        if response.status_code == 408:
+            # Playground execution timeout: the query is too big for its 60s
+            # budget. Surface as an oversize signal so the batch bisects.
+            raise QueryTimeoutError("ClickHouse playground query timed out (408)")
         try:
             response.raise_for_status()
         except httpx.HTTPStatusError as error:
+            body_head = response.content[:500].decode("utf-8", "replace")
             raise ClickHouseQueryError(
-                f"ClickHouse query rejected with HTTP {response.status_code}"
+                f"ClickHouse query rejected with HTTP {response.status_code}: "
+                f"{body_head}"
             ) from error
         return response.content
 
@@ -156,7 +188,23 @@ class ClickHouseClient:
         """Query actors together and bisect any result reaching the row guard."""
         if not actors:
             return pl.DataFrame()
-        frame = self.query(sql_builder(actors))
+        try:
+            frame = self.query(sql_builder(actors))
+        except (QueryTimeoutError, QueryCapacityError):
+            if len(actors) == 1:
+                raise
+            LOGGER.warning(
+                "Bisecting actor batch after playground capacity rejection actors=%d",
+                len(actors),
+            )
+            middle = len(actors) // 2
+            return pl.concat(
+                [
+                    self.query_actor_batch(actors[:middle], sql_builder),
+                    self.query_actor_batch(actors[middle:], sql_builder),
+                ],
+                how="diagonal_relaxed",
+            )
         if frame.height < self.result_row_guard:
             return frame
         if len(actors) == 1:
@@ -190,11 +238,7 @@ class ClickHouseClient:
             self.query_actor_batch(actors[start : start + batch_size], sql_builder)
             for start in range(0, len(actors), batch_size)
         ]
-        return (
-            pl.concat(frames, how="diagonal_relaxed")
-            if frames
-            else pl.DataFrame()
-        )
+        return pl.concat(frames, how="diagonal_relaxed") if frames else pl.DataFrame()
 
 
 def query(sql: str) -> pl.DataFrame:

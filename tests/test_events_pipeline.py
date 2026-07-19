@@ -3,7 +3,11 @@ from pathlib import Path
 
 import polars as pl
 
-from vc_brain.ingest.pipeline import extract_monthly_agg, match_negatives
+from vc_brain.ingest.pipeline import (
+    extract_monthly_agg,
+    extract_ownership_collab,
+    match_negatives,
+)
 
 
 class StubClickHouse:
@@ -19,6 +23,25 @@ class StubClickHouse:
                 "is_weekend": [False],
                 "event_count": [3],
                 "t_cutoff": [date(2024, 1, 1)],
+            }
+        )
+
+
+class StubOwnershipClickHouse:
+    def query_actor_batches(self, actors, builder, *, batch_size=300):  # noqa: ANN001
+        assert len(actors) == 2
+        assert batch_size == 4_000
+        sql = builder(actors)
+        assert "own_repo_events" in sql
+        assert "distinct_collaborators" in sql
+        return pl.DataFrame(
+            {
+                "actor_login": ["alice", "bob"],
+                "month": [date(2023, 12, 1), date(2023, 12, 1)],
+                "own_repo_events": [7, 0],
+                "other_repo_events": [3, 5],
+                "distinct_collaborators": [2, 0],
+                "t_cutoff": [date(2024, 1, 1), date(2024, 1, 1)],
             }
         )
 
@@ -54,6 +77,33 @@ def test_monthly_extraction_preserves_zero_activity_actor_and_asserts_leakage(
         }
     ]
     assert pl.read_parquet(tmp_path / "monthly.parquet").equals(frame)
+
+
+def test_ownership_and_collaboration_are_split_from_one_query_family() -> None:
+    cohort = pl.DataFrame(
+        {
+            "actor_login": ["alice", "bob"],
+            "t_cutoff": [date(2024, 1, 1), date(2024, 1, 1)],
+            "cohort": ["positives", "negatives"],
+        }
+    )
+
+    ownership, collaborators = extract_ownership_collab(
+        StubOwnershipClickHouse(),  # type: ignore[arg-type]
+        cohort,
+    )
+
+    assert ownership.select("actor_login", "is_own_repo", "event_count").to_dicts() == [
+        {"actor_login": "alice", "is_own_repo": False, "event_count": 3},
+        {"actor_login": "alice", "is_own_repo": True, "event_count": 7},
+        {"actor_login": "bob", "is_own_repo": False, "event_count": 5},
+    ]
+    assert collaborators.select("owner_login", "distinct_collaborators").to_dicts() == [
+        {"owner_login": "alice", "distinct_collaborators": 2}
+    ]
+    assert ownership.filter(pl.col("actor_login") == "alice").get_column(
+        "cohort"
+    ).unique().to_list() == ["positives"]
 
 
 def test_deterministic_negative_matching_respects_bands_year_and_no_reuse() -> None:

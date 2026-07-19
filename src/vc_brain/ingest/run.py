@@ -8,6 +8,7 @@ from vc_brain.ingest.clickhouse import ClickHouseClient
 from vc_brain.ingest.pipeline import (
     run_baselines,
     run_negatives,
+    run_ownership_collab,
     run_positives,
     run_repos,
 )
@@ -18,7 +19,7 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument(
         "--stage",
         required=True,
-        choices=("baselines", "positives", "negatives", "repos"),
+        choices=("baselines", "positives", "negatives", "repos", "ownership_collab"),
     )
     result.add_argument(
         "--actor-limit",
@@ -43,8 +44,10 @@ def main(argv: Sequence[str] | None = None) -> None:
             run_positives(client, actor_limit=args.actor_limit)
         elif args.stage == "negatives":
             run_negatives(client)
-        else:
+        elif args.stage == "repos":
             run_repos(client)
+        else:
+            run_ownership_collab(client)
 
 
 if __name__ == "__main__":

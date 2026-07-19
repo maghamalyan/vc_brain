@@ -1,0 +1,235 @@
+{
+  "company": "Alkera AI",
+  "founder_logins": [
+    "28andrew"
+  ],
+  "generated_at": "2025-06-01T00:00:00Z",
+  "sections": {
+    "company_snapshot": {
+      "text": "Alkera AI builds reliable and safe data engineering and data science agents. The company was accepted to YC Summer 2026 and is founded by Andrew Tran, who holds a CS B.S/M.S from Yale and previously interned at Ramp and HRT working with data teams. The company was first detected in March 2025 with a high detector score (99.9th percentile), indicating strong early signals. No customer, revenue, or team size information is disclosed.",
+      "claim_ids": [
+        "c1",
+        "c2",
+        "c3",
+        "c4",
+        "c5"
+      ]
+    },
+    "investment_hypotheses": [
+      {
+        "text": "YC validation: Acceptance to YC Summer 2026 provides institutional validation and access to network, capital, and mentorship that historically correlates with improved outcomes for technical founders.",
+        "claim_ids": [
+          "c2"
+        ]
+      },
+      {
+        "text": "Founder domain fit: Andrew's direct experience working with data teams at Ramp and HRT, combined with ML research background in biology reasoning models, suggests authentic problem understanding in the data tooling space.",
+        "claim_ids": [
+          "c3",
+          "c6"
+        ]
+      },
+      {
+        "text": "Early signal strength: The 99.9th percentile detector score indicates exceptional early momentum or technical activity, though the specific drivers are not disclosed.",
+        "claim_ids": [
+          "c4"
+        ]
+      }
+    ],
+    "swot": {
+      "strengths": [
+        {
+          "text": "YC backing provides credibility, network access, and structured support for go-to-market.",
+          "claim_ids": [
+            "c2"
+          ]
+        },
+        {
+          "text": "Founder has direct exposure to data team pain points through internships at high-velocity companies (Ramp, HRT).",
+          "claim_ids": [
+            "c3"
+          ]
+        }
+      ],
+      "weaknesses": [
+        {
+          "text": "No disclosed traction metrics (customers, revenue, usage) despite being detected nine months ago (March 2025).",
+          "claim_ids": [
+            "c5"
+          ]
+        },
+        {
+          "text": "Single founder with no disclosed co-founders or team, creating execution and coverage risk.",
+          "claim_ids": [
+            "c3"
+          ]
+        },
+        {
+          "text": "Limited public technical artifacts; recent repos (GraphCPA, KeyboardVideoToText) do not clearly relate to the stated product focus on data agents.",
+          "claim_ids": [
+            "c7",
+            "c8"
+          ]
+        }
+      ],
+      "opportunities": [
+        {
+          "text": "Data engineering and data science tooling is a large, growing market with enterprises increasingly investing in AI/ML infrastructure.",
+          "claim_ids": [
+            "c1"
+          ]
+        },
+        {
+          "text": "Agent-based automation for data workflows is an emerging category with limited mature solutions, offering first-mover potential.",
+          "claim_ids": [
+            "c1"
+          ]
+        }
+      ],
+      "risks": [
+        {
+          "text": "Highly competitive space with well-funded incumbents (Databricks, Snowflake) and numerous agent/AI startups targeting similar workflows.",
+          "claim_ids": [
+            "c1"
+          ]
+        },
+        {
+          "text": "Reliability and safety in data agents is technically challenging; failure modes could erode trust and adoption.",
+          "claim_ids": [
+            "c1"
+          ]
+        },
+        {
+          "text": "No evidence of customer validation or product-market fit; company may still be in exploratory phase.",
+          "claim_ids": [
+            "c5"
+          ]
+        }
+      ]
+    },
+    "problem_product": {
+      "text": "Alkera AI targets reliability and safety challenges in data engineering and data science agents. The specific problem being solved, product architecture, and differentiation are not disclosed. No information is available on whether the product is live, in beta, or in development.",
+      "claim_ids": [
+        "c1",
+        "c5"
+      ]
+    },
+    "traction_kpis": {
+      "text": "No traction metrics disclosed. No information on customers, revenue, usage, partnerships, or pilot programs. The company achieved a 99.9th percentile detector score as of June 2025, but the underlying activity driving this score is not specified.",
+      "claim_ids": [
+        "c4",
+        "c5"
+      ]
+    }
+  },
+  "claims": {
+    "c1": {
+      "text": "Alkera AI's one-liner is 'Reliable and safe data engineering and data science agents'",
+      "evidence_refs": [
+        "yc:alkera-ai"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c2": {
+      "text": "Alkera AI was accepted to YC Summer 2026",
+      "evidence_refs": [
+        "yc:alkera-ai"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c3": {
+      "text": "Andrew Tran is the founder, previously a SWE intern at Ramp and HRT working closely with data teams, holds CS B.S/M.S from Yale",
+      "evidence_refs": [
+        "detector:28andrew"
+      ],
+      "confidence": 0.9,
+      "verification_status": "single_source",
+      "contradictions": []
+    },
+    "c4": {
+      "text": "Outbound detector score of 0.134 at 99.9th percentile, first detected March 2025",
+      "evidence_refs": [
+        "detector:28andrew"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c5": {
+      "text": "No traction, customer, revenue, or product details are disclosed in available evidence",
+      "evidence_refs": [
+        "yc:alkera-ai",
+        "detector:28andrew"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c6": {
+      "text": "Andrew Tran conducted ML research at Yale's Gerstein Lab developing biology reasoning models",
+      "evidence_refs": [
+        "detector:28andrew"
+      ],
+      "confidence": 0.9,
+      "verification_status": "single_source",
+      "contradictions": []
+    },
+    "c7": {
+      "text": "Created public repo GraphCPA in December 2023",
+      "evidence_refs": [
+        "repo:28andrew/GraphCPA:2023-12-13 04:51:46"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "c8": {
+      "text": "Created public repo KeyboardVideoToText in May 2025",
+      "evidence_refs": [
+        "repo:28andrew/KeyboardVideoToText:2025-05-02 04:31:40"
+      ],
+      "confidence": 1.0,
+      "verification_status": "verified",
+      "contradictions": []
+    }
+  },
+  "gaps": [
+    "No product details, architecture, or differentiation disclosed",
+    "No customer names, case studies, or testimonials",
+    "No revenue, ARR, or pricing information",
+    "No team composition beyond single founder",
+    "No funding amount or investor details beyond YC acceptance",
+    "No technical benchmarks or performance metrics for 'reliability and safety'",
+    "No go-to-market strategy or target customer segment specified",
+    "Relationship between recent GitHub repos and stated product focus unclear"
+  ],
+  "three_axis": {
+    "founder": {
+      "score": 6.5,
+      "trend": "stable",
+      "claim_ids": [
+        "c3",
+        "c6"
+      ]
+    },
+    "market": {
+      "score": 7.0,
+      "trend": "improving",
+      "claim_ids": [
+        "c1"
+      ]
+    },
+    "idea_vs_market": {
+      "score": 4.0,
+      "trend": "stable",
+      "claim_ids": [
+        "c1",
+        "c5"
+      ]
+    }
+  }
+}

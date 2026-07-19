@@ -1,0 +1,1054 @@
+[
+ {
+  "company": "CloudCruise",
+  "batch": "Winter 2024",
+  "founders": [
+   "Adrian Ziegler",
+   "Felix Martin Eckert"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Adrian Ziegler": 0,
+   "Felix Martin Eckert": 0
+  },
+  "founder_hits": {
+   "Adrian Ziegler": [],
+   "Felix Martin Eckert": []
+  }
+ },
+ {
+  "company": "Anara",
+  "batch": "Summer 2024",
+  "founders": [
+   "Naveed Janmohamed"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Naveed Janmohamed": 0
+  },
+  "founder_hits": {
+   "Naveed Janmohamed": []
+  }
+ },
+ {
+  "company": "Leaping",
+  "batch": "Winter 2024",
+  "founders": [
+   "Adrien Philardeau"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Adrien Philardeau": 0
+  },
+  "founder_hits": {
+   "Adrien Philardeau": []
+  }
+ },
+ {
+  "company": "Instinct",
+  "batch": "Winter 2025",
+  "founders": [
+   "Alex Pinel Neparidze",
+   "Joaquim Dickson",
+   "Ashwin Iyer"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Alex Pinel Neparidze": 0,
+   "Joaquim Dickson": 0,
+   "Ashwin Iyer": 0
+  },
+  "founder_hits": {
+   "Alex Pinel Neparidze": [],
+   "Joaquim Dickson": [],
+   "Ashwin Iyer": []
+  }
+ },
+ {
+  "company": "Handled",
+  "batch": "Summer 2024",
+  "founders": [
+   "Audrey Djiya"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Audrey Djiya": 0
+  },
+  "founder_hits": {
+   "Audrey Djiya": []
+  }
+ },
+ {
+  "company": "Dartboard Energy",
+  "batch": "Winter 2025",
+  "founders": [
+   "Rohun Ati"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Rohun Ati": 0
+  },
+  "founder_hits": {
+   "Rohun Ati": []
+  }
+ },
+ {
+  "company": "Chestnut",
+  "batch": "Spring 2025",
+  "founders": [
+   "Spencer Brown"
+  ],
+  "any_name_hit": true,
+  "verified": [],
+  "n_hits": {
+   "Spencer Brown": 10
+  },
+  "founder_hits": {
+   "Spencer Brown": [
+    {
+     "id": "0001732790-18-000001:primary_doc.xml",
+     "entity": "Rockshire Energy I , LLC  (CIK 0001732790)",
+     "date": "2018-03-07"
+    },
+    {
+     "id": "0001376474-20-000129:primary_doc.xml",
+     "entity": "SBR Energy, LLC  (CIK 0001812699)",
+     "date": "2020-05-26"
+    },
+    {
+     "id": "0002023504-25-000003:primary_doc.xml",
+     "entity": "Distinct Technologies, Inc.  (CIK 0002023504)",
+     "date": "2025-09-11"
+    },
+    {
+     "id": "0002023504-24-000001:primary_doc.xml",
+     "entity": "Distinct Technologies, Inc.  (CIK 0002023504)",
+     "date": "2024-06-07"
+    },
+    {
+     "id": "0001559689-16-000007:primary_doc.xml",
+     "entity": "Brandlive Inc.  (CIK 0001559689)",
+     "date": "2016-04-15"
+    },
+    {
+     "id": "0001461373-14-000012:primary_doc.xml",
+     "entity": "Fresenius Vascular Care Culver City MSO, LLC  (CIK 0001605351)",
+     "date": "2014-04-11"
+    },
+    {
+     "id": "0001463205-21-000001:primary_doc.xml",
+     "entity": "Clyra Medical Technologies, Inc.  (CIK 0001777065)",
+     "date": "2021-02-08"
+    },
+    {
+     "id": "0002034760-24-000001:primary_doc.xml",
+     "entity": "Callback Technologies, Inc.  (CIK 0002034760)",
+     "date": "2024-08-22"
+    },
+    {
+     "id": "0001559689-18-000001:primary_doc.xml",
+     "entity": "Brandlive Inc.  (CIK 0001559689)",
+     "date": "2018-11-28"
+    },
+    {
+     "id": "0000919574-14-007140:primary_doc.xml",
+     "entity": "North Emerging Markets Fund Ltd  (CIK 0001594058)",
+     "date": "2014-12-23"
+    }
+   ]
+  }
+ },
+ {
+  "company": "TwentyTwo",
+  "batch": "Summer 2025",
+  "founders": [
+   "Evan Seeyave"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Evan Seeyave": 0
+  },
+  "founder_hits": {
+   "Evan Seeyave": []
+  }
+ },
+ {
+  "company": "Candor",
+  "batch": "Winter 2025",
+  "founders": [
+   "Marcus Zimmerman",
+   "Ethne Laude"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Marcus Zimmerman": 0,
+   "Ethne Laude": 0
+  },
+  "founder_hits": {
+   "Marcus Zimmerman": [],
+   "Ethne Laude": []
+  }
+ },
+ {
+  "company": "Zuni",
+  "batch": "Summer 2024",
+  "founders": [
+   "George Seabridge"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "George Seabridge": 0
+  },
+  "founder_hits": {
+   "George Seabridge": []
+  }
+ },
+ {
+  "company": "Random Labs",
+  "batch": "Summer 2024",
+  "founders": [
+   "Kiran (Random Labs)",
+   "Mihir Chintawar"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Kiran (Random Labs)": 0,
+   "Mihir Chintawar": 0
+  },
+  "founder_hits": {
+   "Kiran (Random Labs)": [],
+   "Mihir Chintawar": []
+  }
+ },
+ {
+  "company": "Archil",
+  "batch": "Fall 2024",
+  "founders": [
+   "Hunter Leath"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Hunter Leath": 0
+  },
+  "founder_hits": {
+   "Hunter Leath": []
+  }
+ },
+ {
+  "company": "Apten",
+  "batch": "Summer 2024",
+  "founders": [
+   "Daniel Ho",
+   "Roshan Kumaraswamy"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Daniel Ho": 0,
+   "Roshan Kumaraswamy": 0
+  },
+  "founder_hits": {
+   "Daniel Ho": [],
+   "Roshan Kumaraswamy": []
+  }
+ },
+ {
+  "company": "Cartpole",
+  "batch": "Spring 2025",
+  "founders": [
+   "Mateo Perez"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Mateo Perez": 0
+  },
+  "founder_hits": {
+   "Mateo Perez": []
+  }
+ },
+ {
+  "company": "Granza Bio",
+  "batch": "Winter 2024",
+  "founders": [
+   "Ashwin Nandakumar",
+   "Ashwin Jainarayanan"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Ashwin Nandakumar": 0,
+   "Ashwin Jainarayanan": 0
+  },
+  "founder_hits": {
+   "Ashwin Nandakumar": [],
+   "Ashwin Jainarayanan": []
+  }
+ },
+ {
+  "company": "HeroUI",
+  "batch": "Summer 2024",
+  "founders": [
+   "Junior Garcia"
+  ],
+  "any_name_hit": true,
+  "verified": [],
+  "n_hits": {
+   "Junior Garcia": 1
+  },
+  "founder_hits": {
+   "Junior Garcia": [
+    {
+     "id": "0001941267-22-000001:primary_doc.xml",
+     "entity": "udocz, Inc.  (CIK 0001941267)",
+     "date": "2022-08-09"
+    }
+   ]
+  }
+ },
+ {
+  "company": "Swerve",
+  "batch": "Winter 2025",
+  "founders": [
+   "Soroush Saryazdi",
+   "Jason Zhou"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Soroush Saryazdi": 0,
+   "Jason Zhou": 0
+  },
+  "founder_hits": {
+   "Soroush Saryazdi": [],
+   "Jason Zhou": []
+  }
+ },
+ {
+  "company": "Anglera",
+  "batch": "Summer 2024",
+  "founders": [
+   "Amay Aggarwal",
+   "Ray Iyer"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Amay Aggarwal": 0,
+   "Ray Iyer": 0
+  },
+  "founder_hits": {
+   "Amay Aggarwal": [],
+   "Ray Iyer": []
+  }
+ },
+ {
+  "company": "Vesence",
+  "batch": "Spring 2025",
+  "founders": [
+   "Henrik Hansson",
+   "Ludvig Swanstrom"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Henrik Hansson": 0,
+   "Ludvig Swanstrom": 0
+  },
+  "founder_hits": {
+   "Henrik Hansson": [],
+   "Ludvig Swanstrom": []
+  }
+ },
+ {
+  "company": "Fractal Labs",
+  "batch": "Winter 2024",
+  "founders": [
+   "Alan Du",
+   "Jason Cai",
+   "Derrick Xin"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Alan Du": 0,
+   "Jason Cai": 0,
+   "Derrick Xin": 0
+  },
+  "founder_hits": {
+   "Alan Du": [],
+   "Jason Cai": [],
+   "Derrick Xin": []
+  }
+ },
+ {
+  "company": "Quotain",
+  "batch": "Summer 2025",
+  "founders": [
+   "Alexander Talamonti",
+   "Jason He"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Alexander Talamonti": 0,
+   "Jason He": 0
+  },
+  "founder_hits": {
+   "Alexander Talamonti": [],
+   "Jason He": []
+  }
+ },
+ {
+  "company": "Guardian RF",
+  "batch": "Summer 2024",
+  "founders": [
+   "Lucas Raskin",
+   "John Andrzejewski",
+   "Eli Kerstein"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Lucas Raskin": 0,
+   "John Andrzejewski": 0,
+   "Eli Kerstein": 0
+  },
+  "founder_hits": {
+   "Lucas Raskin": [],
+   "John Andrzejewski": [],
+   "Eli Kerstein": []
+  }
+ },
+ {
+  "company": "RowFlow",
+  "batch": "Summer 2025",
+  "founders": [
+   "Alec Olesky",
+   "Jack Bubes"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Alec Olesky": 0,
+   "Jack Bubes": 0
+  },
+  "founder_hits": {
+   "Alec Olesky": [],
+   "Jack Bubes": []
+  }
+ },
+ {
+  "company": "ZeroPath",
+  "batch": "Summer 2024",
+  "founders": [
+   "Dean Valentine",
+   "Raphael Karger",
+   "Etienne Lunetta"
+  ],
+  "any_name_hit": true,
+  "verified": [
+   {
+    "founder": "Dean Valentine",
+    "via": "entity~company",
+    "id": "0002123552-26-000001:primary_doc.xml",
+    "entity": "ZeroPath Corp.  (CIK 0002123552)",
+    "date": "2026-03-23"
+   },
+   {
+    "founder": "Raphael Karger",
+    "via": "entity~company",
+    "id": "0002123552-26-000001:primary_doc.xml",
+    "entity": "ZeroPath Corp.  (CIK 0002123552)",
+    "date": "2026-03-23"
+   },
+   {
+    "founder": "Etienne Lunetta",
+    "via": "entity~company",
+    "id": "0002123552-26-000001:primary_doc.xml",
+    "entity": "ZeroPath Corp.  (CIK 0002123552)",
+    "date": "2026-03-23"
+   },
+   {
+    "founder": "Dean Valentine, Etienne Lunetta",
+    "via": ">=2 cofounders same filing",
+    "id": "0001836352-20-000001:primary_doc.xml",
+    "entity": "Leonard Cyber Corp  (CIK 0001836352)",
+    "date": null
+   },
+   {
+    "founder": "Dean Valentine, Etienne Lunetta",
+    "via": ">=2 cofounders same filing",
+    "id": "0001836352-21-000001:primary_doc.xml",
+    "entity": "Leonard Cyber Corp  (CIK 0001836352)",
+    "date": null
+   },
+   {
+    "founder": "Dean Valentine, Etienne Lunetta, Raphael Karger",
+    "via": ">=2 cofounders same filing",
+    "id": "0002123552-26-000001:primary_doc.xml",
+    "entity": "ZeroPath Corp.  (CIK 0002123552)",
+    "date": null
+   }
+  ],
+  "n_hits": {
+   "Dean Valentine": 4,
+   "Raphael Karger": 1,
+   "Etienne Lunetta": 3
+  },
+  "founder_hits": {
+   "Dean Valentine": [
+    {
+     "id": "0001144204-14-018033:primary_doc.xml",
+     "entity": "Bowmont Art Partners Global, LLC  (CIK 0001603651)",
+     "date": "2014-03-27"
+    },
+    {
+     "id": "0001836352-20-000001:primary_doc.xml",
+     "entity": "Leonard Cyber Corp  (CIK 0001836352)",
+     "date": "2020-12-15"
+    },
+    {
+     "id": "0001836352-21-000001:primary_doc.xml",
+     "entity": "Leonard Cyber Corp  (CIK 0001836352)",
+     "date": "2021-09-01"
+    },
+    {
+     "id": "0002123552-26-000001:primary_doc.xml",
+     "entity": "ZeroPath Corp.  (CIK 0002123552)",
+     "date": "2026-03-23"
+    }
+   ],
+   "Raphael Karger": [
+    {
+     "id": "0002123552-26-000001:primary_doc.xml",
+     "entity": "ZeroPath Corp.  (CIK 0002123552)",
+     "date": "2026-03-23"
+    }
+   ],
+   "Etienne Lunetta": [
+    {
+     "id": "0001836352-20-000001:primary_doc.xml",
+     "entity": "Leonard Cyber Corp  (CIK 0001836352)",
+     "date": "2020-12-15"
+    },
+    {
+     "id": "0001836352-21-000001:primary_doc.xml",
+     "entity": "Leonard Cyber Corp  (CIK 0001836352)",
+     "date": "2021-09-01"
+    },
+    {
+     "id": "0002123552-26-000001:primary_doc.xml",
+     "entity": "ZeroPath Corp.  (CIK 0002123552)",
+     "date": "2026-03-23"
+    }
+   ]
+  }
+ },
+ {
+  "company": "Lexi",
+  "batch": "Fall 2025",
+  "founders": [
+   "Harshit Garg",
+   "Kiran Mohan"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Harshit Garg": 0,
+   "Kiran Mohan": 0
+  },
+  "founder_hits": {
+   "Harshit Garg": [],
+   "Kiran Mohan": []
+  }
+ },
+ {
+  "company": "Adapted",
+  "batch": "Winter 2024",
+  "founders": [
+   "Albert Jo"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Albert Jo": 0
+  },
+  "founder_hits": {
+   "Albert Jo": []
+  }
+ },
+ {
+  "company": "Draft The Record",
+  "batch": "Summer 2024",
+  "founders": [
+   "Adnan Sherif",
+   "Yash Ramchandani"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Adnan Sherif": 0,
+   "Yash Ramchandani": 0
+  },
+  "founder_hits": {
+   "Adnan Sherif": [],
+   "Yash Ramchandani": []
+  }
+ },
+ {
+  "company": "Rastro",
+  "batch": "Summer 2024",
+  "founders": [
+   "Baptiste Cumin",
+   "Augustin Baudoin",
+   "Papa Sougou Wele"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Baptiste Cumin": 0,
+   "Augustin Baudoin": 0,
+   "Papa Sougou Wele": 0
+  },
+  "founder_hits": {
+   "Baptiste Cumin": [],
+   "Augustin Baudoin": [],
+   "Papa Sougou Wele": []
+  }
+ },
+ {
+  "company": "Nomi",
+  "batch": "Spring 2025",
+  "founders": [
+   "Swan Beaujard"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Swan Beaujard": 0
+  },
+  "founder_hits": {
+   "Swan Beaujard": []
+  }
+ },
+ {
+  "company": "Docket",
+  "batch": "Spring 2025",
+  "founders": [
+   "Nishant Hooda",
+   "Boris Skurikhin"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Nishant Hooda": 0,
+   "Boris Skurikhin": 0
+  },
+  "founder_hits": {
+   "Nishant Hooda": [],
+   "Boris Skurikhin": []
+  }
+ },
+ {
+  "company": "Glimmer",
+  "batch": "Winter 2024",
+  "founders": [
+   "Praneeth Guduguntla",
+   "Arman Rafati"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Praneeth Guduguntla": 0,
+   "Arman Rafati": 0
+  },
+  "founder_hits": {
+   "Praneeth Guduguntla": [],
+   "Arman Rafati": []
+  }
+ },
+ {
+  "company": "NetworkOcean",
+  "batch": "Summer 2024",
+  "founders": [
+   "Sam Mendel",
+   "Eric Kim"
+  ],
+  "any_name_hit": true,
+  "verified": [],
+  "n_hits": {
+   "Sam Mendel": 0,
+   "Eric Kim": 10
+  },
+  "founder_hits": {
+   "Sam Mendel": [],
+   "Eric Kim": [
+    {
+     "id": "0001079973-13-000156:primary_doc.xml",
+     "entity": "Exuma Cays Fund II LLC  (CIK 0001571327)",
+     "date": "2013-03-07"
+    },
+    {
+     "id": "0001686628-16-000001:primary_doc.xml",
+     "entity": "Goodwater Capital Merced, L.P.  (CIK 0001686628)",
+     "date": "2016-10-24"
+    },
+    {
+     "id": "0001819072-20-000001:primary_doc.xml",
+     "entity": "Goodwater Infinity I-F, L.P.  (CIK 0001819072)",
+     "date": "2020-09-14"
+    },
+    {
+     "id": "0001838447-20-000001:primary_doc.xml",
+     "entity": "Goodwater Seneca, L.P.  (CIK 0001838447)",
+     "date": "2020-12-31"
+    },
+    {
+     "id": "0001607518-14-000001:primary_doc.xml",
+     "entity": "Lumos Partners LLC  (CIK 0001607518)",
+     "date": "2014-05-08"
+    },
+    {
+     "id": "0001666836-16-000001:primary_doc.xml",
+     "entity": "Goodwater Capital II, L.P.  (CIK 0001666836)",
+     "date": "2016-02-24"
+    },
+    {
+     "id": "0001795763-19-000001:primary_doc.xml",
+     "entity": "Goodwater Infinity Affiliates I, L.P.  (CIK 0001795763)",
+     "date": "2019-12-17"
+    },
+    {
+     "id": "0001830616-23-000003:primary_doc.xml",
+     "entity": "Collective Financial Services Inc.  (CIK 0001830616)",
+     "date": "2023-07-14"
+    },
+    {
+     "id": "0001612406-15-000002:primary_doc.xml",
+     "entity": "Pager, Inc.  (CIK 0001612406)",
+     "date": "2015-07-22"
+    },
+    {
+     "id": "0001710153-18-000001:primary_doc.xml",
+     "entity": "NoHo Health, Inc.  (CIK 0001710153)",
+     "date": "2018-07-03"
+    }
+   ]
+  }
+ },
+ {
+  "company": "Carousel Technologies",
+  "batch": "Winter 2024",
+  "founders": [
+   "Daniel Wolf",
+   "Jude Rizzo"
+  ],
+  "any_name_hit": true,
+  "verified": [],
+  "n_hits": {
+   "Daniel Wolf": 10,
+   "Jude Rizzo": 0
+  },
+  "founder_hits": {
+   "Daniel Wolf": [
+    {
+     "id": "0001382741-13-000001:primary_doc.xml",
+     "entity": "Array Health Solutions Inc  (CIK 0001382741)",
+     "date": "2013-03-14"
+    },
+    {
+     "id": "0001534008-11-000001:primary_doc.xml",
+     "entity": "Deb Stores Holding LLC  (CIK 0001534008)",
+     "date": "2011-11-02"
+    },
+    {
+     "id": "0001382741-14-000001:primary_doc.xml",
+     "entity": "Array Health Solutions Inc  (CIK 0001382741)",
+     "date": "2014-06-30"
+    },
+    {
+     "id": "0002031954-24-000001:primary_doc.xml",
+     "entity": "Aduro Holding 2.0, LLC  (CIK 0002031954)",
+     "date": "2024-07-26"
+    },
+    {
+     "id": "0001382741-14-000003:primary_doc.xml",
+     "entity": "Array Health Solutions Inc  (CIK 0001382741)",
+     "date": "2014-09-22"
+    },
+    {
+     "id": "0001813898-23-000001:primary_doc.xml",
+     "entity": "Anabranch Fund, LP  (CIK 0001813898)",
+     "date": "2023-08-11"
+    },
+    {
+     "id": "0001813898-21-000001:primary_doc.xml",
+     "entity": "Anabranch Fund, LP  (CIK 0001813898)",
+     "date": "2021-08-13"
+    },
+    {
+     "id": "0001382741-11-000002:primary_doc.xml",
+     "entity": "Array Health Solutions Inc  (CIK 0001382741)",
+     "date": "2011-06-14"
+    },
+    {
+     "id": "0001382741-14-000002:primary_doc.xml",
+     "entity": "Array Health Solutions Inc  (CIK 0001382741)",
+     "date": "2014-08-19"
+    },
+    {
+     "id": "0001813898-25-000003:primary_doc.xml",
+     "entity": "Anabranch Fund, LP  (CIK 0001813898)",
+     "date": "2025-10-03"
+    }
+   ],
+   "Jude Rizzo": []
+  }
+ },
+ {
+  "company": "Parse",
+  "batch": "Fall 2025",
+  "founders": [
+   "Alex Forman"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Alex Forman": 0
+  },
+  "founder_hits": {
+   "Alex Forman": []
+  }
+ },
+ {
+  "company": "Cekura",
+  "batch": "Fall 2024",
+  "founders": [
+   "Tarush Agarwal",
+   "Shashij Gupta",
+   "Sidhant Kabra"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Tarush Agarwal": 0,
+   "Shashij Gupta": 0,
+   "Sidhant Kabra": 0
+  },
+  "founder_hits": {
+   "Tarush Agarwal": [],
+   "Shashij Gupta": [],
+   "Sidhant Kabra": []
+  }
+ },
+ {
+  "company": "Operand",
+  "batch": "Winter 2025",
+  "founders": [
+   "Ram Gorthi",
+   "Akhil Iyengar",
+   "Arjun Sahney"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Ram Gorthi": 0,
+   "Akhil Iyengar": 0,
+   "Arjun Sahney": 0
+  },
+  "founder_hits": {
+   "Ram Gorthi": [],
+   "Akhil Iyengar": [],
+   "Arjun Sahney": []
+  }
+ },
+ {
+  "company": "Nox Metals",
+  "batch": "Summer 2025",
+  "founders": [
+   "Zane Hengsperger"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Zane Hengsperger": 0
+  },
+  "founder_hits": {
+   "Zane Hengsperger": []
+  }
+ },
+ {
+  "company": "Kestrel AI",
+  "batch": "Fall 2025",
+  "founders": [
+   "Raman Varma"
+  ],
+  "any_name_hit": false,
+  "verified": [],
+  "n_hits": {
+   "Raman Varma": 0
+  },
+  "founder_hits": {
+   "Raman Varma": []
+  }
+ },
+ {
+  "company": "AthenaHQ",
+  "batch": "Winter 2025",
+  "founders": [
+   "Andrew Yan",
+   "Alan Yao"
+  ],
+  "any_name_hit": true,
+  "verified": [],
+  "n_hits": {
+   "Andrew Yan": 0,
+   "Alan Yao": 1
+  },
+  "founder_hits": {
+   "Andrew Yan": [],
+   "Alan Yao": [
+    {
+     "id": "0001213900-23-002510:primary_doc.xml",
+     "entity": "Chinese American IPA, Inc.  (CIK 0001960184)",
+     "date": "2023-01-12"
+    }
+   ]
+  }
+ },
+ {
+  "company": "SchemeFlow",
+  "batch": "Summer 2024",
+  "founders": [
+   "Andrew Browning",
+   "Jonny Browning",
+   "James Griffith"
+  ],
+  "any_name_hit": true,
+  "verified": [],
+  "n_hits": {
+   "Andrew Browning": 10,
+   "Jonny Browning": 0,
+   "James Griffith": 10
+  },
+  "founder_hits": {
+   "Andrew Browning": [
+    {
+     "id": "0002005456-24-000001:primary_doc.xml",
+     "entity": "XT TACHUS CO-INVESTMENT II, LP  (CIK 0002005456)",
+     "date": "2024-01-02"
+    },
+    {
+     "id": "0001930210-22-000001:primary_doc.xml",
+     "entity": "XT Talisman Co-Investment, LP  (CIK 0001930210)",
+     "date": "2022-05-25"
+    },
+    {
+     "id": "0001929773-22-000003:primary_doc.xml",
+     "entity": "Crosstimbers Ventures III, LP  (CIK 0001929773)",
+     "date": "2022-05-20"
+    },
+    {
+     "id": "0002035930-24-000001:primary_doc.xml",
+     "entity": "XT Established Opportunities LP  (CIK 0002035930)",
+     "date": "2024-09-04"
+    },
+    {
+     "id": "0002094000-25-000001:primary_doc.xml",
+     "entity": "Crosstimbers Opportunity Fund III QP, LP  (CIK 0002094000)",
+     "date": "2025-10-30"
+    },
+    {
+     "id": "0001967692-23-000001:primary_doc.xml",
+     "entity": "XT Boxwheel Continuation Vehicle QP, LP  (CIK 0001967692)",
+     "date": "2023-03-02"
+    },
+    {
+     "id": "0002093999-25-000001:primary_doc.xml",
+     "entity": "Crosstimbers Opportunity Fund III, LP  (CIK 0002093999)",
+     "date": "2025-10-30"
+    },
+    {
+     "id": "0001964682-23-000002:primary_doc.xml",
+     "entity": "XT Boxwheel Continuation Vehicle, LP  (CIK 0001964682)",
+     "date": "2023-03-02"
+    },
+    {
+     "id": "0001981162-23-000001:primary_doc.xml",
+     "entity": "XT Talisman Co-Investment II, LP  (CIK 0001981162)",
+     "date": "2023-06-20"
+    },
+    {
+     "id": "0001930210-22-000002:primary_doc.xml",
+     "entity": "XT Talisman Co-Investment, LP  (CIK 0001930210)",
+     "date": "2022-06-16"
+    }
+   ],
+   "Jonny Browning": [],
+   "James Griffith": [
+    {
+     "id": "0001491751-10-000002:primary_doc.xml",
+     "entity": "Wordsmith Media, Inc.  (CIK 0001491751)",
+     "date": "2010-05-17"
+    },
+    {
+     "id": "0001491751-10-000005:primary_doc.xml",
+     "entity": "Wordsmith Media, Inc.  (CIK 0001491751)",
+     "date": "2010-05-17"
+    },
+    {
+     "id": "0001491751-10-000004:primary_doc.xml",
+     "entity": "Wordsmith Media, Inc.  (CIK 0001491751)",
+     "date": "2010-05-17"
+    },
+    {
+     "id": "0001491751-10-000003:primary_doc.xml",
+     "entity": "Wordsmith Media, Inc.  (CIK 0001491751)",
+     "date": "2010-05-17"
+    },
+    {
+     "id": "0001940601-22-000001:primary_doc.xml",
+     "entity": "Cura OS, Inc.  (CIK 0001940601)",
+     "date": "2022-11-17"
+    },
+    {
+     "id": "0001940601-25-000002:primary_doc.xml",
+     "entity": "Cura OS, Inc.  (CIK 0001940601)",
+     "date": "2025-12-17"
+    },
+    {
+     "id": "0000947871-18-000504:primary_doc.xml",
+     "entity": "Terra Grove Japan Fund Ltd.  (CIK 0001610243)",
+     "date": "2018-06-14"
+    },
+    {
+     "id": "0001632448-21-000003:primary_doc.xml",
+     "entity": "Oasis Investments II US Feeder Ltd.  (CIK 0001632448)",
+     "date": "2021-04-05"
+    },
+    {
+     "id": "0000902664-15-001241:primary_doc.xml",
+     "entity": "Oasis Investments II Offshore Feeder Ltd.  (CIK 0001632444)",
+     "date": "2015-02-18"
+    },
+    {
+     "id": "0001632444-26-000001:primary_doc.xml",
+     "entity": "Oasis Investments II Offshore Feeder Ltd.  (CIK 0001632444)",
+     "date": "2026-04-03"
+    }
+   ]
+  }
+ }
+]

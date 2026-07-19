@@ -96,3 +96,158 @@ Also: Claude diagnosed resolution bottleneck (serial HTTP, not rate limits; both
 
 ## 2026-07-19 04:04 — Claude verification: LABEL SPOT-CHECK PASSED (gate open)
 25 random confident (>=0.5) linkages hand-verified against LIVE GitHub profiles: 23/25 clean person matches, 2/25 company-named accounts of the right founder (empty pre-t history; handled as no_gh_activity). Zero wrong-person links. Precision >=92% strict. Resolution continues (~45/min after Claude fixed shared reset_at bug + serial-latency patches; was 4/min).
+
+## 2026-07-19 04:35 — Resolution crash fixed
+Process died at 2050/10854 on ValueError from urlparse of a founder blog field containing the literal string [object Object]. Patched normalize_domain with try/except + regression test; restarted from checkpoint. Watchdog re-armed.
+
+## 2026-07-19 05:38 +04 — Real dashboard wiring and held-out backtest
+
+Added validated real-data dashboard assembly from P4 score exports, held-out eval
+metrics, YC founder labels, and repository-creation evidence. Real candidates are
+restricted to outbound test-cohort founders (batch start in 2024 or later), display
+identity comes from labels, and evidence links point to the corresponding GitHub
+repository or YC company page. Existing top-three memo JSON files are copied and linked
+without invoking an LLM.
+
+Added the offline `backtest.html` experience with aggregate median lead time and honest
+full-cohort detection rate, strongest-detection example trajectories, eval-emitted
+detection markers, actual YC batch markers, and explicit retrospective/out-of-time
+labeling. `--fixtures` still builds the complete synthetic site; `--real` validates all
+inputs first and currently exits with the expected missing model-output list.
+
+Verification: `uv run pytest -q` → 67 passed (27 upstream joblib/NumPy deprecation
+warnings); `uv run ruff check src tests` → clean; changed dashboard/test files pass
+`ruff format --check`; `git diff --check` → clean. Repository-wide format checking still
+reports 20 pre-existing drifts outside this task, including prohibited paths, which were
+left untouched.
+
+## 2026-07-19 05:50 — Claude verification: SECOND label spot-check PASSED
+Seed 42, 25 rows spanning W22..P26 batches incl. training cohort: 25/25 correct person (2 company-named accounts of the right founder). Combined audits: >=48/50, zero wrong-person links. Also raised ClickHouse max_attempts 5->12 for quota resilience.
+
+## 2026-07-19 06:11 — First REAL end-to-end result (partial cohort)
+Eval null gate FIRED on run2 (global shuffled-label PR-AUC 0.098 vs 0.054 limit) — Claude diagnosed calendar-composition artifact; switched primary metric + null gate to within-month macro PR-AUC. Corrected results (704 test founders, partial labels): within-month PR-AUC 0.174 vs null 0.153 (base 0.094) — real but thin person-level lift; ROC 0.734; precision@50 0.32 (1.3x). Detection rate 71% but most detections censored at panel start (propensity, not rising intent) — presentation fix delegated to Codex. Score exports passed the gate; real site built; 3 real OpenRouter memos generated (evidence-grounded, gaps flagged). Final full-cohort run pending resolution completion.
+
+## 2026-07-19 06:15 +04 — Backtest lead-time cohort correction
+
+Replaced the misleading aggregate lead-time headline with two explicit cohorts. Of 503
+detected founders, 307 (61%) were already over the same-month 99th control percentile
+at the first panel month and are now labeled as boundary-censored with true lead of at
+least 48 months. The 196 founders whose signal emerged later now supply the dynamic
+headline: median 15 months before YC, IQR 14–16 months. Displayed examples determine
+their first panel month from each founder's earliest trajectory row, and censored cards
+show `≥48` rather than an exact 48-month lead.
+
+Added the case-control panel prevalence (~25%) versus population-base-rate caveat and
+the pointer to calibrated probabilities in the eval report. Fixture-backed regression
+coverage exercises both cohorts and the rendered wording. Verification: `uv run pytest
+-q` → 67 passed (27 upstream joblib/NumPy deprecation warnings); `uv run ruff check src
+tests` → clean; touched-file `ruff format --check` and `git diff --check` → clean. The
+real offline dashboard was rebuilt with `--real` after verification.
+
+## 2026-07-19 08:15 — FINAL FULL-COHORT RUN VERIFIED (Claude)
+All 10,854 founders resolved; 2,052 confident links. Final held-out results (690 test founders, 2,765 people): within-month PR-AUC 0.2418 vs null 0.1327 (base 0.0951) — gate passed with margin; LightGBM selection vindicated on test (logistic 0.1819); precision@50 0.50 (2x prevalence); detection 72%; 75% boundary-censored (propensity) vs 124 rising-signal founders at median 15mo lead (IQR 14-17). Tenure ablation: global 0.158->0.063 without tenure (74.5% of gain) — reported honestly. Two more leakage-guard catches during finale (case-insensitive founder exclusion; 408 batch bisection) — both fixed with tests. README updated to final numbers; real site + backtest rebuilt; memos generated for final top-3 (Wordware, Amby Health, Blaxel). 67 tests green.
+
+## 2026-07-19 09:58 — Stream B: three lanes verified & committed (Claude)
+Data sources: HN 18.7% person / 40% company launch labels (verified live). False positives: 76% clear FP dominated by tutorial-burst pattern (=> semantic annotation justified empirically); YC-only labels confirmed to hide real founders (precision floor). Missed founders: 16 portraits, 75% own-profile <=1; 7/16 zero countable events under resolved login => blind spot is mostly measurement (resolution/ownership/window), not invisibility; 12/16 show prestige-free network signal (cofounder-pair formation + upward embedding); 5 leakage-audited feature candidates. Cofounder-pairing lane still running.
+
+## 2026-07-19 10:08 +04 — Stream A1: maturity-controlled metrics complete
+
+Added held-out matched-group peak-score ranking with tie-expectation handling and
+tenure-quintile within-month PR-AUC. Across 415 eligible groups, founder rank-1
+probability is 0.3418 versus 0.1667 chance, top-half probability is 0.6595, and mean
+normalized rank is 0.3648 (0 is best). Tenure-controlled PR-AUC is 0.2679 versus a
+0.1469 cell base rate over 160 non-degenerate cells; quintile PR-AUC/base summaries
+are Q1 0.2941/0.2131, Q2 0.0985/0.0620, Q3 0.0999/0.0569, Q4 0.1769/0.0803, and
+Q5 0.3394/0.1328. The real backtest headline now reports the matched-control result.
+
+## 2026-07-19 10:08 +04 — Stream A2: ownership and collaboration complete
+
+Added one cached, quota-resilient ClickHouse query family that produces both
+ownership and collaborator aggregates with strict event-month-before-cutoff checks.
+Real aggregate row counts are ownership 35,489 positive / 133,949 negative and
+collaboration 11,808 positive / 29,277 negative; all four artifacts have zero nulls
+and zero cutoff violations. The five new ownership/collaboration features are finite
+and non-null across all 276,316 panel rows. The new `all_plus_ownership_collab`
+ablation selects LightGBM at test PR-AUC 0.1556, marginal -0.0026. The final null gate
+passes: within-month PR-AUC 0.1332 versus a 0.1901 limit and 0.0951 base rate.
+
+## 2026-07-19 10:08 +04 — Stream A4: crossing attribution complete
+
+Wrote 1,557 top-three first-crossing contribution-delta rows for 519 detected test
+founders to `data/scores/attributions.parquet`; each founder has exactly three rows,
+with 372 boundary-censored crossings compared against the model baseline. Added the
+complete human-readable feature dictionary grouped as cognitive (7), human (48),
+contextual (17), and financial (none observed), explicitly as presentation taxonomy
+only. The rebuilt real backtest renders ten founder examples with human-readable
+`Flagged on:` lines. Verification: 70 tests passed; Ruff and `git diff --check` are
+clean; protected memo and labels source paths were untouched. No commit was created.
+
+## 2026-07-19 10:11 — Claude gate: A1+A2+A4 ACCEPTED
+Matched-group rank in eval: 34.2% vs 16.7% chance (415 groups; reproduces Claude reference). Leakage zero on ownership_agg (169k rows) and collab_influx (41k). Attributions 3/founder for 519 detected. HONEST NEGATIVE: ownership_collab ablation adds no lift (0.1556 vs 0.1586) — likely inherits identity-resolution failures (see missed_founders.md); fix is resolution hardening, not feature removal. Null gate still passes (0.1332 vs 0.2344 real).
+
+## 2026-07-19 10:41 +04 — Stream A3 part one: extraction and annotation code
+
+Implemented the authored event-time text extractor for the five specified GitHub
+event types, with strict pre-cutoff filtering, 1,500-character bodies, deterministic
+global 40-item actor-quarter caps after distributed-query merge, SQL-hash batch
+caching, and capacity/408 bisection. The real Cohort-D extraction retained 620
+founders and 1,300 matched controls after applying the same >=20-item filter: 1,920
+people, 24,410 person-quarters, and 375,514 text items. Candidate extraction rows
+were 112,665 founders and 270,468 controls. There are zero cutoff violations; the
+maximum bundle is 40 items and the minimum included-person total is 20.
+
+Added the offline-safe OpenRouter annotation pipeline with temperature 0, strict
+Pydantic/JSON schema including cited `domain_shift`, content/model/mode-hash caching,
+bounded earlier-bundle context, fixture-backed `--mock`, and current-item citation
+validation. No real annotation or semantic cache write was made. Estimated approval
+gate: 24,410 person-quarters x ~1,500 tokens = 36,615,000 tokens.
+
+Added `context_divergence_2q` from cached monthly/ownership aggregates only under the
+`semantics` feature block. The rebuilt 276,316-row panel has 133,179 defined values in
+[0, 1] and 143,137 contractually null values; model-matrix construction explicitly
+neutral-imputes the documented undefined state. Added the presentation-only four
+capital-family mapping, with financial capital explicitly empty. Verification:
+`uv run pytest -q` -> 78 passed (27 upstream joblib/NumPy deprecation warnings);
+`uv run ruff check src tests` and `git diff --check` -> clean. Protected eval/report
+and dashboard paths were untouched; no commit was created.
+
+## 2026-07-19 12:20 — deep-slice worktree MERGED into overnight/poc (Claude)
+
+Merge 0f8e58b (30 files, pure additions, zero conflicts; no in-flight stream-A
+files touched). Person-level semantic instrument consolidated under
+`semantics/person_*` (v2 = production: anchored 0-100, structure-preserving
+masking) + `semantics/studies/` provenance; label streams under `labels/`
+(hn_persons, hn_harvest, control_screen*). Data + caches migrated additively
+(data/pilot/, data/labels/hn_*.parquet, data/cache/{pilot*,labelnoise,gh_commits}).
+Headline (see docs/exploration/corrected_metrics.md): matched-pairs AUC 0.776 vs
+0.640 counts; corrected semantic p@10 10/10; noise curve 5.1/7.3/25.8%; HN
+pre-cutoff Show HN P(founder)=77-82%. USER DECISION: A3a person-quarter
+annotation HELD (pipeline stays, unrun); person-level instrument is the
+submission's semantic layer — see docs/integration_deep_slice.md. Stream-A
+follow-up owed: fold data/pilot/excluded_controls.parquet into the matched-group
+eval at next gate (34.2% headline is label-noise-polluted).
+
+## 2026-07-19 14:29 +04 — A3 checkpoint-only semantics pilot
+
+Consumed the intentionally stopped 5,200-row annotation checkpoint without issuing
+any LLM annotation work. Built the specified 14 ordinal semantic level/delta features,
+preserved quarter-level missingness, filled only within calendar quarters, and excluded
+all non-checkpoint people before model-matrix imputation. The pilot panel contains 420
+people (150 founders, 270 controls): 243 development and 177 held-out test people.
+
+Counts-only versus counts+semantics held-out within-month PR-AUC was 0.4199 versus
+0.4312, a paired person-bootstrap change of +0.0113 with 95% CI [-0.0070, +0.0298]
+over 200 resamples: no detectable lift. Both small-prefix shuffled-label null gates
+failed (0.3409 and 0.3155 versus a 0.2770 limit), so the report marks all estimates
+descriptive only. Four eligible held-out matched groups survived; rank-1 probability
+was unchanged at 0.5000 (chance 0.3333), top-half probability unchanged at 0.7500,
+and mean normalized rank unchanged at 0.3750.
+
+Wrote `data/eval/semantics_pilot.{json,md}`, a blind mixed 40-bundle validation sample,
+and quarterly demo trajectories for `andreybavt`, `28andrew`, and `akshaynarisetti`.
+Verification: `uv run pytest -q` -> 88 passed (27 upstream joblib/NumPy warnings);
+`uv run ruff check src tests` -> clean. `eval/report.py` and `dashboard/` were untouched;
+no commit was created.
+
+## 2026-07-19 14:32 — Claude gate: semantics PILOT reviewed (honest inconclusive)
+On 420 people (150 founders): within-month PR-AUC 0.4199 -> 0.4312 with semantics, paired bootstrap +0.0113, 95% CI [-0.007, +0.030] — includes zero. Null gates FAIL on this prefix subsample (matched-group structure broken: only 4 groups survive; founder prevalence 36% vs 25% design) so estimates are descriptive only. Verdict: underpowered pilot, semantics NOT yet demonstrated nor refuted; full-cohort annotation queued post-demo (cache-resumable). Demo keeps qualitative annotation trajectories (andreybavt, 28andrew, akshaynarisetti) + instrument story. A5 frozen-clock rerouted to a Claude subagent after two Codex pre-session stalls (forensics: no rollout file ever created).

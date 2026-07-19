@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="backtest-hero shell">
+    <div>
+      <p class="eyebrow"><span>Retrospective backtest, out-of-time split</span></p>
+      <h1>We found them first.</h1>
+      <p class="backtest-subtitle">A held-out test of whether public founder activity crossed an investable signal threshold before the founder's actual Y Combinator batch. Every example below has a batch start in 2024 or later.</p>
+    </div>
+    <aside class="backtest-method">
+      <p class="eyebrow">Detection rule</p>
+      <strong>Same-month control threshold</strong>
+      <p>{{ backtest.threshold }}. The dashboard reads the first crossing emitted by model evaluation; it does not choose a threshold after seeing outcomes.</p>
+    </aside>
+  </section>
+
+  <section class="backtest-scoreboard shell" aria-label="Held-out backtest summary">
+    <div>
+      <span>Against age- and activity-matched controls</span>
+      <strong>{{ backtest.matched_group_rank_one }}%</strong>
+      <small>Founder ranked first by peak score versus {{ backtest.matched_group_chance }}% chance across {{ backtest.matched_group_count }} held-out matched groups.</small>
+    </div>
+    <div>
+      <span>High-propensity from window start</span>
+      <strong>{{ backtest.window_start_share }}%</strong>
+      <small>{{ backtest.window_start_detected }} of {{ backtest.detected }} detected founders were already above the 99th control percentile at the start of our 4-year window — censored: their true lead is at least 48 months.</small>
+    </div>
+    <div>
+      <span>Rising signal during window</span>
+      <strong>{% if backtest.rising_median_lead_months is not none %}{{ backtest.rising_median_lead_months }} months{% else %}No dynamic detections{% endif %}</strong>
+      {% if backtest.rising_lead_months_iqr %}<small>When the signal emerged during our window, we flagged {{ backtest.rising_signal_detected }} founders a median of {{ backtest.rising_median_lead_months }} months before their YC batch · IQR {{ backtest.rising_lead_months_iqr[0] }}–{{ backtest.rising_lead_months_iqr[1] }} months.</small>{% endif %}
+    </div>
+    <div class="honesty-note">
+      <span>Overall detection rate</span>
+      <strong>{{ backtest.detection_rate }}%</strong>
+      <p>{{ backtest.detected }} of {{ backtest.total_test_founders }} test-cohort founders. Undetected founders remain in the denominator; examples are the strongest detections. Panel prevalence is case-control (~25%), not population base rate; calibrated probabilities live in the eval report.</p>
+    </div>
+  </section>
+
+  <section class="backtest-results shell" aria-labelledby="backtest-results-title">
+    <div class="section-heading">
+      <div><p class="eyebrow">Strongest held-out detections</p><h2 id="backtest-results-title">Signal before batch</h2></div>
+      <p>{{ backtest.founders | length }} detected founders shown · ranked by current score</p>
+    </div>
+    {% if backtest.founders %}
+      <div class="backtest-grid">
+        {% for founder in backtest.founders %}
+          <article class="backtest-card" data-backtest-founder>
+            <header>
+              <div class="backtest-rank">{{ "%02d" | format(founder.rank) }}</div>
+              <div><h3>{{ founder.company }}</h3><p>{{ founder.founder_name }} · YC {{ founder.batch }}</p></div>
+              <div class="lead-pill"><strong>{% if founder.high_propensity_from_start %}≥{% endif %}{{ founder.lead_months }}</strong><span>{% if founder.high_propensity_from_start %}months · censored{% else %}months early{% endif %}</span></div>
+            </header>
+            <div class="backtest-chart">{{ founder.chart | safe }}</div>
+            <p class="flagged-on"><strong>Flagged on:</strong> {{ founder.flagged_on | join(", ") }}.</p>
+            <footer>
+              <span><i class="detected"></i>Detected {{ founder.detection_month | date }}</span>
+              <span><i class="batch"></i>YC batch {{ founder.batch_start | date }}</span>
+              <a href="candidate/{{ founder.gh_login }}.html">Inspect evidence →</a>
+            </footer>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="backtest-empty"><strong>No test-cohort founders crossed the rule.</strong><p>The honest result is a 0% detection rate; there are no example trajectories to promote.</p></div>
+    {% endif %}
+  </section>
+{% endblock %}
+{% block scripts %}<script src="assets/plotly.min.js"></script>{% endblock %}

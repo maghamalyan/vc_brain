@@ -18,6 +18,8 @@ def build_fixture_panel(tmp_path: Path) -> tuple[pl.DataFrame, Path]:
         labels_path=FIXTURE_ROOT / "labels" / "founders.parquet",
         monthly_agg_dir=FIXTURE_ROOT / "events" / "monthly_agg",
         owned_repo_agg_dir=FIXTURE_ROOT / "events" / "owned_repo_agg",
+        ownership_agg_dir=FIXTURE_ROOT / "events" / "ownership_agg",
+        collab_influx_dir=FIXTURE_ROOT / "events" / "collab_influx",
         repo_creations_dir=FIXTURE_ROOT / "events" / "repo_creations",
         baselines_path=FIXTURE_ROOT / "events" / "baselines" / "monthly_totals.parquet",
         matches_path=FIXTURE_ROOT / "events" / "negatives" / "matched.parquet",
@@ -66,8 +68,12 @@ def test_panel_cutoff_gestation_labels_matching_exclusion_and_zero_activity(
         "levels",
         "dynamics",
         "traction",
+        "ownership_collab",
+        "semantics",
     }
     assert all(item["null_policy"] for item in card["features"])
+    assert card["capital_families"]["financial"] == []
+    assert "context_divergence_2q" in card["capital_families"]["cognitive"]
     assert (output_root / "data_card.md").exists()
 
 
@@ -86,15 +92,24 @@ def test_feature_windows_match_hand_computed_fixture_values(tmp_path: Path) -> N
     assert row["months_since_last_new_repo"] == 0.0
     # Owned-repo WatchEvent counts in Dec/Jan/Feb are 5/7/9, baseline 1,000.
     assert row["traction_stars_3m"] == pytest.approx(21_000.0)
+    assert 0.0 < row["own_repo_share_3m"] < 1.0
+    assert row["distinct_collaborators_3m"] > 0.0
+    assert "context_divergence_2q" in row
 
 
 def test_every_source_timestamp_is_strictly_before_cutoff() -> None:
     monthly = pl.read_parquet(FIXTURE_ROOT / "events" / "monthly_agg" / "*.parquet")
     owned = pl.read_parquet(FIXTURE_ROOT / "events" / "owned_repo_agg" / "*.parquet")
+    ownership = pl.read_parquet(FIXTURE_ROOT / "events" / "ownership_agg" / "*.parquet")
+    collaborators = pl.read_parquet(
+        FIXTURE_ROOT / "events" / "collab_influx" / "*.parquet"
+    )
     repos = pl.read_parquet(FIXTURE_ROOT / "events" / "repo_creations" / "*.parquet")
 
     assert monthly.filter(pl.col("month") >= pl.col("t_cutoff")).is_empty()
     assert owned.filter(pl.col("month") >= pl.col("t_cutoff")).is_empty()
+    assert ownership.filter(pl.col("month") >= pl.col("t_cutoff")).is_empty()
+    assert collaborators.filter(pl.col("month") >= pl.col("t_cutoff")).is_empty()
     assert repos.filter(
         pl.col("created_at").cast(pl.Date) >= pl.col("t_cutoff")
     ).is_empty()
@@ -114,6 +129,8 @@ def test_feature_builder_rejects_a_cutoff_month_source_row(tmp_path: Path) -> No
             labels_path=FIXTURE_ROOT / "labels" / "founders.parquet",
             monthly_agg_dir=monthly_dir,
             owned_repo_agg_dir=FIXTURE_ROOT / "events" / "owned_repo_agg",
+            ownership_agg_dir=FIXTURE_ROOT / "events" / "ownership_agg",
+            collab_influx_dir=FIXTURE_ROOT / "events" / "collab_influx",
             repo_creations_dir=FIXTURE_ROOT / "events" / "repo_creations",
             baselines_path=FIXTURE_ROOT
             / "events"
@@ -146,6 +163,8 @@ def test_feature_builder_rejects_null_required_aggregate_values(
             labels_path=FIXTURE_ROOT / "labels" / "founders.parquet",
             monthly_agg_dir=monthly_dir,
             owned_repo_agg_dir=FIXTURE_ROOT / "events" / "owned_repo_agg",
+            ownership_agg_dir=FIXTURE_ROOT / "events" / "ownership_agg",
+            collab_influx_dir=FIXTURE_ROOT / "events" / "collab_influx",
             repo_creations_dir=FIXTURE_ROOT / "events" / "repo_creations",
             baselines_path=FIXTURE_ROOT
             / "events"

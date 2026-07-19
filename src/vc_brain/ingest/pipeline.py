@@ -22,6 +22,8 @@ from vc_brain.ingest.contracts import (
     ACTIVITY_BAND_LOW,
     BASELINES_PATH,
     BASELINE_SCHEMA,
+    COLLAB_INFLUX_DIR,
+    COLLAB_INFLUX_SCHEMA,
     DATA_CARD_PATH,
     DEFAULT_HASH_SEEDS,
     EVENTS_DIR,
@@ -36,6 +38,9 @@ from vc_brain.ingest.contracts import (
     NEGATIVES_PER_POSITIVE,
     OWNED_REPO_AGG_DIR,
     OWNED_REPO_SCHEMA,
+    OWNERSHIP_AGG_DIR,
+    OWNERSHIP_COLLAB_BATCH_SIZE,
+    OWNERSHIP_SCHEMA,
     REPO_CREATIONS_DIR,
     REPO_CREATION_SCHEMA,
 )
@@ -50,6 +55,7 @@ from vc_brain.ingest.sql import (
     monthly_agg_sql,
     negative_candidates_sql,
     owned_repo_agg_sql,
+    ownership_collab_sql,
     repo_creations_sql,
     repo_names_audit_sql,
 )
@@ -88,7 +94,13 @@ def _query_actor_rows(
     client: ClickHouseClient,
     cohort: pl.DataFrame,
     builder: Any,
+    *,
+    batch_size: int | None = None,
 ) -> pl.DataFrame:
+    if batch_size is not None:
+        return client.query_actor_batches(
+            actor_records(cohort), builder, batch_size=batch_size
+        )
     return client.query_actor_batches(actor_records(cohort), builder)
 
 
@@ -180,6 +192,65 @@ def extract_owned_repo_agg(
     assert_temporal_leakage_free(frame)
     atomic_write_parquet(frame, output_path)
     return frame
+
+
+def extract_ownership_collab(
+    client: ClickHouseClient,
+    cohort: pl.DataFrame,
+) -> tuple[pl.DataFrame, pl.DataFrame]:
+    if "cohort" not in cohort.columns:
+        raise ValueError("Ownership/collaboration cohort is missing cohort identity")
+    raw = _conform(
+        _query_actor_rows(
+            client,
+            cohort,
+            ownership_collab_sql,
+            batch_size=OWNERSHIP_COLLAB_BATCH_SIZE,
+        ),
+        {
+            "actor_login": pl.String,
+            "month": pl.Date,
+            "own_repo_events": pl.Int64,
+            "other_repo_events": pl.Int64,
+            "distinct_collaborators": pl.Int64,
+            "t_cutoff": pl.Date,
+        },
+    ).join(
+        cohort.select("actor_login", "cohort").unique(),
+        on="actor_login",
+        how="left",
+        validate="m:1",
+    )
+    ownership_frames = [
+        raw.filter(pl.col(count_column) > 0).select(
+            "actor_login",
+            "month",
+            pl.lit(is_own_repo).alias("is_own_repo"),
+            pl.col(count_column).alias("event_count"),
+            "t_cutoff",
+            "cohort",
+        )
+        for is_own_repo, count_column in (
+            (True, "own_repo_events"),
+            (False, "other_repo_events"),
+        )
+    ]
+    ownership = _conform(
+        pl.concat(ownership_frames, how="diagonal_relaxed"), OWNERSHIP_SCHEMA
+    ).sort("actor_login", "month", "is_own_repo")
+    collaborators = _conform(
+        raw.filter(pl.col("distinct_collaborators") > 0).select(
+            pl.col("actor_login").alias("owner_login"),
+            "month",
+            "distinct_collaborators",
+            "t_cutoff",
+            "cohort",
+        ),
+        COLLAB_INFLUX_SCHEMA,
+    ).sort("owner_login", "month")
+    assert_temporal_leakage_free(ownership)
+    assert_temporal_leakage_free(collaborators)
+    return ownership, collaborators
 
 
 def extract_repo_creations(
@@ -367,6 +438,10 @@ Generated: `{datetime.now(UTC).isoformat()}`
 - Negative aggregate rows: **{negative_rows:,}**
 - Positive owned-repo aggregate rows: **{rows(events_dir / 'owned_repo_agg' / 'positives.parquet'):,}**
 - Negative owned-repo aggregate rows: **{rows(events_dir / 'owned_repo_agg' / 'negatives.parquet'):,}**
+- Positive ownership aggregate rows: **{rows(events_dir / 'ownership_agg' / 'positives.parquet'):,}**
+- Negative ownership aggregate rows: **{rows(events_dir / 'ownership_agg' / 'negatives.parquet'):,}**
+- Positive collaborator-influx rows: **{rows(events_dir / 'collab_influx' / 'positives.parquet'):,}**
+- Negative collaborator-influx rows: **{rows(events_dir / 'collab_influx' / 'negatives.parquet'):,}**
 - Positive repository-creation rows: **{rows(events_dir / 'repo_creations' / 'positives.parquet'):,}**
 - Negative repository-creation rows: **{rows(events_dir / 'repo_creations' / 'negatives.parquet'):,}**
 - Candidate actor-cutoff rows: **{rows(candidates_path):,}**
@@ -501,5 +576,37 @@ def run_repos(client: ClickHouseClient) -> dict[str, pl.DataFrame]:
             cohort_name=name,
             output_path=OWNED_REPO_AGG_DIR / f"{name}.parquet",
         )
+    write_data_card()
+    return outputs
+
+
+def run_ownership_collab(client: ClickHouseClient) -> dict[str, pl.DataFrame]:
+    """Extract the two quota-aware ownership/collaboration aggregate families."""
+    _, positive_cohort = _load_positive_cohort()
+    positive_cohort, _ = audit_company_repo_leakage(client, positive_cohort)
+    cohorts = {
+        "positives": positive_cohort.with_columns(pl.lit("positives").alias("cohort"))
+    }
+    if NEGATIVE_MATCHES_PATH.exists():
+        cohorts["negatives"] = (
+            pl.read_parquet(NEGATIVE_MATCHES_PATH)
+            .select("actor_login", "t_cutoff")
+            .unique()
+            .with_columns(pl.lit("negatives").alias("cohort"))
+        )
+    combined_cohort = pl.concat(list(cohorts.values()), how="diagonal_relaxed")
+    ownership, collaborators = extract_ownership_collab(client, combined_cohort)
+    outputs: dict[str, pl.DataFrame] = {}
+    for name in cohorts:
+        cohort_ownership = ownership.filter(pl.col("cohort") == name)
+        cohort_collaborators = collaborators.filter(pl.col("cohort") == name)
+        atomic_write_parquet(
+            cohort_ownership, OWNERSHIP_AGG_DIR / f"{name}.parquet"
+        )
+        atomic_write_parquet(
+            cohort_collaborators, COLLAB_INFLUX_DIR / f"{name}.parquet"
+        )
+        outputs[f"{name}_ownership"] = cohort_ownership
+        outputs[f"{name}_collab"] = cohort_collaborators
     write_data_card()
     return outputs

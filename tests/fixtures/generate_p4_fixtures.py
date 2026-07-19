@@ -84,6 +84,10 @@ def main() -> None:
     owned_negative: list[dict[str, object]] = []
     repos_positive: list[dict[str, object]] = []
     repos_negative: list[dict[str, object]] = []
+    ownership_positive: list[dict[str, object]] = []
+    ownership_negative: list[dict[str, object]] = []
+    collab_positive: list[dict[str, object]] = []
+    collab_negative: list[dict[str, object]] = []
     matches: list[dict[str, object]] = []
     activity_events = event_types[:-1]
     traction_events = ("WatchEvent", "ForkEvent", "IssuesEvent")
@@ -140,6 +144,31 @@ def main() -> None:
                             add_months(batch_start, offset), datetime.min.time()
                         ).replace(day=10),
                         "repo_name": f"{login}/fixture-repo-{repo_index}",
+                        "t_cutoff": cutoff,
+                        "cohort": "positives",
+                    }
+                )
+            for position, offset in enumerate((-30, -20, -17, -15, -14, -13)):
+                event_month = add_months(batch_start, offset)
+                for is_own_repo, count in (
+                    (True, (position + 1) * 8 + index),
+                    (False, max(8 - position, 1)),
+                ):
+                    ownership_positive.append(
+                        {
+                            "actor_login": login,
+                            "month": event_month,
+                            "is_own_repo": is_own_repo,
+                            "event_count": count,
+                            "t_cutoff": cutoff,
+                            "cohort": "positives",
+                        }
+                    )
+                collab_positive.append(
+                    {
+                        "owner_login": login,
+                        "month": event_month,
+                        "distinct_collaborators": position + index,
                         "t_cutoff": cutoff,
                         "cohort": "positives",
                     }
@@ -208,6 +237,35 @@ def main() -> None:
                         "cohort": "negatives",
                     }
                 )
+                ownership_negative.extend(
+                    [
+                        {
+                            "actor_login": control,
+                            "month": add_months(batch_start, -28 + control_index),
+                            "is_own_repo": True,
+                            "event_count": 2,
+                            "t_cutoff": cutoff,
+                            "cohort": "negatives",
+                        },
+                        {
+                            "actor_login": control,
+                            "month": add_months(batch_start, -28 + control_index),
+                            "is_own_repo": False,
+                            "event_count": 8,
+                            "t_cutoff": cutoff,
+                            "cohort": "negatives",
+                        },
+                    ]
+                )
+                collab_negative.append(
+                    {
+                        "owner_login": control,
+                        "month": add_months(batch_start, -27),
+                        "distinct_collaborators": 1,
+                        "t_cutoff": cutoff,
+                        "cohort": "negatives",
+                    }
+                )
 
     # This aggregate row exists deliberately; confidence filtering must exclude it.
     positive_monthly.append(
@@ -226,6 +284,10 @@ def main() -> None:
     write(pl.DataFrame(negative_monthly), "events/monthly_agg/negatives.parquet")
     write(pl.DataFrame(owned_positive), "events/owned_repo_agg/positives.parquet")
     write(pl.DataFrame(owned_negative), "events/owned_repo_agg/negatives.parquet")
+    write(pl.DataFrame(ownership_positive), "events/ownership_agg/positives.parquet")
+    write(pl.DataFrame(ownership_negative), "events/ownership_agg/negatives.parquet")
+    write(pl.DataFrame(collab_positive), "events/collab_influx/positives.parquet")
+    write(pl.DataFrame(collab_negative), "events/collab_influx/negatives.parquet")
     write(pl.DataFrame(repos_positive), "events/repo_creations/positives.parquet")
     write(pl.DataFrame(repos_negative), "events/repo_creations/negatives.parquet")
     write(pl.DataFrame(matches), "events/negatives/matched.parquet")

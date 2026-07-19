@@ -1,0 +1,349 @@
+[
+ {
+  "founder_name": "Zac Wellmer",
+  "company": "Tupelo",
+  "gh_login": "zacwellmer",
+  "status": 200,
+  "linked": true,
+  "quality": "strong",
+  "profile_name": "Zac Wellmer",
+  "url": "https://devpost.com/zacwellmer",
+  "evidence": [
+   "profile links github.com/zacwellmer",
+   "profile name 'Zac Wellmer' == founder name"
+  ]
+ },
+ {
+  "founder_name": "Adam Tilton",
+  "company": "Driver",
+  "gh_login": "adamtilton",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/adamtilton",
+  "evidence": []
+ },
+ {
+  "founder_name": "Kumail Jaffer",
+  "company": "Gather",
+  "gh_login": "liamuk",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/liamuk",
+  "evidence": []
+ },
+ {
+  "founder_name": "Julia Hudea",
+  "company": "Parrot",
+  "gh_login": "juliahudea",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/juliahudea",
+  "evidence": []
+ },
+ {
+  "founder_name": "Ishaan Sehgal",
+  "company": "Omnara",
+  "gh_login": "ishaansehgal99",
+  "status": 200,
+  "linked": true,
+  "quality": "strong",
+  "profile_name": "Ishaan Sehgal",
+  "url": "https://devpost.com/ishaansehgal99",
+  "evidence": [
+   "profile links github.com/ishaansehgal99",
+   "profile name 'Ishaan Sehgal' == founder name"
+  ]
+ },
+ {
+  "founder_name": "Arlen Abraham",
+  "company": "Cascade Space",
+  "gh_login": "arlenarlenarlen",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/arlenarlenarlen",
+  "evidence": []
+ },
+ {
+  "founder_name": "Parth Chopra",
+  "company": "Laguna",
+  "gh_login": "pchopra",
+  "status": 200,
+  "linked": true,
+  "quality": "medium",
+  "profile_name": "Parth Chopra",
+  "url": "https://devpost.com/pchopra",
+  "evidence": [
+   "profile name 'Parth Chopra' == founder name"
+  ]
+ },
+ {
+  "founder_name": "Toni Lopez",
+  "company": "Karumi",
+  "gh_login": "tonilopezmr",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/tonilopezmr",
+  "evidence": []
+ },
+ {
+  "founder_name": "Abe Wheeler",
+  "company": "Trigo",
+  "gh_login": "abewheel",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/abewheel",
+  "evidence": []
+ },
+ {
+  "founder_name": "Tom Achache",
+  "company": "Unisson",
+  "gh_login": "Tom-Achache",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/Tom-Achache",
+  "evidence": []
+ },
+ {
+  "founder_name": "Vinay Konuru",
+  "company": "Jeevy Fabrication",
+  "gh_login": "vinaykonuru",
+  "status": 200,
+  "linked": true,
+  "quality": "medium",
+  "profile_name": "Vinay Konuru",
+  "url": "https://devpost.com/vinaykonuru",
+  "evidence": [
+   "profile name 'Vinay Konuru' == founder name"
+  ]
+ },
+ {
+  "founder_name": "Zain Manji",
+  "company": "Fiix",
+  "gh_login": "ZainManji",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/ZainManji",
+  "evidence": []
+ },
+ {
+  "founder_name": "Ethan Sutin",
+  "company": "Squad",
+  "gh_login": "etown",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/etown",
+  "evidence": []
+ },
+ {
+  "founder_name": "Mohammad Eshan",
+  "company": "GhostEye",
+  "gh_login": "eshannnnn",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/eshannnnn",
+  "evidence": []
+ },
+ {
+  "founder_name": "Chandler Craig",
+  "company": "Dittofeed",
+  "gh_login": "chandlercraig",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/chandlercraig",
+  "evidence": []
+ },
+ {
+  "founder_name": "Dennis Zax",
+  "company": "Na\u00efve",
+  "gh_login": "DedS3t",
+  "status": 200,
+  "linked": true,
+  "quality": "strong",
+  "profile_name": "Dennis Z",
+  "url": "https://devpost.com/DedS3t",
+  "evidence": [
+   "profile links github.com/DedS3t"
+  ]
+ },
+ {
+  "founder_name": "Adam Breckler",
+  "company": "Prism Labs",
+  "gh_login": "abreckler",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/abreckler",
+  "evidence": []
+ },
+ {
+  "founder_name": "Stephan Koenigstorfer",
+  "company": "Lightberry",
+  "gh_login": "sadkoeni",
+  "status": 200,
+  "linked": false,
+  "quality": null,
+  "profile_name": "sadkoeni",
+  "url": "https://devpost.com/sadkoeni",
+  "evidence": [
+   "username exists but belongs to 'sadkoeni' \u2014 collision"
+  ]
+ },
+ {
+  "founder_name": "Konstantin Paulus",
+  "company": "Diffusion Studio",
+  "gh_login": "k9p5",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/k9p5",
+  "evidence": []
+ },
+ {
+  "founder_name": "Noah Epstein",
+  "company": "SensorSurf",
+  "gh_login": "noahjepstein",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/noahjepstein",
+  "evidence": []
+ },
+ {
+  "founder_name": "Veniamin Veselovsky",
+  "company": "Preseen",
+  "gh_login": "vminvsky",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/vminvsky",
+  "evidence": []
+ },
+ {
+  "founder_name": "Zach Waterfield",
+  "company": "Kopa",
+  "gh_login": "zlwaterfield",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/zlwaterfield",
+  "evidence": []
+ },
+ {
+  "founder_name": "Rohil Agarwal",
+  "company": "The Context Company",
+  "gh_login": "rohilvagarwal",
+  "status": 200,
+  "linked": true,
+  "quality": "strong",
+  "profile_name": "Rohil Agarwal",
+  "url": "https://devpost.com/rohilvagarwal",
+  "evidence": [
+   "profile links github.com/rohilvagarwal",
+   "profile name 'Rohil Agarwal' == founder name"
+  ]
+ },
+ {
+  "founder_name": "David Fiala",
+  "company": "KV Cash",
+  "gh_login": "davidfiala",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/davidfiala",
+  "evidence": []
+ },
+ {
+  "founder_name": "Niel Ok",
+  "company": "Null Labs",
+  "gh_login": "NielOk",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/NielOk",
+  "evidence": []
+ },
+ {
+  "founder_name": "George Seabridge",
+  "company": "Zuni",
+  "gh_login": "seabo",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/seabo",
+  "evidence": []
+ },
+ {
+  "founder_name": "Cole Bransford",
+  "company": "Zage",
+  "gh_login": "bolecrans",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/bolecrans",
+  "evidence": []
+ },
+ {
+  "founder_name": "Tiago Sada",
+  "company": "Flinto",
+  "gh_login": "tiagosada",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/tiagosada",
+  "evidence": []
+ },
+ {
+  "founder_name": "Andrew Wagner",
+  "company": "Odo",
+  "gh_login": "drewag",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/drewag",
+  "evidence": []
+ },
+ {
+  "founder_name": "Kevin Schaich",
+  "company": "Darkgrade",
+  "gh_login": "kevinschaich",
+  "status": 404,
+  "linked": false,
+  "quality": null,
+  "profile_name": null,
+  "url": "https://devpost.com/kevinschaich",
+  "evidence": []
+ }
+]

@@ -576,7 +576,8 @@ def resolve_founders(
                     return resolve_founder(
                         founder,
                         github,
-                        serpapi_key=os.environ.get("SERPAPI_API_KEY"),
+                        serpapi_key=os.environ.get("SERPAPI_KEY")
+                        or os.environ.get("SERPAPI_API_KEY"),
                         serpapi_cap=cap,
                         state=state,
                         state_path=state_path,

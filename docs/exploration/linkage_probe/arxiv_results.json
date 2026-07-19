@@ -1,0 +1,2160 @@
+[
+ {
+  "founder_name": "Anand-Arnaud Pajaniradjane",
+  "company": "Scope",
+  "batch": "Spring 2026",
+  "bio_snip": "Anand is the founder of Scope, which helps companies understand and improve how AI agents discover, choose, and use their product.\n\nBefore Scope, he did interpr",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Edwin Olson",
+  "company": "May Mobility",
+  "batch": "Summer 2017",
+  "bio_snip": "Edwin Olson is the co-founder and CEO of May Mobility, Inc., an Ann Arbor-based startup that develops self-driving shuttles.  Olson earned his PhD from MIT in 2",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Kalyani Ramadurgam",
+  "company": "Kobalt Labs",
+  "batch": "Summer 2023",
+  "bio_snip": "Kalyani is the CEO of Kobalt Labs. She previously conducted AI research at Stanford, built financial security products at Apple, and built health data analysis ",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Benjamin Yang, Director of product development",
+  "company": "QueryPie AI",
+  "batch": "Winter 2020",
+  "bio_snip": "Benjamin is an open-minded IDE expert who has been developing IDE databases for 15 years. He is now a full-time cloud-based PaaS developer, with a 21-year exper",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Edward Aryee",
+  "company": "Laminar",
+  "batch": "Fall 2024",
+  "bio_snip": "Currently building Laminar, previously at Google Research",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Lexi Rovner",
+  "company": "64x Bio",
+  "batch": "Summer 2018",
+  "bio_snip": "Lexi Rovner, PhD is the CEO & co-founder of 64x Bio, a spinout of Harvard Medical School and the Wyss Institute. Lexi completed her PhD at Yale University and h",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Mateo Perez",
+  "company": "Cartpole",
+  "batch": "Spring 2025",
+  "bio_snip": "Building Cartpole. PhD @ CU Boulder.",
+  "n_results": 13,
+  "exact_name_papers": [
+   {
+    "title": "Omega-Regular Decision Processes",
+    "published": "2023-12-14",
+    "categories": [
+     "cs.LO",
+     "cs.LG"
+    ],
+    "url": "http://arxiv.org/abs/2312.08602v1",
+    "authors": [
+     "Ernst Moritz Hahn",
+     "Mateo Perez",
+     "Sven Schewe",
+     "Fabio Somenzi",
+     "Ashutosh Trivedi",
+     "Dominik Wojtczak"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Recursive Reinforcement Learning",
+    "published": "2022-06-23",
+    "categories": [
+     "cs.LG",
+     "cs.AI"
+    ],
+    "url": "http://arxiv.org/abs/2206.11430v1",
+    "authors": [
+     "Ernst Moritz Hahn",
+     "Mateo Perez",
+     "Sven Schewe",
+     "Fabio Somenzi",
+     "Ashutosh Trivedi",
+     "Dominik Wojtczak"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Policy Synthesis and Reinforcement Learning for Discounted LTL",
+    "published": "2023-05-26",
+    "categories": [
+     "cs.LO",
+     "cs.LG"
+    ],
+    "url": "http://arxiv.org/abs/2305.17115v2",
+    "authors": [
+     "Rajeev Alur",
+     "Osbert Bastani",
+     "Kishor Jothimurugan",
+     "Mateo Perez",
+     "Fabio Somenzi",
+     "Ashutosh Trivedi"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "A PAC Learning Algorithm for LTL and Omega-regular Objectives in MDPs",
+    "published": "2023-10-18",
+    "categories": [
+     "cs.LG",
+     "cs.LO"
+    ],
+    "url": "http://arxiv.org/abs/2310.12248v3",
+    "authors": [
+     "Mateo Perez",
+     "Fabio Somenzi",
+     "Ashutosh Trivedi"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Mungojerrie: Reinforcement Learning of Linear-Time Objectives",
+    "published": "2021-06-16",
+    "categories": [
+     "cs.LG",
+     "cs.LO",
+     "eess.SY"
+    ],
+    "url": "http://arxiv.org/abs/2106.09161v2",
+    "authors": [
+     "Ernst Moritz Hahn",
+     "Mateo Perez",
+     "Sven Schewe",
+     "Fabio Somenzi",
+     "Ashutosh Trivedi",
+     "Dominik Wojtczak"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Assume-Guarantee Reinforcement Learning",
+    "published": "2023-12-15",
+    "categories": [
+     "cs.LG",
+     "cs.AI",
+     "cs.MA"
+    ],
+    "url": "http://arxiv.org/abs/2312.09938v1",
+    "authors": [
+     "Milad Kazemi",
+     "Mateo Perez",
+     "Fabio Somenzi",
+     "Sadegh Soudjani",
+     "Ashutosh Trivedi",
+     "Alvaro Velasquez"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Average Reward Reinforcement Learning for Omega-Regular and Mean-Payoff Objectives",
+    "published": "2025-05-21",
+    "categories": [
+     "cs.AI"
+    ],
+    "url": "http://arxiv.org/abs/2505.15693v3",
+    "authors": [
+     "Milad Kazemi",
+     "Mateo Perez",
+     "Fabio Somenzi",
+     "Sadegh Soudjani",
+     "Ashutosh Trivedi",
+     "Alvaro Velasquez"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Model-free Reinforcement Learning for Branching Markov Decision Processes",
+    "published": "2021-06-12",
+    "categories": [
+     "cs.LG",
+     "cs.LO",
+     "eess.SY"
+    ],
+    "url": "http://arxiv.org/abs/2106.06777v1",
+    "authors": [
+     "Ernst Moritz Hahn",
+     "Mateo Perez",
+     "Sven Schewe",
+     "Fabio Somenzi",
+     "Ashutosh Trivedi",
+     "Dominik Wojtczak"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Compositional Reinforcement Learning for Discrete-Time Stochastic Control Systems",
+    "published": "2022-08-06",
+    "categories": [
+     "eess.SY"
+    ],
+    "url": "http://arxiv.org/abs/2208.03485v1",
+    "authors": [
+     "Abolfazl Lavaei",
+     "Mateo Perez",
+     "Milad Kazemi",
+     "Fabio Somenzi",
+     "Sadegh Soudjani",
+     "Ashutosh Trivedi",
+     "Majid Zamani"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Good-for-MDPs Automata for Probabilistic Analysis and Reinforcement Learning",
+    "published": "2019-09-11",
+    "categories": [
+     "cs.FL"
+    ],
+    "url": "http://arxiv.org/abs/1909.05081v2",
+    "authors": [
+     "Ernst Moritz Hahn",
+     "Mateo Perez",
+     "Fabio Somenzi",
+     "Ashutosh Trivedi",
+     "Sven Schewe",
+     "Dominik Wojtczak"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Omega-Regular Reward Machines",
+    "published": "2023-08-14",
+    "categories": [
+     "cs.LG",
+     "cs.AI",
+     "cs.FL"
+    ],
+    "url": "http://arxiv.org/abs/2308.07469v1",
+    "authors": [
+     "Ernst Moritz Hahn",
+     "Mateo Perez",
+     "Sven Schewe",
+     "Fabio Somenzi",
+     "Ashutosh Trivedi",
+     "Dominik Wojtczak"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Alternating Good-for-MDP Automata",
+    "published": "2022-05-06",
+    "categories": [
+     "cs.FL",
+     "cs.AI",
+     "cs.LO"
+    ],
+    "url": "http://arxiv.org/abs/2205.03243v1",
+    "authors": [
+     "Ernst Moritz Hahn",
+     "Mateo Perez",
+     "Sven Schewe",
+     "Fabio Somenzi",
+     "Ashutosh Trivedi",
+     "Dominik Wojtczak"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Omega-Regular Objectives in Model-Free Reinforcement Learning",
+    "published": "2018-09-26",
+    "categories": [
+     "cs.LO",
+     "cs.LG",
+     "stat.ML"
+    ],
+    "url": "http://arxiv.org/abs/1810.00950v1",
+    "authors": [
+     "Ernst Moritz Hahn",
+     "Mateo Perez",
+     "Sven Schewe",
+     "Fabio Somenzi",
+     "Ashutosh Trivedi",
+     "Dominik Wojtczak"
+    ],
+    "field_plausible": false
+   }
+  ],
+  "any_exact": true,
+  "plausible": false
+ },
+ {
+  "founder_name": "Benjamin Devienne",
+  "company": "Jam.gg (formerly Piepacker)",
+  "batch": "Summer 2020",
+  "bio_snip": "Benjamin worked in gaming at EA, Ubisoft and Gameloft on over ~20 games. He created and scaled data science at Gameloft. He joined Facebook as Head of Analytics",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Anurag Dixit",
+  "company": "CompUp",
+  "batch": "Summer 2022",
+  "bio_snip": "Specializing in user research, I love building and scaling technology solutions for the problems I genuinely wish never existed. I'm passionate about using tech",
+  "n_results": 1,
+  "exact_name_papers": [
+   {
+    "title": "Depth Estimation with Simplified Transformer",
+    "published": "2022-04-28",
+    "categories": [
+     "cs.CV",
+     "cs.LG"
+    ],
+    "url": "http://arxiv.org/abs/2204.13791v3",
+    "authors": [
+     "John Yang",
+     "Le An",
+     "Anurag Dixit",
+     "Jinkyu Koo",
+     "Su Inn Park"
+    ],
+    "field_plausible": true
+   }
+  ],
+  "any_exact": true,
+  "plausible": true
+ },
+ {
+  "founder_name": "Christoph Drexler",
+  "company": "Kitekraft",
+  "batch": "Summer 2019",
+  "bio_snip": "Graduated in mechanical engineering at Technical University of Munich. Delved into aerodynamics in master thesis optimizing Kitekraft's airfoils. Heavy interest",
+  "n_results": 3,
+  "exact_name_papers": [
+   {
+    "title": "Helicity sensitive terahertz radiation detection by field effect transistors",
+    "published": "2012-04-25",
+    "categories": [
+     "cond-mat.mes-hall"
+    ],
+    "url": "http://arxiv.org/abs/1204.5649v1",
+    "authors": [
+     "Christoph Drexler",
+     "Nina Dyakonova",
+     "Peter Olbrich",
+     "Johannes Karch",
+     "Michael Schafberger",
+     "Krzysztof Karpierz",
+     "Yuri Mityagin",
+     "Masha Lifshits",
+     "Frederic Teppe",
+     "Oleg Klimenko",
+     "Yahia Meziani",
+     "Wojciech Knap",
+     "Sergey Ganichev"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Probing of electromagnetic fields on atomic scale by photoelectric phenomena in graphene",
+    "published": "2013-08-01",
+    "categories": [
+     "cond-mat.mes-hall"
+    ],
+    "url": "http://arxiv.org/abs/1308.0123v1",
+    "authors": [
+     "Peter Olbrich",
+     "Christoph Drexler",
+     "Leonid E. Golub",
+     "Sergey N. Danilov",
+     "Vadim A. Shalygin",
+     "Rositza Yakimova",
+     "Samuel Lara-Avila",
+     "Sergey Kubatkin",
+     "Britta Redlich",
+     "Rupert Huber",
+     "Sergey D. Ganichev"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "High intensity study of THz detectors based on field effect transistors",
+    "published": "2014-02-02",
+    "categories": [
+     "cond-mat.mes-hall"
+    ],
+    "url": "http://arxiv.org/abs/1402.0259v1",
+    "authors": [
+     "Dmytro B. But",
+     "Christoph Drexler",
+     "Mykola V. Sakhno",
+     "Nina Dyakonova",
+     "Oleksiy Drachenko",
+     "Alexey Gutin",
+     "Fiodor F. Sizov",
+     "Sergey D. Ganichev",
+     "Wojciech Knap"
+    ],
+    "field_plausible": false
+   }
+  ],
+  "any_exact": true,
+  "plausible": false
+ },
+ {
+  "founder_name": "Matt Anderson-Baron",
+  "company": "Future Fields",
+  "batch": "Summer 2020",
+  "bio_snip": "I am a biotech entrepreneur with a background in the biological sciences. I am a co-founder of Future Fields, a Canadian start-up working to enable cellular agr",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Michael Jeffords",
+  "company": "Conifer",
+  "batch": "Summer 2026",
+  "bio_snip": "Co-founder at Conifer (YC S26). Previously co-founded The HeartCheck Foundation, scaling free hypertension screenings to 20+ barbershops and over 10,000 individ",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Philip Miglinci",
+  "company": "Glasskube",
+  "batch": "Summer 2024",
+  "bio_snip": "Open-Source and Kubernetes \u2764\ufe0f\n\nIronman finisher \ud83c\udfca \ud83d\udeb4 \ud83c\udfc3\n\nBefore working on Glasskube, I built:\n - Mission-critical alerting infrastructure in Europe as CTO\n - PCR",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Ryan Johnston",
+  "company": "Waypoint Transit",
+  "batch": "Winter 2025",
+  "bio_snip": "Co-founder and CTO of Waypoint Transit. Previously, chip design synthesis CAD at Apple. Then developed novel real-time transit signage for his hometown; this pr",
+  "n_results": 1,
+  "exact_name_papers": [
+   {
+    "title": "Properties of Compact Faint Radio Sources as a Function of Angular Size from Stacking",
+    "published": "2021-01-03",
+    "categories": [
+     "astro-ph.GA",
+     "astro-ph.IM"
+    ],
+    "url": "http://arxiv.org/abs/2101.00680v2",
+    "authors": [
+     "Ryan S. Johnston",
+     "Jeroen M. Stil",
+     "Ben W. Keller"
+    ],
+    "field_plausible": false
+   }
+  ],
+  "any_exact": true,
+  "plausible": false
+ },
+ {
+  "founder_name": "Walker Wells",
+  "company": "Brighterway",
+  "batch": "Summer 2024",
+  "bio_snip": "Before Brighterway, Walker studied Statistics and Data Science at Yale University. He has also previously led a team of interns on a data science project focuse",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Akash Levy",
+  "company": "Silimate",
+  "batch": "Summer 2023",
+  "bio_snip": "Co-founder & CTO of Silimate. Akash has a PhD from Stanford in Electrical Engineering, with technical expertise spanning EDA, AI, and cloud through his time at ",
+  "n_results": 2,
+  "exact_name_papers": [
+   {
+    "title": "Effect of geometry on the frequency limit of GaAs/AlGaAs 2-Dimensional Electron Gas (2DEG) Hall effect sensors",
+    "published": "2023-06-13",
+    "categories": [
+     "physics.ins-det",
+     "cond-mat.mes-hall",
+     "eess.SP"
+    ],
+    "url": "http://arxiv.org/abs/2306.07474v1",
+    "authors": [
+     "Anand Lalwani",
+     "Miriam Giparakis",
+     "Kanika Arora",
+     "Avidesh Maharaj",
+     "Akash Levy",
+     "Gottfried Strasser",
+     "Aaron Maxwell Andrews",
+     "Helmut K\u00f6ck",
+     "Debbie G. Senesky"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Preparing Pre-College Students for the Second Quantum Revolution with Core Concepts in Quantum Information Science",
+    "published": "2023-10-12",
+    "categories": [
+     "physics.ed-ph"
+    ],
+    "url": "http://arxiv.org/abs/2310.07950v1",
+    "authors": [
+     "Chandralekha Singh",
+     "Akash Levy",
+     "Jeremy Levy"
+    ],
+    "field_plausible": true
+   }
+  ],
+  "any_exact": true,
+  "plausible": true
+ },
+ {
+  "founder_name": "Preetam Mohan Shetty",
+  "company": "Stayflexi",
+  "batch": "Winter 2021",
+  "bio_snip": "Preetam Shetty is the Co Founder, CTO at Stayflexi. He Invented the flexible slot based booking model for the rental industry. Architected and developed the cor",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Ashish Advani",
+  "company": "InpharmD",
+  "batch": "Winter 2021",
+  "bio_snip": "Education: Oxford University + University of Georgia, PharmD \n\nClinical pharmacist with speciality in drug information x 10 years at Atlanta Medical Center\n\n+ o",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Emilio Andere",
+  "company": "Wafer",
+  "batch": "Summer 2025",
+  "bio_snip": "prev @ argonne, uchicago sand lab, elicit. math at uchicago.",
+  "n_results": 1,
+  "exact_name_papers": [
+   {
+    "title": "Natural Backdoor Datasets",
+    "published": "2022-06-21",
+    "categories": [
+     "cs.CV",
+     "cs.CR"
+    ],
+    "url": "http://arxiv.org/abs/2206.10673v1",
+    "authors": [
+     "Emily Wenger",
+     "Roma Bhattacharjee",
+     "Arjun Nitin Bhagoji",
+     "Josephine Passananti",
+     "Emilio Andere",
+     "Haitao Zheng",
+     "Ben Y. Zhao"
+    ],
+    "field_plausible": true
+   }
+  ],
+  "any_exact": true,
+  "plausible": true
+ },
+ {
+  "founder_name": "Sayan Mitra",
+  "company": "Atrisa",
+  "batch": "Spring 2026",
+  "bio_snip": "CEO @ Atrisa | Ex-AI Research Engineer @ KLA Semiconductors | Electrical Engineering @ IIT Madras\n",
+  "n_results": 20,
+  "exact_name_papers": [
+   {
+    "title": "Bounded Verification with On-the-Fly Discrepancy Computation",
+    "published": "2015-02-06",
+    "categories": [
+     "eess.SY",
+     "math.NA"
+    ],
+    "url": "http://arxiv.org/abs/1502.01801v1",
+    "authors": [
+     "Chuchu Fan",
+     "Sayan Mitra"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Differentially Private Iterative Synchronous Consensus",
+    "published": "2012-07-18",
+    "categories": [
+     "cs.CR",
+     "cs.DC",
+     "eess.SY"
+    ],
+    "url": "http://arxiv.org/abs/1207.4262v2",
+    "authors": [
+     "Zhenqi Huang",
+     "Sayan Mitra",
+     "Geir Dullerud"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "RTAEval: A framework for evaluating runtime assurance logic",
+    "published": "2023-06-05",
+    "categories": [
+     "cs.LO"
+    ],
+    "url": "http://arxiv.org/abs/2306.04585v1",
+    "authors": [
+     "Kristina Miller",
+     "Christopher K. Zeitler",
+     "William Shen",
+     "Mahesh Viswanathan",
+     "Sayan Mitra"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Searching for Optimal Runtime Assurance via Reachability and Reinforcement Learning",
+    "published": "2023-10-06",
+    "categories": [
+     "eess.SY",
+     "cs.AI",
+     "cs.FL"
+    ],
+    "url": "http://arxiv.org/abs/2310.04288v1",
+    "authors": [
+     "Kristina Miller",
+     "Christopher K. Zeitler",
+     "William Shen",
+     "Kerianne Hobbs",
+     "Sayan Mitra",
+     "John Schierman",
+     "Mahesh Viswanathan"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Factored Diffusion Policies:Compositionally Generalized Robot Control with a Single Score Network",
+    "published": "2026-05-21",
+    "categories": [
+     "cs.LG"
+    ],
+    "url": "http://arxiv.org/abs/2605.22596v1",
+    "authors": [
+     "Sayan Mitra",
+     "Ege Yuceel",
+     "Noah Giles",
+     "Abhishek Pai"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Porting Code Across Simple Mobile Robots",
+    "published": "2016-03-02",
+    "categories": [
+     "cs.RO"
+    ],
+    "url": "http://arxiv.org/abs/1603.00619v1",
+    "authors": [
+     "Yixiao Lin",
+     "Sayan Mitra",
+     "Shuting Li"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Controller Synthesis for Linear Time-varying Systems with Adversaries",
+    "published": "2015-01-18",
+    "categories": [
+     "eess.SY",
+     "cs.CR"
+    ],
+    "url": "http://arxiv.org/abs/1501.04925v1",
+    "authors": [
+     "Zhenqi Huang",
+     "Yu Wang",
+     "Sayan Mitra",
+     "Geir Dullerud"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Mass-dependent sequential freeze-out of hadrons",
+    "published": "2020-10-19",
+    "categories": [
+     "nucl-th",
+     "hep-ph"
+    ],
+    "url": "http://arxiv.org/abs/2010.09706v1",
+    "authors": [
+     "Sayan Mitra"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Proving Abstractions of Dynamical Systems through Numerical Simulations",
+    "published": "2014-01-07",
+    "categories": [
+     "eess.SY"
+    ],
+    "url": "http://arxiv.org/abs/1401.1313v1",
+    "authors": [
+     "Sayan Mitra"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Online monitoring for safe pedestrian-vehicle interactions",
+    "published": "2019-10-12",
+    "categories": [
+     "cs.RO",
+     "cs.MA",
+     "eess.SP"
+    ],
+    "url": "http://arxiv.org/abs/1910.05599v2",
+    "authors": [
+     "Peter Du",
+     "Zhe Huang",
+     "Tianqi Liu",
+     "Ke Xu",
+     "Qichao Gao",
+     "Hussein Sibai",
+     "Katherine Driggs-Campbell",
+     "Sayan Mitra"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "StarL: Towards a Unified Framework for Programming, Simulating and Verifying Distributed Robotic Systems",
+    "published": "2015-02-22",
+    "categories": [
+     "cs.PL"
+    ],
+    "url": "http://arxiv.org/abs/1502.06286v1",
+    "authors": [
+     "Yixiao Lin",
+     "Sayan Mitra"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Verse: A Python library for reasoning about multi-agent hybrid system scenarios",
+    "published": "2023-01-20",
+    "categories": [
+     "cs.SE",
+     "cs.FL",
+     "cs.MA"
+    ],
+    "url": "http://arxiv.org/abs/2301.08714v2",
+    "authors": [
+     "Yangge Li",
+     "Haoqing Zhu",
+     "Katherine Braught",
+     "Keyi Shen",
+     "Sayan Mitra"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "GAS: Generating Fast and Accurate Surrogate Models for Autonomous Vehicle Systems",
+    "published": "2022-08-03",
+    "categories": [
+     "eess.SY",
+     "cs.RO"
+    ],
+    "url": "http://arxiv.org/abs/2208.02232v3",
+    "authors": [
+     "Keyur Joshi",
+     "Chiao Hsieh",
+     "Sayan Mitra",
+     "Sasa Misailovic"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Approximate Partial Order Reduction",
+    "published": "2016-10-20",
+    "categories": [
+     "cs.LO",
+     "cs.FL"
+    ],
+    "url": "http://arxiv.org/abs/1610.06317v3",
+    "authors": [
+     "Chuchu Fan",
+     "Zhenqi Huang",
+     "Sayan Mitra"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "CODEV: Automated Model Predictive Control Design and Formal Verification (Tool Paper)",
+    "published": "2018-04-07",
+    "categories": [
+     "eess.SY"
+    ],
+    "url": "http://arxiv.org/abs/1804.02568v1",
+    "authors": [
+     "Nicole Chan",
+     "Sayan Mitra"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Road to safe autonomy with data and formal reasoning",
+    "published": "2017-04-21",
+    "categories": [
+     "eess.SY"
+    ],
+    "url": "http://arxiv.org/abs/1704.06406v1",
+    "authors": [
+     "Chuchu Fan",
+     "Bolun Qi",
+     "Sayan Mitra"
+    ],
+    "field_plausible": false
+   }
+  ],
+  "any_exact": true,
+  "plausible": true
+ },
+ {
+  "founder_name": "Eren Mendi",
+  "company": "Expanse",
+  "batch": "Spring 2026",
+  "bio_snip": "Eren is co-founder and CPO of Expanse. Built state-of-the-art decentralised foundation model training systems and performance models. Previously: prototyped eme",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Nathan Tague",
+  "company": "SynsoryBio",
+  "batch": "Winter 2024",
+  "bio_snip": "I\u2019m a co-founder of SynsoryBio, where we are creating therapeutics that sense-and-respond to disease. I have a background in synthetic biology and protein engin",
+  "n_results": 1,
+  "exact_name_papers": [
+   {
+    "title": "Fingerprint Spectroscopic SRS Imaging of Single Living Cells and Whole Brain by Ultrafast Tuning and Spatial-Spectral Learning",
+    "published": "2020-02-27",
+    "categories": [
+     "physics.med-ph",
+     "eess.IV",
+     "physics.optics"
+    ],
+    "url": "http://arxiv.org/abs/2003.02224v1",
+    "authors": [
+     "Haonan Lin",
+     "Hyeon Jeong Lee",
+     "Nathan Tague",
+     "Jean-Baptiste Lugagne",
+     "Cheng Zong",
+     "Fengyuan Deng",
+     "Wilson Wong",
+     "Mary J. Dunlop",
+     "Ji-Xin Cheng"
+    ],
+    "field_plausible": false
+   }
+  ],
+  "any_exact": true,
+  "plausible": false
+ },
+ {
+  "founder_name": "Frank Lee",
+  "company": "Illume Labs",
+  "batch": "Summer 2026",
+  "bio_snip": "Founder at Illume Labs (S26). CS + Math @ MIT.\nPreviously software engineer at Windsurf and researcher in Pulkit Agrawal Lab @ MIT.",
+  "n_results": 20,
+  "exact_name_papers": [
+   {
+    "title": "Internal wave pressure, velocity, and energy flux from density perturbations",
+    "published": "2016-01-11",
+    "categories": [
+     "physics.flu-dyn"
+    ],
+    "url": "http://arxiv.org/abs/1601.02671v1",
+    "authors": [
+     "Michael R. Allshouse",
+     "Frank M. Lee",
+     "Philip J. Morrison",
+     "Harry L. Swinney"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Internal wave energy flux from density perturbations in nonlinear stratifications",
+    "published": "2017-11-17",
+    "categories": [
+     "physics.flu-dyn"
+    ],
+    "url": "http://arxiv.org/abs/1711.06773v1",
+    "authors": [
+     "Frank M. Lee",
+     "Michael R. Allshouse",
+     "Harry L. Swinney",
+     "Philip J. Morrison"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "A Novel Method for Solving the Linearized 1D Vlasov--Poisson Equation",
+    "published": "2023-05-06",
+    "categories": [
+     "physics.plasm-ph",
+     "math-ph"
+    ],
+    "url": "http://arxiv.org/abs/2305.03896v1",
+    "authors": [
+     "Frank M. Lee",
+     "B. A. Shadwick"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Experimental determination of radiated internal wave power without pressure field data",
+    "published": "2014-01-10",
+    "categories": [
+     "physics.flu-dyn"
+    ],
+    "url": "http://arxiv.org/abs/1401.2484v1",
+    "authors": [
+     "Frank M. Lee",
+     "M. S. Paoletti",
+     "Harry L. Swinney",
+     "P. J. Morrison"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Higher order finite volume quantization conditions for two spinless particles",
+    "published": "2021-07-09",
+    "categories": [
+     "hep-lat"
+    ],
+    "url": "http://arxiv.org/abs/2107.04430v3",
+    "authors": [
+     "Frank X. Lee",
+     "Andrei Alexandru",
+     "Ruair\u00ed Brett"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Transition magnetic moment of $\u039b$ $\\to$ $\u03a3^0$ in QCD sum rules",
+    "published": "2011-02-08",
+    "categories": [
+     "hep-ph",
+     "nucl-th"
+    ],
+    "url": "http://arxiv.org/abs/1102.1710v2",
+    "authors": [
+     "Frank X. Lee",
+     "Lai Wang"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Spin-3/2 baryons from an anisotropic lattice QCD action",
+    "published": "2006-04-27",
+    "categories": [
+     "hep-lat"
+    ],
+    "url": "http://arxiv.org/abs/hep-lat/0604023v2",
+    "authors": [
+     "Leming Zhou",
+     "Frank X. Lee"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Mass and width of strange baryon resonances in QCD sum rules",
+    "published": "2006-12-13",
+    "categories": [
+     "nucl-th",
+     "hep-ph"
+    ],
+    "url": "http://arxiv.org/abs/nucl-th/0612059v1",
+    "authors": [
+     "Janardan P. Singh",
+     "Frank X. Lee"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Scattering phaseshift formulas for mesons and baryons in elongated boxes",
+    "published": "2017-06-01",
+    "categories": [
+     "hep-lat"
+    ],
+    "url": "http://arxiv.org/abs/1706.00262v2",
+    "authors": [
+     "Frank X. Lee",
+     "Andrei Alexandru"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Neutral pion polarizabilities from four-point functions in lattice QCD",
+    "published": "2024-08-23",
+    "categories": [
+     "hep-lat",
+     "hep-ph",
+     "nucl-th"
+    ],
+    "url": "http://arxiv.org/abs/2408.13388v2",
+    "authors": [
+     "Frank X. Lee",
+     "Walter Wilcox",
+     "Andrei Alexandru",
+     "Chris Culver",
+     "Shayan Nadeem"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Charged pion electric polarizability from four-point functions in lattice QCD",
+    "published": "2023-01-12",
+    "categories": [
+     "hep-lat",
+     "nucl-th"
+    ],
+    "url": "http://arxiv.org/abs/2301.05200v2",
+    "authors": [
+     "Frank X. Lee",
+     "Andrei Alexandru",
+     "Chris Culver",
+     "Walter Wilcox"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Magnetic Moments of Negative-Parity Baryons from Lattice QCD",
+    "published": "2010-11-18",
+    "categories": [
+     "hep-lat"
+    ],
+    "url": "http://arxiv.org/abs/1011.4325v1",
+    "authors": [
+     "Frank X. Lee",
+     "Andrei Alexandru"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Magnetic polarizability of a charged pion from four-point functions in lattice QCD",
+    "published": "2023-07-17",
+    "categories": [
+     "hep-lat",
+     "nucl-th"
+    ],
+    "url": "http://arxiv.org/abs/2307.08620v2",
+    "authors": [
+     "Frank X. Lee",
+     "Walter Wilcox",
+     "Andrei Alexandru",
+     "Chris Culver"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Towards charged hadron polarizabilities from four-point functions in lattice QCD",
+    "published": "2021-06-04",
+    "categories": [
+     "hep-lat",
+     "hep-ph"
+    ],
+    "url": "http://arxiv.org/abs/2106.02557v3",
+    "authors": [
+     "Walter Wilcox",
+     "Frank X. Lee"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Excited decuplet baryons from QCD sum rules",
+    "published": "2006-05-24",
+    "categories": [
+     "nucl-th",
+     "hep-ph"
+    ],
+    "url": "http://arxiv.org/abs/nucl-th/0605065v1",
+    "authors": [
+     "Frank X. Lee"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Path Integrals in Lattice Quantum Chromodynamics",
+    "published": "2007-10-22",
+    "categories": [
+     "nucl-th"
+    ],
+    "url": "http://arxiv.org/abs/0710.4103v2",
+    "authors": [
+     "Frank X. Lee"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Octet baryon magnetic moments from QCD sum rules",
+    "published": "2008-04-10",
+    "categories": [
+     "hep-ph",
+     "nucl-th"
+    ],
+    "url": "http://arxiv.org/abs/0804.1779v2",
+    "authors": [
+     "Lai Wang",
+     "Frank X. Lee"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Higher order quantization conditions for two-body scattering with spin",
+    "published": "2026-02-20",
+    "categories": [
+     "hep-lat",
+     "hep-ph",
+     "nucl-th"
+    ],
+    "url": "http://arxiv.org/abs/2602.17924v2",
+    "authors": [
+     "Lucas Chandler",
+     "Frank X. Lee",
+     "Andrei Alexandru"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Measuring charged particle polarizabilities on the lattice without background fields",
+    "published": "2021-10-07",
+    "categories": [
+     "hep-lat"
+    ],
+    "url": "http://arxiv.org/abs/2110.03148v1",
+    "authors": [
+     "Walter Wilcox",
+     "Frank X. Lee"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Higher order quantization conditions for two spinless particles",
+    "published": "2021-10-07",
+    "categories": [
+     "hep-lat"
+    ],
+    "url": "http://arxiv.org/abs/2110.03750v1",
+    "authors": [
+     "Frank X. Lee",
+     "Andrei Alexandru",
+     "Ruair\u00ed Brett"
+    ],
+    "field_plausible": false
+   }
+  ],
+  "any_exact": true,
+  "plausible": false
+ },
+ {
+  "founder_name": "Alexis Bonnafont",
+  "company": "Excellence Learning",
+  "batch": "Winter 2025",
+  "bio_snip": "After earning a degree in Physics and Computer Science from \u00c9cole Polytechnique, I moved to the Bay Area to pursue a Research Master\u2019s in Energy Science Enginee",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Michael Royzen",
+  "company": "Phind",
+  "batch": "Summer 2022",
+  "bio_snip": "Founder & CEO at Standard Signal (YC P26), building the first hedge fund where AI runs everything from research to the actual trade execution end-to-end.\nPrevio",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Carlos Georgescu",
+  "company": "AfterQuery",
+  "batch": "Winter 2025",
+  "bio_snip": "Building AfterQuery. Previously interned at Citadel Securities (2x), Meta & Google as a software engineer. Past acquired ed-tech founder. \n\nStudied for a B.S. i",
+  "n_results": 2,
+  "exact_name_papers": [
+   {
+    "title": "VADER: A Human-Evaluated Benchmark for Vulnerability Assessment, Detection, Explanation, and Remediation",
+    "published": "2025-05-26",
+    "categories": [
+     "cs.CR",
+     "cs.AI"
+    ],
+    "url": "http://arxiv.org/abs/2505.19395v1",
+    "authors": [
+     "Ethan TS. Liu",
+     "Austin Wang",
+     "Spencer Mateega",
+     "Carlos Georgescu",
+     "Danny Tang"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "FinanceQA: A Benchmark for Evaluating Financial Analysis Capabilities of Large Language Models",
+    "published": "2025-01-30",
+    "categories": [
+     "cs.LG",
+     "cs.CL"
+    ],
+    "url": "http://arxiv.org/abs/2501.18062v1",
+    "authors": [
+     "Spencer Mateega",
+     "Carlos Georgescu",
+     "Danny Tang"
+    ],
+    "field_plausible": true
+   }
+  ],
+  "any_exact": true,
+  "plausible": true
+ },
+ {
+  "founder_name": "Rachel Wang",
+  "company": "HeartByte",
+  "batch": "Winter 2024",
+  "bio_snip": "Rachel Wang is the co-founder and CEO of Storio, which she started in 2023. Before founding HeartByte, Rachel was the Chief Data Officer at Wish, a cross border",
+  "n_results": 20,
+  "exact_name_papers": [
+   {
+    "title": "Demonstrating Interoperable Channel State Feedback Compression with Machine Learning",
+    "published": "2025-06-26",
+    "categories": [
+     "eess.SP",
+     "cs.AI"
+    ],
+    "url": "http://arxiv.org/abs/2506.21796v1",
+    "authors": [
+     "Dani Korpi",
+     "Rachel Wang",
+     "Jerry Wang",
+     "Abdelrahman Ibrahim",
+     "Carl Nuzman",
+     "Runxin Wang",
+     "Kursat Rasim Mestav",
+     "Dustin Zhang",
+     "Iraj Saniee",
+     "Shawn Winston",
+     "Gordana Pavlovic",
+     "Wei Ding",
+     "William J. Hillery",
+     "Chenxi Hao",
+     "Ram Thirunagari",
+     "Jung Chang",
+     "Jeehyun Kim",
+     "Bartek Kozicki",
+     "Dragan Samardzija",
+     "Taesang Yoo",
+     "Andreas Maeder",
+     "Tingfang Ji",
+     "Harish Viswanathan"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Statistical study of energy dissipation in magnetic structures during turbulent reconnection in the Earth's magnetotail",
+    "published": "2026-05-28",
+    "categories": [
+     "physics.space-ph",
+     "astro-ph.EP"
+    ],
+    "url": "http://arxiv.org/abs/2605.29244v1",
+    "authors": [
+     "Rachel Wang",
+     "Hantao Ji",
+     "Adam Robbins",
+     "Kendra Bergstedt",
+     "Narges Ahmadi",
+     "Robert Ergun",
+     "Li-Jen Chen",
+     "Jongsoo Yoo",
+     "Peiyun Shi",
+     "Yuka Doke"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Solar wind current sheets: MVA inaccuracy and recommended single-spacecraft methodology",
+    "published": "2023-12-11",
+    "categories": [
+     "physics.space-ph",
+     "physics.plasm-ph"
+    ],
+    "url": "http://arxiv.org/abs/2312.06043v1",
+    "authors": [
+     "Rachel Wang",
+     "Ivan Y. Vasko",
+     "Tai Phan",
+     "Forrest Mozer"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Double layers in the Earth's bow shock",
+    "published": "2022-11-30",
+    "categories": [
+     "physics.space-ph",
+     "physics.plasm-ph"
+    ],
+    "url": "http://arxiv.org/abs/2211.16672v1",
+    "authors": [
+     "Jiepu Sun",
+     "Ivan Y. Vasko",
+     "Stuart D. Bale",
+     "Rachel Wang",
+     "Forrest S. Mozer"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "AI/ML based Joint Source and Channel Coding for HARQ-ACK Payload",
+    "published": "2025-11-25",
+    "categories": [
+     "eess.SP",
+     "cs.AI",
+     "cs.LG"
+    ],
+    "url": "http://arxiv.org/abs/2511.19943v2",
+    "authors": [
+     "Akash Doshi",
+     "Pinar Sen",
+     "Kirill Ivanov",
+     "Wei Yang",
+     "June Namgoong",
+     "Runxin Wang",
+     "Rachel Wang",
+     "Taesang Yoo",
+     "Jing Jiang",
+     "Tingfang Ji"
+    ],
+    "field_plausible": true
+   }
+  ],
+  "any_exact": true,
+  "plausible": true
+ },
+ {
+  "founder_name": "Sanjit Menon",
+  "company": "Prana",
+  "batch": "Winter 2026",
+  "bio_snip": "Co-founder and CHO of Prana (YC W26). MD with expertise in clinical workflows. Previously co-founded an AI medical education platform and scaled it to 400+ payi",
+  "n_results": 1,
+  "exact_name_papers": [
+   {
+    "title": "VizInspect Pro -- Automated Optical Inspection (AOI) solution",
+    "published": "2022-05-26",
+    "categories": [
+     "cs.AI",
+     "cs.CV"
+    ],
+    "url": "http://arxiv.org/abs/2205.13095v1",
+    "authors": [
+     "Faraz Waseem",
+     "Sanjit Menon",
+     "Haotian Xu",
+     "Debashis Mondal"
+    ],
+    "field_plausible": true
+   }
+  ],
+  "any_exact": true,
+  "plausible": true
+ },
+ {
+  "founder_name": "Paulo Rodrigues",
+  "company": "MagnaPlay",
+  "batch": "Winter 2023",
+  "bio_snip": "Paulo is founder and CEO at MagnaPlay, an AI-powered game localization service. He recently dropped out of the University of Chicago and is working towards demo",
+  "n_results": 20,
+  "exact_name_papers": [
+   {
+    "title": "Conditions for up-down asymmetry in the core of tokamak equilibria",
+    "published": "2013-08-22",
+    "categories": [
+     "physics.plasm-ph"
+    ],
+    "url": "http://arxiv.org/abs/1308.4841v1",
+    "authors": [
+     "Paulo Rodrigues",
+     "Nuno F. Loureiro",
+     "Justin Ball",
+     "Felix I. Parra"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "High-order coupling of shear and sonic continua in JET plasmas",
+    "published": "2022-09-13",
+    "categories": [
+     "physics.plasm-ph"
+    ],
+    "url": "http://arxiv.org/abs/2209.06151v2",
+    "authors": [
+     "Paulo Rodrigues",
+     "Duarte Borba",
+     "Francesca Cella",
+     "Rui Coelho",
+     "Jorge Ferreira",
+     "Ant\u00f3nio Figueiredo",
+     "Mervi Mantsinen",
+     "Fernando Nabais",
+     "Sergei Sharapov",
+     "Paula Sir\u00e9n",
+     "JET Contributors"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Local up-down asymmetrically shaped equilibrium model for tokamak plasmas",
+    "published": "2017-10-11",
+    "categories": [
+     "physics.plasm-ph"
+    ],
+    "url": "http://arxiv.org/abs/1710.04113v2",
+    "authors": [
+     "Paulo Rodrigues",
+     "Andr\u00e9 Coroado"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "High-order geodesic coupling of shear-Alfv\u00e9n and acoustic continua in tokamaks",
+    "published": "2020-08-28",
+    "categories": [
+     "physics.plasm-ph"
+    ],
+    "url": "http://arxiv.org/abs/2008.12753v2",
+    "authors": [
+     "Paulo Rodrigues",
+     "Francesca Cella"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "A simple but powerful tail index regression",
+    "published": "2024-09-20",
+    "categories": [
+     "econ.EM",
+     "stat.ME"
+    ],
+    "url": "http://arxiv.org/abs/2409.13531v1",
+    "authors": [
+     "Jo\u00e3o Nicolau",
+     "Paulo M. M. Rodrigues"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Measuring wage inequality under right censoring",
+    "published": "2020-04-27",
+    "categories": [
+     "econ.EM"
+    ],
+    "url": "http://arxiv.org/abs/2004.12856v1",
+    "authors": [
+     "Jo\u00e3o Nicolau",
+     "Pedro Raposo",
+     "Paulo M. M. Rodrigues"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Multivariate reconciliation for hierarchical time series",
+    "published": "2026-05-18",
+    "categories": [
+     "stat.ME",
+     "stat.AP"
+    ],
+    "url": "http://arxiv.org/abs/2605.17920v1",
+    "authors": [
+     "Ana Caroline Pinheiro",
+     "Rodrigo de Souza Bulh\u00f5es",
+     "Rob J. Hyndman",
+     "Paulo Canas Rodrigues"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Intrinsic momentum transport in up-down asymmetric tokamaks",
+    "published": "2014-03-13",
+    "categories": [
+     "physics.plasm-ph"
+    ],
+    "url": "http://arxiv.org/abs/1403.3293v2",
+    "authors": [
+     "Justin Ball",
+     "Felix I. Parra",
+     "Michael Barnes",
+     "William Dorland",
+     "Gregory W. Hammett",
+     "Paulo Rodrigues",
+     "Nuno F. Loureiro"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Control of Renewable Energy Communities using AI and Real-World Data",
+    "published": "2025-05-22",
+    "categories": [
+     "eess.SY",
+     "cs.AI"
+    ],
+    "url": "http://arxiv.org/abs/2505.17321v1",
+    "authors": [
+     "Tiago Fonseca",
+     "Clarisse Sousa",
+     "Ricardo Ven\u00e2ncio",
+     "Pedro Pires",
+     "Ricardo Severino",
+     "Paulo Rodrigues",
+     "Pedro Paiva",
+     "Luis Lino Ferreira"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Projection Methods for some Constrained Systems",
+    "published": "2011-10-09",
+    "categories": [
+     "math-ph"
+    ],
+    "url": "http://arxiv.org/abs/1110.1854v1",
+    "authors": [
+     "Paulo Pitanga",
+     "Paulo R. Rodrigues"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Methods for Analytical Understanding of Agent-Based Modeling of Complex Systems",
+    "published": "2005-07-30",
+    "categories": [
+     "cs.GR"
+    ],
+    "url": "http://arxiv.org/abs/cs/0508002v1",
+    "authors": [
+     "Gilson A. Giraldi",
+     "Luis C. da Costa",
+     "Adilson V. Xavier",
+     "Paulo S. Rodrigues"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Lattice Gas Cellular Automata for Computational Fluid Animation",
+    "published": "2005-07-05",
+    "categories": [
+     "cs.GR"
+    ],
+    "url": "http://arxiv.org/abs/cs/0507012v1",
+    "authors": [
+     "Gilson A. Giraldi",
+     "Adilson V. Xavier",
+     "Antonio L. Apolinario",
+     "Paulo S. Rodrigues"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Non-Holonomic Connections Following \u00c9lie Cartan",
+    "published": "2011-10-06",
+    "categories": [
+     "gr-qc"
+    ],
+    "url": "http://arxiv.org/abs/1110.1356v1",
+    "authors": [
+     "Jair Koiller",
+     "Paulo R. Rodrigues",
+     "Paulo Pitanga"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Gradient Vector Flow Models for Boundary Extraction in 2D Images",
+    "published": "2005-02-28",
+    "categories": [
+     "cs.CV"
+    ],
+    "url": "http://arxiv.org/abs/cs/0502095v2",
+    "authors": [
+     "Gilson A. Giraldi",
+     "Leandro S. Marturelli",
+     "Paulo S. Rodrigues"
+    ],
+    "field_plausible": true
+   }
+  ],
+  "any_exact": true,
+  "plausible": true
+ },
+ {
+  "founder_name": "Lukas Wolf",
+  "company": "Sonia",
+  "batch": "Winter 2024",
+  "bio_snip": "I studied CS at ETH and MIT spending most of my time on research in AI and NLP. Worked in research labs (ETH, MIT), at corps (BMW), and startups.\n\n",
+  "n_results": 7,
+  "exact_name_papers": [
+   {
+    "title": "Quantifying the redundancy between prosody and text",
+    "published": "2023-11-28",
+    "categories": [
+     "cs.CL",
+     "cs.AI",
+     "cs.IT",
+     "cs.LG"
+    ],
+    "url": "http://arxiv.org/abs/2311.17233v1",
+    "authors": [
+     "Lukas Wolf",
+     "Tiago Pimentel",
+     "Evelina Fedorenko",
+     "Ryan Cotterell",
+     "Alex Warstadt",
+     "Ethan Wilcox",
+     "Tamar Regev"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "WhisBERT: Multimodal Text-Audio Language Modeling on 100M Words",
+    "published": "2023-12-05",
+    "categories": [
+     "cs.CL",
+     "cs.AI"
+    ],
+    "url": "http://arxiv.org/abs/2312.02931v2",
+    "authors": [
+     "Lukas Wolf",
+     "Greta Tuckute",
+     "Klemen Kotar",
+     "Eghbal Hosseini",
+     "Tamar Regev",
+     "Ethan Wilcox",
+     "Alex Warstadt"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "A Deep Learning Approach for the Segmentation of Electroencephalography Data in Eye Tracking Applications",
+    "published": "2022-06-17",
+    "categories": [
+     "cs.LG",
+     "cs.AI",
+     "eess.SP"
+    ],
+    "url": "http://arxiv.org/abs/2206.08672v1",
+    "authors": [
+     "Lukas Wolf",
+     "Ard Kastrati",
+     "Martyna Beata P\u0142omecka",
+     "Jie-Ming Li",
+     "Dustin Klebe",
+     "Alexander Veicht",
+     "Roger Wattenhofer",
+     "Nicolas Langer"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "FABRIC: Personalizing Diffusion Models with Iterative Feedback",
+    "published": "2023-07-19",
+    "categories": [
+     "cs.CV"
+    ],
+    "url": "http://arxiv.org/abs/2307.10159v1",
+    "authors": [
+     "Dimitri von R\u00fctte",
+     "Elisabetta Fedele",
+     "Jonathan Thomm",
+     "Lukas Wolf"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "EEGEyeNet: a Simultaneous Electroencephalography and Eye-tracking Dataset and Benchmark for Eye Movement Prediction",
+    "published": "2021-11-06",
+    "categories": [
+     "eess.SP",
+     "cs.CV",
+     "cs.LG"
+    ],
+    "url": "http://arxiv.org/abs/2111.05100v2",
+    "authors": [
+     "Ard Kastrati",
+     "Martyna Beata P\u0142omecka",
+     "Dami\u00e1n Pascual",
+     "Lukas Wolf",
+     "Victor Gillioz",
+     "Roger Wattenhofer",
+     "Nicolas Langer"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "The time scale of redundancy between prosody and linguistic context",
+    "published": "2025-03-14",
+    "categories": [
+     "cs.CL",
+     "cs.IT"
+    ],
+    "url": "http://arxiv.org/abs/2503.11630v3",
+    "authors": [
+     "Tamar I. Regev",
+     "Chiebuka Ohams",
+     "Shaylee Xie",
+     "Lukas Wolf",
+     "Evelina Fedorenko",
+     "Alex Warstadt",
+     "Ethan G. Wilcox",
+     "Tiago Pimentel"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "A Scheduling Perspective on Modular Educational Systems in Europe",
+    "published": "2024-02-07",
+    "categories": [
+     "cs.CY"
+    ],
+    "url": "http://arxiv.org/abs/2403.05549v1",
+    "authors": [
+     "Rub\u00e9n Ruiz-Torrubiano",
+     "Sebastian Knopp",
+     "Lukas Matthias Wolf",
+     "Andreas Krystallidis"
+    ],
+    "field_plausible": true
+   }
+  ],
+  "any_exact": true,
+  "plausible": true
+ },
+ {
+  "founder_name": "Trey Benedict",
+  "company": "Pure",
+  "batch": "Summer 2023",
+  "bio_snip": "Ex Numismatist @ Heritage TII & KLRC, Research @ Smithsonian.\nSneakerhead, Minesweeper, Nerd, & Pinball",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "David Korn",
+  "company": "Ontora",
+  "batch": "Spring 2026",
+  "bio_snip": "AI Projects @ Google, exited previous company to beglaubigt.de (YC F24), Computer Science at CODE University (founded by the largest German Unicorn founders)",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Brendan Kellam",
+  "company": "Sourcebot",
+  "batch": "Fall 2025",
+  "bio_snip": "Co-founder at Sourcebot. Previously built core game streaming tech on the Xbox Cloud Gaming team, worked on search inside of Visual Studio, and was the youngest",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Tom Bishop",
+  "company": "Feanix Biotechnologies",
+  "batch": "Summer 2023",
+  "bio_snip": "Co-founder and CSO of Feanix Biotechnologies. Completed a BSc with honors in Biochemistry and PhD in Genetics at the University of Otago in New Zealand. Was a P",
+  "n_results": 6,
+  "exact_name_papers": [
+   {
+    "title": "The Need for Neural ISP in the Small-Pixel Era: How Shrinking Pixels Push Optics to the Limit and Neural Restoration Pushes Back",
+    "published": "2026-06-04",
+    "categories": [
+     "eess.IV",
+     "cs.CV",
+     "cs.LG",
+     "physics.optics"
+    ],
+    "url": "http://arxiv.org/abs/2606.07675v1",
+    "authors": [
+     "Jingxi Li",
+     "Neerja Aggarwal",
+     "Laurent Gudemann",
+     "Shivansh Rao",
+     "Vishal Vinod",
+     "Tom E. Bishop",
+     "Ziv Attar"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "No Shifted Augmentations (NSA): compact distributions for robust self-supervised Anomaly Detection",
+    "published": "2022-03-19",
+    "categories": [
+     "cs.CV"
+    ],
+    "url": "http://arxiv.org/abs/2203.10344v1",
+    "authors": [
+     "Mohamed Yousef",
+     "Marcel Ackermann",
+     "Unmesh Kurup",
+     "Tom Bishop"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Learning by Hallucinating: Vision-Language Pre-training with Weak Supervision",
+    "published": "2022-10-24",
+    "categories": [
+     "cs.CV"
+    ],
+    "url": "http://arxiv.org/abs/2210.13591v2",
+    "authors": [
+     "Tzu-Jui Julius Wang",
+     "Jorma Laaksonen",
+     "Tomas Langer",
+     "Heikki Arponen",
+     "Tom E. Bishop"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "SHREWD: Semantic Hierarchy-based Relational Embeddings for Weakly-supervised Deep Hashing",
+    "published": "2019-08-12",
+    "categories": [
+     "cs.IR",
+     "cs.AI",
+     "cs.CV",
+     "cs.IT",
+     "cs.LG"
+    ],
+    "url": "http://arxiv.org/abs/1908.05602v1",
+    "authors": [
+     "Heikki Arponen",
+     "Tom E Bishop"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Learning to hash with semantic similarity metrics and empirical KL divergence",
+    "published": "2020-05-11",
+    "categories": [
+     "cs.LG",
+     "cs.CV",
+     "cs.IR"
+    ],
+    "url": "http://arxiv.org/abs/2005.04917v1",
+    "authors": [
+     "Heikki Arponen",
+     "Tom E. Bishop"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "OrigamiNet: Weakly-Supervised, Segmentation-Free, One-Step, Full Page Text Recognition by learning to unfold",
+    "published": "2020-06-12",
+    "categories": [
+     "cs.CV",
+     "cs.LG"
+    ],
+    "url": "http://arxiv.org/abs/2006.07491v1",
+    "authors": [
+     "Mohamed Yousef",
+     "Tom E. Bishop"
+    ],
+    "field_plausible": true
+   }
+  ],
+  "any_exact": true,
+  "plausible": true
+ },
+ {
+  "founder_name": "Ian McInnis",
+  "company": "WithAI",
+  "batch": "Spring 2026",
+  "bio_snip": "Princeton Mathematics, 4.0, Shapiro Prize, Behrman Fellow, \u03a6\u0392\u039a early election, \u03a3\u039e induction & outstanding research award, researcher (check ArXiV), novelist (ch",
+  "n_results": 6,
+  "exact_name_papers": [
+   {
+    "title": "Bicategories, Biequivalence, and Bi-Interpretability",
+    "published": "2020-11-28",
+    "categories": [
+     "math.LO",
+     "math.CT"
+    ],
+    "url": "http://arxiv.org/abs/2011.14056v2",
+    "authors": [
+     "Anthony D'Arienzo",
+     "Vinny Pagano",
+     "Ian M. J. McInnis"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Graphical distances & inertia",
+    "published": "2023-04-25",
+    "categories": [
+     "math.CO"
+    ],
+    "url": "http://arxiv.org/abs/2304.13020v1",
+    "authors": [
+     "Jeffrey Cheng",
+     "Ian Malcolm Johnson McInnis",
+     "Matthew Yee"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Isometric embedding and spectral constraints for weighted graph metrics",
+    "published": "2023-04-25",
+    "categories": [
+     "math.CO"
+    ],
+    "url": "http://arxiv.org/abs/2304.13018v1",
+    "authors": [
+     "Jeffrey Cheng",
+     "Ian Malcolm Johnson McInnis",
+     "Matthew Yee"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Characterizing and generalizing cycle completable graphs",
+    "published": "2023-04-18",
+    "categories": [
+     "math.CO"
+    ],
+    "url": "http://arxiv.org/abs/2304.09335v2",
+    "authors": [
+     "Maria Chudnovsky",
+     "Ian Malcolm Johnson McInnis"
+    ],
+    "field_plausible": false
+   }
+  ],
+  "any_exact": true,
+  "plausible": false
+ },
+ {
+  "founder_name": "Rami Seid",
+  "company": "Lucid",
+  "batch": "Winter 2025",
+  "bio_snip": "A high school dropout who got his first internship as an MLE at a robotics lab, I went on to become the CTO of a govtech contracting company. After that, I cofo",
+  "n_results": 1,
+  "exact_name_papers": [
+   {
+    "title": "LoRA Diffusion: Zero-Shot LoRA Synthesis for Diffusion Model Personalization",
+    "published": "2024-12-03",
+    "categories": [
+     "cs.LG"
+    ],
+    "url": "http://arxiv.org/abs/2412.02352v1",
+    "authors": [
+     "Ethan Smith",
+     "Rami Seid",
+     "Alberto Hojel",
+     "Paramita Mishra",
+     "Jianbo Wu"
+    ],
+    "field_plausible": true
+   }
+  ],
+  "any_exact": true,
+  "plausible": true
+ },
+ {
+  "founder_name": "Jeff Chang",
+  "company": "Vest",
+  "batch": "Winter 2015",
+  "bio_snip": "Jeff Chang has over 25 years of experience in financial services and asset management, and is responsible for driving product strategy, research and positioning",
+  "n_results": 3,
+  "exact_name_papers": [
+   {
+    "title": "Sharp Bounds for Generalized Zagreb Indices of Graphs",
+    "published": "2024-09-09",
+    "categories": [
+     "math.CO"
+    ],
+    "url": "http://arxiv.org/abs/2409.06081v1",
+    "authors": [
+     "Sanju Vaidya",
+     "Jeff Chang"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Sharp Bounds for Neighborhood degree based indices of Graphs",
+    "published": "2024-11-20",
+    "categories": [
+     "math.CO"
+    ],
+    "url": "http://arxiv.org/abs/2411.12984v1",
+    "authors": [
+     "Sanju Vaidya",
+     "Jeff Chang"
+    ],
+    "field_plausible": false
+   },
+   {
+    "title": "Heat-tree: Cross-platform software for interactive and embeddable phylogenetic tree visualization and editing",
+    "published": "2026-05-01",
+    "categories": [
+     "q-bio.PE"
+    ],
+    "url": "http://arxiv.org/abs/2605.01109v1",
+    "authors": [
+     "Zachary S. L. Foster",
+     "Jeff H. Chang",
+     "Niklaus J. Grunwald"
+    ],
+    "field_plausible": false
+   }
+  ],
+  "any_exact": true,
+  "plausible": false
+ },
+ {
+  "founder_name": "Etienne DEGUINE",
+  "company": "Dev Tools AI",
+  "batch": "Summer 2022",
+  "bio_snip": "Worked on ML products at Google (Google Translate, Display ads), Hover (photogrammetry), test.ai (visual testing AI).\nGraduated with a Masters from Cambridge Un",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Andrew Reiter",
+  "company": "10x Science",
+  "batch": "Winter 2026",
+  "bio_snip": "Previously received my B.S. in Biology from UNC-Chapel Hill. I then joined Dr. Steven Carr\u2019s Proteomics Platform Lab at the Broad Institute of MIT and Harvard, ",
+  "n_results": 0,
+  "exact_name_papers": [],
+  "any_exact": false,
+  "plausible": false
+ },
+ {
+  "founder_name": "Jason Liao",
+  "company": "Mundo AI",
+  "batch": "Winter 2025",
+  "bio_snip": "Hi! I'm Jason. Last year I worked on ML research abroad, where I discovered how impossibly challenging it is to build good multi-lingual AI models. Before that,",
+  "n_results": 4,
+  "exact_name_papers": [
+   {
+    "title": "Three steps towards dose optimization for oncology dose finding",
+    "published": "2023-09-27",
+    "categories": [
+     "stat.ME",
+     "stat.AP"
+    ],
+    "url": "http://arxiv.org/abs/2309.15333v1",
+    "authors": [
+     "Jason J. Z. Liao",
+     "Ekaterine Asatiani",
+     "Qingyang Liu",
+     "Kevin Hou"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "A gated group sequential design for seamless Phase II/III trial with subpopulation selection",
+    "published": "2022-06-25",
+    "categories": [
+     "stat.AP"
+    ],
+    "url": "http://arxiv.org/abs/2206.12536v1",
+    "authors": [
+     "Guanhong Miao",
+     "Jason J. Z. Liao",
+     "Jing Yang",
+     "Keaven Anderson"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Detecting LLM-Generated Spam Reviews by Integrating Language Model Embeddings and Graph Neural Network",
+    "published": "2025-10-02",
+    "categories": [
+     "cs.CL"
+    ],
+    "url": "http://arxiv.org/abs/2510.01801v2",
+    "authors": [
+     "Xin Liu",
+     "Rongwu Xu",
+     "Xinyi Jia",
+     "Jason Liao",
+     "Jiao Sun",
+     "Ling Huang",
+     "Wei Xu"
+    ],
+    "field_plausible": true
+   },
+   {
+    "title": "Alternative Analysis Methods for Time to Event Endpoints under Non-proportional Hazards: A Comparative Analysis",
+    "published": "2019-09-20",
+    "categories": [
+     "stat.AP"
+    ],
+    "url": "http://arxiv.org/abs/1909.09467v1",
+    "authors": [
+     "Ray S. Lin",
+     "Ji Lin",
+     "Satrajit Roychoudhury",
+     "Keaven M. Anderson",
+     "Tianle Hu",
+     "Bo Huang",
+     "Larry F Leon",
+     "Jason JZ Liao",
+     "Rong Liu",
+     "Xiaodong Luo",
+     "Pralay Mukhopadhyay",
+     "Rui Qin",
+     "Kay Tatsuoka",
+     "Xuejing Wang",
+     "Yang Wang",
+     "Jian Zhu",
+     "Tai-Tsang Chen",
+     "Renee Iacona",
+     "Cross-Pharma Non-proportional Hazards Working Group"
+    ],
+    "field_plausible": true
+   }
+  ],
+  "any_exact": true,
+  "plausible": true
+ }
+]

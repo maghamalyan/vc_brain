@@ -114,7 +114,12 @@ def temporal_split(panel: pl.DataFrame) -> pl.DataFrame:
 
 
 def _matrix(frame: pl.DataFrame, feature_names: list[str]) -> np.ndarray:
-    matrix = frame.select(feature_names).to_numpy().astype(np.float64, copy=False)
+    matrix = (
+        frame.select(feature_names)
+        .with_columns(pl.all().fill_null(0.0))
+        .to_numpy()
+        .astype(np.float64, copy=False)
+    )
     if not np.isfinite(matrix).all():
         raise ValueError("Model features must be finite and non-null")
     return matrix
