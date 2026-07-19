@@ -6,7 +6,22 @@ const evidenceFixture = JSON.parse(readFileSync(new URL('../src/lib/mocks/events
   ts: string;
   event_type: string;
 }>;
-
+const candidateFixture = JSON.parse(readFileSync(new URL('../src/lib/mocks/candidates.json', import.meta.url), 'utf8')) as Array<{
+  gh_login: string;
+  current_score: number;
+  score_components: Array<{ contribution: number }>;
+  first_detection_month: string | null;
+  trajectory: Array<{ month: string; score: number }>;
+}>;
+const adaMemoFixture = JSON.parse(readFileSync(new URL('../src/lib/mocks/memos/ada-lovelace-fixture.json', import.meta.url), 'utf8')) as {
+  sections: {
+    company_snapshot: { claim_ids: string[] };
+    investment_hypotheses: Array<{ claim_ids: string[] }>;
+    problem_product: { claim_ids: string[] };
+    traction_kpis: { claim_ids: string[] };
+    swot: Record<string, Array<{ claim_ids: string[] }>>;
+  };
+};
 function enforceOffline(page: Page): string[] {
   const externalRequests: string[] = [];
   page.on('request', (request) => {
@@ -50,11 +65,52 @@ test('command palette opens, searches, and navigates by keyboard', async ({ page
 test('candidate record renders claim provenance and prominent gaps', async ({ page }) => {
   const external = enforceOffline(page);
   await page.goto('/candidate/ada-lovelace-fixture');
-  await expect(page.locator('.claim-chip')).toHaveCount(9);
-  await page.locator('.claim-chip').first().focus();
+  await expect(page.locator('.memo-citation')).toHaveCount(9);
+  await page.locator('.memo-citation').first().focus();
   await expect(page.getByRole('dialog', { name: /Evidence for claim/ })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Not observed' })).toBeVisible();
   await expect(page.locator('.gaps-box li')).toHaveCount(2);
+  expect(external).toEqual([]);
+});
+
+test('score waterfall opens and mock contributions sum to the displayed score', async ({ page }) => {
+  const external = enforceOffline(page);
+  const candidate = candidateFixture.find((item) => item.gh_login === 'ada-lovelace-fixture');
+  expect(candidate).toBeDefined();
+
+  await page.goto('/candidate/ada-lovelace-fixture');
+  await page.locator('.signal-score-toggle').click();
+  const waterfall = page.getByTestId('score-waterfall');
+  await expect(waterfall).toBeVisible();
+  await expect(waterfall.locator('[data-score-component]')).toHaveCount(candidate?.score_components.length ?? 0);
+
+  const displayedScore = Number(await waterfall.getAttribute('data-displayed-score'));
+  const contributions = await waterfall.locator('[data-contribution]').evaluateAll((rows) => rows.map((row) => Number(row.getAttribute('data-contribution'))));
+  const contributionSum = contributions.reduce((sum, contribution) => sum + contribution, 0);
+  expect(Math.abs(contributionSum - displayedScore)).toBeLessThanOrEqual(0.01);
+  expect(displayedScore).toBeCloseTo((candidate?.current_score ?? 0) * 100, 2);
+  expect(external).toEqual([]);
+});
+
+test('memo sections render the fixture claim_ids as numbered inline citations', async ({ page }) => {
+  const external = enforceOffline(page);
+  const expectedCounts = [
+    adaMemoFixture.sections.company_snapshot.claim_ids.length,
+    ...adaMemoFixture.sections.investment_hypotheses.map((section) => section.claim_ids.length),
+    adaMemoFixture.sections.problem_product.claim_ids.length,
+    adaMemoFixture.sections.traction_kpis.claim_ids.length,
+    ...Object.values(adaMemoFixture.sections.swot).flatMap((sections) => sections.map((section) => section.claim_ids.length))
+  ];
+
+  await page.goto('/candidate/ada-lovelace-fixture');
+  const proseSections = page.getByTestId('memo-section-prose');
+  await expect(proseSections).toHaveCount(expectedCounts.length);
+  for (const [index, expectedCount] of expectedCounts.entries()) {
+    await expect(proseSections.nth(index).locator('.memo-citation')).toHaveCount(expectedCount);
+    await expect(proseSections.nth(index)).toHaveAttribute('data-claim-count', String(expectedCount));
+  }
+  const labels = await proseSections.locator('.memo-citation').allTextContents();
+  expect(labels.every((label) => /^\[\d+\]$/.test(label))).toBe(true);
   expect(external).toEqual([]);
 });
 
@@ -119,5 +175,39 @@ test('radar ribbon renders month ticks and scrubs intelligence by pointer and ke
     await page.mouse.up();
   }
   await expect(cutoff).not.toHaveText('Jun 2026');
+  expect(external).toEqual([]);
+});
+
+test('radar scrub uses fixture trajectory scores and dims candidates before detection', async ({ page }) => {
+  const external = enforceOffline(page);
+  const months = candidateFixture[0].trajectory.map((point) => point.month.slice(0, 7));
+  const cutoffIndex = months.findIndex((month) => {
+    const hasDetected = candidateFixture.some((candidate) => candidate.first_detection_month && candidate.first_detection_month.slice(0, 7) <= month);
+    const hasUndetected = candidateFixture.some((candidate) => candidate.first_detection_month && candidate.first_detection_month.slice(0, 7) > month);
+    return hasDetected && hasUndetected;
+  });
+  expect(cutoffIndex).toBeGreaterThanOrEqual(0);
+  const cutoffMonth = months[cutoffIndex];
+  const undetected = candidateFixture.find((candidate) => candidate.first_detection_month && candidate.first_detection_month.slice(0, 7) > cutoffMonth)!;
+  const detected = candidateFixture.find((candidate) => candidate.first_detection_month && candidate.first_detection_month.slice(0, 7) <= cutoffMonth)!;
+  const undetectedScore = undetected.trajectory.find((point) => point.month.slice(0, 7) === cutoffMonth)!.score;
+  const detectedScore = detected.trajectory.find((point) => point.month.slice(0, 7) === cutoffMonth)!.score;
+
+  await page.goto('/');
+  const scrubber = page.getByTestId('radar-scrubber');
+  await scrubber.evaluate((node, value) => {
+    const input = node as HTMLInputElement;
+    input.value = String(value);
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+  }, cutoffIndex);
+
+  const undetectedRow = page.locator(`.candidate-row[data-login="${undetected.gh_login}"]`);
+  await expect(undetectedRow).toHaveClass(/not-yet-detected/);
+  await expect(undetectedRow.locator('.score-cell')).toHaveText(/Not yet detected/i);
+  await expect.poll(async () => Number(await undetectedRow.getAttribute('data-trajectory-score'))).toBeCloseTo(undetectedScore, 6);
+
+  const detectedRow = page.locator(`.candidate-row[data-login="${detected.gh_login}"]`);
+  await expect(detectedRow.getByTestId('historical-score')).toHaveText(String(Math.round(detectedScore * 100)));
   expect(external).toEqual([]);
 });

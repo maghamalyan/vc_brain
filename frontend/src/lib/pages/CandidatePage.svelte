@@ -2,14 +2,16 @@
   import { onMount, tick } from 'svelte';
   import { flip } from 'svelte/animate';
   import { api } from '../api/client';
-  import type { CandidateDetailResponse, EvidenceEvent, Memo, TrajectoryPoint } from '../api/types';
+  import type { CandidateDetailResponse, DeepDiveRun, EvidenceEvent, Memo, MemoTextSection, TrajectoryPoint } from '../api/types';
   import { navigate } from '../router';
-  import ClaimChip from '../components/ClaimChip.svelte';
   import Chip from '../components/Chip.svelte';
   import CircularIconButton from '../components/CircularIconButton.svelte';
   import MiniArea from '../components/MiniArea.svelte';
   import MiniBars from '../components/MiniBars.svelte';
-  import ConfidenceArc from '../components/ConfidenceArc.svelte';
+  import ScoreWaterfall from '../components/ScoreWaterfall.svelte';
+  import MemoCitations from '../components/MemoCitations.svelte';
+  import ProvenanceGraph from '../components/ProvenanceGraph.svelte';
+  import LiveCapture from '../components/LiveCapture.svelte';
 
   type TimelineCluster = {
     month: string;
@@ -23,7 +25,12 @@
   let detail: CandidateDetailResponse | null = null;
   let memo: Memo | null = null;
   let evidence: EvidenceEvent[] = [];
+  let liveRuns: DeepDiveRun[] = [];
+  let priorCaptureCount = 0;
   let selectedType = 'all';
+  let scorePanelOpen = false;
+  let activeScoreComponent = '';
+  let highlightedClaimIds: string[] = [];
   let loading = true;
   let error = '';
   let startingDive = false;
@@ -53,6 +60,15 @@
     commit_burst: '↟', star_milestone: '★', release_published: '◇', readme_updated: '≡',
     org_created: '◉', repo_created: '＋', contributor_joined: '↗', issue_closed: '✓'
   };
+  const componentEventTypes: Record<string, string[]> = {
+    commit_burst_cadence: ['commit_burst'],
+    external_contributor_influx: ['contributor_joined'],
+    readme_product_language_shift: ['readme_updated'],
+    organization_formation: ['org_created'],
+    star_velocity: ['star_milestone'],
+    release_cadence: ['release_published'],
+    deck_product_specificity: ['deck_claim', 'deck_evidence']
+  };
 
   const titleCase = (value: string) => value.replaceAll('_', ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
   const founderName = (value: string | null) => value?.replace(' (fixture)', '') ?? login.replace('-fixture', '');
@@ -63,6 +79,57 @@
   const monthShort = (value: string) => new Intl.DateTimeFormat('en', { month: 'short', timeZone: 'UTC' }).format(new Date(`${value}-01T00:00:00Z`));
   const parseInteger = (value: string) => Number.parseInt(value.replaceAll(',', ''), 10);
   const numberWord: Record<string, number> = { one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10 };
+
+  function monthOrdinal(value: string): number {
+    const [year, month] = value.slice(0, 7).split('-').map(Number);
+    return year * 12 + month - 1;
+  }
+
+  function leadMonths(detection: string, recognition: string): number {
+    return monthOrdinal(recognition) - monthOrdinal(detection);
+  }
+
+  function matchesEventTypes(event: EvidenceEvent, types: string[]): boolean {
+    return types.includes(event.event_type) || (types.some((type) => type.startsWith('deck_')) && event.event_type.startsWith('deck'));
+  }
+
+  function monthPosition(month: string): number {
+    const exactIndex = timelineClusters.findIndex((cluster) => cluster.month === month);
+    if (exactIndex >= 0) return MONTH_OFFSET + exactIndex * MONTH_STEP;
+    if (timelineClusters.length < 2) return MONTH_OFFSET;
+    const first = monthOrdinal(timelineClusters[0].month);
+    const last = monthOrdinal(timelineClusters.at(-1)?.month ?? timelineClusters[0].month);
+    const ratio = last === first ? 0 : (monthOrdinal(month) - first) / (last - first);
+    return MONTH_OFFSET + Math.max(0, Math.min(1, ratio)) * (timelineClusters.length - 1) * MONTH_STEP;
+  }
+
+  function activateScoreComponent(key: string): void {
+    activeScoreComponent = key;
+    expandedMonth = '';
+  }
+
+  function clearScoreComponent(): void {
+    activeScoreComponent = '';
+  }
+
+  function handlePageKey(event: KeyboardEvent): void {
+    if (event.key === 'Escape' && scorePanelOpen) {
+      scorePanelOpen = false;
+      activeScoreComponent = '';
+      document.getElementById('score-toggle')?.focus();
+    }
+  }
+
+  function graphSectionsFor(value: Memo | null): Array<{ id: string; label: string; anchorId: string; claimIds: string[] }> {
+    if (!value) return [];
+    return [
+      { id: 'company', label: 'Company snapshot', anchorId: 'claims', claimIds: value.sections.company_snapshot.claim_ids },
+      ...value.sections.investment_hypotheses.map((item, index) => ({ id: `hypothesis-${index}`, label: `Investment hypothesis ${index + 1}`, anchorId: `memo-hypothesis-${index}`, claimIds: item.claim_ids })),
+      { id: 'problem', label: 'Problem & product', anchorId: 'memo-problem-product', claimIds: value.sections.problem_product.claim_ids },
+      { id: 'traction', label: 'Traction & KPIs', anchorId: 'memo-traction-kpis', claimIds: value.sections.traction_kpis.claim_ids },
+      ...Object.entries(value.sections.swot).flatMap(([label, items]) => (items as MemoTextSection[]).map((item: MemoTextSection, index: number) => ({ id: `${label}-${index}`, label: `${titleCase(label)} ${index + 1}`, anchorId: `memo-${label}-${index}`, claimIds: item.claim_ids })))
+    ];
+  }
 
   function scoreForMonth(month: string, trajectory: TrajectoryPoint[]): number {
     if (!trajectory.length) return 0;
@@ -293,13 +360,22 @@
     void (async () => {
       try {
         detail = await api.getCandidate(login);
-        const [eventResponse, memoResponse] = await Promise.all([
+        const [eventResponse, memoResponse, runSummaries] = await Promise.all([
           api.getEvidence(login),
-          detail.memo_available ? api.getMemo(login) : Promise.resolve(null)
+          detail.memo_available ? api.getMemo(login) : Promise.resolve(null),
+          api.getDeepDiveRuns(login).catch(() => [])
         ]);
+        // Curate: merge back only the LATEST successful capture; earlier or
+        // failed runs stay on disk (noted, not merged).
+        const okSummaries = runSummaries
+          .filter((summary) => summary.outcome === 'OK' && summary.claim_count > 0)
+          .sort((a, b) => (b.started_at ?? '').localeCompare(a.started_at ?? ''));
+        const primary = okSummaries.length ? await api.getDeepDiveRun(okSummaries[0].run_id).catch(() => null) : null;
         if (!disposed) {
           evidence = eventResponse.items;
           memo = memoResponse;
+          liveRuns = primary ? [primary] : [];
+          priorCaptureCount = Math.max(0, runSummaries.length - (primary ? 1 : 0));
         }
       } catch (reason) {
         if (!disposed) error = reason instanceof Error ? reason.message : 'Unable to load founder record';
@@ -315,14 +391,29 @@
     return () => { disposed = true; sectionObserver?.disconnect(); };
   });
 
-  $: allClusters = buildClusters(evidence, detail?.trajectory ?? []);
-  $: timelineClusters = selectedType === 'all' ? allClusters : allClusters.filter((cluster) => cluster.events.some((event) => event.event_type === selectedType));
+  $: liveEvidence = [...new Map(liveRuns.flatMap((run) => run.evidence).filter((event) => /^\d{4}-\d{2}/.test(event.ts)).map((event) => [event.evidence_id, { ...event, provenance: 'live' as const }])).values()];
+  $: timelineEvidence = [...evidence.map((event) => ({ ...event, provenance: 'backtest' as const })), ...liveEvidence];
+  $: allClusters = buildClusters(timelineEvidence, detail?.trajectory ?? []);
+  $: activeComponentTypes = componentEventTypes[activeScoreComponent] ?? [];
+  $: timelineClusters = activeScoreComponent
+    ? allClusters.filter((cluster) => cluster.events.some((event) => matchesEventTypes(event, activeComponentTypes)))
+    : selectedType === 'all' ? allClusters
+    : selectedType === 'live_capture' ? allClusters.filter((cluster) => cluster.events.some((event) => (event as { provenance?: string }).provenance === 'live'))
+    : allClusters.filter((cluster) => cluster.events.some((event) => event.event_type === selectedType));
+  // Filter chips come from BACKTEST types only; live-capture evidence gets one
+  // aggregate chip instead of polluting the type list with per-run event names.
   $: eventTypes = [...new Set(evidence.map((event) => event.event_type))].sort();
   $: eventCounts = evidence.reduce<Record<string, number>>((counts, event) => { counts[event.event_type] = (counts[event.event_type] ?? 0) + 1; return counts; }, {});
   $: detectionMonth = detail?.candidate.first_detection_month?.slice(0, 7) ?? '';
-  $: latestObserved = [...evidence.map((event) => event.ts), ...(detail?.trajectory.map((point) => point.month) ?? [])].sort().at(-1) ?? '';
+  $: recognitionMonth = detail?.recognition?.month ?? '';
+  $: recognitionLeadMonths = detectionMonth && recognitionMonth ? leadMonths(detectionMonth, recognitionMonth) : null;
+  $: latestObserved = [...timelineEvidence.map((event) => event.ts), ...(detail?.trajectory.map((point) => point.month) ?? [])].sort().at(-1) ?? '';
   $: timelineWidth = Math.max(900, MONTH_OFFSET * 2 + Math.max(0, timelineClusters.length - 1) * MONTH_STEP);
+  $: graphSections = graphSectionsFor(memo);
+  $: claimNumberById = Object.fromEntries(Object.keys(memo?.claims ?? {}).map((id, index) => [id, index + 1]));
 </script>
+
+<svelte:window onkeydown={handlePageKey} />
 
 {#if loading}
   <div class="page-state shell" aria-live="polite">Opening the founder record…</div>
@@ -361,33 +452,63 @@
     </nav>
 
     <div class="vitals-strip" aria-label="Founder signal vitals">
-      <div class="signal-vital"><span>Signal</span><strong>{Math.round(detail.candidate.current_score * 100)}</strong><small>Top {Math.max(1, Math.round(100 - detail.candidate.score_percentile + 1))}%</small></div>
+      <div class="signal-vital">
+        <span>Signal</span>
+        <button id="score-toggle" class="signal-score-toggle" type="button" aria-expanded={scorePanelOpen} aria-controls="score-decomposition" onclick={() => scorePanelOpen = !scorePanelOpen}>{Math.round(detail.candidate.current_score * 100)}</button>
+        <small>Top {Math.max(1, Math.round(100 - detail.candidate.score_percentile + 1))}%</small>
+        {#if detail.score_components?.length}<button class="score-why" type="button" aria-expanded={scorePanelOpen} aria-controls="score-decomposition" onclick={() => scorePanelOpen = !scorePanelOpen}>why this score?</button>{/if}
+      </div>
       <div class="momentum-vital"><span>Momentum · 3mo</span><strong class:negative={detail.candidate.momentum_3mo < 0}>{detail.candidate.momentum_3mo >= 0 ? '↑' : '↓'}{Math.abs(detail.candidate.momentum_3mo * 100).toFixed(0)}%</strong><small>Evidence velocity</small></div>
       <div class="axes-vital">
         <div><span>Three independent axes</span><small>Never averaged</small></div>
         {#if detail.three_axis}
           <div class="axis-micro-grid">
             {#each Object.entries(detail.three_axis) as [key, axis]}
-              <div class="axis-micro"><span>{axisLabel[key]}</span><MiniBars values={Array.from({ length: 10 }, (_, index) => index < Math.round(axis.score) ? 1 : 0)} width={76} height={12} label={`${axisLabel[key]} ${axis.score.toFixed(1)} out of 10`} segments /><strong>{axis.score.toFixed(1)}</strong></div>
+              <!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+              <!-- svelte-ignore a11y_no_static_element_interactions -->
+              <div class="axis-micro" role="button" tabindex="0" aria-label={`${axisLabel[key]} axis links ${axis.claim_ids.length} memo claims`} onmouseenter={() => highlightedClaimIds = axis.claim_ids} onmouseleave={() => highlightedClaimIds = []} onfocus={() => highlightedClaimIds = axis.claim_ids} onblur={() => highlightedClaimIds = []}><span>{axisLabel[key]}</span><MiniBars values={Array.from({ length: 10 }, (_, index) => index < Math.round(axis.score) ? 1 : 0)} width={76} height={12} label={`${axisLabel[key]} ${axis.score.toFixed(1)} out of 10`} segments /><strong>{axis.score.toFixed(1)}</strong></div>
             {/each}
           </div>
         {:else}<p class="not-observed">Axes not observed.</p>{/if}
       </div>
       <div class="detection-vital"><span>First detection</span><strong>{detail.candidate.first_detection_month ? dateLabel(detail.candidate.first_detection_month) : 'Not observed'}</strong><small>Threshold crossing</small></div>
     </div>
+    {#if scorePanelOpen && detail.score_components?.length}
+      <section id="score-decomposition" class="score-decomposition" aria-labelledby="score-decomposition-title">
+        <header><div><p class="eyebrow">Signal score · additive evidence</p><h2 id="score-decomposition-title">Why this score?</h2></div><p>Hover or focus a component to isolate its event trail on the timeline.</p></header>
+        <ScoreWaterfall components={detail.score_components} score={detail.candidate.current_score} activeKey={activeScoreComponent} onactivate={activateScoreComponent} ondeactivate={clearScoreComponent} />
+      </section>
+    {/if}
   </section>
 
   <section id="timeline" class="timeline-panel shell" aria-labelledby="timeline-title">
+    {#if detectionMonth}
+      <div class="foresight-headline" data-testid="recognition-headline">
+        <span>Detected {dateLabel(detectionMonth)}</span>
+        {#if detail.recognition && recognitionLeadMonths !== null}
+          <i aria-hidden="true">·</i><span>{detail.recognition.label} {dateLabel(detail.recognition.month)}</span><i aria-hidden="true">·</i>
+          {#if recognitionLeadMonths > 0}<strong>{recognitionLeadMonths} months ahead</strong>
+          {:else if recognitionLeadMonths < 0}<strong class="headline-honest-miss">recognition came {Math.abs(recognitionLeadMonths)} months earlier — honest miss</strong>
+          {:else}<strong class="headline-honest-miss">recognized in the detection month — no lead</strong>{/if}
+        {:else}<i aria-hidden="true">·</i><strong class="still-early">still unrecognized — we are early</strong>{/if}
+      </div>
+    {/if}
     <header class="timeline-panel-header">
-      <div><p class="eyebrow">Longitudinal source ledger · {evidence.length} observations</p><h2 id="timeline-title">Evidence trajectory</h2></div>
-      <div class="timeline-range"><span>Viewport</span><strong aria-live="polite">{viewportLabel}</strong></div>
+      <div><p class="eyebrow">Longitudinal source ledger · {evidence.length} observations{liveEvidence.length ? ` · +${liveEvidence.length} live capture` : ''}</p><h2 id="timeline-title">Evidence trajectory</h2></div>
+      <div class="timeline-header-side">
+        {#if liveEvidence.length}<div class="timeline-provenance-legend" aria-label="Timeline provenance legend"><span><i class="backtest-dot"></i>Backtest</span><span><i class="live-dot"></i>Live capture</span></div>{/if}
+        <div class="timeline-range"><span>Viewport</span><strong aria-live="polite">{viewportLabel}</strong></div>
+      </div>
     </header>
     <div class="timeline-tools">
       <div class="timeline-filters" aria-label="Filter evidence event type">
-        <Chip variant="filter" label="All events" icon="◎" count={evidence.length} active={selectedType === 'all'} pressed={selectedType === 'all'} onclick={() => setFilter('all')} />
+        <Chip variant="filter" label="All events" icon="◎" count={timelineEvidence.length} active={selectedType === 'all' && !activeScoreComponent} pressed={selectedType === 'all' && !activeScoreComponent} onclick={() => setFilter('all')} />
         {#each eventTypes as type}
           <span data-event-type={type}><Chip variant="filter" label={titleCase(type)} icon={eventIcon[type] ?? '•'} count={eventCounts[type]} active={selectedType === type} pressed={selectedType === type} onclick={() => setFilter(type)} /></span>
         {/each}
+        {#if liveEvidence.length}
+          <span data-event-type="live_capture"><Chip variant="filter" label="Live capture" icon="●" tone="live" count={liveEvidence.length} active={selectedType === 'live_capture'} pressed={selectedType === 'live_capture'} onclick={() => setFilter('live_capture')} /></span>
+        {/if}
       </div>
       <div class="timeline-controls">
         <span><kbd>←</kbd><kbd>→</kbd> month · <kbd>↵</kbd> open</span>
@@ -415,6 +536,13 @@
       {#if timelineClusters.length}
         <div class="timeline-stage" style:width={`${timelineWidth}px`}>
           <svg class="timeline-wiring" width={timelineWidth} height="580" aria-hidden="true">
+            {#if detectionMonth && recognitionMonth}
+              {@const startX = Math.min(monthPosition(detectionMonth), monthPosition(recognitionMonth))}
+              {@const endX = Math.max(monthPosition(detectionMonth), monthPosition(recognitionMonth))}
+              <rect class="recognition-band" class:recognition-miss={recognitionLeadMonths !== null && recognitionLeadMonths < 0} x={startX} y="218" width={Math.max(2, endX - startX)} height="88" rx="8" />
+            {/if}
+            {#if detectionMonth}<line class="detection-marker-line" x1={monthPosition(detectionMonth)} x2={monthPosition(detectionMonth)} y1="212" y2="314" />{/if}
+            {#if recognitionMonth}<line class="recognition-marker-line" x1={monthPosition(recognitionMonth)} x2={monthPosition(recognitionMonth)} y1="205" y2="321" />{/if}
             {#each timelineClusters.slice(0, -1) as cluster, index}
               {@const next = timelineClusters[index + 1]}
               <path d={`M ${MONTH_OFFSET + index * MONTH_STEP} ${spineY(cluster.score)} L ${MONTH_OFFSET + (index + 1) * MONTH_STEP} ${spineY(next.score)}`} stroke={scoreColor((cluster.score + next.score) / 2)} class="spine-segment" />
@@ -434,6 +562,7 @@
               class="timeline-node"
               class:active={activeMonthIndex === index}
               class:detection={cluster.month === detectionMonth}
+              class:live={cluster.events.some((event) => event.provenance === 'live')}
               data-testid="timeline-month-node"
               data-month={cluster.month}
               data-event-types={Object.keys(cluster.typeCounts).join(',')}
@@ -456,6 +585,7 @@
               class="timeline-card"
               class:upper
               class:expanded={expandedMonth === cluster.month}
+              class:live-capture-card={cluster.events.some((event) => event.provenance === 'live')}
               style:left={`${x - 104}px`}
               style:top={upper ? '26px' : '342px'}
               tabindex="-1"
@@ -485,7 +615,7 @@
               {#if expandedMonth === cluster.month && cluster.events.length > 1}
                 <ul class="event-stack">{#each cluster.events as event}<li><span>{titleCase(event.event_type)}</span>{event.detail}</li>{/each}</ul>
               {/if}
-              <footer><span>{cluster.events[0].repo_name}</span><CircularIconButton icon="external" label={`Open ${cluster.events[0].repo_name}`} href={cluster.events[0].url} target="_blank" /></footer>
+              <footer><span>{cluster.events[0].repo_name || (cluster.events[0].provenance === 'live' ? 'live capture' : 'source')}</span><CircularIconButton icon="external" label={`Open ${cluster.events[0].repo_name || 'source'}`} href={cluster.events[0].url} target="_blank" /></footer>
             </article>
           {/each}
         </div>
@@ -499,16 +629,22 @@
     <section id="memo" class="memo-layout shell" aria-labelledby="memo-title">
       <div class="memo-main">
         <div class="section-title memo-heading"><div><p class="eyebrow">Investment memo · Generated {dateLabel(memo.generated_at)}</p><h2 id="memo-title">What the evidence supports</h2></div><Chip variant="status" tone="forest" label="Evidence-led" icon="✓" /></div>
-        <article id="claims" class="memo-section featured"><span class="section-number">01</span><div><h3>Company snapshot</h3><p>{memo.sections.company_snapshot.text}</p><div class="claim-row">{#each memo.sections.company_snapshot.claim_ids as id}<span class="claim-with-confidence"><ConfidenceArc value={memo.claims[id].confidence} label={`Claim ${id} confidence`} /><ClaimChip {id} claim={memo.claims[id]} {evidence} /></span>{/each}</div></div></article>
-        <article class="memo-section"><span class="section-number">02</span><div><h3>Investment hypotheses</h3>{#each memo.sections.investment_hypotheses as item}<div class="memo-item"><p>{item.text}</p><div class="claim-row">{#each item.claim_ids as id}<span class="claim-with-confidence"><ConfidenceArc value={memo.claims[id].confidence} label={`Claim ${id} confidence`} /><ClaimChip {id} claim={memo.claims[id]} {evidence} /></span>{/each}</div></div>{/each}</div></article>
-        <article class="memo-section"><span class="section-number">03</span><div><h3>Problem & product</h3><p>{memo.sections.problem_product.text}</p><div class="claim-row">{#each memo.sections.problem_product.claim_ids as id}<span class="claim-with-confidence"><ConfidenceArc value={memo.claims[id].confidence} label={`Claim ${id} confidence`} /><ClaimChip {id} claim={memo.claims[id]} {evidence} /></span>{/each}</div></div></article>
-        <article class="memo-section"><span class="section-number">04</span><div><h3>Traction & KPIs</h3><p>{memo.sections.traction_kpis.text}</p><div class="claim-row">{#each memo.sections.traction_kpis.claim_ids as id}<span class="claim-with-confidence"><ConfidenceArc value={memo.claims[id].confidence} label={`Claim ${id} confidence`} /><ClaimChip {id} claim={memo.claims[id]} {evidence} /></span>{/each}</div></div></article>
-        <article class="memo-section swot-section"><span class="section-number">05</span><div><h3>Evidence-grounded SWOT</h3><div class="swot-grid">{#each Object.entries(memo.sections.swot) as [label, items]}<div class="swot-cell swot-{label}"><h4>{titleCase(label)}</h4>{#each items as item}<div class="swot-item"><p>{item.text}</p><div class="claim-row">{#each item.claim_ids as id}<span class="claim-with-confidence"><ConfidenceArc value={memo.claims[id].confidence} label={`Claim ${id} confidence`} /><ClaimChip {id} claim={memo.claims[id]} {evidence} /></span>{/each}</div></div>{/each}</div>{/each}</div></div></article>
+        <article id="claims" class="memo-section featured"><span class="section-number">01</span><div><h3>Company snapshot</h3><p data-testid="memo-section-prose" data-claim-count={memo.sections.company_snapshot.claim_ids.length}>{memo.sections.company_snapshot.text}<MemoCitations claimIds={memo.sections.company_snapshot.claim_ids} claims={memo.claims} evidence={timelineEvidence} numberById={claimNumberById} {highlightedClaimIds} /></p></div></article>
+        <article class="memo-section"><span class="section-number">02</span><div><h3>Investment hypotheses</h3>{#each memo.sections.investment_hypotheses as item, index}<div id={`memo-hypothesis-${index}`} class="memo-item"><p data-testid="memo-section-prose" data-claim-count={item.claim_ids.length}>{item.text}<MemoCitations claimIds={item.claim_ids} claims={memo.claims} evidence={timelineEvidence} numberById={claimNumberById} {highlightedClaimIds} /></p></div>{/each}</div></article>
+        <article id="memo-problem-product" class="memo-section"><span class="section-number">03</span><div><h3>Problem & product</h3><p data-testid="memo-section-prose" data-claim-count={memo.sections.problem_product.claim_ids.length}>{memo.sections.problem_product.text}<MemoCitations claimIds={memo.sections.problem_product.claim_ids} claims={memo.claims} evidence={timelineEvidence} numberById={claimNumberById} {highlightedClaimIds} /></p></div></article>
+        <article id="memo-traction-kpis" class="memo-section"><span class="section-number">04</span><div><h3>Traction & KPIs</h3><p data-testid="memo-section-prose" data-claim-count={memo.sections.traction_kpis.claim_ids.length}>{memo.sections.traction_kpis.text}<MemoCitations claimIds={memo.sections.traction_kpis.claim_ids} claims={memo.claims} evidence={timelineEvidence} numberById={claimNumberById} {highlightedClaimIds} /></p></div></article>
+        <article class="memo-section swot-section"><span class="section-number">05</span><div><h3>Evidence-grounded SWOT</h3><div class="swot-grid">{#each Object.entries(memo.sections.swot) as [label, items]}<div class="swot-cell swot-{label}"><h4>{titleCase(label)}</h4>{#each items as item, index}<div id={`memo-${label}-${index}`} class="swot-item"><p data-testid="memo-section-prose" data-claim-count={item.claim_ids.length}>{item.text}<MemoCitations claimIds={item.claim_ids} claims={memo.claims} evidence={timelineEvidence} numberById={claimNumberById} {highlightedClaimIds} /></p></div>{/each}</div>{/each}</div></div></article>
       </div>
       <aside class="gaps-box" aria-labelledby="gaps-title"><div class="gaps-icon" aria-hidden="true">∅</div><p class="eyebrow">Honesty layer</p><h2 id="gaps-title">Not observed</h2><p>These gaps remain intentionally blank. No proxy data or assumptions have been used.</p><ul>{#each memo.gaps as gap}<li><span>—</span>{gap}</li>{/each}</ul><footer>Required before investment committee</footer></aside>
     </section>
+    <div class="shell"><ProvenanceGraph sections={graphSections} claims={memo.claims} evidence={evidence} numberById={claimNumberById} /></div>
   {:else}
     <section id="memo" class="shell no-memo"><h2>Memo not observed</h2><p>This founder has a signal record, but no evidence-backed memo is available yet.</p></section>
+  {/if}
+
+  <LiveCapture runs={liveRuns} backtestEvidence={evidence} />
+  {#if priorCaptureCount > 0}
+    <p class="prior-captures shell">{priorCaptureCount} earlier {priorCaptureCount === 1 ? 'capture' : 'captures'} retained on disk (not merged — only the latest validated run is shown).</p>
   {/if}
 
   <section id="runs" class="run-launch shell" aria-labelledby="runs-title">

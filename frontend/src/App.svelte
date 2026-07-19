@@ -16,9 +16,9 @@
     <span>VC Brain</span>
   </a>
   <nav class="topnav" aria-label="Primary navigation">
-    <a class:active={pathOnly($route) === '/'} href="/" onclick={(event) => { event.preventDefault(); navigate('/'); }}>Radar</a>
-    <span>Portfolio</span>
-    <span>Thesis</span>
+    <a class:active={pathOnly($route) === '/' && !$route.includes('#proof')} href="/" onclick={(event) => { event.preventDefault(); navigate('/'); }}>Radar</a>
+    <a class:active={$route.includes('#proof')} href="/#proof">Proof</a>
+    <span aria-disabled="true" title="Thesis view coming soon">Thesis</span>
   </nav>
   <div class="top-actions">
     {#if isMockMode}<span class="fixture-flag"><i></i>Fixture intelligence</span>{/if}

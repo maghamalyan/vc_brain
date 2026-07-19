@@ -5,6 +5,8 @@ import type {
   CandidateQuery,
   ClaimResponse,
   DeepDiveAccepted,
+  DeepDiveRun,
+  DeepDiveRunSummary,
   DeepDiveRequest,
   EvidenceEvent,
   EvidenceQuery,
@@ -28,6 +30,7 @@ import thesisFixture from '../mocks/thesis.json';
 import adaMemo from '../mocks/memos/ada-lovelace-fixture.json';
 import graceMemo from '../mocks/memos/grace-hopper-fixture.json';
 import katherineMemo from '../mocks/memos/katherine-johnson-fixture.json';
+import adaDeepDive from '../mocks/deepdives/ada-lovelace-fixture.json';
 
 export interface ApiClient {
   getHealth(): Promise<HealthResponse>;
@@ -39,6 +42,8 @@ export interface ApiClient {
   getClaim(claimId: string): Promise<ClaimResponse>;
   search(query: string, types?: string[], limit?: number): Promise<SearchResponse>;
   getProfile(login: string): Promise<Profile | null>;
+  getDeepDiveRuns(entityId: string): Promise<DeepDiveRunSummary[]>;
+  getDeepDiveRun(runId: string): Promise<DeepDiveRun>;
   startDeepDive(body: DeepDiveRequest): Promise<DeepDiveAccepted>;
 }
 
@@ -70,6 +75,8 @@ const realClient: ApiClient = {
   getClaim: (claimId) => request<ClaimResponse>(`/claims/${encodeURIComponent(claimId)}`),
   search: (query, types, limit = 20) => request<SearchResponse>(`/search${params({ q: query, types: types?.join(','), limit })}`),
   getProfile: async () => null,
+  getDeepDiveRuns: (entityId) => request<DeepDiveRunSummary[]>(`/deepdive/runs${params({ entity_id: entityId })}`),
+  getDeepDiveRun: (runId) => request<DeepDiveRun>(`/deepdive/runs/${encodeURIComponent(runId)}`),
   startDeepDive: (body) => request<DeepDiveAccepted>('/deepdive', { method: 'POST', body: JSON.stringify(body) })
 };
 
@@ -81,6 +88,7 @@ const trajectories = trajectoriesFixture as Array<TrajectoryPoint & { gh_login: 
 const events = eventsFixture as EvidenceEvent[];
 const profiles = profilesFixture as Record<string, Profile>;
 const thesis = thesisFixture as Thesis;
+const mockDeepDives = [adaDeepDive as DeepDiveRun];
 const memos: Record<string, Memo> = {
   'ada-lovelace-fixture': adaMemo as Memo,
   'grace-hopper-fixture': graceMemo as Memo,
@@ -122,6 +130,8 @@ const mockClient: ApiClient = {
     return {
       candidate,
       trajectory: trajectories.filter((point) => point.gh_login === login).map(({ month, score }) => ({ month, score })),
+      recognition: candidate.recognition ?? null,
+      score_components: candidate.score_components ?? [],
       three_axis: memo?.three_axis as ThreeAxis ?? null,
       memo_available: Boolean(memo),
       evidence_counts_by_type: countsFor(login)
@@ -167,6 +177,21 @@ const mockClient: ApiClient = {
     return { groups };
   },
   async getProfile(login) { return profiles[login] ?? null; },
+  async getDeepDiveRuns(entityId) {
+    return mockDeepDives.filter((run) => run.entity_id === entityId).map((run) => ({
+      run_id: run.run_id,
+      entity_id: run.entity_id,
+      started_at: run.started_at,
+      finished_at: run.finished_at,
+      outcome: 'OK',
+      claim_count: Object.keys(run.claims).length
+    }));
+  },
+  async getDeepDiveRun(runId) {
+    const run = mockDeepDives.find((item) => item.run_id === runId);
+    if (!run) throw new Error('Deep-dive run not found');
+    return structuredClone(run);
+  },
   async startDeepDive(body) { return { run_id: `mock-${body.entity_id}` }; }
 };
 

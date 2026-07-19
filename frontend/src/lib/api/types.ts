@@ -3,6 +3,24 @@ export type AxisKey = 'founder' | 'market' | 'idea_vs_market';
 export type CandidateSource = 'outbound_detector' | 'inbound_application';
 export type CandidateStatus = 'candidate' | 'screened' | 'memo_ready';
 export type SearchDocumentType = 'founder' | 'company' | 'claim' | 'evidence' | 'memo_section' | 'thesis_term';
+export type RecognitionKind = 'yc_batch' | 'seed_round' | 'press';
+
+export interface Recognition {
+  month: string;
+  kind: RecognitionKind;
+  label: string;
+}
+
+export interface TrajectoryPoint {
+  month: string;
+  score: number;
+}
+
+export interface ScoreComponent {
+  key: string;
+  label: string;
+  contribution: number;
+}
 
 export interface Candidate {
   gh_login: string;
@@ -15,6 +33,10 @@ export interface Candidate {
   first_detection_month: string | null;
   status: CandidateStatus;
   has_memo: boolean;
+  recognition?: Recognition | null;
+  score_components?: ScoreComponent[];
+  lead_time_months?: number | null;
+  trajectory?: TrajectoryPoint[];
 }
 
 export interface Profile {
@@ -22,11 +44,6 @@ export interface Profile {
   stage: string;
   geography: string;
   round_size_usd: number;
-}
-
-export interface TrajectoryPoint {
-  month: string;
-  score: number;
 }
 
 export interface AxisValue {
@@ -45,6 +62,7 @@ export interface EvidenceEvent {
   repo_name: string;
   detail: string;
   url: string;
+  provenance?: 'backtest' | 'live';
 }
 
 export interface Claim {
@@ -92,6 +110,8 @@ export interface CandidateListResponse { items: Candidate[]; total: number }
 export interface CandidateDetailResponse {
   candidate: Candidate;
   trajectory: TrajectoryPoint[];
+  recognition?: Recognition | null;
+  score_components?: ScoreComponent[];
   three_axis: ThreeAxis | null;
   memo_available: boolean;
   evidence_counts_by_type: Record<string, number>;
@@ -133,6 +153,29 @@ export interface DeepDiveRequest {
   mode?: 'live' | 'replay';
 }
 export interface DeepDiveAccepted { run_id: string }
+export type DeepDiveOutcome = 'OK' | 'INSUFFICIENT_EVIDENCE' | 'ERROR';
+export interface DeepDiveRunSummary {
+  run_id: string;
+  entity_id: string;
+  started_at: string;
+  finished_at: string | null;
+  outcome: DeepDiveOutcome | null;
+  claim_count: number;
+}
+export interface DeepDiveRun {
+  run_id: string;
+  entity_id: string;
+  provenance: 'live';
+  started_at: string;
+  finished_at: string | null;
+  steps: RunStep[];
+  evidence: EvidenceEvent[];
+  claims: Record<string, Claim>;
+  dimension_notes: Partial<ThreeAxis>;
+  gaps: string[];
+  model: string;
+  token_usage: Record<string, number>;
+}
 
 export interface CandidateQuery {
   source?: string;

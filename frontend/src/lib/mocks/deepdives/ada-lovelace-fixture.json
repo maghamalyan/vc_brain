@@ -1,0 +1,272 @@
+{
+  "run_id": "dd-20260719T014432-6ffc0590f4",
+  "entity_id": "ada-lovelace-fixture",
+  "provenance": "live",
+  "started_at": "2026-07-19T01:44:32.398929Z",
+  "finished_at": "2026-07-19T01:44:32.405922Z",
+  "steps": [
+    {
+      "seq": 1,
+      "kind": "plan",
+      "label": "Plan diligence dimensions",
+      "detail": "Evaluate requested dimensions independently: founder, market, idea_vs_market",
+      "ts": "2026-07-19T01:44:32.398948Z",
+      "payload": {
+        "dimensions": [
+          "founder",
+          "market",
+          "idea_vs_market"
+        ]
+      }
+    },
+    {
+      "seq": 2,
+      "kind": "reason",
+      "label": "Execute sandbox analysis",
+      "detail": "profile = gh_profile(\"ada-lovelace-fixture\")\nrepos = gh_repos(\"ada-lovelace-fixture\")\nevents = gh_events(\"ada-lovelace-fixture\")\nhn = hn_search(\"Ada Compute Engine\")\ne1 = add_evidence(\"github_profile\", \"2026-07-18T12:00:00Z\", \"Public GitHub profile reports 14 repositories and sustained open-source activity.\", \"https://github.com/ada-lovelace\", \"\")\ne2 = add_evidence(\"repository\", \"2026-07-17T09:30:00Z\", \"Analytical Engine repository is public, recently updated, and has 128 stars.\", \"https://github.com/ada-lovelace/analytical-engine\", \"analytical-engine\")\ne3 = add_evidence(\"discussion\", \"2026-07-16T08:00:00Z\", \"HN discussion describes developer interest but does not disclose commercial adoption.\", \"https://news.ycombinator.com/item?id=42424242\", \"\")\nc1 = draft_claim(\"The founder has a visible and recently active public build record.\", [e1[\"evidence_id\"], e2[\"evidence_id\"]], 0.86, \"verified\", [])\nc2 = draft_claim(\"Public discussion indicates developer interest, while commercial traction remains undisclosed.\", [e3[\"evidence_id\"]], 0.68, \"single_source\", [])\nnote_gap(\"Revenue, customer retention, and financing terms are not publicly disclosed.\")\nset_dimension_note(\"founder\", 8.4, \"improving\", [c1[\"claim_id\"]])\nset_dimension_note(\"market\", 6.2, \"stable\", [c2[\"claim_id\"]])\nset_dimension_note(\"idea_vs_market\", 6.8, \"improving\", [c1[\"claim_id\"], c2[\"claim_id\"]])\nprint(c1)\nprint(c2)",
+      "ts": "2026-07-19T01:44:32.403689Z",
+      "payload": null
+    },
+    {
+      "seq": 3,
+      "kind": "fetch",
+      "label": "Audited gh_profile",
+      "detail": "gh_profile completed",
+      "ts": "2026-07-19T01:44:32.403865Z",
+      "payload": null
+    },
+    {
+      "seq": 4,
+      "kind": "fetch",
+      "label": "Audited gh_repos",
+      "detail": "gh_repos completed",
+      "ts": "2026-07-19T01:44:32.403894Z",
+      "payload": null
+    },
+    {
+      "seq": 5,
+      "kind": "fetch",
+      "label": "Audited gh_events",
+      "detail": "gh_events completed",
+      "ts": "2026-07-19T01:44:32.403906Z",
+      "payload": null
+    },
+    {
+      "seq": 6,
+      "kind": "fetch",
+      "label": "Audited hn_search",
+      "detail": "hn_search completed",
+      "ts": "2026-07-19T01:44:32.403913Z",
+      "payload": null
+    },
+    {
+      "seq": 7,
+      "kind": "evidence",
+      "label": "Audited add_evidence",
+      "detail": "add_evidence completed",
+      "ts": "2026-07-19T01:44:32.403972Z",
+      "payload": {
+        "evidence_id": "live-3b9b97d28ba1a691280e",
+        "gh_login": "ada-lovelace-fixture",
+        "ts": "2026-07-18T12:00:00Z",
+        "event_type": "github_profile",
+        "repo_name": "",
+        "detail": "Public GitHub profile reports 14 repositories and sustained open-source activity.",
+        "url": "https://github.com/ada-lovelace"
+      }
+    },
+    {
+      "seq": 8,
+      "kind": "evidence",
+      "label": "Audited add_evidence",
+      "detail": "add_evidence completed",
+      "ts": "2026-07-19T01:44:32.403995Z",
+      "payload": {
+        "evidence_id": "live-b414bfa14e75fd355c74",
+        "gh_login": "ada-lovelace-fixture",
+        "ts": "2026-07-17T09:30:00Z",
+        "event_type": "repository",
+        "repo_name": "analytical-engine",
+        "detail": "Analytical Engine repository is public, recently updated, and has 128 stars.",
+        "url": "https://github.com/ada-lovelace/analytical-engine"
+      }
+    },
+    {
+      "seq": 9,
+      "kind": "evidence",
+      "label": "Audited add_evidence",
+      "detail": "add_evidence completed",
+      "ts": "2026-07-19T01:44:32.404012Z",
+      "payload": {
+        "evidence_id": "live-0bb4c7b7a08c8187e946",
+        "gh_login": "ada-lovelace-fixture",
+        "ts": "2026-07-16T08:00:00Z",
+        "event_type": "discussion",
+        "repo_name": "",
+        "detail": "HN discussion describes developer interest but does not disclose commercial adoption.",
+        "url": "https://news.ycombinator.com/item?id=42424242"
+      }
+    },
+    {
+      "seq": 10,
+      "kind": "claim",
+      "label": "Audited draft_claim",
+      "detail": "draft_claim completed",
+      "ts": "2026-07-19T01:44:32.404045Z",
+      "payload": {
+        "text": "The founder has a visible and recently active public build record.",
+        "evidence_refs": [
+          "live-3b9b97d28ba1a691280e",
+          "live-b414bfa14e75fd355c74"
+        ],
+        "confidence": 0.86,
+        "verification_status": "verified",
+        "contradictions": []
+      }
+    },
+    {
+      "seq": 11,
+      "kind": "claim",
+      "label": "Audited draft_claim",
+      "detail": "draft_claim completed",
+      "ts": "2026-07-19T01:44:32.404063Z",
+      "payload": {
+        "text": "Public discussion indicates developer interest, while commercial traction remains undisclosed.",
+        "evidence_refs": [
+          "live-0bb4c7b7a08c8187e946"
+        ],
+        "confidence": 0.68,
+        "verification_status": "single_source",
+        "contradictions": []
+      }
+    },
+    {
+      "seq": 12,
+      "kind": "gap",
+      "label": "Audited note_gap",
+      "detail": "note_gap completed",
+      "ts": "2026-07-19T01:44:32.404070Z",
+      "payload": null
+    },
+    {
+      "seq": 13,
+      "kind": "reason",
+      "label": "Audited set_dimension_note",
+      "detail": "set_dimension_note completed",
+      "ts": "2026-07-19T01:44:32.404083Z",
+      "payload": null
+    },
+    {
+      "seq": 14,
+      "kind": "reason",
+      "label": "Audited set_dimension_note",
+      "detail": "set_dimension_note completed",
+      "ts": "2026-07-19T01:44:32.404093Z",
+      "payload": null
+    },
+    {
+      "seq": 15,
+      "kind": "reason",
+      "label": "Audited set_dimension_note",
+      "detail": "set_dimension_note completed",
+      "ts": "2026-07-19T01:44:32.404105Z",
+      "payload": null
+    },
+    {
+      "seq": 16,
+      "kind": "done",
+      "label": "Deep dive complete",
+      "detail": "Fixture diligence completed with evidence-bound claims and an explicit commercial-data gap.",
+      "ts": "2026-07-19T01:44:32.405923Z",
+      "payload": {
+        "summary": "Fixture diligence completed with evidence-bound claims and an explicit commercial-data gap.",
+        "outcome": "OK"
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "live-3b9b97d28ba1a691280e",
+      "gh_login": "ada-lovelace-fixture",
+      "ts": "2026-07-18T12:00:00Z",
+      "event_type": "github_profile",
+      "repo_name": "",
+      "detail": "Public GitHub profile reports 14 repositories and sustained open-source activity.",
+      "url": "https://github.com/ada-lovelace"
+    },
+    {
+      "evidence_id": "live-b414bfa14e75fd355c74",
+      "gh_login": "ada-lovelace-fixture",
+      "ts": "2026-07-17T09:30:00Z",
+      "event_type": "repository",
+      "repo_name": "analytical-engine",
+      "detail": "Analytical Engine repository is public, recently updated, and has 128 stars.",
+      "url": "https://github.com/ada-lovelace/analytical-engine"
+    },
+    {
+      "evidence_id": "live-0bb4c7b7a08c8187e946",
+      "gh_login": "ada-lovelace-fixture",
+      "ts": "2026-07-16T08:00:00Z",
+      "event_type": "discussion",
+      "repo_name": "",
+      "detail": "HN discussion describes developer interest but does not disclose commercial adoption.",
+      "url": "https://news.ycombinator.com/item?id=42424242"
+    }
+  ],
+  "claims": {
+    "live-claim-36da07b3085d6b75": {
+      "text": "The founder has a visible and recently active public build record.",
+      "evidence_refs": [
+        "live-3b9b97d28ba1a691280e",
+        "live-b414bfa14e75fd355c74"
+      ],
+      "confidence": 0.86,
+      "verification_status": "verified",
+      "contradictions": []
+    },
+    "live-claim-d9817ac3a35da84a": {
+      "text": "Public discussion indicates developer interest, while commercial traction remains undisclosed.",
+      "evidence_refs": [
+        "live-0bb4c7b7a08c8187e946"
+      ],
+      "confidence": 0.68,
+      "verification_status": "single_source",
+      "contradictions": []
+    }
+  },
+  "dimension_notes": {
+    "founder": {
+      "score": 8.4,
+      "trend": "improving",
+      "claim_ids": [
+        "live-claim-36da07b3085d6b75"
+      ]
+    },
+    "market": {
+      "score": 6.2,
+      "trend": "stable",
+      "claim_ids": [
+        "live-claim-d9817ac3a35da84a"
+      ]
+    },
+    "idea_vs_market": {
+      "score": 6.8,
+      "trend": "improving",
+      "claim_ids": [
+        "live-claim-36da07b3085d6b75",
+        "live-claim-d9817ac3a35da84a"
+      ]
+    }
+  },
+  "gaps": [
+    "Revenue, customer retention, and financing terms are not publicly disclosed."
+  ],
+  "model": "vcb-fixture-model",
+  "token_usage": {
+    "requests": 2,
+    "tool_calls": 1,
+    "input_tokens": 190,
+    "output_tokens": 395,
+    "total_tokens": 585
+  }
+}
