@@ -230,6 +230,7 @@
   $: months = Array.from(new Set(candidates.flatMap((candidate) => (candidate.trajectory ?? []).map((point) => point.month.slice(0, 7))))).sort();
   $: if (months.length && scrubberIndex >= months.length) scrubberIndex = months.length - 1;
   $: selectedMonth = months[scrubberIndex] ?? months.at(-1) ?? '';
+  $: scrubberLabelStep = Math.max(1, Math.ceil(months.length / 12));
   $: years = months.reduce<Array<{ year: string; index: number }>>((items, month, index) => {
     const year = month.slice(0, 4);
     if (items.at(-1)?.year !== year) items.push({ year, index });
@@ -267,7 +268,7 @@
           <span class="scrubber-month" data-testid="scrubber-month-tick" style:left={`${index / (months.length - 1) * 100}%`}>
             {#if monthEvidenceCounts[index] > 0}<b title={`${monthEvidenceCounts[index]} evidence events across candidates`}>{monthEvidenceCounts[index]}</b>{/if}
             <i class:major={month.endsWith('-01')}></i>
-            <em>{index % 3 === 0 || index === months.length - 1 ? monthShort(month) : ''}</em>
+            <em>{index % scrubberLabelStep === 0 || index === months.length - 1 ? monthShort(month) : ''}</em>
           </span>
         {/each}
       </div>

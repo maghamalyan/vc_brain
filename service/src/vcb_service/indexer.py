@@ -478,7 +478,7 @@ def inspect_index(path: Path) -> BuildResult:
             if components_json is not None:
                 components = json.loads(components_json)
                 total = sum(float(component["contribution"]) for component in components)
-                if abs(total - float(current_score)) > 0.001 + 1e-12:
+                if components and abs(total - float(current_score)) > 0.001 + 1e-12:
                     component_sum_errors.append(
                         (str(login), float(current_score), total)
                     )

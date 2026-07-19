@@ -68,9 +68,9 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 const realClient: ApiClient = {
   getHealth: () => request<HealthResponse>('/health'),
   getThesis: () => request<Thesis>('/thesis'),
-  getCandidates: (query = {}) => request<CandidateListResponse>(`/candidates${params({ ...query })}`),
+  getCandidates: (query = {}) => request<CandidateListResponse>(`/candidates${params({ limit: 100, ...query })}`),
   getCandidate: (login) => request<CandidateDetailResponse>(`/candidates/${encodeURIComponent(login)}`),
-  getEvidence: (login, query = {}) => request<EvidenceResponse>(`/candidates/${encodeURIComponent(login)}/evidence${params({ ...query })}`),
+  getEvidence: (login, query = {}) => request<EvidenceResponse>(`/candidates/${encodeURIComponent(login)}/evidence${params({ limit: 500, ...query })}`),
   getMemo: (login) => request<Memo>(`/candidates/${encodeURIComponent(login)}/memo`),
   getClaim: (claimId) => request<ClaimResponse>(`/claims/${encodeURIComponent(claimId)}`),
   search: (query, types, limit = 20) => request<SearchResponse>(`/search${params({ q: query, types: types?.join(','), limit })}`),

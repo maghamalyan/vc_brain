@@ -18,6 +18,7 @@ dependencies = [
 
 [project.scripts]
 vcb-index = "vcb_service.cli:main"
+vcb-integrate = "vcb_service.integrate_cli:main"
 vcb-openapi = "vcb_service.export_openapi:main"
 
 [build-system]
