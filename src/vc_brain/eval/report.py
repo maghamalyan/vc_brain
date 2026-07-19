@@ -128,12 +128,56 @@ def _reliability(
 
 
 def _person_month_metrics(
-    labels: np.ndarray, probabilities: np.ndarray
+    labels: np.ndarray, probabilities: np.ndarray, months: np.ndarray | None = None
 ) -> dict[str, float]:
-    return {
+    metrics = {
         "pr_auc": float(average_precision_score(labels, probabilities)),
         "roc_auc": float(roc_auc_score(labels, probabilities)),
         "base_rate": float(labels.mean()),
+    }
+    if months is not None:
+        metrics.update(_within_month_pr_auc(months, labels, probabilities))
+    return metrics
+
+
+def _within_month_pr_auc(
+    months: np.ndarray, labels: np.ndarray, probabilities: np.ndarray
+) -> dict[str, float]:
+    """Positive-weighted macro PR-AUC computed inside each calendar month.
+
+    Calendar-month composition (batch sizes, resolution coverage) lets a
+    month-intercept model beat the GLOBAL base rate without any person-level
+    skill, which is exactly what the first live null run exposed. Ranking
+    within months removes that channel: a month-intercept model scores the
+    month's own base rate here.
+    """
+    weighted = 0.0
+    base_weighted = 0.0
+    total_weight = 0.0
+    months_used = 0
+    for month in np.unique(months):
+        mask = months == month
+        month_labels = labels[mask]
+        positives = int(month_labels.sum())
+        if positives == 0 or positives == len(month_labels):
+            continue
+        weight = float(positives)
+        weighted += (
+            float(average_precision_score(month_labels, probabilities[mask])) * weight
+        )
+        base_weighted += float(month_labels.mean()) * weight
+        total_weight += weight
+        months_used += 1
+    if total_weight == 0.0:
+        return {
+            "within_month_pr_auc": float("nan"),
+            "within_month_base_rate": float("nan"),
+            "months_evaluated": 0,
+        }
+    return {
+        "within_month_pr_auc": weighted / total_weight,
+        "within_month_base_rate": base_weighted / total_weight,
+        "months_evaluated": months_used,
     }
 
 
@@ -513,7 +557,7 @@ def _markdown(report: dict[str, Any]) -> str:
         "## Lead time\n\n",
         f"Detected {lead['detected']} of {lead['total_test_founders']} test founders ({lead['detection_rate']:.1%}) at or above the same-month 99th percentile of control scores. Median lead: {lead['lead_months_median']} months; IQR: {lead['lead_months_iqr']}.\n\n",
         "## Mandatory null run\n\n",
-        f"Development labels were shuffled within calendar month using seed {null['seed']}; held-out test labels remained the oracle. Null PR-AUC: **{null['pr_auc']:.4f}** versus test base rate **{null['base_rate']:.4f}**. Sanity check: **{'PASS' if null['passed'] else 'FAIL — possible leakage; score exports withheld'}**.\n\n",
+        f"Development labels were shuffled within calendar month using seed {null['seed']}; held-out test labels remained the oracle. Null within-month PR-AUC: **{null['within_month_pr_auc']:.4f}** (limit {null['maximum_allowed_within_month_pr_auc']:.4f}; within-month base {null['within_month_base_rate']:.4f}); global null PR-AUC {null['global_pr_auc']:.4f} shown for transparency — it retains calendar-composition effects. Sanity check: **{'PASS' if null['passed'] else 'FAIL — possible leakage; score exports withheld'}**.\n\n",
         "## Ablations\n\n",
         "| Features | Count | Selected model | Test PR-AUC | Marginal |\n| --- | ---: | --- | ---: | ---: |\n",
     ]
@@ -557,6 +601,7 @@ def build_report(
     bundle = load_training_bundle(models_dir)
     test = temporal_split(panel).filter(pl.col("split") == "test")
     labels = test.get_column("y").to_numpy().astype(np.int8)
+    test_months = test.get_column("month").to_numpy()
     logistic_scores = predict_probabilities(
         bundle.logistic_model, test, bundle.feature_names
     )
@@ -598,8 +643,13 @@ def build_report(
     )
     null_pr = float(average_precision_score(null_labels, null_scores))
     null_base = float(null_labels.mean())
-    null_limit = max(null_base * 2.0, null_base + 0.02)
-    null_passed = null_pr <= null_limit
+    null_months = null_test.get_column("month").to_numpy()
+    null_within = _within_month_pr_auc(null_months, null_labels, null_scores)
+    null_within_base = float(null_within["within_month_base_rate"])
+    null_limit = max(null_within_base * 2.0, null_within_base + 0.02)
+    # Gate on WITHIN-MONTH ranking: global PR-AUC keeps calendar-composition
+    # effects that shuffled labels cannot remove; within-month must collapse.
+    null_passed = float(null_within["within_month_pr_auc"]) <= null_limit
 
     blocks = _feature_blocks(bundle.feature_names, feature_data_card_path)
     ablation_specs = {
@@ -639,9 +689,16 @@ def build_report(
         "selected_model": bundle.selected_model_name,
         "validation_model_selection": bundle.validation_metrics,
         "person_month": {
-            "logistic": _person_month_metrics(labels, logistic_scores),
-            "lightgbm": _person_month_metrics(labels, lightgbm_scores),
-            "selected": _person_month_metrics(labels, selected_scores),
+            "primary_metric": "within_month_pr_auc",
+            "logistic": _person_month_metrics(
+                labels, logistic_scores, test_months
+            ),
+            "lightgbm": _person_month_metrics(
+                labels, lightgbm_scores, test_months
+            ),
+            "selected": _person_month_metrics(
+                labels, selected_scores, test_months
+            ),
         },
         "person_level": _person_level_metrics(summary),
         "calibration": {
@@ -651,12 +708,15 @@ def build_report(
         },
         "lead_time": lead,
         "null_run": {
-            "method": "Tuning-train and validation labels shuffled within calendar month; held-out test labels left unchanged as the null oracle",
+            "method": "Tuning-train and validation labels shuffled within calendar month; held-out test labels left unchanged as the null oracle. Gate applies to WITHIN-MONTH PR-AUC (global PR-AUC retains calendar-composition effects by construction).",
             "seed": NULL_SEED,
             "selected_model": null_bundle.selected_model_name,
-            "pr_auc": null_pr,
-            "base_rate": null_base,
-            "maximum_allowed_pr_auc": null_limit,
+            "global_pr_auc": null_pr,
+            "global_base_rate": null_base,
+            "within_month_pr_auc": float(null_within["within_month_pr_auc"]),
+            "within_month_base_rate": null_within_base,
+            "months_evaluated": null_within["months_evaluated"],
+            "maximum_allowed_within_month_pr_auc": null_limit,
             "passed": null_passed,
         },
         "ablations": ablations,
